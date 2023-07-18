@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  medical_record: one
+  body_temp: 1.5
+  heart_rate: 1
+  blood_pressure: 1
+  desciption: MyText
+  conslusion: MyText
+
+two:
+  medical_record: two
+  body_temp: 1.5
+  heart_rate: 1
+  blood_pressure: 1
+  desciption: MyText
+  conslusion: MyText

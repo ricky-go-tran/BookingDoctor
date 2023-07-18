@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient_profile: one
+  clinic_profile: MyString
+  start_time: 2023-07-18 13:58:30
+  end_time: 2023-07-18 13:58:30
+  status: MyString
+
+two:
+  patient_profile: two
+  clinic_profile: MyString
+  start_time: 2023-07-18 13:58:30
+  end_time: 2023-07-18 13:58:30
+  status: MyString

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  medical_resource: one
+  clinic_profile: one
+  amount: 1
+  price: 
+
+two:
+  medical_resource: two
+  clinic_profile: two
+  amount: 1
+  price: 

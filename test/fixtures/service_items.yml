@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  medical_record: one
+  service: one
+  price: 1.5
+
+two:
+  medical_record: two
+  service: two
+  price: 1.5
