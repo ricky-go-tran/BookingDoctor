@@ -4,7 +4,7 @@ class CreateReports < ActiveRecord::Migration[7.0]
       t.references :user, null: false, foreign_key: true
       t.string :title, null: false
       t.string :content, null: false
-      t.string :type, null: false, "system_prolem"
+      t.string :type, null: false, default: "system_prolem"
       t.string :status, null: false, default: "unprocess"
 
       t.timestamps

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  profile: one
+  height: 1.5
+  weight: 1.5
+  blood_group: MyString
+  drug_allergy: MyText
+
+two:
+  profile: two
+  height: 1.5
+  weight: 1.5
+  blood_group: MyString
+  drug_allergy: MyText
