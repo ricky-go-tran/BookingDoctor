@@ -3,4 +3,5 @@ class PatientProfile < ApplicationRecord
   has_many :medical_records
   has_many :votes
   has_many :clinic_profiles, through: :votes
+  resourcify
 end

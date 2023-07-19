@@ -4,4 +4,5 @@ class Service < ApplicationRecord
   has_many :service_items
   has_many :medical_records, through: :service_items
   belongs_to :clinic_profile
+  resourcify
 end
