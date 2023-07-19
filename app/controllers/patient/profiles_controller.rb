@@ -1,6 +1,5 @@
 class Patient::ProfilesController < ApplicationController
-
-
+  skip_before_action :check_first_login, only: %i[new create]
   def index
   end
 
@@ -22,9 +21,7 @@ class Patient::ProfilesController < ApplicationController
   def new
   end
 
-  protected
+  #protected
 
-  def check_first_login
 
-  end
 end

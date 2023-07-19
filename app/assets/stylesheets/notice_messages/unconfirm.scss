@@ -1,0 +1,23 @@
+.error-wrapper {
+    .unconfirmation-img {
+        width: 350px;
+        height: 220px;
+    }
+    .unconfirmation-wrapper {
+        display: flex;
+        flex-direction: column;
+        .title {
+            font-size: 42px;
+            font-weight: bolder;
+            background: linear-gradient(45deg, #ed008e, #ef033b);
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            margin-bottom: 15px;
+        }
+        .content {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+.setup-profile-wrapper
+    .form-wrapper
+        h2 Setup Profile
+        = simple_form_for @profile do |form|
+            = form.input :fullname, label: "Fullname"
+            = form.input :birthday, label: "Birthday"
+            = form.input :address, label: "Address"
+            = form.input :status, inline_label: "Status"
+
+
