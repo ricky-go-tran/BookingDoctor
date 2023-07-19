@@ -1,28 +1,11 @@
 @import "../mixins/input_style.scss";
+@import "../mixins/layout.scss";
 $confirmation_backround: image-url("authen_background.jpg");
 
 .confirmation-wrapper {
-    margin: 0;
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    min-height: 100vh;
-    background: $confirmation_backround;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: flex-end;
+    @include full-wrapper($confirmation_backround);
     .form-wrapper {
-        width: 35%;
-        background-color: #ffffff;
-        padding: 20px 30px 20px 25px;
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include basic-form(column, center, center, 35%);
         h2 {
             font-size: 40px;
             background: linear-gradient(90deg, #00fc85, #0cbecd);

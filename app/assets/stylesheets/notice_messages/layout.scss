@@ -1,0 +1,5 @@
+@import "../mixins/layout.scss";
+
+.notice-message {
+    @include full-wrapper(none);
+}
