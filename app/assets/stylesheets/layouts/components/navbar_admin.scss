@@ -1,0 +1,152 @@
+$profile-icon: image-url("icon_profile.png");
+$medical-icon: image-url("icon_medical.png");
+$report_icon: image-url("icon_report.png");
+$user_icon: image-url("icon_user.png");
+$category_icon: image-url("icon_hospital.png");
+$switch_icon: image-url("icon_switch.png");
+
+.admin-navbar-wrapper {
+    width: 20%;
+    height: 100vh;
+    background: #121e2e;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .info-part {
+        margin-top: 25px;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #fff;
+        width: 90%;
+        div {
+            margin-bottom: 15px;
+        }
+        .role {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .name {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .logo {
+            padding: unset;
+            font-size: 32px;
+            font-weight: bold;
+            margin-left: 30px;
+            span {
+                color: #0cbecd;
+            }
+            label {
+                color: #00fc85;
+            }
+        }
+    }
+    .menu-part {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        line-height: 2;
+        color: #fff;
+        border-bottom: 1px solid #fff;
+        width: 90%;
+        > .item {
+            cursor: pointer;
+            margin-left: 5%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            &:hover {
+                border: 1px solid #ffffff
+            }
+            #profile-icon {
+                width: 32px;
+                height: 32px;
+                background: $profile-icon;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            #report-icon {
+                width: 32px;
+                height: 32px;
+                background: $report_icon;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            #user-icon {
+                width: 32px;
+                height: 32px;
+                background: $user-icon;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            #category-icon {
+                width: 32px;
+                height: 32px;
+                background: $category_icon;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            #medical-icon {
+                width: 32px;
+                height: 32px;
+                background: $medical-icon;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+            span {
+                margin-left: 5%;
+                font-size: 18px;
+                width: 1;
+            }
+        }
+        > *:last-child {
+            margin-bottom: 15px;
+        }
+    }
+    .switch-role {
+        margin-top: 25px;
+        margin-left: 5%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        border-radius: 10px;
+        cursor: pointer;
+        #switch-icon {
+            width: 32px;
+            height: 32px;
+            background: $switch_icon;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        span {
+            margin-left: 5%;
+            font-size: 18px;
+            width: 1;
+            color: #ffffff
+        }
+    }
+}

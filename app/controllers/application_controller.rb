@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_first_login?
-    if current_user.profile == nil
+    if user_signed_in? && current_user.profile == nil
       return true
     end
     false

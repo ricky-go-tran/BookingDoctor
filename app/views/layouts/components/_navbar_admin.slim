@@ -1,0 +1,26 @@
+.admin-navbar-wrapper
+    .info-part
+        .logo
+            span Booking
+            label Doctor
+        .role Admin Dashbroad
+        .name = current_user.profile.fullname
+    .menu-part
+        .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_profiles_path}"]
+            #profile-icon
+            span My Profile
+        .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_reports_path}"]
+            #report-icon
+            span Report management
+        .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_users_index_path}"]
+            #user-icon
+            span User management
+        .item
+            #category-icon
+            span Categories management
+        .item
+            #medical-icon
+            span Medical Resoure
+    .switch-role
+        #switch-icon
+        span Switch Role & UI

@@ -1,0 +1,16 @@
+.navbar-wrapper
+     .logo
+        span Booking
+        label Doctor
+     .menu
+        = link_to "Homepage", root_path, class: "item"
+        = link_to "Clinics", homepages_clinics_path, class: "item"
+        = link_to "Services", homepages_services_path, class: "item"
+        = link_to "Support", homepages_supports_path, class: "item"
+     .authentication-control
+        - if user_signed_in?
+            .username Pesudo Name
+            = button_to "Logout" , root_path,  method:  :delete,class: "logout", form_class: "logout-form"
+        - else
+            = link_to "Login", new_user_session_path, class: "login"
+            = link_to "Signup", new_user_registration_path, class: "signup"

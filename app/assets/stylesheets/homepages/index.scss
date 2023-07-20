@@ -1,0 +1,182 @@
+$walletpaper: image-url("wrapper-image.jpg");
+$booking: image-url("icon_booking.png");
+$management_icon: image-url("icon_management.png");
+$save_icon: image-url("icon_save.png");
+$connect_icon: image-url("icon_connect.png");
+
+.homepage-index-wrapper {
+    overflow-x: hidden;
+    width: 100%;
+    .wallpaper {
+        width: 100%;
+        height: calc(100vh - 65px);
+        background: $walletpaper;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        .blur-panel {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(200, 200, 200, 0.25);
+        }
+        .logo {
+            margin-top: -15%;
+            font-size: 68px;
+            font-weight: bold;
+            span {
+                color: #0cbecd;
+            }
+            label {
+                color: #00fc85;
+            }
+        }
+        .slogan {
+            font-size: 18px;
+            font-style: italic;
+            color: #00fc85;
+        }
+        .title {
+            position: absolute;
+            bottom: 20%;
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+        }
+    }
+    .features-wrapper {
+        width: 100%;
+        padding: 25px 0 45px 0;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        .title {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .features {
+            margin-top: 25px;
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+            div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                #icon-booking {
+                    width: 64px;
+                    height: 64px;
+                    background: $booking;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+                #icon-management {
+                    width: 64px;
+                    height: 64px;
+                    background: $management_icon;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+                #icon-connect {
+                    width: 64px;
+                    height: 64px;
+                    background: $connect_icon;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+                #icon-save {
+                    width: 64px;
+                    height: 64px;
+                    background: $save_icon;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+            }
+        }
+
+    }
+    .introduction-wrapper {
+        width: 100%;
+        padding: 25px 0 45px 0;
+        background-color: #f5f5f5;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        .title {
+            height: 100%;
+            font-size: 32px;
+            font-weight: bold;
+            flex: 1;
+            margin-left: 25px;
+        }
+        .introduction {
+            font-size: 18px;
+            line-height: 1.8;
+            flex: 3;
+            margin-right: 5%;
+        }
+    }
+    .population-clinics-wrapper {
+        width: 100%;
+        padding: 25px 0 45px 0;
+        background-color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .title {
+            height: 100%;
+            font-size: 32px;
+            font-weight: bold;
+            flex: 1;
+            margin-left: 25px;
+        }
+        .population-clinics {
+            margin-top: 25px;
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
+    }
+    .population-services-wrapper {
+        width: 100%;
+        padding: 25px 0 45px 0;
+        background-color: #f5f5f5;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .title {
+            height: 100%;
+            font-size: 32px;
+            font-weight: bold;
+            flex: 1;
+            margin-left: 25px;
+        }
+        .population-services {
+            margin-top: 25px;
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
+    }
+}

@@ -16,9 +16,11 @@ class Patient::ProfilesController < ApplicationController
   end
 
   def create
+
   end
 
   def new
+    @patient_profile = Profile.new
   end
 
   #protected

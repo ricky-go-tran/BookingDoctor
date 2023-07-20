@@ -1,4 +1,4 @@
-class Admin::ReportsController < ApplicationController
+class Admin::ReportsController < Admin::BaseController
   def index
     # TODO index function
   end

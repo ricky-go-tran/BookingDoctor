@@ -1,9 +1,20 @@
 Rails.application.routes.draw do
+
+  root 'homepages#index'
+  get 'homepages/index'
+  get 'homepages/clinics'
+  get 'homepages/services'
+  get 'homepages/doctors'
+  get 'homepages/blogs'
+  get 'homepages/supports'
+
   namespace :clinic do
     resources :profiles
   end
 
   namespace :admin do
+    get 'users/index'
+    get 'users/show'
     resources :profiles
     resources :reports, only: %i[index show edit update]
   end

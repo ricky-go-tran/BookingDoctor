@@ -1,7 +1,7 @@
 .setup-profile-wrapper
     .form-wrapper
         h2 Setup Profile
-        = simple_form_for @profile do |form|
+        = simple_form_for [:patient, @patient_profile] do |form|
             = form.input :fullname, label: "Fullname"
             = form.input :birthday, label: "Birthday"
             = form.input :address, label: "Address"

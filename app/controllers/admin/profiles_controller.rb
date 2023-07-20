@@ -1,8 +1,9 @@
-class Admin::ProfilesController < ApplicationController
+class Admin::ProfilesController < Admin::BaseController
   def homepage
   end
 
   def index
+
   end
 
   def show
