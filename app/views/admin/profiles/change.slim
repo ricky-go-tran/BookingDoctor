@@ -1,0 +1,10 @@
+.admin-my-profile-wrapper
+    .logo
+        span Booking
+        label Doctor
+    .title Change Your Profile
+    = form_with @profile do |form|
+     = form.input :fullname, label: "Fullname: "
+     = form.input :birthday, label: "Birthday: "
+     = form.input :address, label: "Address: "
+     = form.button :submit

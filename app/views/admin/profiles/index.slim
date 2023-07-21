@@ -2,6 +2,10 @@
     .logo
         span Booking
         label Doctor
-    .image
     .title Admin Dashboard Tools
-    .welcome = "Welcome, #{current_user.profile.fullname}"
+    .image
+    .name = "Welcome, #{current_user.profile.fullname}"
+    .birthday  = "Your birthday: #{current_user.profile.birthday}"
+    .address = "Address: #{current_user.profile.address}"
+    = link_to "Change your profile", admin_profiles_change_path, class: "edit"
+    = button_to "Logout", destroy_user_session_path, method: :delete, class: "logout"

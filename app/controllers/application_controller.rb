@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
   def direct_by_role(resource)
     if resource.has_role? :admin
-      admin_profiles_path
+      admin_profiles_index_path
     elsif resource.has_role? :patient
       patient_profiles_path
     elsif resource.has_role? :clinic

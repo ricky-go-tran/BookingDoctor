@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'users/index'
     get 'users/show'
-    resources :profiles
+    resources :profiles, only: %i[index]
+    get 'profiles/index'
+    get 'profiles/change', to: "profiles#change"
     resources :reports, only: %i[index show edit update]
   end
 

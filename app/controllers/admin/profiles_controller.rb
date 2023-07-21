@@ -1,26 +1,22 @@
 class Admin::ProfilesController < Admin::BaseController
-  def homepage
-  end
 
   def index
 
   end
 
-  def show
-  end
-
   def update
   end
 
-  def edit
-  end
-
-  def destroy
+  def change
+    @profile = Profile.find(current_user.profile.id)
   end
 
   def create
   end
 
   def new
+  end
+  def show
+
   end
 end
