@@ -1,0 +1,35 @@
+.user-management-wrapper
+    .title User Management
+    .controll-panel
+        .left
+            input.search-bar[placeholder="User Filter By Name" type="search"]
+            select.dropdown-role
+                option#all-role[value="all" selected] All
+                option#admin-role[value="admin"] Admin
+                option#clinic-role[value="clinic"] Clinic
+                option#patient-role[value="patient"] Patient
+        .right
+            = link_to "Export Sheet", admin_users_path(format: :xlsx), {class: "sheet"}
+            = link_to "Export Pdf",root_path, {class: "pdf_export"}
+    .content-panel
+        - @users.each do |user|
+            .user-item
+                .left
+                    - if user.profile != nil
+                        .fullname = user.profile.fullname
+                        .role = user.has_role?(:admin) ? "Admin" : user.has_role?(:basic) ? "Basic" : user.has_role?(:patient) ? "Patient" : "Clinic"
+                    - else
+                        .fullname
+                            = "#{user.email}"
+                            span Not Profile
+                        .role = user.has_role?(:admin) ? "Admin" : user.has_role?(:basic) ? "Basic" : user.has_role?(:patient) ? "Patient" : "Clinic"
+                .right
+                    .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="users/#{user.id}"] View details
+                    .change Change
+                    .lock Unlock/Lock
+
+
+
+
+
+

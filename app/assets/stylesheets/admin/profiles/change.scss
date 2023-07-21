@@ -1,0 +1,86 @@
+@import "../../mixins/input_style.scss";
+.admin-my-profile-change-wrapper {
+    width: 90%;
+    height: 90%;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    > * {
+        margin-bottom: 15px;
+    }
+    .logo {
+        margin-top: 5%;
+        padding: unset;
+        font-size: 48px;
+        font-weight: bold;
+        margin-left: 30px;
+        span {
+            color: #0cbecd;
+        }
+        label {
+            color: #00fc85;
+        }
+    }
+    .title {
+        font-size: 32px;
+        font-weight: bold;
+    }
+    form {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        input[type="submit"] {
+            @include button_style_submit;
+        }
+        div {
+            width: 100%;
+            margin-bottom: 15px;
+            label {
+                display: block;
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+        }
+        .profile_fullname {
+            input {
+                @include input_format;
+            }
+        }
+        .profile_birthday {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            > select {
+                height: 30px;
+                background-color: #e5e5e5;
+                border: none;
+                border-radius: 5px;
+                padding-left: 10px;
+                font-size: 16px;
+                padding-right: 10px;
+            }
+            > *:first-child {
+                flex-basis: 100%;
+            }
+            > *:nth-child(2) {
+                width: 25%;
+            }
+            > *:nth-child(3) {
+                width: 45%;
+            }
+            > *:last-child {
+                width: 15%;
+            }
+        }
+        .profile_address {
+            textarea {
+                @include area_format;
+            }
+        }
+    }
+}

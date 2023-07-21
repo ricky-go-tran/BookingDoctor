@@ -54,6 +54,9 @@ gem "rolify"
 gem "slim"
 gem "pundit"
 gem 'simple_form'
+gem 'rubyzip'
+gem 'axlsx'
+gem 'axlsx_rails'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]

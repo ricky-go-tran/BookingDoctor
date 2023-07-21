@@ -13,11 +13,16 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get 'users/index'
-    get 'users/show'
+    resources :users, only: %i[index show] do
+      collection do
+        get "/(search/:query)", to: "users#index"
+        get "/(type/:type)", to: "users#index"
+      end
+    end
     resources :profiles, only: %i[index]
     get 'profiles/index'
     get 'profiles/change', to: "profiles#change"
+    put 'profile/update', to: "profiles#update"
     resources :reports, only: %i[index show edit update]
   end
 

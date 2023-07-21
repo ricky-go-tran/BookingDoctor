@@ -1,9 +1,9 @@
-.admin-my-profile-wrapper
+.admin-my-profile-change-wrapper
     .logo
         span Booking
         label Doctor
     .title Change Your Profile
-    = form_with @profile do |form|
+    = simple_form_for  @profile,  :url => admin_profile_update_path, :method => :put do |form|
      = form.input :fullname, label: "Fullname: "
      = form.input :birthday, label: "Birthday: "
      = form.input :address, label: "Address: "
