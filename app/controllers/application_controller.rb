@@ -46,7 +46,6 @@ class ApplicationController < ActionController::Base
   end
 
   def check_first_login
-
     if is_first_login?
       first_login
     end

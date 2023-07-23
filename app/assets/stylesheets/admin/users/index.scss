@@ -13,18 +13,18 @@
 
     > .controll-panel {
         width: 100%;
-        padding: 15px 0;
+        padding: 20px;
         background-color: #fff;
         display: flex;
         border-radius: 10px;
         justify-content: space-between;
         align-items: center;
         margin-top: 2%;
+        box-sizing: border-box;
 
         .right {
             display: flex;
             width: 40%;
-            margin-right: 5%;
             justify-content: flex-end;
             align-items: center;
 
@@ -48,7 +48,6 @@
         .left {
             display: flex;
             width: 60%;
-            margin-left: 5%;
             justify-content: flex-start;
 
             input {
@@ -104,6 +103,7 @@
 
             .right {
                 display: flex;
+                justify-content: flex-end;
 
                 .view {
                     @include buntton_style_detail;

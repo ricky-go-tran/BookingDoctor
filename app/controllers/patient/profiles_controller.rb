@@ -7,6 +7,7 @@ class Patient::ProfilesController < ApplicationController
   end
 
   def update
+
   end
 
   def edit
@@ -16,14 +17,23 @@ class Patient::ProfilesController < ApplicationController
   end
 
   def create
-
+    @profile = Profile.new(profile_params)
+    @profile.user_id = current_user.id
+    if @profile.save
+      redirect_to patient_profiles_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def new
-    @patient_profile = Profile.new
+    @profile = Profile.new
   end
 
-  #protected
+  protected
+  def profile_params
+    params.require(:profile).permit(:fullname, :birthday, :address)
+  end
 
 
 end

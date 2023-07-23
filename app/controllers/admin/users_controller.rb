@@ -14,6 +14,7 @@ class Admin::UsersController < Admin::BaseController
       format.html
       format.xlsx {
         response.headers['Content-Disposition'] = 'attachment; filename="all_users.xlsx"'
+        render xlsx: "index", layout: false
       }
     end
 
