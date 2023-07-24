@@ -2,7 +2,7 @@
     .title Medical Resources Management
     .controll-panel
         .left
-            = link_to "Back", aadmin_medical_resources_path, class: "back"
+            = link_to "Back", admin_medical_resources_path, class: "back"
     .new-panel
         .title New Medical Resource
         = simple_form_for  [:admin, @medical_resource] do |form|
@@ -10,5 +10,5 @@
             = form.input :brand, label: "Brand: "
             = form.input :unit, label: "Unit: "
             = form.input :description, label: "Description: "
-            = form.input :medical_resource_type, label: "Type: "
+            = form.input :medical_resource_type, collection: MedicalResource.medical_resource_types.keys
             = form.button :submit

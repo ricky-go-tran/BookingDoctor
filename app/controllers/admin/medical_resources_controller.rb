@@ -54,6 +54,6 @@ class Admin::MedicalResourcesController < ApplicationController
 
   private
   def medical_resource_params
-    params.require(:medical_resource).permit(:name, :brand, :unit, :description, :type)
+    params.require(:medical_resource).permit(:name, :brand, :unit, :description, :medical_resource_type)
   end
 end

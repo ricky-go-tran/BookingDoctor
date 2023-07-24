@@ -8,5 +8,5 @@ class MedicalRecord < ApplicationRecord
   has_many :services, through: :service_items
   resourcify
 
-  enum medical_resource_type: {medicine: "medicine", nutraceutical: "nutraceutical", vaccine: "vaccine", instrucment: "instrucment"}
+
 end

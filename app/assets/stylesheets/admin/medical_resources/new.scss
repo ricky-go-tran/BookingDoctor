@@ -55,7 +55,7 @@
                 }
             }
 
-            .medical_resource_name, .medical_resource_brand, .medical_resource_unit, .medical_resource_medical_resource_type {
+            .medical_resource_name, .medical_resource_brand, .medical_resource_unit {
                 input {
                     @include input_format;
                 }
@@ -64,6 +64,11 @@
             >.medical_resource_description{
                 textarea {
                     @include area_format;
+                }
+            }
+            >.medical_resource_medical_resource_type {
+                select {
+                    @include  input_format;
                 }
             }
         }
