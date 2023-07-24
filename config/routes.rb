@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    resources :medical_resources
+    resources :categories
     resources :users, only: %i[index show] do
       collection do
         get "/(search/:query)", to: "users#index"

@@ -1,7 +1,6 @@
 @import "../../mixins/input_style.scss";
 
-
-.user-management-wrapper {
+.categories-management-wrapper {
     width: 95%;
     height: 95%;
     display: flex;
@@ -73,7 +72,7 @@
         padding: 20px;
         box-sizing: border-box;
 
-        >.user-item {
+        >.category-item {
             display: flex;
             border-bottom: 1px solid #d3d3d3;
             width: 100%;
@@ -81,7 +80,7 @@
             align-items: center;
 
             .left {
-                .fullname {
+                .name {
                     font-size: 20px;
                     font-weight: bold;
 
@@ -94,7 +93,7 @@
                     }
                 }
 
-                .role {
+                .change-time {
                     font-size: 16px;
                     font-style: italic;
                     margin-top: 15px;
@@ -114,12 +113,16 @@
                     @include buntton_style_edit;
                 }
 
-                .lock {
+                .del {
                     @include buntton_style_del_lock;
                 }
             }
         }
+    }
 
+    .empty {
+        font-size: 18px;
+        font-weight: bold;
     }
 
 }

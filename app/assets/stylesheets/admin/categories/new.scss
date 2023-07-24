@@ -1,0 +1,69 @@
+@import "../../mixins/input_style.scss";
+
+.categories-management-wrapper {
+    >.controll-panel {
+        .left {
+            >.back {
+                @include button_style_pdf_export;
+            }
+        }
+    }
+
+    >.new-panel {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2%;
+        border-radius: 10px;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        padding: 20px;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: flex-start;
+
+
+        >* {
+            margin-bottom: 15px;
+        }
+
+        >.title {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        form {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            input[type="submit"] {
+                @include button_style_submit;
+            }
+
+            div {
+                width: 100%;
+                margin-bottom: 15px;
+
+                label {
+                    display: block;
+                    margin-bottom: 10px;
+                    font-weight: bold;
+                }
+            }
+
+            >.category_name {
+                input {
+                    @include input_format;
+                }
+            }
+
+            >.category_description {
+                textarea {
+                    @include area_format;
+                }
+            }
+        }
+    }
+}

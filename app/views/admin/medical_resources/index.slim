@@ -1,0 +1,11 @@
+.categories-management-wrapper
+    .title Medical Management
+    .controll-panel
+        .left
+            input.search-bar[placeholder="User Filter By Name" type="search"]
+        .right
+            = link_to "Export Sheet", admin_categories_path(format: :xlsx), {class: "sheet"}
+            = link_to "Export Pdf",root_path, {class: "pdf_export"}
+            = link_to "Add", new_admin_category_path, {class: "add"}
+    .content-panel
+
