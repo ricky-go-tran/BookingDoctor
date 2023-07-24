@@ -50,5 +50,4 @@ class ApplicationController < ActionController::Base
       first_login
     end
   end
-
 end

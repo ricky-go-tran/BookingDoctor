@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'homepages/doctors'
   get 'homepages/blogs'
   get 'homepages/supports'
+  get 'direct', to: "homepages#direct"
 
   namespace :clinic do
     resources :profiles
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
 
   namespace :patient do
     resources :profiles
-    resources :patients, only: %i[show create new destroy]
+    resources :patient_profiles, only: %i[show create new destroy]
     resources :reports, only: %i[index show create new destroy]
   end
 

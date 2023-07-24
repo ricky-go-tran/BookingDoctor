@@ -1,4 +1,5 @@
-class Patient::PatientProfilesController < ApplicationController
+class Patient::PatientProfilesController < Patient::BaseController
+  skip_before_action :check_patient_profile, only: %i[new create]
   def homepage
   end
 
@@ -12,5 +13,13 @@ class Patient::PatientProfilesController < ApplicationController
   end
 
   def destroy
+  end
+
+  def new
+
+  end
+
+  def create
+
   end
 end

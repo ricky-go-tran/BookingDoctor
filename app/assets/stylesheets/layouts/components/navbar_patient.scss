@@ -1,0 +1,62 @@
+
+$profile-icon: image-url("icon_profile.png");
+$medical-icon: image-url("icon_medical_history.png");
+$scheduled-icon: image-url("icon_scheduled.png");
+.navbar-patient-wrapper {
+    margin-top: 5px;
+    height: calc(100% - 5px);
+    width: 15%;
+    background: linear-gradient(180deg, #1c408c, #23a8bb);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    line-height: 2;
+    color: #fff;
+
+    >.item {
+        cursor: pointer;
+        margin-top: 5%;
+        margin-left: 5%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        width: 80%;
+        margin-bottom: 20px;
+        border-radius: 10px;
+
+        &:hover {
+            border: 1px solid #ffffff
+        }
+
+        #my-profile {
+            width: 32px;
+            height: 32px;
+            background: $profile-icon;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        #history-medical-record {
+            width: 32px;
+            height: 32px;
+            background: $medical-icon;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        #scheduled {
+            width: 32px;
+            height: 32px;
+            background: $scheduled-icon;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+
+}

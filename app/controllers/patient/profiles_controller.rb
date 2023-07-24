@@ -1,5 +1,6 @@
-class Patient::ProfilesController < ApplicationController
+class Patient::ProfilesController < Patient::BaseController
   skip_before_action :check_first_login, only: %i[new create]
+  layout "patient_layout"
   def index
   end
 
