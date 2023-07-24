@@ -1,11 +1,24 @@
-.categories-management-wrapper
-    .title Medical Management
+.medical-resources-management-wrapper
+    .title Medical Resources Management
     .controll-panel
         .left
             input.search-bar[placeholder="User Filter By Name" type="search"]
         .right
-            = link_to "Export Sheet", admin_categories_path(format: :xlsx), {class: "sheet"}
+            = link_to "Export Sheet", admin_medical_resources_path(format: :xlsx), {class: "sheet"}
             = link_to "Export Pdf",root_path, {class: "pdf_export"}
-            = link_to "Add", new_admin_category_path, {class: "add"}
+            = link_to "Add", new_admin_medical_resource_path, {class: "add"}
     .content-panel
+        - if !@medical_resources.empty?
+            - @medical_resources.each do |medical_resource|
+                .medical-resource-item
+                    .left
+                        .name = medical_resource.name
+                        .brand = "Brand: #{medical_resource.brand}"
+                    .right
+                        .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_medical_resource_path(medical_resource)}"] View detail
+                        .change[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{edit_admin_medical_resource_path(medical_resource)}"] Change
+                        = link_to "Delete", admin_medical_resource_path(medical_resource),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "del"
+        - else
+            .emty Categories is empty...
+
 

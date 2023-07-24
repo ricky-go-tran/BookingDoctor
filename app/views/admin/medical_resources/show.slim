@@ -1,0 +1,22 @@
+.medical-resources-management-wrapper
+    .title Medical Resources Management
+    .controll-panel
+        .left
+            = link_to "Back", admin_medical_resources_path, class: "back"
+    .content-panel
+        .title Medical Resource Details
+        .name
+            label Name:
+            span = " #{@medical_resource.name}"
+        .brand
+            label Brand:
+            span = " #{@medical_resource.brand}"
+        .unit
+            label Unit:
+            span = " #{@medical_resource.unit}"
+        .description
+            label Description:
+            span = " #{@medical_resource.description}"
+        .type
+            label Type:
+            span = " #{@medical_resource.medical_resource_type}"
