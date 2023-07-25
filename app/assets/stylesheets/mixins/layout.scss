@@ -23,3 +23,19 @@
     align-items: $align;
     justify-content: $justify;
 }
+
+@mixin logo {
+    margin-top: 5%;
+    padding: unset;
+    font-size: 48px;
+    font-weight: bold;
+    margin-left: 30px;
+
+    span {
+        color: #0cbecd;
+    }
+
+    label {
+        color: #00fc85;
+    }
+}

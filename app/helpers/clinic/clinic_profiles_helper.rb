@@ -1,0 +1,2 @@
+module Clinic::ClinicProfilesHelper
+end

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'direct', to: "homepages#direct"
 
   namespace :clinic do
+    resources :clinic_profiles, only: %i[index new create edit update]
     resources :profiles
   end
 

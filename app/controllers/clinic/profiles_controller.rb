@@ -1,7 +1,4 @@
-class Clinic::ProfilesController < ApplicationController
-  def homepage
-  end
-
+class Clinic::ProfilesController < Clinic::BaseController
   def index
   end
 

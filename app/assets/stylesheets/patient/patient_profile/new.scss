@@ -1,0 +1,71 @@
+@import "../../mixins/input_style.scss";
+@import "../../mixins/layout.scss";
+@import "../../mixins/patient_layout.scss";
+
+
+.setup-patient-profile-wrapper {
+    @include setup-wrapper;
+
+    .form-wrapper {
+        @include basic-form(column, center, center, 45%);
+        overflow-x: hidden;
+
+        .logo {
+            @include logo;
+            font-size: 32px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        form {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            input[type="submit"] {
+                @include button_style_submit;
+                padding: 5px 20px;
+            }
+
+            div {
+                width: 100%;
+                margin-bottom: 15px;
+
+                label {
+                    display: block;
+                    margin-bottom: 10px;
+                    font-weight: bold;
+                }
+            }
+
+            .patient_profile_height,
+            .patient_profile_weight,
+            .patient_profile_blood_group,
+            .patient_profile_drug_allergy {
+                input {
+                    @include input_format;
+                }
+
+                textarea {
+                    @include area_format;
+                }
+
+                select {
+                    @include input_format;
+                }
+            }
+        }
+
+        .clinic_profile_setup {
+
+            margin-top: 2%;
+            @include button_style_submit;
+            padding: 5px 20px;
+            background-color: #00fc85;
+        }
+    }
+}
