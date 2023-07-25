@@ -1,39 +1,16 @@
 @import "../../mixins/input_style.scss";
+@import "../../mixins/admin_layout.scss";
 
 .medical-resources-management-wrapper {
     >.controll-panel {
-
         .left {
             >.back {
                 @include button_style_pdf_export;
             }
         }
     }
-
     >.new-panel {
-        overflow-y: scroll;
-        display: flex;
-        flex-direction: column;
-        margin-top: 2%;
-        border-radius: 10px;
-        width: 100%;
-        height: 100%;
-        background-color: #fff;
-        padding: 20px;
-        box-sizing: border-box;
-        align-items: center;
-        justify-content: flex-start;
-
-
-        >* {
-            margin-bottom: 10px;
-        }
-
-        >.title {
-            font-size: 32px;
-            font-weight: bold;
-        }
-
+        @include new-panel;
         form {
             width: 50%;
             display: flex;
@@ -54,13 +31,11 @@
                     font-weight: bold;
                 }
             }
-
             .medical_resource_name, .medical_resource_brand, .medical_resource_unit {
                 input {
                     @include input_format;
                 }
             }
-
             >.medical_resource_description{
                 textarea {
                     @include area_format;

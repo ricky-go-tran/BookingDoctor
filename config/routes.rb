@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     get 'profiles/index'
     get 'profiles/change', to: "profiles#change"
     put 'profile/update', to: "profiles#update"
-    resources :reports, only: %i[index show edit update]
+    resources :reports, only: %i[index show]
   end
 
   namespace :patient do

@@ -1,5 +1,4 @@
-class Admin::MedicalResourcesController < ApplicationController
-  layout "admin_layout"
+class Admin::MedicalResourcesController < Admin::BaseController
   def index
     if params[:search]
       @medical_resources = MedicalResource.where("UPPER(name) LIKE UPPER(?)", "%#{params[:search]}%")

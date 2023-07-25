@@ -1,5 +1,4 @@
-class Admin::CategoriesController < ApplicationController
-  layout "admin_layout"
+class Admin::CategoriesController < Admin::BaseController
   def index
     if params[:search]
       @categories = Category.where("UPPER(name) LIKE UPPER(?)", "%#{params[:search]}%")

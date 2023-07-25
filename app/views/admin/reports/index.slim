@@ -1,0 +1,23 @@
+.medical-resources-management-wrapper
+    .title Medical Resources Management
+    .controll-panel
+        .left
+            input.search-bar[placeholder="User Filter By Name" type="search"]
+        .right
+            = link_to "Export Sheet", admin_reports_path(format: :xlsx), {class: "sheet"}
+            = link_to "Export Pdf",root_path, {class: "pdf_export"}
+    .content-panel
+        - if !@reports.empty?
+            - @reports.each do |report|
+                .medical-resource-item
+                    .left
+                        .name = report.name
+                        .brand = "Brand: #{report.brand}"
+                    .right
+                        .view View detail
+                        .sovle Sovle
+                        .cancel Cancel
+        - else
+            .emty Reports is empty...
+
+
