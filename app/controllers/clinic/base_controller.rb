@@ -6,7 +6,7 @@ module Clinic
     before_action :check_clinic_profiles, unless: :devise_controller?
     before_action :check_valid_clinic
 
-    protected
+    private
 
     def require_clinic
       return if current_user.has_role? :clinic
@@ -15,7 +15,7 @@ module Clinic
     end
 
     def exist_clinic_profile?
-      if user_signed_in? && current_user.has_role?(:clinic) && !current_user.profile.nil? && current_user.profile.clinic_profile.nil?
+      if user_signed_in? && !current_user.profile.nil? && current_user.profile.clinic_profile.nil?
         return false
       end
 

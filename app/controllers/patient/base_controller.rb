@@ -6,7 +6,7 @@ module Patient
     before_action :check_patient_profile, unless: :devise_controller?
     layout 'patient_layout'
 
-    protected
+    private
 
     def require_patient
       return if current_user.has_role? :patient

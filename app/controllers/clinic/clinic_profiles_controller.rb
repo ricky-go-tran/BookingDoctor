@@ -5,6 +5,8 @@ module Clinic
     skip_before_action :require_clinic, only: %i[create new]
     skip_before_action :check_clinic_profiles, only: %i[create new]
     before_action :check_exist_clinic_profiles, only: %i[create new]
+    skip_before_action :check_valid_clinic, only: %i[create new]
+
     def index; end
 
     def new
