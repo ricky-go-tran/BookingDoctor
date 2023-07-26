@@ -17,10 +17,37 @@
     width: $width;
     background-color: #ffffff;
     padding: 20px 30px 20px 25px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-radius: 10px;
     display: flex;
     flex-direction: $direction;
     align-items: $align;
     justify-content: $justify;
+}
+
+@mixin full-form($direction, $align, $justify, $width) {
+    width: $width;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 20px 30px 20px 25px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+}
+
+@mixin logo {
+    margin-top: 5%;
+    padding: unset;
+    font-size: 48px;
+    font-weight: bold;
+    margin-left: 30px;
+
+    span {
+        color: #0cbecd;
+    }
+
+    label {
+        color: #00fc85;
+    }
 }

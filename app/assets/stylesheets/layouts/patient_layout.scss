@@ -1,0 +1,19 @@
+.patient-wrapper {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: absolute;
+    top: 0;
+    background-color: #d2d2d2;
+}
+.body-patient {
+    width: 100%;
+    flex: 1;
+    display: flex;
+}

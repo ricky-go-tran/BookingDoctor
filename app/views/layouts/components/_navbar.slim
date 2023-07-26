@@ -9,8 +9,9 @@
         = link_to "Support", homepages_supports_path, class: "item"
      .authentication-control
         - if user_signed_in?
-            .username Pesudo Name
-            = button_to "Logout" , root_path,  method:  :delete,class: "logout", form_class: "logout-form"
+            .username[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{direct_path}"]
+               = "Welcome, #{current_user.profile == nil ? current_user.email : current_user.profile.fullname}"
+            = button_to "Logout" , destroy_user_session_path,  method:  :delete,class: "logout", form_class: "logout-form"
         - else
             = link_to "Login", new_user_session_path, class: "login"
             = link_to "Signup", new_user_registration_path, class: "signup"

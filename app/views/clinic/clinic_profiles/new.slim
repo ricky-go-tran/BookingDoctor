@@ -1,0 +1,20 @@
+.setup-clinic-profile-wrapper
+    .form-wrapper
+        .logo
+            span Booking
+            label Doctor
+        h2 Setup Clinic Profile
+        = simple_form_for [:clinic, @clinic_profile], data: {turbo: false} do |form|
+            = form.input :category_id, collection: Category.all, label_method: :name, value_method: :id, include_blank: true
+            = form.input :name
+            = form.input :address
+            = form.input :phone
+            = form.input :description
+            = form.input :start_hour, label: "Start Hour", collection: ClinicProfile.hours.keys
+            = form.input :end_hour, label: "End Hour", collection: ClinicProfile.hours.keys
+            = form.input :start_day, label: "Start Day", collection: ClinicProfile.days
+            = form.input :end_day, label: "End Day",  collection: ClinicProfile.days
+            = form.input :certificate
+            = form.button :submit
+
+

@@ -1,0 +1,13 @@
+.categories-management-wrapper
+    .title Categories Clinic Management
+    .controll-panel
+        .left
+            = link_to "Back", admin_categories_path, class: "back"
+    .content-panel
+        .title Category details
+        .name
+            label Name:
+            span = " #{@category.name}"
+        .description
+            label Description
+            span = " #{@category.description}"

@@ -1,0 +1,87 @@
+@mixin management-wrapper {
+    width: 95%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin title-h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+@mixin control-panel {
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    display: flex;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2%;
+    box-sizing: border-box;
+}
+
+@mixin control-panel-left {
+    display: flex;
+    width: 60%;
+    justify-content: flex-start;
+}
+
+@mixin control-panel-right {
+    display: flex;
+    width: 40%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+@mixin content-panel {
+    margin-top: 2%;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+@mixin content-item {
+    display: flex;
+    border-bottom: 1px solid #d3d3d3;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin new-panel {
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: flex-start;
+
+    >* {
+        margin-bottom: 15px;
+    }
+
+    >.title {
+        font-size: 32px;
+        font-weight: bold;
+    }
+}
+
+@mixin title-details-h1 {
+    font-size: 24px;
+    font-weight: bold;
+    flex-basis: 100%;
+    margin: 20px 0;
+    color: #0cbecd;
+    border-bottom: 1px solid #0cbecd;
+}

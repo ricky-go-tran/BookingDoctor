@@ -1,0 +1,41 @@
+@import "../../mixins/input_style.scss";
+@import "../../mixins/layout.scss";
+@import "../../mixins/clinic_layout.scss";
+
+
+.invalid-clinic-profile-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    >div {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        width: 60%;
+        height: 80%;
+        .logo {
+            @include logo;
+        }
+
+        .title {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .content {
+            font-size: 18px;
+            text-align: center
+        }
+
+        .back-to-home {
+            @include button_style_submit;
+            cursor: pointer;
+            text-align: center;
+            width: 25%;
+        }
+    }
+}

@@ -1,0 +1,43 @@
+.user-management-wrapper
+    .title User Management
+    .controll-panel
+        .left
+            = link_to "Back", admin_users_path, class: "back"
+    .content-panel
+        .account-info
+            .title Account Infomation
+            .email
+                label Email:
+                span = "  #{@user.email}"
+            .time-create
+                label Time Signup:
+                span = "  #{@user.created_at}"
+            .time-update
+                label Change Recently:
+                span = "  #{@user.updated_at}"
+        .profile-info
+            .title Profile information
+            - if @user.profile != nil
+                .fulname
+                    label Fullname:
+                    span = "  #{@user.profile.fullname}"
+                .birthday
+                    label Birthday:
+                    span = "  #{@user.profile.birthday}"
+                .address
+                    label Address:
+                    span = " #{@user.profile.address}"
+                .status
+                    label Status:
+                    span = " #{@user.profile.status}"
+            - else
+                .unprofile
+                    span This account isn't setup profile
+
+
+
+
+
+
+
+

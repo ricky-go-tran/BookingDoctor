@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Service < ApplicationRecord
   has_many :consumptions
   has_many :medical_resources, through: :consumptions

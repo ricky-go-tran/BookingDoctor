@@ -1,3 +1,7 @@
+$sheet_icon: image-url("icon_sheet.png");
+$pdf_icon: image-url("icon_pdf.png");
+$add_icon: image-url("icon_add.png");
+
 @mixin input_format {
     width: 100%;
     height: 30px;
@@ -8,6 +12,71 @@
     font-size: 16px;
 }
 
+@mixin select_format {
+    width: 100%;
+    height: 30px;
+    background-color: #e5e5e5;
+    border: none;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 16px;
+}
+
+@mixin area_format {
+    width: 100%;
+    height: 100px;
+    background-color: #e5e5e5;
+    border: none;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 16px;
+}
+
+@mixin button_style_pdf_export {
+    width: 150px;
+    box-sizing: border-box;
+    padding: 5px 0;
+    background: #ef0706;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+}
+
+@mixin button_style_sheet {
+    width: 150px;
+    box-sizing: border-box;
+    padding: 5px 0;
+    background: #0f9855;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+}
+
+@mixin button_style_add {
+    width: 150px;
+    box-sizing: border-box;
+    padding: 5px 0;
+    background: #1c7fcd;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #ffffff;
+    text-decoration: none;
+    text-align: center;
+
+    &:before {
+        background: $add_icon;
+        content: "";
+    }
+}
+
+
 @mixin button_style_submit {
     width: 60%;
     padding: 10px 40px;
@@ -16,4 +85,69 @@
     border-radius: 25px;
     font-size: 16px;
     color: #ffffff;
+}
+
+@mixin buntton_style_detail {
+    margin-right: 10px;
+    padding: 5px 25px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    background: #5f00e7;
+    cursor: pointer;
+}
+
+@mixin buntton_style_edit {
+    margin-right: 10px;
+    padding: 5px 25px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    background: #009074;
+}
+
+@mixin buntton_style_del_lock {
+    background: #d25400;
+    margin-right: 10px;
+    padding: 5px 25px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: "Times New Roman", Times, serif !important;
+}
+
+
+
+@mixin datepicker_format_simple_form {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    >select {
+        height: 30px;
+        background-color: #e5e5e5;
+        border: none;
+        border-radius: 5px;
+        padding-left: 10px;
+        font-size: 16px;
+    }
+
+    >*:first-child {
+        flex-basis: 100%;
+    }
+
+    >*:nth-child(1) {
+        flex: 1;
+    }
+
+    >*:nth-child(2) {
+        flex: 2;
+    }
+
+    >*:last-child {
+        flex: 1;
+    }
 }

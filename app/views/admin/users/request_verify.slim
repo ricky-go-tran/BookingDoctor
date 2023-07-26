@@ -1,0 +1,18 @@
+.user-management-wrapper
+    .title User Management
+    .controll-panel
+        .left
+            = link_to "Back", admin_users_path, class: "back"
+    .content-panel
+        - if @users.empty?
+            .empty Request verify is empty
+        - else
+            - @users.each do |user|
+                .user-item
+                    .left
+                        .fullname = user.profile.fullname
+                        .time-request = "#{user&.profile&.clinic_profile&.created_at}"
+                    .right
+                        .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{detail_request_admin_user_path(user)}"] View details
+
+

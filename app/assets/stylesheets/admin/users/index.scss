@@ -1,0 +1,112 @@
+@import "../../mixins/input_style.scss";
+@import "../../mixins/admin_layout.scss";
+
+
+.user-management-wrapper {
+    @include management-wrapper;
+
+    >.title {
+        @include title-h1;
+    }
+
+    >.controll-panel {
+        @include control-panel;
+
+        .right {
+            @include control-panel-right;
+
+            a {
+                margin-right: 2%;
+            }
+
+            .add {
+                @include button_style_add;
+            }
+
+            .sheet {
+                @include button_style_sheet;
+            }
+
+            .pdf_export {
+                @include button_style_pdf_export;
+            }
+        }
+
+        .left {
+            @include control-panel-left;
+
+            input {
+                @include input_format;
+                width: 50%;
+            }
+
+            select {
+                @include select_format;
+                width: 25%;
+                margin-left: 5%;
+            }
+            >.back {
+                @include button_style_pdf_export;
+            }
+        }
+    }
+
+    .content-panel {
+        @include content-panel;
+        overflow-y: scroll;
+
+        >.user-item {
+            display: flex;
+            border-bottom: 1px solid #d3d3d3;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+
+            .left {
+                .fullname {
+                    font-size: 20px;
+                    font-weight: bold;
+
+                    span {
+                        font-size: 16px;
+                        font-weight: 300;
+                        font-style: italic;
+                        color: #ef0706;
+                        margin-left: 10px;
+                    }
+                }
+                .role {
+                    font-size: 16px;
+                    font-style: italic;
+                    margin-top: 15px;
+                    color: #0cbecd;
+                }
+                .time-request {
+                    font-size: 16px;
+                    font-style: italic;
+                    margin-top: 15px;
+                    color: #0cbecd;
+                }
+            }
+
+            .right {
+                display: flex;
+                justify-content: flex-end;
+
+                .view {
+                    @include buntton_style_detail;
+                }
+
+                .change {
+                    @include buntton_style_edit;
+                }
+
+                .lock {
+                    @include buntton_style_del_lock;
+                }
+            }
+        }
+
+    }
+
+}

@@ -1,3 +1,4 @@
+@import "../../mixins/input_style.scss";
 $logo: image-url("logo.png");
 
 .navbar-wrapper {
@@ -39,15 +40,37 @@ $logo: image-url("logo.png");
     }
     .authentication-control {
         margin-right: 5%;
-        a {
+        display: flex;
+
+
+        > * {
             padding: 5px 15px;
             border-radius: 10px;
             color: black;
             text-decoration: none;
+        }
+        > .login {
             &:hover {
                 background: linear-gradient(90deg, #0cbecd, #00fc85);
                 color: #ffffff;
             }
+        }
+        > .signup {
+            &:hover {
+                background: linear-gradient(90deg, #0cbecd, #00fc85);
+                color: #ffffff;
+            }
+        }
+        > .username {
+            background: linear-gradient(90deg, #0cbecd, #00fc85);
+            color: #ffffff;
+            border-radius: 10px;
+            cursor: pointer;
+
+        }
+        .logout {
+            @include buntton_style_del_lock;
+            cursor: pointer;
         }
     }
 }

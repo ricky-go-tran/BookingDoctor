@@ -1,0 +1,51 @@
+@import "../../mixins/input_style.scss";
+@import "../../mixins/admin_layout.scss";
+
+.medical-resources-management-wrapper {
+    >.controll-panel {
+        .left {
+            >.back {
+                @include button_style_pdf_export;
+            }
+        }
+    }
+    >.new-panel {
+        @include new-panel;
+        form {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            input[type="submit"] {
+                @include button_style_submit;
+            }
+
+            div {
+                width: 100%;
+                margin-bottom: 15px;
+
+                label {
+                    display: block;
+                    margin-bottom: 10px;
+                    font-weight: bold;
+                }
+            }
+            .medical_resource_name, .medical_resource_brand, .medical_resource_unit {
+                input {
+                    @include input_format;
+                }
+            }
+            >.medical_resource_description{
+                textarea {
+                    @include area_format;
+                }
+            }
+            >.medical_resource_medical_resource_type {
+                select {
+                    @include  input_format;
+                }
+            }
+        }
+    }
+}

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MedicalRecord < ApplicationRecord
   belongs_to :patient_profile
   belongs_to :clinic_profile

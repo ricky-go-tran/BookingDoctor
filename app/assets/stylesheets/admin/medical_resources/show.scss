@@ -1,0 +1,19 @@
+@import "../../mixins/admin_layout.scss";
+
+.medical-resources-management-wrapper {
+    >.content-panel {
+        .title {
+            @include title-details-h1;
+        }
+
+        >* {
+            width: 90%;
+            margin: 10px 0;
+
+            label {
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+    }
+}

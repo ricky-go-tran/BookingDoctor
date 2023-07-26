@@ -12,15 +12,15 @@
         .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_reports_path}"]
             #report-icon
             span Report management
-        .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_users_index_path}"]
+        .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_users_path}"]
             #user-icon
             span User management
-        .item
+        .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_categories_path}"]
             #category-icon
             span Categories management
-        .item
+        .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_medical_resources_path}"]
             #medical-icon
-            span Medical Resoure
-    .switch-role
+            span Medical Resources
+    .switch-role[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{homepages_index_path}"]
         #switch-icon
-        span Switch Role & UI
+        span Switch Homepage UI
