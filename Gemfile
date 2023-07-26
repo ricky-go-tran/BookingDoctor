@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -46,17 +48,18 @@ gem 'bootsnap', require: false
 gem 'sassc-rails'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem 'image_processing', '~> 1.2'
 
-#authentication and authorization
-gem 'devise'
-gem "rolify"
-gem "slim"
-gem "pundit"
-gem 'simple_form'
-gem 'rubyzip'
+# authentication and authorization
 gem 'axlsx'
 gem 'axlsx_rails'
+gem 'devise'
+gem 'pundit'
+gem 'rolify'
+gem 'rubyzip'
+gem 'simple_form'
+gem 'slim'
+gem 'rubocop'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]

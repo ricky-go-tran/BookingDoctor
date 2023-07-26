@@ -1,5 +1,6 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   root 'homepages#index'
   get 'homepages/index'
   get 'homepages/clinics'
@@ -7,11 +8,15 @@ Rails.application.routes.draw do
   get 'homepages/doctors'
   get 'homepages/blogs'
   get 'homepages/supports'
-  get 'direct', to: "homepages#direct"
+  get 'direct', to: 'homepages#direct'
 
   namespace :clinic do
     resources :clinic_profiles, only: %i[index new create edit update]
-    resources :profiles
+    resources :profiles do
+      collection do
+        get 'invalid'
+      end
+    end
   end
 
   namespace :admin do
@@ -19,14 +24,20 @@ Rails.application.routes.draw do
     resources :categories
     resources :users, only: %i[index show] do
       collection do
-        get "/(search/:query)", to: "users#index"
-        get "/(type/:type)", to: "users#index"
+        get '/(search/:query)', to: 'users#index'
+        get '/(type/:type)', to: 'users#index'
+        get 'request_verify', to: 'users#request_verify'
+        put 'accepted', to: 'users#accepted'
+        put 'canceled', to: 'users#canceled'
+      end
+      member do
+        get 'detail_request', to: 'users#detail_request'
       end
     end
     resources :profiles, only: %i[index]
     get 'profiles/index'
-    get 'profiles/change', to: "profiles#change"
-    put 'profile/update', to: "profiles#update"
+    get 'profiles/change', to: 'profiles#change'
+    put 'profile/update', to: 'profiles#update'
     resources :reports, only: %i[index show]
   end
 
@@ -39,7 +50,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-  get "/unconfirmation", to: "notice_messages#unconfirmation"
+  get '/unconfirmation', to: 'notice_messages#unconfirmation'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

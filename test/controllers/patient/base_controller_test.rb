@@ -1,7 +1,11 @@
-require "test_helper"
+# frozen_string_literal: true
 
-class Patient::BaseControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+require 'test_helper'
+
+module Patient
+  class BaseControllerTest < ActionDispatch::IntegrationTest
+    # test "the truth" do
+    #   assert true
+    # end
+  end
 end

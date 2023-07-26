@@ -1,0 +1,66 @@
+@import "../../mixins/input_style.scss";
+@import "../../mixins/layout.scss";
+@import "../../mixins/clinic_layout.scss";
+
+
+.setup-clinic-profile-wrapper {
+    @include setup-wrapper-clinic;
+    height: 100%;
+    justify-content: flex-end;
+
+    .form-wrapper {
+        @include full-form(column, flex-start, flex-start, 60%);
+        border-top-left-radius: 10px;
+        box-sizing: border-box;
+        overflow-y: scroll;
+
+        .logo {
+            @include logo;
+            font-size: 30px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        form {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            input[type="submit"] {
+                @include button_style_submit;
+                padding: 5px 20px;
+            }
+
+            div {
+                width: 100%;
+                margin-bottom: 15px;
+
+                label {
+                    display: block;
+                    margin-bottom: 10px;
+                    font-weight: bold;
+                }
+            }
+
+            .clinic_profile_category_id,.clinic_profile_name, .clinic_profile_address, .clinic_profile_phone,
+            .clinic_profile_description, .clinic_profile_start_hour, .clinic_profile_end_hour,
+            .clinic_profile_start_day, .clinic_profile_end_day, .clinic_profile_certificate{
+                input {
+                    @include input_format;
+                }
+
+                textarea {
+                    @include area_format;
+                }
+
+                select {
+                    @include input_format;
+                }
+            }
+        }
+
+    }
+}

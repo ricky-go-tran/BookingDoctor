@@ -1,0 +1,17 @@
+$setup_img: image-url("clinic_wallpaper.jpg");
+
+@mixin setup-wrapper-clinic {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    min-height: 100vh;
+    background: $setup_img;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}

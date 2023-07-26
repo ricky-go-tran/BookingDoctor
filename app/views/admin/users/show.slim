@@ -2,15 +2,7 @@
     .title User Management
     .controll-panel
         .left
-            input.search-bar[placeholder="User Filter By Name" type="search"]
-            select.dropdown-role
-                option#all-role[value="all" selected] All
-                option#admin-role[value="admin"] Admin
-                option#clinic-role[value="clinic"] Clinic
-                option#patient-role[value="patient"] Patient
-        .right
-            = link_to "Export Sheet", root_path, {class: "sheet"}
-            = link_to "Export Pdf",root_path, {class: "pdf_export"}
+            = link_to "Back", admin_users_path, class: "back"
     .content-panel
         .account-info
             .title Account Infomation

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MedicalRecord < ApplicationRecord
   belongs_to :patient_profile
   belongs_to :clinic_profile
@@ -7,6 +9,4 @@ class MedicalRecord < ApplicationRecord
   has_many :service_items
   has_many :services, through: :service_items
   resourcify
-
-
 end

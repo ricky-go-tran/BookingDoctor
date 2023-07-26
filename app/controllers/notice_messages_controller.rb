@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class NoticeMessagesController < ApplicationController
   skip_before_action :authenticate_user!
 
-  layout "error_layout"
+  layout 'error_layout'
 
-  def unconfirmation
-  end
+  def unconfirmation; end
 end

@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 wb = xlsx_package.workbook
-wb.add_worksheet(name: "All Categories") do |sheet|
-    sheet.add_row %w(Name Brand Unit Description Type Created_at Updated_at)
-    @medical_resources.each do |medical_resource|
-        sheet.add_row [medical_resource.name,medical_resource.brand, medical_resource.unit ,medical_resource.description, medical_resource.medical_resource_type ,medical_resource.created_at, medical_resource.updated_at]
-    end
+wb.add_worksheet(name: 'All Categories') do |sheet|
+  sheet.add_row %w[Name Brand Unit Description Type Created_at Updated_at]
+  @medical_resources.each do |medical_resource|
+    sheet.add_row [medical_resource.name, medical_resource.brand, medical_resource.unit,
+                   medical_resource.description, medical_resource.medical_resource_type, medical_resource.created_at, medical_resource.updated_at]
+  end
 end

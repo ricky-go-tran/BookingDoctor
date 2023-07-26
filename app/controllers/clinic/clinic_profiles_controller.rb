@@ -1,22 +1,51 @@
-class Clinic::ClinicProfilesController < Clinic::BaseController
-  skip_before_action :require_clinic, only: %i[create new]
-  def index
-  end
+# frozen_string_literal: true
 
-  def new
-  end
+module Clinic
+  class ClinicProfilesController < Clinic::BaseController
+    skip_before_action :require_clinic, only: %i[create new]
+    skip_before_action :check_clinic_profiles, only: %i[create new]
+    before_action :check_exist_clinic_profiles, only: %i[create new]
+    def index; end
 
-  def create
-  end
+    def new
+      @clinic_profile = ClinicProfile.new
+      respond_to do |format|
+        format.html { render layout: 'application' }
+      end
+    end
 
-  def edit
-  end
+    def create
+      @clinic_profile = ClinicProfile.new(clinic_profile_params)
+      @clinic_profile.profile_id = current_user.profile.id
+      @profile = Profile.find(current_user.profile.id)
 
-  def update
-  end
+      @profile.status = 'invalid'
+      if @clinic_profile.save
+        if @profile.save
+          current_user.delete_roles
+          current_user.add_role :clinic
+          redirect_to root_path
+        end
+      else
+        render :new, status: :unprocessable_entity
+      end
+    end
 
-  protected
-  def clinic_profile_params
-    params.require(:clinic_profile).permit()
+    def edit; end
+
+    def update; end
+
+    protected
+
+    def clinic_profile_params
+      params.require(:clinic_profile).permit(:category_id, :name, :address, :phone, :description, :start_hour, :end_hour,
+                                             :start_day, :end_day, :certificate)
+    end
+
+    def check_exist_clinic_profiles
+      return unless exist_clinic_profile?
+
+      redirect_to root_path
+    end
   end
 end

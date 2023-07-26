@@ -1,49 +1,47 @@
-class Patient::ProfilesController < Patient::BaseController
-  skip_before_action :check_first_login, only: %i[new create]
-  before_action :check_normal_login, only: %i[new create]
+# frozen_string_literal: true
 
-  def index
-  end
+module Patient
+  class ProfilesController < Patient::BaseController
+    skip_before_action :check_first_login, only: %i[new create]
+    before_action :check_normal_login, only: %i[new create]
 
-  def show
-  end
+    def index; end
 
-  def update
+    def show; end
 
-  end
+    def update; end
 
-  def edit
-  end
+    def edit; end
 
-  def destroy
-  end
-  def create
-    @profile = Profile.new(profile_params)
-    @profile.user_id = current_user.id
-    if @profile.save
+    def destroy; end
+
+    def create
+      @profile = Profile.new(profile_params)
+      @profile.user_id = current_user.id
+      if @profile.save
+        redirect_to patient_profiles_path
+      else
+        render :new, status: :unprocessable_entity
+      end
+    end
+
+    def new
+      @profile = Profile.new
+      respond_to do |format|
+        format.html { render layout: 'application' }
+      end
+    end
+
+    protected
+
+    def profile_params
+      params.require(:profile).permit(:fullname, :birthday, :address)
+    end
+
+    def check_normal_login
+      return if is_first_login?
+
       redirect_to patient_profiles_path
-    else
-      render :new, status: :unprocessable_entity
     end
   end
-
-  def new
-    @profile = Profile.new
-    respond_to do |format|
-      format.html { render layout: "application" }
-    end
-  end
-
-  protected
-  def profile_params
-    params.require(:profile).permit(:fullname, :birthday, :address)
-  end
-
-  def check_normal_login
-    if !is_first_login?
-      redirect_to  patient_profiles_path
-    end
-  end
-
-
 end

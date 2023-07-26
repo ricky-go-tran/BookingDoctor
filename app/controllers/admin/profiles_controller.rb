@@ -1,33 +1,32 @@
-class Admin::ProfilesController < Admin::BaseController
+# frozen_string_literal: true
 
-  def index
+module Admin
+  class ProfilesController < Admin::BaseController
+    def index; end
 
-  end
-
-  def update
-    @profile = Profile.find(current_user.profile.id)
-    if @profile.update(profile_params)
-      redirect_to admin_profiles_path
-    else
-      render :change, status: :unprocessable_entity
+    def update
+      @profile = Profile.find(current_user.profile.id)
+      if @profile.update(profile_params)
+        redirect_to admin_profiles_path
+      else
+        render :change, status: :unprocessable_entity
+      end
     end
-  end
 
-  def change
-    @profile = Profile.find(current_user.profile.id)
-  end
+    def change
+      @profile = Profile.find(current_user.profile.id)
+    end
 
-  def create
-  end
+    def create; end
 
-  def new
-  end
-  def show
+    def new; end
 
-  end
+    def show; end
 
-  private
-  def profile_params
-    params.require(:profile).permit(:fulname, :birthday, :address)
+    private
+
+    def profile_params
+      params.require(:profile).permit(:fulname, :birthday, :address)
+    end
   end
 end

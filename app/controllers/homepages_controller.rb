@@ -1,25 +1,21 @@
+# frozen_string_literal: true
+
 class HomepagesController < ApplicationController
   skip_before_action :authenticate_user!
   skip_before_action :check_first_login
-  layout "homepage_layout"
+  layout 'homepage_layout'
 
-  def index
-  end
+  def index; end
 
-  def clinics
-  end
+  def clinics; end
 
-  def services
-  end
+  def services; end
 
-  def doctors
-  end
+  def doctors; end
 
-  def blogs
-  end
+  def blogs; end
 
-  def supports
-  end
+  def supports; end
 
   def direct
     if current_user.has_role? :admin

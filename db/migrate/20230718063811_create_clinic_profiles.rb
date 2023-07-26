@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateClinicProfiles < ActiveRecord::Migration[7.0]
   def change
     create_table :clinic_profiles do |t|

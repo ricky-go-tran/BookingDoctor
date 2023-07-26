@@ -1,22 +1,22 @@
-class Clinic::ProfilesController < Clinic::BaseController
-  def index
-  end
+# frozen_string_literal: true
 
-  def show
-  end
+module Clinic
+  class ProfilesController < Clinic::BaseController
+    skip_before_action :check_valid_clinic, only: %i[invalid]
+    def index; end
 
-  def update
-  end
+    def show; end
 
-  def edit
-  end
+    def update; end
 
-  def destroy
-  end
+    def edit; end
 
-  def create
-  end
+    def destroy; end
 
-  def new
+    def create; end
+
+    def new; end
+
+    def invalid; end
   end
 end
