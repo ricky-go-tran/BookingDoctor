@@ -11,10 +11,16 @@ Rails.application.routes.draw do
   get 'direct', to: 'homepages#direct'
 
   namespace :clinic do
-    resources :clinic_profiles, only: %i[index new create edit update]
-    resources :profiles do
+    resources :clinic_profiles, only: %i[index update] do
       collection do
+        get "change"
+      end
+    end
+    resources :profiles, only: %i[index update destroy] do
+      collection do
+        get 'detail'
         get 'invalid'
+        get 'change'
       end
     end
   end
@@ -24,8 +30,6 @@ Rails.application.routes.draw do
     resources :categories
     resources :users, only: %i[index show] do
       collection do
-        get '/(search/:query)', to: 'users#index'
-        get '/(type/:type)', to: 'users#index'
         get 'request_verify', to: 'users#request_verify'
         put 'accepted', to: 'users#accepted'
         put 'canceled', to: 'users#canceled'
@@ -51,8 +55,4 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   get '/unconfirmation', to: 'notice_messages#unconfirmation'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 end

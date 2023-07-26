@@ -7,8 +7,6 @@ module Clinic
     before_action :check_exist_clinic_profiles, only: %i[create new]
     skip_before_action :check_valid_clinic, only: %i[create new]
 
-    def index; end
-
     def new
       @clinic_profile = ClinicProfile.new
       respond_to do |format|
@@ -33,9 +31,18 @@ module Clinic
       end
     end
 
-    def edit; end
+    def change
+      @clinic_profile = ClinicProfile.find(current_user.profile.clinic_profile.id)
+    end
 
-    def update; end
+    def update
+      @clinic_profile = ClinicProfile.find(current_user.profile.clinic_profile.id)
+      if @clinic_profile.update(clinic_profile_params)
+        redirect_to clinic_profiles_path
+      else
+        render :change, status: :unprocessable_entity
+      end
+    end
 
     protected
 

@@ -26,7 +26,7 @@ module Admin
     private
 
     def profile_params
-      params.require(:profile).permit(:fulname, :birthday, :address)
+      params.require(:profile).permit(:fullname, :birthday, :address)
     end
   end
 end

@@ -1,0 +1,9 @@
+.clinic-my-profile-wrapper
+    .title Change Profile
+    = simple_form_for  [:clinic, @profile], data: {turbo: false} do |form|
+        = form.input :fullname, label: "Fullname: "
+        = form.input :birthday, label: "Birthday: "
+        = form.input :address, label: "Address: "
+        = form.button :submit
+
+

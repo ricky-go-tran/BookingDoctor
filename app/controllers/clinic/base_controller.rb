@@ -5,6 +5,7 @@ module Clinic
     before_action :require_clinic
     before_action :check_clinic_profiles, unless: :devise_controller?
     before_action :check_valid_clinic
+    layout 'clinic_layout'
 
     private
 

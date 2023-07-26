@@ -1,0 +1,43 @@
+@import "../../mixins/input_style.scss";
+
+
+.title-bar-clinic-wrapper {
+    width: 99%;
+    height: 40px;
+    background: rgba(229, 229, 229, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+
+    .control-panel {
+        margin-left: 2%;
+        display: flex;
+
+        >* {
+            margin-left: 15px;
+        }
+    }
+
+    .user-info {
+        margin-right: 2%;
+        display: flex;
+
+        >* {
+            margin-right: 15px;
+        }
+
+        .user-name {
+            padding: 5px 25px;
+            color: #fff;
+            background-color: #1465f2;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout {
+            @include buntton_style_del_lock;
+        }
+    }
+
+}

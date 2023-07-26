@@ -1,0 +1,30 @@
+.clinic-navbar-wrapper
+    .info-part
+        .logo
+            span Doctor
+            label Booking
+        .role Clinic Dashbroad
+        .name = current_user.profile.fullname
+    .menu-part
+        .item#profile[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_profiles_path}"]
+            #profile-icon
+            span My Profile
+        .item#appointment[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"]
+            #appointment-icon
+            span Appointment
+        .item#statistics[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"]
+            #statistics-icon
+            span Statistics
+        .item#patient[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"]
+            #patient-icon
+            span Patient Management
+        .item#inventory[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"]
+            #inventory-icon
+            span Inventory Resources
+        .item#service[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"]
+            #service-icon
+            span Service Management
+        .item#report[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"]
+            #report-icon
+            span Report Icon
+
