@@ -23,12 +23,13 @@ To develop the BookingDoctor website, we utilize the following technologies:
   - pry-rails (Debug)
   - Rspec (Testing)
 ## Feature
-  - [ ] All actor: Authentication and Authorization
-  - [ ] All: homepage
-  - [ ] Clinic, Admin: Inventory management
-  - [ ] Clinic: Clinic profile
-  - [ ] Clinic: Patient management
+  - [x] All actor: Authentication and Authorization
+  - [ ] All: homepage (30% progess)
+  - [ ] Clinic, Admin: Medical Resource and Inventory management (45%)
+  - [ ] Clinic: Clinic profile (10%)
+  - [ ] Clinic: Patient management 
   - [ ] Patient: Clinic management
   - [ ] Patient: Patient management
-  - [ ] Admin: User management
-  - [ ] Admin: Feedback management
+  - [x] Admin: Category management 
+  - [ ] Admin: User management (90% progess)
+  - [ ] Admin: Feedback management (70% progess)
