@@ -21,7 +21,12 @@ module Clinic
     end
 
     def destroy; end
-    def invalid; end
+
+    def invalid
+      respond_to do |format|
+        format.html { render layout: 'application' }
+      end
+    end
 
     private
 

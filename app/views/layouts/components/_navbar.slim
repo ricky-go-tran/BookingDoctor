@@ -4,12 +4,12 @@
         label Doctor
      .menu
         = link_to "Homepage", root_path, class: "item"
-        = link_to "Clinics", homepages_clinics_path, class: "item"
-        = link_to "Services", homepages_services_path, class: "item"
-        = link_to "Support", homepages_supports_path, class: "item"
+        = link_to "Clinics", clinics_homepages_path, class: "item"
+        = link_to "Services", services_homepages_path, class: "item"
+        = link_to "Support", supports_homepages_path, class: "item"
      .authentication-control
         - if user_signed_in?
-            .username[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{direct_path}"]
+            .username[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{direct_homepages_path}"]
                = "Welcome, #{current_user.profile == nil ? current_user.email : current_user.profile.fullname}"
             = button_to "Logout" , destroy_user_session_path,  method:  :delete,class: "logout", form_class: "logout-form"
         - else

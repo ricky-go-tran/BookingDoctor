@@ -19,6 +19,6 @@
                         .change[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{edit_admin_medical_resource_path(medical_resource)}"] Change
                         = link_to "Delete", admin_medical_resource_path(medical_resource),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "del"
         - else
-            .emty Categories is empty...
+            .emty Medical Resources is empty...
 
 

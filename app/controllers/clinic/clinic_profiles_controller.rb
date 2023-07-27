@@ -37,7 +37,11 @@ module Clinic
 
     def update
       @clinic_profile = ClinicProfile.find(current_user.profile.clinic_profile.id)
+
       if @clinic_profile.update(clinic_profile_params)
+        @profile = Profile.find(current_user.profile.id)
+        @profile.update(status: 'invalid')
+
         redirect_to clinic_profiles_path
       else
         render :change, status: :unprocessable_entity

@@ -1,16 +1,22 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'homepages#index'
-  get 'homepages/index'
-  get 'homepages/clinics'
-  get 'homepages/services'
-  get 'homepages/doctors'
-  get 'homepages/blogs'
-  get 'homepages/supports'
-  get 'direct', to: 'homepages#direct'
+
+
+  resources :homepages, only: %i[index] do
+    collection do
+      get 'clinics'
+      get 'services'
+      get 'supports'
+      get 'direct'
+      get 'unauthorization'
+    end
+  end
+  root "homepages#index"
 
   namespace :clinic do
+    resources :medical_resources, only: %i[index show]
+    resources :inventories
     resources :clinic_profiles, only: %i[index update] do
       collection do
         get "change"
