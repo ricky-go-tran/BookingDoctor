@@ -1,15 +1,20 @@
 @import "../../mixins/input_style.scss";
 @import "../../mixins/clinic_layout.scss";
 
-.clinic-inventory-wrapper {
+.clinic-service-wrapper {
 
-    .inventory_amount,
-    .inventory_price,
-    .inventory_medical_resource_id {
+    .service_description,
+    .service_price,
+    .service_name,
+    .service_execution_time {
 
         input,
         select {
             @include input_format;
+        }
+
+        textarea {
+            @include area_format;
         }
     }
 
@@ -20,7 +25,6 @@
 
     .new-panel {
         @include new-panel;
-
         form {
             width: 90%;
             display: flex;

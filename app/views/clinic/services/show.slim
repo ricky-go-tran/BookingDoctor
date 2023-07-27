@@ -1,0 +1,23 @@
+.clinic-service-wrapper
+    .control-bar
+        .left-bar
+            = link_to "Back", :back, {class: "back"}
+        .title Service Management
+        .right-bar
+    .content-panel
+        .title Service Details
+        .name
+            label Name:
+            span = " #{@service.name}"
+        .price
+            label Price:
+            span = " #{@service.price}"
+
+        .description
+            label Description:
+            span = " #{@service.description}"
+        .execution-time
+            label Execution Time:
+            span = " #{@service.execution_time}"
+
+

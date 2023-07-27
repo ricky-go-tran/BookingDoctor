@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   root "homepages#index"
 
   namespace :clinic do
+    resources :services
     resources :medical_resources, only: %i[index show]
     resources :inventories
     resources :clinic_profiles, only: %i[index update] do

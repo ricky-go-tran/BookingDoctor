@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: 'Service') do |sheet|
+  sheet.add_row %w[Name Description Price ExecutionTime Created_at Updated_at]
+  @services.each do |service|
+    sheet.add_row [service.name, service.description, service.price, service.execution_time,service.created_at, service.updated_at]
+  end
+end

@@ -1,0 +1,22 @@
+.clinic-service-wrapper
+    .control-bar
+        .left-bar
+            = link_to "Back", clinic_profiles_path, {class: "back"}
+        .title Service Management
+        .right-bar
+            = link_to "Export Sheet", clinic_services_path(format: :xlsx), {class: "sheet"}
+            = link_to "Add", new_clinic_service_path, {class: "add"}
+    .content-panel
+        - if @services.present?
+            - @services.each do |service|
+                .service-item
+                    .left
+                        .name = service.name
+                        .time-price = "Execution time: #{service.execution_time} - Price: #{service.price}"
+                    .right
+                        .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_service_path(service)}"] View details
+                        .change[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{edit_clinic_service_path(service)}"] Change
+                        = link_to "Delete", clinic_service_path(service),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "del"
+        - else
+            .emty Services is empty...
+

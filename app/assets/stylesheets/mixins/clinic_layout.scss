@@ -28,7 +28,7 @@ $setup_img: image-url("clinic_wallpaper.jpg");
     padding: 20px;
     box-sizing: border-box;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 
     >* {
         margin-bottom: 15px;

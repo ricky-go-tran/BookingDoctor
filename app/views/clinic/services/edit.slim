@@ -1,0 +1,15 @@
+.clinic-service-wrapper
+    .control-bar
+        .left-bar
+            = link_to "Back", clinic_services_path, {class: "back"}
+        .title Service Management
+        .right-bar
+    .new-panel
+        .title Edit Service
+        = simple_form_for  [:clinic, @service], data: {turbo: false} do |form|
+            = form.input :name
+            = form.input :description
+            = form.input :price
+            = form.input :execution_time
+            = form.button :submit
+
