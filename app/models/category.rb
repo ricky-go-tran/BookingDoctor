@@ -5,4 +5,8 @@ class Category < ApplicationRecord
   resourcify
   validates :name, presence: true
   validates :description, presence: true
+
+  scope :current_month, -> {
+    where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)
+  }
 end

@@ -11,7 +11,7 @@
     .control-bar {
         width: 99%;
         padding: 15px 20px;
-        background: rgba(229, 229, 229, 0.7);
+        background: #fff;
         display: flex;
         border-radius: 10px;
         justify-content: space-between;
@@ -61,7 +61,7 @@
     }
 
     .content-panel {
-        background: rgba(229, 229, 229, 0.7);
+        background: #fff;
         width: 99%;
         height: calc(100vh - 140px);
         margin-top: 1%;

@@ -1,0 +1,94 @@
+.clinic-statistics-wrapper
+    .monthly-index
+        .title Mothly Index
+        .content
+            .booking-count
+                .info
+                    .title Appointment
+                    .current-index = @appointment.count
+                    - if growth_calc(@appointment_prev.count, @appointment.count) != 0
+                        .monm #{growth_calc(@appointment_prev.count, @appointment.count)}% compared to last month.
+                    - else
+                        .monm No data for last month
+                .icon
+            .fail-count
+                .info
+                    .title Cancellation
+                    .current-index = @cancle.count
+                    - if growth_calc(@cancle_prev.count, @cancle.count) != 0
+                        .monm #{growth_calc(@cancle_prev.count, @cancle.count)}% compared to last month.
+                    - else
+                        .monm No data for last month
+                .icon
+            .success-count
+                .info
+                    .title Attendance
+                    .current-index = @attendance.count
+                    - if growth_calc(@attendance_prev.count, @attendance.count) != 0
+                        .monm #{growth_calc(@attendance_prev.count, @attendance.count)}% compared to last month.
+                    - else
+                        .monm No data for last month
+                .icon
+            .gross-revenue
+                .info
+                    .title Gross revenue
+                    .current-index = total(@attendance)
+                    - if growth_calc(total(@attendance_prev), total(@attendance)) != 0
+                        .monm #{growth_calc(total(@attendance_prev), total(@attendance))}% compared to last month.
+                    - else
+                        .monm No data for last month
+                .icon
+    .chart-draw
+        .control-bar-wrapper
+            .title Patient Appointment
+            .control-bar
+                .week Week
+                .month Month
+                .year Year
+        canvas#myChart[width="960" height="200" data-controller="chart" data-chart-target="dataset" data-action="chart#connect" data-attendance-views="#{@attendance_json} " data-appointment-views="#{@appointment_json}" data-cancle-view="#{@cancle_json}"]
+    / .top-panel
+    /     .control-bar-wrapper
+    /         .title Top Medical Resource
+    /         .control-bar
+    /             .week Week
+    /             .month Month
+    /             .year Year
+        / table.top-service-table
+        /     thead
+        /         tr
+        /             th Name
+        /             th Brand
+        /             th Use count
+        /     tbody
+        /         - @top5prescription.each do |item|
+        /             tr
+        /                 td = MedicalResource&.find(item&.id)&.name
+        /                 td = MedicalResource&.find(item&.id)&.brand
+        /                 td 20
+    .top-panel
+        .control-bar-wrapper
+            .title Top Service
+            .control-bar
+                .week Week
+                .month Month
+                .year Year
+        table.top-service-table
+            thead
+                tr
+                    th Name
+                    th Price
+                    th Execution time
+                    th Patient count
+                    th Vote
+            tbody
+                - @top5service.each do |service|
+                    tr
+                        td = service.name
+                        td = service.price
+                        td = service.execution_time
+                        td 100
+                        th 5
+
+
+
+
