@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 
   namespace :clinic do
     resources :statistics, only: %i[index]
-    resources :services
+    resources :services do
+      resources :consumptions, only: %i[create destroy]
+    end
     resources :medical_resources, only: %i[index show]
     resources :inventories
     resources :clinic_profiles, only: %i[index new create edit update] do
