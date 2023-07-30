@@ -7,7 +7,7 @@
             = link_to "Export Sheet", admin_reports_path(format: :xlsx), {class: "sheet"}
             = link_to "Export Pdf",root_path, {class: "pdf_export"}
     .content-panel
-        - if !@reports.empty?
+        - if @reports.present?
             - @reports.each do |report|
                 .medical-resource-item
                     .left

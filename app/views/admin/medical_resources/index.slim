@@ -8,7 +8,7 @@
             = link_to "Export Pdf",root_path, {class: "pdf_export"}
             = link_to "Add", new_admin_medical_resource_path, {class: "add"}
     .content-panel
-        - if !@medical_resources.empty?
+        - if @medical_resources.present?
             - @medical_resources.each do |medical_resource|
                 .medical-resource-item
                     .left

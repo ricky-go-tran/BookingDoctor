@@ -30,14 +30,14 @@ class Clinic::InventoriesController < Clinic::BaseController
       if @exist_inventory.save
         redirect_to clinic_inventories_path
       else
-        render :new, status: :unprocessable_entity
+        render :new, status: 422
       end
     else
       current_user.add_role :own, @inventory
       if @inventory.save
         redirect_to clinic_inventories_path
       else
-        render :new, status: :unprocessable_entity
+        render :new, status: 422
       end
     end
   end
@@ -48,13 +48,13 @@ class Clinic::InventoriesController < Clinic::BaseController
     if @inventory.update(inventory_params)
       redirect_to clinic_inventories_path
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: 422
     end
   end
 
   def destroy
     @inventory.destroy
-    redirect_to clinic_inventories_path, status: :see_other
+    redirect_to clinic_inventories_path, status: 303
   end
 
   private

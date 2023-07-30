@@ -62,10 +62,7 @@ $logo: image-url("logo.png");
             }
         }
         > .username {
-            background: linear-gradient(90deg, #0cbecd, #00fc85);
-            color: #ffffff;
-            border-radius: 10px;
-            cursor: pointer;
+            @include name_background;
 
         }
         .logout {

@@ -6,7 +6,7 @@
         .right-bar
             = link_to "Export Sheet", clinic_medical_resources_path(format: :xlsx), {class: "sheet"}
     .content-panel
-        - if !@medical_resources.empty?
+        - if @medical_resources.present?
             - @medical_resources.each do |medical_resource|
                 .medical-resource-item
                     .left

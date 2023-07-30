@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   include Pundit::Authorization
   before_action :check_first_login, unless: :devise_controller?
 
-  protected
+  private
 
   def configure_permitted_parameters
     added_attrs = %i[username email password password_confirmation remember_me]
@@ -30,9 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_first_login?
-    return true if user_signed_in? && current_user.profile.nil?
-
-    false
+    user_signed_in? && current_user.profile.nil?
   end
 
   def first_login

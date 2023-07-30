@@ -1,44 +1,36 @@
 # frozen_string_literal: true
 
-module Clinic
-  class BaseController < ApplicationController
-    before_action :require_clinic
-    before_action :check_clinic_profiles, unless: :devise_controller?
-    before_action :check_valid_clinic
-    layout 'clinic_layout'
+class Clinic::BaseController < ApplicationController
+  before_action :require_clinic
+  before_action :check_clinic_profiles, unless: :devise_controller?
+  before_action :check_valid_clinic
+  layout 'clinic_layout'
 
-    private
+  private
 
-    def require_clinic
-      return if current_user.has_role? :clinic
+  def require_clinic
+    return if current_user.has_role? :clinic
 
-      redirect_to root_path
-    end
+    redirect_to root_path
+  end
 
-    def exist_clinic_profile?
-      if user_signed_in? && !current_user.profile.nil? && current_user.profile.clinic_profile.nil?
-        return false
-      end
+  def exist_clinic_profile?
+    !(user_signed_in? && !current_user.profile.nil? && current_user.profile.clinic_profile.nil?)
+  end
 
-      true
-    end
+  def check_clinic_profiles
+    return if exist_clinic_profile?
 
-    def check_clinic_profiles
-      return if exist_clinic_profile?
+    redirect_to new_clinic_clinic_profile_path
+  end
 
-      redirect_to new_clinic_clinic_profile_path
-    end
+  def is_valid_clinic?
+    current_user.has_role?(:clinic) && current_user.profile.status == 'valid'
+  end
 
-    def is_valid_clinic?
-      return true if current_user.has_role?(:clinic) && current_user.profile.status == 'valid'
+  def check_valid_clinic
+    return if is_valid_clinic?
 
-      false
-    end
-
-    def check_valid_clinic
-      return if is_valid_clinic?
-
-      redirect_to invalid_clinic_profiles_path
-    end
+    redirect_to invalid_clinic_profiles_path
   end
 end

@@ -10,4 +10,5 @@ class MedicalResource < ApplicationRecord
   resourcify
   enum medical_resource_type: { medicine: 'medicine', nutraceutical: 'nutraceutical', vaccine: 'vaccine',
                                 instrucment: 'instrucment' }
+  scope :search, ->(query) { where('UPPER(name) LIKE UPPER(?)', "%#{query}%") }
 end

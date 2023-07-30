@@ -54,6 +54,7 @@ $manager_tools_image: image-url("online-clinic.gif");
     }
     .edit-clinic {
         @include buntton_style_detail;
+        background-image: linear-gradient(230deg, #ffa98d,  #ffd191 );
     }
     .details {
         @include buntton_style_detail;

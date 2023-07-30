@@ -28,11 +28,7 @@
         }
 
         .user-name {
-            padding: 5px 25px;
-            color: #fff;
-            background-color: #1465f2;
-            border-radius: 5px;
-            cursor: pointer;
+            @include name_background;
         }
 
         .logout {

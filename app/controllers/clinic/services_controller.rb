@@ -1,5 +1,6 @@
 class Clinic::ServicesController < Clinic::BaseController
   before_action :get_service, only: %i[edit update show destroy]
+
   def index
     @services = Service.all
     respond_to do |format|
@@ -21,7 +22,7 @@ class Clinic::ServicesController < Clinic::BaseController
     if @service.save
       redirect_to clinic_services_path
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: 422
     end
   end
 
@@ -33,13 +34,13 @@ class Clinic::ServicesController < Clinic::BaseController
     if @service.update(service_params)
       redirect_to clinic_services_path
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: 422
     end
   end
 
   def destroy
     @service.destroy
-    redirect_to clinic_inventories_path, status: :see_other
+    redirect_to clinic_inventories_path, status: 303
   end
 
   private

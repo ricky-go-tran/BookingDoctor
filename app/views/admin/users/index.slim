@@ -18,17 +18,17 @@
                 .left
                     - if user.profile != nil
                         .fullname = user.profile.fullname
-                        .role = user.has_role?(:admin) ? "Admin" : user.has_role?(:basic) ? "Basic" : user.has_role?(:patient) ? "Patient" : "Clinic"
+                        .role = get_role(user)
                     - else
                         .fullname
                             = "#{user.email}"
                             span Not Profile
-                        .role = user.has_role?(:admin) ? "Admin" : user.has_role?(:basic) ? "Basic" : user.has_role?(:patient) ? "Patient" : "Clinic"
+                        .role = get_role(user)
                 .right
                     .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="users/#{user.id}"] View details
                     .change Change
                     .lock Unlock/Lock
-
+k
 
 
 

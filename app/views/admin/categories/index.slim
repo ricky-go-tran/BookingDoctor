@@ -8,7 +8,7 @@
             = link_to "Export Pdf",root_path, {class: "pdf_export"}
             = link_to "Add", new_admin_category_path, {class: "add"}
     .content-panel
-        - if !@categories.empty?
+        - if @categories.present?
             - @categories.each do |category|
                 .category-item
                     .left

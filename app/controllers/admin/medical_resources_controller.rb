@@ -1,7 +1,8 @@
 class Admin::MedicalResourcesController < Admin::BaseController
+  before_action :get_medical_resource, only: %i[show edit update destroy]
   def index
     @medical_resources = if params[:search]
-                           MedicalResource.where('UPPER(name) LIKE UPPER(?)', "%#{params[:search]}%")
+                           MedicalResource.search(params[:search])
                          else
                            MedicalResource.all
                          end
@@ -14,9 +15,7 @@ class Admin::MedicalResourcesController < Admin::BaseController
     end
   end
 
-  def show
-    @medical_resource = MedicalResource.find(params[:id])
-  end
+  def show; end
 
   def new
     @medical_resource = MedicalResource.new
@@ -27,32 +26,32 @@ class Admin::MedicalResourcesController < Admin::BaseController
     if @medical_resource.save
       redirect_to admin_medical_resources_path
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: 422
     end
   end
 
-  def edit
-    @medical_resource = MedicalResource.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @medical_resource = MedicalResource.find(params[:id])
     if @medical_resource.update(medical_resource_params)
       redirect_to admin_medical_resources_path
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: 422
     end
   end
 
   def destroy
-    @medical_resource = MedicalResource.find(params[:id])
     @medical_resource.destroy
-    redirect_to admin_categories_path, status: :see_other
+    redirect_to admin_categories_path, status: 303
   end
 
   private
 
   def medical_resource_params
     params.require(:medical_resource).permit(:name, :brand, :unit, :description, :medical_resource_type)
+  end
+
+  def get_medical_resource
+    @medical_resource = MedicalResource.find(params[:id])
   end
 end
