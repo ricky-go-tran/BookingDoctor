@@ -33,9 +33,9 @@ class Admin::UsersController < Admin::BaseController
   def detail_request
     @user = User.find(params[:id])
     @profile = @user.profile
-    @category = Category.get_name_by_user
-    @start_day = ClinicProfile.get_start_day_by_user
-    @end_day = ClinicProfile.get_end_day_by_user
+    @category = Category.get_name_by_user(@user)
+    @start_day = ClinicProfile.get_start_day_by_user(@user)
+    @end_day = ClinicProfile.get_end_day_by_user(@user)
   end
 
   def accepted
