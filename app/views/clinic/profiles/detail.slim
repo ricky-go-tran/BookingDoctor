@@ -58,5 +58,11 @@
                 = image_tag current_user.profile.clinic_profile.certificate
             - else
                 label No Image
+        .clinic_view
+            label Clinic view:
+            - if current_user.profile.clinic_profile.clinic_view.attached?
+                = image_tag current_user.profile.clinic_profile.clinic_view
+            - else
+                label NO Image
 
 

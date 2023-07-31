@@ -12,7 +12,8 @@
     .clinic_profile_end_hour,
     .clinic_profile_start_day,
     .clinic_profile_end_day,
-    .clinic_profile_certificate {
+    .clinic_profile_certificate,
+    .clinic_profile_clinic_view {
         input {
             @include input_format;
         }

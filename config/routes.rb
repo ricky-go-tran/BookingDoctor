@@ -3,9 +3,10 @@
 Rails.application.routes.draw do
 
 
-  resources :homepages, only: %i[index] do
+  resources :homepages, only: %i[index], path: '' do
     collection do
       get 'clinics'
+      get 'clinics/:id', to: 'homepages#clinic_detail'
       get 'services'
       get 'supports'
       get 'direct'
@@ -56,6 +57,7 @@ Rails.application.routes.draw do
   end
 
   namespace :patient do
+    resources :votes
     resources :profiles
     resources :patient_profiles, only: %i[show create new destroy]
     resources :reports, only: %i[index show create new destroy]

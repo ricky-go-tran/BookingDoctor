@@ -1,0 +1,32 @@
+.homepage-clinic-wrapper
+    .header-wrapper
+        .wallpaper
+            .blur-panel
+            .title Clinics
+            .search-wrapper
+                input.search-bar[type="search" placeholder="Clinic search"]
+                select.dropdown-categories
+                    - @categories.each do |category|
+                        option[value="#{category.name.underscore}"] = category.name
+    .body-wrapper
+        .title Clinics
+        .clinics
+            - if @clinics.present?
+                - @clinics.each do |clinic|
+                    .clinic-item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="/clinics/#{clinic.id}"]
+                        - if clinic.clinic_view.attached?
+                            = image_tag clinic.clinic_view, class: "clinic_view"
+                        - else
+                            .clinic_view No image
+                        .clinic-content
+                            .clinic-name
+                                label
+                                span = clinic.name
+                            .clinic-address
+                                label
+                                span = clinic.address
+                            .clinic-phone
+                                label
+                                span = clinic.phone
+            - else
+                .empty Clinics is empty...

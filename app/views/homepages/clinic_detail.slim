@@ -1,0 +1,118 @@
+.homepage-clinic-detail-wrapper
+    .header-wrapper
+        - if @clinic.clinic_view.attached?
+            - image_url = rails_blob_url(@clinic.clinic_view)
+            .wallpaper[style="background-image: url('#{image_url}')"]
+                .blur-panel
+                .title Clinic Details
+                .clinic-information-wrapper
+                    .name
+                        label
+                        span = @clinic.name
+                    .address
+                        label
+                        span = @clinic.address
+                    .phone
+                        label
+                        span = @clinic.phone
+        - else
+            .wallpaper
+                .blur-panel
+                .title Clinic Details
+                .clinic-information-wrapper
+                    .name = @clinic.name
+                    .address = @clinic.address
+                    .phone = @clinic.phone
+
+    .body-wrapper
+        .notice
+            label
+                i
+                | DoctorBooking notice
+            span We pledge that every clinic and clinic owner listed on our website has been duly confirmed to possess all the legal and professional certificates required by the Socialist Republic of Vietnam. Ensuring the safety and quality of healthcare for patients is our top priority, and verifying the necessary certifications is a crucial step to guarantee that the clinics meet the highest standards of care and adhere to all healthcare regulations.
+
+        .feature
+            label
+                i
+                | DoctorBooking feature
+            span
+                ul
+                    |Welcome to our website - an advanced and convenient platform that connects patients with reputable healthcare clinics.
+                    li Diverse Clinic Network
+                    li Verified Certifications
+                    li Online Booking
+        .own-information
+            .title
+                label Own Information
+                span
+            .fulname
+                label Fullname:
+                span = "  #{@profile.fullname}"
+            .birthday
+                label Birthday:
+                span = "  #{@profile.birthday}"
+            .address
+                label Address:
+                span = " #{@profile.address}"
+        .clinic-information
+            .title Clinic Information
+            .fulname
+                label Name:
+                br
+                span = " #{@clinic.name}"
+            .birthday
+                label Category:
+                br
+                span = "  #{Category.find(@clinic.category_id).name}"
+            .address
+                label Address:
+                br
+                span = " #{@clinic.address}"
+            .phone
+                label  Phone:
+                br
+                span = " #{@clinic.phone}"
+            .active-time
+                label Operating hours -
+                label  Start:
+                span = " #{@clinic.start_hour}"
+                label  End:
+                span = " #{@clinic.end_hour}"
+            .active-time
+                label Operating hours -
+                label  Start:
+                span = " #{get_day_in_week(@clinic.start_day)}"
+                label  End:
+                span = " #{get_day_in_week(@clinic.end_day)}"
+            .description
+                label  Description:
+                br
+                span = " #{@clinic.description}"
+
+        .appointment-wrapper
+        .vote-wrapper
+            .title Rate
+            .votes
+                - if @clinic.votes.present?
+                    - @clinic.votes.each do |vote|
+                        .vote-item
+                            .header
+                                .name-user
+                                    label = get_fullname_by_id_patient_profile(vote.patient_profile_id)
+                                    span = " - #{vote.rate}"
+                                    i
+
+                                .time = vote.created_at
+                            .body
+                                span = vote.comment
+                - else
+                    .empty Rates is empty..
+            .title Add Rate
+            - if is_patient?
+                = simple_form_for @clinic.votes.build,  url: patient_votes_path, method: :post do |form|
+                    = form.input :clinic_profile_id, as: :hidden, input_html: { value: @clinic.id }
+                    = form.input :rate, collection: Vote.rates.keys
+                    = form.input :comment
+                    = form.button :submit
+
+

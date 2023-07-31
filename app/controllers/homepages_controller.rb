@@ -7,7 +7,15 @@ class HomepagesController < ApplicationController
 
   def index; end
 
-  def clinics; end
+  def clinics
+    @categories = Category.all
+    @clinics = ClinicProfile.joins(:profile).where("profiles.status = 'valid'")
+  end
+
+  def clinic_detail
+    @clinic = ClinicProfile.find(params[:id])
+    @profile = @clinic.profile
+  end
 
   def services; end
 

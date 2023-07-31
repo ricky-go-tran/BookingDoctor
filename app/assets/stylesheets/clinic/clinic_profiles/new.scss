@@ -47,7 +47,7 @@
 
             .clinic_profile_category_id,.clinic_profile_name, .clinic_profile_address, .clinic_profile_phone,
             .clinic_profile_description, .clinic_profile_start_hour, .clinic_profile_end_hour,
-            .clinic_profile_start_day, .clinic_profile_end_day, .clinic_profile_certificate{
+            .clinic_profile_start_day, .clinic_profile_end_day, .clinic_profile_certificate, .clinic_profile_view{
                 input {
                     @include input_format;
                 }

@@ -12,6 +12,7 @@ class ClinicProfile < ApplicationRecord
   resourcify
 
   has_one_attached :certificate
+  has_one_attached :clinic_view
 
   scope :current_month, -> {
     where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)

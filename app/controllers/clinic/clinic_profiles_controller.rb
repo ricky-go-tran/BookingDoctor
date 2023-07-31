@@ -51,7 +51,7 @@ class Clinic::ClinicProfilesController < Clinic::BaseController
 
   def clinic_profile_params
     params.require(:clinic_profile).permit(:category_id, :name, :address, :phone, :description, :start_hour, :end_hour,
-                                           :start_day, :end_day, :certificate)
+                                           :start_day, :end_day, :certificate, :clinic_view)
   end
 
   def check_exist_clinic_profiles

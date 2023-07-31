@@ -52,4 +52,9 @@
                     = image_tag @profile.clinic_profile.certificate
                 - else
                     label NO Image
+            .clinic_view
+                - if @profile.clinic_profile.clinic_view.attached?
+                    = image_tag @profile.clinic_profile.clinic_view
+                - else
+                    label NO Image
 
