@@ -1,0 +1,44 @@
+@import "../../mixins/input_style.scss";
+@import "../../mixins/clinic_layout.scss";
+
+.clinic-inventory-wrapper {
+
+    .inventory_amount,
+    .inventory_price,
+    .inventory_medical_resource_id {
+
+        input,
+        select {
+            @include input_format;
+        }
+    }
+
+    input[type="submit"] {
+        @include button_style_submit;
+        margin-top: 1%;
+    }
+
+    .new-panel {
+        @include new-panel;
+
+        form {
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            div {
+                width: 100%;
+                margin-bottom: 15px;
+
+                label {
+                    display: block;
+                    margin-bottom: 10px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+
+}

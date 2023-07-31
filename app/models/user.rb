@@ -8,6 +8,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :report
   has_one :profile
+  scope :search, ->(query) {
+                   where(id: Profile.select(:user_id).where('UPPER(fullname) LIKE UPPER(?)',
+                                                            "%#{query}%")).or(User.where('UPPER(email ) LIKE UPPER(?)',
+                                                                                         "%#{query}%"))
+                 }
+
   def delete_roles
     roles.delete(roles.where(id: roles.ids))
   end

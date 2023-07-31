@@ -1,0 +1,39 @@
+@import "../../mixins/input_style.scss";
+
+
+.title-bar-clinic-wrapper {
+    width: 99%;
+    height: 40px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+
+    .control-panel {
+        margin-left: 2%;
+        display: flex;
+
+        >* {
+            margin-left: 15px;
+        }
+    }
+
+    .user-info {
+        margin-right: 2%;
+        display: flex;
+
+        >* {
+            margin-right: 15px;
+        }
+
+        .user-name {
+            @include name_background;
+        }
+
+        .logout {
+            @include buntton_style_del_lock;
+        }
+    }
+
+}

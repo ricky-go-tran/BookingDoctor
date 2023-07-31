@@ -4,43 +4,43 @@
         .left
             = link_to "Back", request_verify_admin_users_path, class: "back"
         .right
-            = button_to "Accept", accepted_admin_users_path, method: :put, params: {id: @user.profile.id},class: "add"
-            = button_to "Cancel", canceled_admin_users_path, method: :put,params: {id: @user.profile.id}, class: "pdf_export"
+            = button_to "Accept", accepted_admin_users_path, method: :put, params: {id: @profile.id},class: "add"
+            = button_to "Cancel", canceled_admin_users_path, method: :put,params: {id: @profile.id}, class: "pdf_export"
     .content-panel
         .own-info
             .title Infomation of own
             .fullname
                 label Fullname:
-                span = " #{@user.profile.fullname}"
+                span = " #{@profile.fullname}"
             .birthday
                 label  Birthday:
-                span = @user.profile.birthday
+                span = @profile.birthday
             .address
                 label  Address:
-                span = @user.profile.address
+                span = @profile.address
         .clinic-info
             .title Information of clinic
             .name
                 label  Name:
-                span = @user.profile.clinic_profile.name
+                span = @profile.clinic_profile.name
             .category
                 label  Category:
                 span = @category
             .address
                 label  Address:
-                span = @user.profile.clinic_profile.address
+                span = @profile.clinic_profile.address
             .phone
                 label  Phone:
-                span = @user.profile.clinic_profile.phone
+                span = @profile.clinic_profile.phone
             .description
                 label  Description:
-                span = @user.profile.clinic_profile.description
+                span = @profile.clinic_profile.description
             .active-time
                 label Operating hours -
                 label  Start:
-                span = @user.profile.clinic_profile.start_hour
+                span = @profile.clinic_profile.start_hour
                 label  End:
-                span = @user.profile.clinic_profile.end_hour
+                span = @profile.clinic_profile.end_hour
             .active-time
                 label Operating hours -
                 label  Start:
@@ -48,8 +48,8 @@
                 label  End:
                 span = @end_day
             .certificate
-                - if @user.profile.clinic_profile.certificate.attached?
-                    = image_tag @user.profile.clinic_profile.certificate
+                - if @profile.clinic_profile.certificate.attached?
+                    = image_tag @profile.clinic_profile.certificate
                 - else
                     label NO Image
 

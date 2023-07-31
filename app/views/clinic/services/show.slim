@@ -1,0 +1,49 @@
+.clinic-service-wrapper
+    .control-bar
+        .left-bar
+            = link_to "Back", :back, {class: "back"}
+        .title Service Management
+        .right-bar
+    .content-panel
+        .title Service Details
+        .name
+            label Name:
+            span = " #{@service.name}"
+        .price
+            label Price:
+            span = " #{@service.price}"
+
+        .description
+            label Description:
+            span = " #{@service.description}"
+        .execution-time
+            label Execution Time:
+            span = " #{@service.execution_time}"
+        .title Consumptions
+        - if @service.medical_resources.present?
+            table
+                thead
+                    tr
+                        th Name
+                        th Brand
+                        th Amount
+                        th Delete
+                tbody
+                    - @service.medical_resources.each do |item|
+                        tr
+                            td = item.name
+                            td = item.brand
+                            td = @service.consumptions.find_by(medical_resource_id: item.id).amount
+                            td = link_to "Delete", clinic_service_consumption_path(@service.consumptions.find_by(medical_resource_id: item.id)),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "delete"
+
+        - else
+            .empty Comsumptions is empty...
+        .title Add Consumption
+        = simple_form_for [:clinic, @service, @service.consumptions.build] do |form|
+            = form.input :service_id, as: :hidden, input_html: { value: @service.id }
+            = form.input :medical_resource_id, collection: get_medical_resources_of_current_user, label_method: :name, value_method: :id, include_blank: true
+            = form.input :amount
+            = form.button :submit
+
+
+

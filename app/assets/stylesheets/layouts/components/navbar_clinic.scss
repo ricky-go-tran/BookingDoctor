@@ -1,0 +1,179 @@
+$profile-icon: image-url("icon_profile.png");
+$report_icon: image-url("icon_report.png");
+$appointment_icon: image-url("icon_appointment.png");
+$statistic_icon: image-url("icon_statis.png");
+$patient_icon: image-url("icon_patient.png");
+$inventory_icon: image-url("icon_inventory.png");
+$serive_icon: image-url("icon_service.png");
+$profile-icon-gray: image-url("icon_profile_gray.png");
+$report_icon_gray: image-url("icon_report_gray.png");
+$appointment_icon_gray: image-url("icon_appointment_gray.png");
+$statistic_icon_gray: image-url("icon_statis_gray.png");
+$patient_icon_gray: image-url("icon_patient_gray.png");
+$inventory_icon_gray: image-url("icon_inventory_gray.png");
+$serive_icon_gray: image-url("icon_service_gray.png");
+
+@import "../../mixins/layout.scss";
+
+.clinic-navbar-wrapper {
+    width: 20%;
+    height: 100vh;
+    background: #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .info-part {
+        margin-top: 25px;
+        color: #1465f2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #1465f2;
+        width: 90%;
+
+        div {
+            margin-bottom: 15px;
+        }
+
+        .role {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .name {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .logo {
+            padding: unset;
+            font-size: 32px;
+            font-weight: bold;
+            margin-left: 30px;
+
+            span {
+                color: #0cbecd;
+            }
+
+            label {
+                color: #00fc85;
+            }
+        }
+    }
+
+    .menu-part {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        line-height: 2;
+        color: #656565;
+        border-bottom: 1px solid #1465f2;
+        width: 90%;
+
+        >.item {
+            cursor: pointer;
+            margin-left: 5%;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            padding: 0 5px;
+
+            &:hover {
+                background-color: #1465f2;
+                color: #fff;
+            }
+
+            #profile-icon {
+                @include navbar_icon($profile-icon-gray);
+            }
+
+            #report-icon {
+                @include navbar_icon($report_icon_gray);
+            }
+
+            #appointment-icon {
+                @include navbar_icon($appointment_icon_gray);
+            }
+
+            #statistics-icon {
+                @include navbar_icon($statistic_icon_gray);
+            }
+
+            #inventory-icon {
+                @include navbar_icon($inventory_icon_gray);
+            }
+
+            #service-icon {
+                @include navbar_icon($serive_icon_gray);
+            }
+            #patient-icon {
+                @include navbar_icon($patient_icon_gray);
+            }
+
+
+            span {
+                margin-left: 5%;
+                font-size: 18px;
+                width: 1;
+            }
+        }
+
+        #profile:hover {
+            #profile-icon {
+                @include navbar_icon($profile-icon);
+            }
+        }
+
+        #report:hover {
+            #report-icon {
+                @include navbar_icon($report_icon);
+            }
+        }
+
+        #appointment:hover {
+            #appointment-icon {
+                @include navbar_icon($appointment_icon);
+            }
+        }
+
+        #statistics:hover {
+            #statistics-icon {
+                @include navbar_icon($statistic_icon);
+            }
+        }
+
+        #inventory:hover {
+            #inventory-icon {
+                @include navbar_icon($inventory_icon);
+            }
+        }
+
+        #service:hover {
+            #service-icon {
+                @include navbar_icon($serive_icon);
+            }
+        }
+        #patient:hover {
+            #patient-icon {
+                @include navbar_icon($patient_icon);
+            }
+        }
+
+        >*:last-child {
+            margin-bottom: 15px;
+        }
+    }
+}

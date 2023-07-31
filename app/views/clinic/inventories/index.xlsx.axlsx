@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: 'Inventory') do |sheet|
+  sheet.add_row %w[Name&Brand Amount Price  Created_at Updated_at]
+  @inventories.each do |inventory|
+    sheet.add_row [get_medical_resource_by_id(inventory.id), inventory.amount, inventory.price, inventory.created_at, inventory.updated_at]
+  end
+end

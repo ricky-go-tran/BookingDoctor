@@ -1,0 +1,20 @@
+.clinic-inventory-wrapper
+    .control-bar
+        .left-bar
+            = link_to "Back", clinic_inventories_path, {class: "back"}
+        .title Medical Resources List
+        .right-bar
+            = link_to "Export Sheet", clinic_medical_resources_path(format: :xlsx), {class: "sheet"}
+    .content-panel
+        - if @medical_resources.present?
+            - @medical_resources.each do |medical_resource|
+                .medical-resource-item
+                    .left
+                        .name = medical_resource.name
+                        .brand = "Brand: #{medical_resource.brand}"
+                    .right
+                        .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_medical_resource_path(medical_resource)}"] View detail
+        - else
+            .emty Medical Resources is empty...
+
+

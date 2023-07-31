@@ -1,0 +1,45 @@
+@import "../../mixins/clinic_layout.scss";
+@import "../../mixins/input_style.scss";
+
+.clinic-service-wrapper {
+    >.content-panel {
+
+        table {
+            width: 100%;
+
+            td,
+            th {
+                line-height: 2;
+                text-align: left;
+                color: #76838f;
+            }
+        }
+
+        .consumption_medical_resource_id,
+        .consumption_amount {
+
+            input,
+            select {
+                @include input_format;
+            }
+
+            textarea {
+                @include area_format;
+            }
+        }
+
+        .title {
+            @include title-details-h1;
+        }
+
+        >* {
+            width: 90%;
+            margin: 10px 0;
+
+            label {
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+    }
+}

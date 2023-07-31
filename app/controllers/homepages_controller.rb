@@ -11,10 +11,6 @@ class HomepagesController < ApplicationController
 
   def services; end
 
-  def doctors; end
-
-  def blogs; end
-
   def supports; end
 
   def direct
@@ -26,4 +22,6 @@ class HomepagesController < ApplicationController
       redirect_to clinic_profiles_path
     end
   end
+
+  def unauthorization; end
 end

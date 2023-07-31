@@ -1,0 +1,29 @@
+.clinic-inventory-wrapper
+    .control-bar
+        .left-bar
+            = link_to "Back", clinic_medical_resources_path, {class: "back"}
+        .title Medical Resource Details
+        .right-bar
+    .content-panel
+        .title Medical Resource Details
+        .name
+            label Name:
+            span = " #{@medical_resource.name}"
+        .brand
+            label Brand:
+            span = " #{@medical_resource.brand}"
+        .unit
+            label Unit:
+            span = " #{@medical_resource.unit}"
+        .description
+            label Description:
+            span = " #{@medical_resource.description}"
+        .type
+            label Type:
+            span = " #{@medical_resource.medical_resource_type}"
+        = simple_form_for  @inventory,  url: clinic_inventories_path, method: :post, data: {turbo: false} do |form|
+            = form.input :medical_resource_id, as: :hidden, input_html: { value: @medical_resource.id }
+            = form.input :amount
+            = form.input :price
+            = form.button :submit
+

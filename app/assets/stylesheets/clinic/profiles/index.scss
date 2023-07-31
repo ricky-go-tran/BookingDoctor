@@ -1,0 +1,68 @@
+$manager_tools_image: image-url("online-clinic.gif");
+
+@import "../../mixins/input_style.scss";
+@import "../../mixins/layout.scss";
+
+.clinic-my-profile-wrapper {
+    width: 99%;
+    background:rgba(229,229,229,0.7);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: calc(100vh - 70px);
+    margin-top: 1%;
+    overflow-y: scroll;
+    padding: 15px 0;
+    box-sizing: border-box;
+
+    > * {
+        margin-bottom: 10px;
+    }
+    .logo {
+        @include logo;
+        font-size: 32px;
+        margin-top: 2%;
+    }
+    .title {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .image {
+        width: 250px;
+        height: 250px;
+        background: $manager_tools_image;
+        background-position: top;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .name {
+        font-size: 18px;
+    }
+    .birthday {
+        font-size: 18px;
+    }
+    .address {
+        font-size: 18px;
+    }
+
+
+    .edit {
+        @include buntton_style_edit;
+
+    }
+    .edit-clinic {
+        @include buntton_style_detail;
+        background-image: linear-gradient(230deg, #ffa98d,  #ffd191 );
+    }
+    .details {
+        @include buntton_style_detail;
+        background-color: #0f9855;
+    }
+    > a{
+        width: 25%;
+        text-decoration: none;
+        text-align: center;
+    }
+}

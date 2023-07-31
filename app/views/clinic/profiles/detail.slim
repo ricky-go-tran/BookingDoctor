@@ -1,0 +1,62 @@
+- content_for :control do
+    Test
+.clinic-my-profile-detail-wrapper
+    .account-info
+        .title Account Infomation
+        .email
+            label Email:
+            span = "  #{current_user.email}"
+        .time-create
+            label Time Signup:
+            span = "  #{current_user.created_at}"
+        .time-update
+            label Change Recently:
+            span = "  #{current_user.updated_at}"
+    .profile-info
+        .title Profile Information
+        .fulname
+            label Fullname:
+            span = "  #{current_user.profile.fullname}"
+        .birthday
+            label Birthday:
+            span = "  #{current_user.profile.birthday}"
+        .address
+            label Address:
+            span = " #{current_user.profile.address}"
+    .clinic-info
+        .title Clinic Information
+        .fulname
+            label Name
+            span = " #{current_user.profile.clinic_profile.name}"
+        .birthday
+            label Category:
+            span = "  #{Category.find(current_user.profile.clinic_profile.category_id).name}"
+        .address
+            label Address:
+            span = " #{current_user.profile.clinic_profile.address}"
+        .phone
+            label  Phone:
+            span = current_user.profile.clinic_profile.phone
+        .description
+            label  Description:
+            span = current_user.profile.clinic_profile.description
+        .active-time
+            label Operating hours -
+            label  Start:
+            span = current_user.profile.clinic_profile.start_hour
+            label  End:
+            span = current_user.profile.clinic_profile.end_hour
+        .active-time
+            label Operating hours -
+            label  Start:
+            span = current_user.profile.clinic_profile.start_day
+            label  End:
+            span = current_user.profile.clinic_profile.end_day
+        .certificate
+            label Certificate:
+            - if current_user.profile.clinic_profile.certificate.attached?
+                = image_tag current_user.profile.clinic_profile.certificate
+            - else
+                label No Image
+
+

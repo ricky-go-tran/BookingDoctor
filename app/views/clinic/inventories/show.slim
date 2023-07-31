@@ -1,0 +1,31 @@
+.clinic-inventory-wrapper
+    .control-bar
+        .left-bar
+            = link_to "Back", :back, {class: "back"}
+        .title Inventory Management
+        .right-bar
+    .content-panel
+        .title Inventory Details
+        .name
+            label Name:
+            span = " #{@medical_resource.name}"
+        .brand
+            label Brand:
+            span = " #{@medical_resource.brand}"
+        .amount
+            label Amount:
+            span = " #{@inventory.amount}"
+        .price
+            label Price:
+            span = " #{@inventory.price}"
+        .unit
+            label Unit:
+            span = " #{@medical_resource.unit}"
+        .description
+            label Description:
+            span = " #{@medical_resource.description}"
+        .type
+            label Type:
+            span = " #{@medical_resource.medical_resource_type}"
+
+

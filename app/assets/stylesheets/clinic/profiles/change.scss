@@ -1,0 +1,76 @@
+@import "../../mixins/input_style.scss";
+
+.clinic-my-profile-wrapper {
+    >.title {
+        margin-top: 5%;
+        font-size: 32px;
+    }
+
+    form {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        input[type="submit"] {
+            @include button_style_submit;
+            padding: 5px 20px;
+        }
+
+        div {
+            width: 100%;
+            margin-bottom: 15px;
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+                font-weight: bold;
+            }
+        }
+
+        .profile_fullname,
+        .profile_address {
+            input {
+                @include input_format;
+            }
+
+            textarea {
+                @include area_format;
+            }
+        }
+
+        .profile_birthday {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            >select {
+                height: 30px;
+                background-color: #e5e5e5;
+                border: none;
+                border-radius: 5px;
+                padding-left: 10px;
+                font-size: 16px;
+                padding-right: 10px;
+            }
+
+            >*:first-child {
+                flex-basis: 100%;
+            }
+
+            >*:nth-child(2) {
+                width: 25%;
+            }
+
+            >*:nth-child(3) {
+                width: 45%;
+            }
+
+            >*:last-child {
+                width: 15%;
+            }
+        }
+    }
+
+}

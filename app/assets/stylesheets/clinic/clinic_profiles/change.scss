@@ -1,0 +1,29 @@
+@import "../../mixins/input_style.scss";
+@import "../../mixins/layout.scss";
+@import "../../mixins/clinic_layout.scss";
+
+.clinic-my-profile-wrapper {
+    .clinic_profile_category_id,
+    .clinic_profile_name,
+    .clinic_profile_address,
+    .clinic_profile_phone,
+    .clinic_profile_description,
+    .clinic_profile_start_hour,
+    .clinic_profile_end_hour,
+    .clinic_profile_start_day,
+    .clinic_profile_end_day,
+    .clinic_profile_certificate {
+        input {
+            @include input_format;
+        }
+
+        textarea {
+            @include area_format;
+        }
+
+        select {
+            @include input_format;
+        }
+    }
+
+}

@@ -8,30 +8,33 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     .logo {
         font-size: 32px;
         font-weight: bold;
         margin-left: 2%;
+
         span {
             color: #0cbecd;
         }
+
         label {
             color: #00fc85;
         }
     }
+
     .user-info {
         margin-right: 2%;
         display: flex;
-        > * {
+
+        >* {
             margin-right: 15px;
         }
+
         .user-name {
-            padding: 5px 25px;
-            color: #23a8bb;
-            background-color: #fff;
-            border-radius: 5px;
-            cursor: pointer;
+            @include name_background;
         }
+
         .logout {
             @include buntton_style_del_lock;
         }

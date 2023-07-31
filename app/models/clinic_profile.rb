@@ -13,6 +13,13 @@ class ClinicProfile < ApplicationRecord
 
   has_one_attached :certificate
 
+  scope :current_month, -> {
+    where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)
+  }
+
+  scope :get_start_day_by_user, ->(user) { days.key(user.profile.clinic_profile.start_day).camelize }
+  scope :get_end_day_by_user, ->(user) { days.key(user.profile.clinic_profile.end_day).camelize }
+
   enum hour: %i[0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23]
   enum day: {
     sunday: 0,
