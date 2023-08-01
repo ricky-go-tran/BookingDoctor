@@ -260,6 +260,33 @@ $start_icon: image-url("icon_star.png");
             }
         }
 
+        .service-wrapper {
+            background-color: #fff;
+            font-size: 18px;
+            width: 90%;
+            padding: 20px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            table {
+                width: 100%;
+
+                td,
+                th {
+                    line-height: 2;
+                    text-align: left;
+                    color: #76838f;
+                }
+                .detail > a{
+                    @include buntton_style_detail;
+                    text-decoration: none;
+                }
+            }
+
+
+        }
         .vote-wrapper {
             background-color: #fff;
             font-size: 18px;

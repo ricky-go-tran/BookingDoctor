@@ -3,6 +3,13 @@
 
 .clinic-service-wrapper {
     >.content-panel {
+        box-sizing: border-box;
+        .service_view {
+            img {
+                height: 400px;
+                width: 530px;
+            }
+        }
 
         table {
             width: 100%;
@@ -12,6 +19,9 @@
                 line-height: 2;
                 text-align: left;
                 color: #76838f;
+            }
+            .detail {
+                @include buntton_style_detail;
             }
         }
 
@@ -35,8 +45,12 @@
         >* {
             width: 90%;
             margin: 10px 0;
+            text-align: start;
 
-            label {
+
+            >   label {
+                text-align: start;
+                vertical-align: top;
                 font-size: 16px;
                 font-weight: bold;
             }

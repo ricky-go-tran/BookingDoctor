@@ -38,9 +38,9 @@
             .active-time
                 label Operating hours -
                 label  Start:
-                span = @profile.clinic_profile.start_hour
+                span = @profile.clinic_profile.start_hour.to_s(:time)
                 label  End:
-                span = @profile.clinic_profile.end_hour
+                span = @profile.clinic_profile.end_hour.to_s(:time)
             .active-time
                 label Operating hours -
                 label  Start:

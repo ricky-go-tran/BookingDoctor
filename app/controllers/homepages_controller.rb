@@ -15,9 +15,17 @@ class HomepagesController < ApplicationController
   def clinic_detail
     @clinic = ClinicProfile.find(params[:id])
     @profile = @clinic.profile
+    @services = @clinic.services
   end
 
-  def services; end
+  def services
+    @services = Service.all
+  end
+
+  def service_detail
+    @service = Service.find(params[:id])
+    @clinic = @service.clinic_profile
+  end
 
   def supports; end
 

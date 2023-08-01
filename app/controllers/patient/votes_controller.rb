@@ -7,9 +7,9 @@ class Patient::VotesController < Patient::BaseController
     @vote = Vote.new(vote_params)
     @vote.patient_profile_id = current_user.profile.patient_profile.id
     if @vote.save
-      clinics_homepages_path(@vote.clinic_profile_id)
+      redirect_to "/clinics/#{@vote.clinic_profile_id}"
     else
-      clinics_homepages_path(@vote.clinic_profile_id)
+      redirect_to "/clinics/#{@vote.clinic_profile_id}"
     end
   end
 

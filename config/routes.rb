@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'clinics'
       get 'clinics/:id', to: 'homepages#clinic_detail'
       get 'services'
+      get 'services/:id', to: 'homepages#service_detail'
       get 'supports'
       get 'direct'
       get 'unauthorization'

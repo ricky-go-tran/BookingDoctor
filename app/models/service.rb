@@ -7,6 +7,9 @@ class Service < ApplicationRecord
   has_many :medical_records, through: :service_items
   belongs_to :clinic_profile
   resourcify
+
+  has_one_attached :service_wallpaper
+
   scope :top_5_in_month, -> {
     joins(:service_items)
       .where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)

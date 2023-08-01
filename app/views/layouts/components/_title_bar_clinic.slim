@@ -3,4 +3,4 @@
         = yield :control
     .user-info
         .user-name[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"] = "Welcome, #{current_user.profile.fullname}"
-        = button_to "Logout" , destroy_user_session_path,  method:  :delete,class: "logout", form_class: "logout-form"
+        = button_to "Logout" , destroy_user_session_path,  method:  :delete,class: "logout", form_class: "logout-form", data: { turbo: false }

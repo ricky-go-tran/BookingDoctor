@@ -46,7 +46,7 @@ class Clinic::ServicesController < Clinic::BaseController
   private
 
   def service_params
-    params.require(:service).permit(:name, :description, :price, :execution_time)
+    params.require(:service).permit(:name, :description, :price, :service_wallpaper, :execution_time)
   end
 
   def get_service

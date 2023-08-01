@@ -1,0 +1,76 @@
+.homepage-service-detail-wrapper
+    .header-wrapper
+        - if @service.service_wallpaper.attached?
+            - image_url = rails_blob_url(@service.service_wallpaper)
+            .wallpaper[style="background-image: url('#{image_url}')"]
+                .blur-panel
+                .title Service Details
+                .service-information-wrapper
+                    .name
+                        label
+                        span = @service.name
+                    .price
+                        label
+                        span = "$ #{@service.price}"
+                    .time
+                        label
+                        span = "#{@service.execution_time} minutes"
+        - else
+            .wallpaper
+                .blur-panel
+                .title Service Details
+                .service-information-wrapper
+                    .name = @service.name
+                    .price = @service.price
+                    .time = @service.execution_time
+
+    .body-wrapper
+        .notice
+            label
+                i
+                | DoctorBooking notice
+            span We pledge that every service and service owner listed on our website has been duly confirmed to possess all the legal and professional certificates required by the Socialist Republic of Vietnam. Ensuring the safety and quality of healthcare for patients is our top priority, and verifying the necessary certifications is a crucial step to guarantee that the services meet the highest standards of care and adhere to all healthcare regulations.
+
+        .feature
+            label
+                i
+                | DoctorBooking feature
+            span
+                ul
+                    |Welcome to our website - an advanced and convenient platform that connects patients with reputable healthcare services.
+                    li Diverse Service Network
+                    li Verified Certifications
+                    li Online Booking
+        .clinic-information
+            .title
+                label Clinic Information
+                span
+            .name
+                label Name:
+                span = "  #{@clinic.name}"
+            .address
+                label Address:
+                span = "  #{@clinic.address}"
+            .phone
+                label Phone:
+                span = " #{@clinic.phone}"
+        .service-information
+            .title Service Information
+            .name
+                label Name:
+                span = " #{@service.name}"
+            .price
+                label Price:
+                span = " #{@service.price}"
+            .execution-time
+                label Execution Time:
+                span = " #{@service.execution_time}"
+
+            .description
+                label Description:
+                br
+                span = " #{@service.description}"
+
+
+
+

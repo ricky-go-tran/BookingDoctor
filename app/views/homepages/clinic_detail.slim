@@ -75,9 +75,9 @@
             .active-time
                 label Operating hours -
                 label  Start:
-                span = " #{@clinic.start_hour}"
+                span = " #{@clinic.start_hour.to_s(:time)}"
                 label  End:
-                span = " #{@clinic.end_hour}"
+                span = " #{@clinic.end_hour.to_s(:time)}"
             .active-time
                 label Operating hours -
                 label  Start:
@@ -89,7 +89,26 @@
                 br
                 span = " #{@clinic.description}"
 
-        .appointment-wrapper
+        .service-wrapper
+            .title Services
+            .services
+                - if @services.present?
+                    table.service-item
+                        thead
+                            tr
+                                th Name
+                                th Price
+                                th Time
+                                th Details
+                        tbody
+                            - @services.each do |item|
+                                tr
+                                    td = item.name
+                                    td = "$ #{item.price}"
+                                    td = "$ #{item.execution_time}"
+                                    td.detail = link_to "Detail", "/services/#{item.id}", class: "detail"
+                - else
+                        .empty Services is empty..
         .vote-wrapper
             .title Rate
             .votes
@@ -107,9 +126,10 @@
                                 span = vote.comment
                 - else
                     .empty Rates is empty..
-            .title Add Rate
+
             - if is_patient?
-                = simple_form_for @clinic.votes.build,  url: patient_votes_path, method: :post do |form|
+                .title Add Rate
+                = simple_form_for @clinic.votes.build,  url: patient_votes_path, method: :post, data: {turbo: false}  do |form|
                     = form.input :clinic_profile_id, as: :hidden, input_html: { value: @clinic.id }
                     = form.input :rate, collection: Vote.rates.keys
                     = form.input :comment

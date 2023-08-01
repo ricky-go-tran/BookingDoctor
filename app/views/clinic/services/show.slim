@@ -19,6 +19,12 @@
         .execution-time
             label Execution Time:
             span = " #{@service.execution_time}"
+        .service_view
+            label Service view:
+            - if @service.service_wallpaper.attached?
+                = image_tag @service.service_wallpaper
+            - else
+                label No Image
         .title Consumptions
         - if @service.medical_resources.present?
             table
