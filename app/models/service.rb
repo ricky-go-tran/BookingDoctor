@@ -17,4 +17,11 @@ class Service < ApplicationRecord
       .order('COUNT(service_items.id) DESC')
       .limit(5)
   }
+
+  scope :get_price_by_id, ->(id) {
+    find_by(id:).price
+  }
+  scope :get_execution_time_by_id, ->(id) {
+    find_by(id:).execution_time
+  }
 end

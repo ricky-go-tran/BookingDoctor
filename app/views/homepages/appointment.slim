@@ -27,11 +27,12 @@
     .body-wrapper
         .form-wrapper
             .title Appointment
-            = simple_form_for @medical_record, url: patient_medical_resources_path, method: :post, data: {turbo: false}  do |form|
+            = simple_form_for @medical_record, url: patient_medical_records_path, method: :post, data: {turbo: false}  do |form|
                 = form.input :clinic_profile_id, as: :hidden, input_html: { value: @clinic.id }
                 = form.input :start_time
-                = form.input :end_time
-                = form.simple_fields_for :service_items do |item_fields|
-                    = item_fields.collection_select :service_id, Service.where(clinic_profile_id: @clinic.id), :id, :name, include_blank: true
-                = form.button :submit
+                = form.simple_fields_for :service_items do |service_item|
+                    = render 'service_item_fields', f: service_item
+                .add-service
+                     = link_to_add_association 'Add service', form, :service_items
+                = form.button :submit, value: "Appointment"
 

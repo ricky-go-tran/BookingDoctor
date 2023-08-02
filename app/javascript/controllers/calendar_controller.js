@@ -6,6 +6,7 @@ export default class extends Controller {
     this.render();
   }
   render() {
+
     let ec = new EventCalendar(document.getElementById("time-grid"), {
       view: "timeGridWeek",
       height: "500px",
@@ -23,7 +24,7 @@ export default class extends Controller {
         { id: 2, title: "Other" },
       ],
       scrollTime: "07:00:00",
-      events: this.createEvents(),
+      events: this.handleData(),
       views: {
         timeGridWeek: { pointer: false },
         resourceTimeGridWeek: { pointer: false },
@@ -128,6 +129,10 @@ export default class extends Controller {
         color: "#B29DD9",
       }
     ];
+  }
+  handleData() {
+    var data = document.getElementById("time-grid")
+    return JSON.parse(data.dataset.bookingViews)
   }
   _pad(num) {
     let norm = Math.floor(Math.abs(num));

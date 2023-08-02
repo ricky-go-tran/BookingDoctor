@@ -62,6 +62,7 @@ Rails.application.routes.draw do
     resources :votes
     resources :medical_resources
     resources :profiles
+    resources :medical_records, except: %i[destroy]
     resources :patient_profiles, only: %i[show create new destroy]
     resources :reports, only: %i[index show create new destroy]
   end

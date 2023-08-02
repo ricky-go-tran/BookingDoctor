@@ -172,6 +172,22 @@ $add_icon: image-url("icon_add.png");
     text-decoration: none;
 }
 
+@mixin timepicker_format {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    >select {
+        height: 30px;
+        background-color: #e5e5e5;
+        border: none;
+        border-radius: 5px;
+        padding-left: 10px;
+        font-size: 16px;
+        width: 15%;
+        margin-right: 10px;
+    }
+}
 @mixin datepicker_format_simple_form {
     width: 100%;
     display: flex;

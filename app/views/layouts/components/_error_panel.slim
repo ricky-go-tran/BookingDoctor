@@ -1,0 +1,18 @@
+- if flash.present?
+    .message-panel-wrapper
+        - flash.each do |key, value|
+            - if key == :success || key == "success"
+                .success-wrapper[data-controller="error" data-error-target="close"]
+                    .left-bar
+                        .title Success!
+                        .content = value
+                    .right-close[data-action="click->error#hiddenPanel" ]
+            - else
+                .error-wrapper[data-controller="error" data-error-target="close"]
+                    .left-bar
+                        .title Error!
+                        .content = value
+                    .right-close[data-action="click->error#hiddenPanel" ]
+
+
+

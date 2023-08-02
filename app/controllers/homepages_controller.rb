@@ -16,6 +16,24 @@ class HomepagesController < ApplicationController
     @clinic = ClinicProfile.find(params[:id])
     @profile = @clinic.profile
     @services = @clinic.services
+    current_week = MedicalRecord.current_week_by_clinic(@clinic.id)
+    @calendar_booking = []
+    @calendar_booking = current_week.map do |item|
+      booking = {}
+      booking[:start] = item.start_time
+      booking[:end] = item.end_time
+      if user_signed_in? && current_user.profile.patient_profile.id == item.patient_profile_id
+        booking[:resourceId] = 1
+        booking[:title] = 'Your booking'
+        booking[:color] = '#FE6B64'
+      else
+        booking[:resourceId] = 2
+        booking[:title] = 'Other booking'
+        booking[:color] = '#B29DD9'
+      end
+      booking
+    end
+    @calendar_booking = @calendar_booking.to_json
   end
 
   def services
@@ -44,12 +62,5 @@ class HomepagesController < ApplicationController
   def appointment
     @clinic = ClinicProfile.find(params[:id])
     @medical_record = @clinic.medical_records.build
-    @medical_record.service_items.build
-    @medical_record.service_items.build
-    @medical_record.service_items.build
   end
 end
-
-private
-
-def get_current_week; end
