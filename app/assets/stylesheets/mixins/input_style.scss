@@ -34,7 +34,7 @@ $add_icon: image-url("icon_add.png");
 }
 
 @mixin button_style_pdf_export {
-    width: 150px;
+    width: 200px;
     box-sizing: border-box;
     padding: 5px 25px;
     background: #ef0706;
@@ -61,7 +61,7 @@ $add_icon: image-url("icon_add.png");
 }
 
 @mixin button_style_sheet {
-    width: 150px;
+    width: 200px;
     box-sizing: border-box;
     padding: 5px 25px;
     background: #0f9855;
@@ -88,7 +88,7 @@ $add_icon: image-url("icon_add.png");
 }
 
 @mixin button_style_add {
-    width: 150px;
+    width: 200px;
     box-sizing: border-box;
     padding: 5px 0;
     background: #1c7fcd;

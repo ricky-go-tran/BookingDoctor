@@ -40,4 +40,16 @@ class HomepagesController < ApplicationController
   end
 
   def unauthorization; end
+
+  def appointment
+    @clinic = ClinicProfile.find(params[:id])
+    @medical_record = @clinic.medical_records.build
+    @medical_record.service_items.build
+    @medical_record.service_items.build
+    @medical_record.service_items.build
+  end
 end
+
+private
+
+def get_current_week; end

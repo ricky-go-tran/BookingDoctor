@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     collection do
       get 'clinics'
       get 'clinics/:id', to: 'homepages#clinic_detail'
+      get 'clinics/:id/appointment', to: 'homepages#appointment'
       get 'services'
       get 'services/:id', to: 'homepages#service_detail'
       get 'supports'
@@ -59,6 +60,7 @@ Rails.application.routes.draw do
 
   namespace :patient do
     resources :votes
+    resources :medical_resources
     resources :profiles
     resources :patient_profiles, only: %i[show create new destroy]
     resources :reports, only: %i[index show create new destroy]

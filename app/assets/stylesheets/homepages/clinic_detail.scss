@@ -12,6 +12,7 @@ $start_icon: image-url("icon_star.png");
 .homepage-clinic-detail-wrapper {
     overflow-x: hidden;
     width: 100%;
+    height: calc(100vh - 70px);
 
     >.header-wrapper {
         .wallpaper {
@@ -112,6 +113,9 @@ $start_icon: image-url("icon_star.png");
                     }
                 }
             }
+            .add {
+                @include button_style_add;
+            }
         }
     }
 
@@ -122,6 +126,7 @@ $start_icon: image-url("icon_star.png");
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
+        min-height: calc(100% - 250px);
 
         >* {
             margin-top: 15px;
@@ -270,6 +275,7 @@ $start_icon: image-url("icon_star.png");
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+
             table {
                 width: 100%;
 
@@ -279,7 +285,8 @@ $start_icon: image-url("icon_star.png");
                     text-align: left;
                     color: #76838f;
                 }
-                .detail > a{
+
+                .detail>a {
                     @include buntton_style_detail;
                     text-decoration: none;
                 }
@@ -287,6 +294,34 @@ $start_icon: image-url("icon_star.png");
 
 
         }
+
+        .calendar {
+            background-color: #fff;
+            font-size: 18px;
+            width: 90%;
+            padding: 20px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .form-wrapper {
+            margin-top: 120px;
+            background: #fff;
+            font-size: 18px;
+            width: 90%;
+            padding: 20px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+        }
+
+
+
         .vote-wrapper {
             background-color: #fff;
             font-size: 18px;
@@ -327,9 +362,11 @@ $start_icon: image-url("icon_star.png");
                             display: flex;
                             align-items: flex-end;
                             margin-bottom: 10px;
+
                             label {
                                 font-weight: bold;
                             }
+
                             i {
                                 @include navbar_icon($start_icon);
                                 width: 24px;
