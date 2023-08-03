@@ -19,12 +19,21 @@ class Patient::MedicalRecordsController < Patient::BaseController
     end
     @medical_record.end_time = @medical_record.start_time + sum.minutes
     if @medical_record.save
-      flash[:success] = 'Success! Register appointment'
-      redirect_to "/clinics/#{@medical_record.clinic_profile_id}"
+      flash[:success_notice] = 'Success! Register appointment'
     else
-      flash[:error] = "Error! Can't appointment! Please try again"
-      redirect_to "/clinics/#{@medical_record.clinic_profile_id}"
+      flash[:error_notice] = "Error! Can't appointment! Please try again"
     end
+    redirect_to "/clinics/#{@medical_record.clinic_profile_id}"
+  end
+
+  def cancle
+    @medical_record = MedicalRecord.find(params[:id])
+    if @medical_record.update(status: 'cancle')
+      flash[:success_notice] = 'Success! Cancle appointment'
+    else
+      flash[:error_notice] = 'Fail! Can\'t cancle appointment! Try again!'
+    end
+    redirect_to patient_medical_records_path
   end
 
   private

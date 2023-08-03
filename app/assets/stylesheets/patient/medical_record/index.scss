@@ -41,6 +41,9 @@
                 @include select-format;
                 width: 30%;
             }
+            .del {
+                @include buntton_style_del_lock;
+            }
         }
     }
 

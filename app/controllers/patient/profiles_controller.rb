@@ -15,10 +15,10 @@ class Patient::ProfilesController < Patient::BaseController
   def update
     @profile = Profile.find(current_user.profile.id)
     if @profile.update(profile_params)
-      flash[:success] = 'Success! Save profile is finish'
+      flash[:success_notice] = 'Success! Save profile is finish'
       redirect_to patient_profiles_path
     else
-      flash[:error] = 'Error! Profile can\'t save'
+      flash[:error_notice] = 'Error! Profile can\'t save'
       render :change, status: 422
     end
   end
@@ -29,10 +29,10 @@ class Patient::ProfilesController < Patient::BaseController
     @profile = Profile.new(profile_params)
     @profile.user_id = current_user.id
     if @profile.save
-      flash[:success] = 'Success! Create profile is finish'
+      flash[:success_notice] = 'Success! Create profile is finish'
       redirect_to patient_profiles_path
     else
-      flash[:error] = 'Error! Profile can\'t create'
+      flash[:error_notice] = 'Error! Profile can\'t create'
       render :new, status: 422
     end
   end

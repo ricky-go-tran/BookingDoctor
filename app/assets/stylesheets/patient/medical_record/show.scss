@@ -1,0 +1,40 @@
+@import "../../mixins/input_style.scss";
+
+.history-medical-record-wrapper {
+    >.show-panel {
+        width: 100%;
+        >* {
+            width: 90%;
+            margin: 10px 0;
+            text-align: start;
+
+
+            >   label {
+                text-align: start;
+                vertical-align: top;
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            > span {
+                font-size: 16px;
+                font-weight: 200;
+            }
+        }
+        table {
+            width: 100%;
+
+            td,
+            th {
+                line-height: 2;
+                text-align: left;
+                color: #76838f;
+            }
+
+            .detail>a {
+                @include buntton_style_detail;
+                text-decoration: none;
+            }
+        }
+    }
+}

@@ -17,8 +17,8 @@
                             span =  medical_record.status
                         .time = "#{medical_record.start_time} - #{medical_record.end_time}"
                     .right
-                        .view-details View Details
-                        .cancle Cancle
+                        .view-details[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_medical_record_path(medical_record)}"] View Details
+                        = link_to "Cancle", cancle_patient_medical_record_path(medical_record) , class: "cancle", data: {turbo_method: :delete, turbo_comfirm: "Are you sure?"}
         - else
             .empty History is empty...
 

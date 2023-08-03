@@ -1,13 +1,13 @@
 - if flash.present?
     .message-panel-wrapper
         - flash.each do |key, value|
-            - if key == :success || key == "success"
+            - if key == :success_notice || key == "success_notice"
                 .success-wrapper[data-controller="error" data-error-target="close"]
                     .left-bar
                         .title Success!
                         .content = value
                     .right-close[data-action="click->error#hiddenPanel" ]
-            - else
+            - elsif key == :error_notice || key == "error_notice"
                 .error-wrapper[data-controller="error" data-error-target="close"]
                     .left-bar
                         .title Error!

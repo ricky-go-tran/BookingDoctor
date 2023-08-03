@@ -10,7 +10,7 @@ class MedicalRecord < ApplicationRecord
   has_many :services, through: :service_items
   resourcify
 
-  validate :check_overlapping
+  validate :check_overlapping, on: :create
 
   accepts_nested_attributes_for :examination_resul, :prescription_items, :service_items
 
@@ -47,7 +47,11 @@ class MedicalRecord < ApplicationRecord
   private
 
   def check_overlapping
-    overlaps = MedicalRecord.where('(start_time, end_time) OVERLAPS (?, ?)', start_time, end_time)
+    overlaps = if id.nil?
+                 MedicalRecord.where('status <> "cancle" AND (start_time, end_time) OVERLAPS (?, ?)', start_time, end_time)
+               else
+                 MedicalRecord.where(' id <> ? AND status <> "cancle" AND (start_time, end_time) OVERLAPS (?, ?)', id, start_time, end_time)
+               end
     if overlaps.present?
       errors.add(:base, 'Booking overlaps with existing records')
     end

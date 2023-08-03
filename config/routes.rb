@@ -68,7 +68,11 @@ Rails.application.routes.draw do
         get 'change'
       end
     end
-    resources :medical_records, except: %i[destroy]
+    resources :medical_records, except: %i[destroy] do
+      member do
+        delete 'cancle'
+      end
+    end
     resources :patient_profiles, only: %i[show create new update destroy] do
       collection do
         get 'change'
