@@ -61,9 +61,19 @@ Rails.application.routes.draw do
   namespace :patient do
     resources :votes
     resources :medical_resources
-    resources :profiles
+    resources :profiles do
+      collection do
+        get 'detail'
+        get 'invalid'
+        get 'change'
+      end
+    end
     resources :medical_records, except: %i[destroy]
-    resources :patient_profiles, only: %i[show create new destroy]
+    resources :patient_profiles, only: %i[show create new update destroy] do
+      collection do
+        get 'change'
+      end
+    end
     resources :reports, only: %i[index show create new destroy]
   end
 

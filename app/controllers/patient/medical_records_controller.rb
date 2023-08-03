@@ -1,4 +1,12 @@
 class Patient::MedicalRecordsController < Patient::BaseController
+  def index
+    @medical_records = MedicalRecord.where(patient_profile_id: current_user.profile.patient_profile.id)
+  end
+
+  def show
+    @medical_record = MedicalRecord.find(params[:id])
+  end
+
   def create
     @medical_record = MedicalRecord.new(medical_record_params)
 

@@ -1,0 +1,24 @@
+.history-medical-record-wrapper
+    .header
+        .title History Medical Record
+        .control-bar
+            select.dropdown
+                option#all[value="all" selected] All
+                option#finish[value="finish"] Finish
+                option#cancle[value="cancle"] Cancle
+                option#appointment[value="appointment"] Appointment
+    .content-panel
+        - if @medical_records.present?
+            - @medical_records.each do |medical_record|
+                .medical-record-item
+                    .left
+                        .title
+                            label =  medical_record.clinic_profile.name
+                            span =  medical_record.status
+                        .time = "#{medical_record.start_time} - #{medical_record.end_time}"
+                    .right
+                        .view-details View Details
+                        .cancle Cancle
+        - else
+            .empty History is empty...
+

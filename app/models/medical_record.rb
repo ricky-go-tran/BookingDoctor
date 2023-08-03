@@ -40,6 +40,10 @@ class MedicalRecord < ApplicationRecord
     where(created_at: Time.zone.now.beginning_of_week..Time.zone.now.end_of_week, clinic_profile_id: id)
   }
 
+  scope :current_week_by_clinic, ->(id) {
+    where(status: 'appointment', clinic_profile_id: id)
+  }
+
   private
 
   def check_overlapping

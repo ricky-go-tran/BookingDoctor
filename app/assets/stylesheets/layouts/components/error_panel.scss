@@ -38,10 +38,12 @@ $icon-close: image-url("icon_close.png");
 
             .title {
                 font-weight: bold;
+                font-size: 24px;
             }
 
             .content {
-                font-weight: 200;
+                font-weight: 400;
+                font-size: 18px;
 
             }
         }
@@ -70,10 +72,13 @@ $icon-close: image-url("icon_close.png");
 
             .title {
                 font-weight: bold;
+                font-size: 24px;
             }
 
             .content {
                 font-weight: 200;
+                font-size: 18px;
+
             }
         }
 
@@ -85,12 +90,14 @@ $icon-close: image-url("icon_close.png");
         }
     }
 }
+
 @keyframes slideFromRight {
     0% {
-      transform: translateX(100%);
+        transform: translateX(100%);
     }
+
     100% {
-      transform: translateX(0);
+        transform: translateX(0);
 
     }
-  }
+}

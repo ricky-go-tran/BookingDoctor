@@ -1,0 +1,10 @@
+.patient-my-profile-change-wrapper
+    .title Change Patient Profile
+    = simple_form_for [:patient, @patient_profile], data: {turbo: false} do |form|
+        = form.input :height, label: "Height"
+        = form.input :weight
+        = form.input :blood_group, collection: PatientProfile.blood_groups.keys
+        = form.input :drug_allergy
+        = form.button :submit
+
+

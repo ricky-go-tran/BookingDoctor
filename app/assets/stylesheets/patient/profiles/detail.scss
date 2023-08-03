@@ -1,0 +1,37 @@
+@import "../../mixins/clinic_layout.scss";
+
+.patient-my-profile-detail-wrapper {
+    margin-top: 1%;
+    border-radius: 10px;
+    width: 98%;
+    height: 98%;
+    background: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+
+    >* {
+        display: flex;
+        flex-wrap: wrap;
+
+        >.title {
+            font-size: 24px;
+            font-weight: bold;
+            flex-basis: 100%;
+            margin: 20px 0;
+            color: #337ab7;
+            border-bottom: 1px solid #337ab7;
+        }
+
+        >* {
+            width: 45%;
+            margin: 10px 0;
+
+            label {
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+    }
+
+}

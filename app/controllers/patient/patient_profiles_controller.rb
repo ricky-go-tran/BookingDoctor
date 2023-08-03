@@ -7,9 +7,20 @@ class Patient::PatientProfilesController < Patient::BaseController
 
   def show; end
 
-  def update; end
+  def update
+    @patient_profile = current_user.profile.patient_profile
+    if @patient_profile.update(patient_profile_params)
+      flash[:success] = 'Success! Save profile is finish'
+      redirect_to patient_profiles_path
+    else
+      flash[:error] = 'Error! Profile can\'t save'
+      render :change, status: 422
+    end
+  end
 
-  def edit; end
+  def change
+    @patient_profile = current_user.profile.patient_profile
+  end
 
   def destroy; end
 

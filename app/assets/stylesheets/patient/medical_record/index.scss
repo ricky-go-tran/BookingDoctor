@@ -1,0 +1,97 @@
+@import "../../mixins/input_style.scss";
+
+.history-medical-record-wrapper {
+    width: 99%;
+    background: #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 99%;
+    margin-top: 1%;
+    overflow-y: scroll;
+    padding: 15px;
+    box-sizing: border-box;
+
+    .header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        height: 5%;
+        border-bottom: 1px solid #337ab7;
+        align-items: flex-end;
+
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #337ab7;
+        }
+
+        .control-bar {
+            width: 50%;
+            display: flex;
+            justify-content: flex-end;
+            margin-right: -10px;
+
+            >* {
+                margin-right: 10px;
+            }
+            .dropdown {
+                @include select-format;
+                width: 30%;
+            }
+        }
+    }
+
+    .content-panel {
+        width: 100%;
+
+        >.medical-record-item {
+            background-color: #fff;
+            display: flex;
+            border-bottom: 1px solid #d3d3d3;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            box-sizing: border-box;
+
+            .left {
+                .title {
+                    font-size: 20px;
+                    font-weight: bold;
+                    display: flex;
+
+                    span {
+                        font-size: 16px;
+                        font-weight: 300;
+                        font-style: italic;
+                        color: #00fc85;
+                        margin-left: 10px;
+                    }
+                }
+
+                .time {
+                    font-size: 16px;
+                    font-style: italic;
+                    margin-top: 15px;
+                    color: #0cbecd;
+                }
+            }
+
+            .right {
+                display: flex;
+                justify-content: flex-end;
+
+                .view-details {
+                    @include buntton_style_detail;
+                }
+
+                .cancle {
+                    @include buntton_style_del_lock;
+                }
+            }
+        }
+    }
+}

@@ -18,12 +18,11 @@
         align-items: center;
         margin-top: 1%;
         box-sizing: border-box;
-        height: 15%;
 
         >.left-bar {
             display: flex;
             justify-content: space-between;
-            width: 10%;
+            width: 20%;
 
             .back {
                 @include buntton_style_del_lock;
@@ -33,14 +32,14 @@
         >.title {
             font-size: 20px;
             font-weight: bold;
-            width: 30%;
+            width: 40%;
             text-align: center;
         }
 
         >.right-bar {
             display: flex;
             justify-content: flex-end;
-            width: 60%;
+            width: 40%;
 
             >* {
                 margin-right: 2%;
