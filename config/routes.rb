@@ -18,6 +18,14 @@ Rails.application.routes.draw do
   root "homepages#index"
 
   namespace :clinic do
+    resources :appointments, only: %i[index show] do
+      collection do
+        get 'detail'
+      end
+      member do
+        delete 'cancle'
+      end
+    end
     resources :statistics, only: %i[index]
     resources :services do
       resources :consumptions, only: %i[create destroy]

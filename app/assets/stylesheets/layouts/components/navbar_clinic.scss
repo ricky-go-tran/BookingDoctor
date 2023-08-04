@@ -5,6 +5,7 @@ $statistic_icon: image-url("icon_statis.png");
 $patient_icon: image-url("icon_patient.png");
 $inventory_icon: image-url("icon_inventory.png");
 $serive_icon: image-url("icon_service.png");
+$workspace_icon: image-url("icon_workspace_white.png");
 $profile-icon-gray: image-url("icon_profile_gray.png");
 $report_icon_gray: image-url("icon_report_gray.png");
 $appointment_icon_gray: image-url("icon_appointment_gray.png");
@@ -12,6 +13,7 @@ $statistic_icon_gray: image-url("icon_statis_gray.png");
 $patient_icon_gray: image-url("icon_patient_gray.png");
 $inventory_icon_gray: image-url("icon_inventory_gray.png");
 $serive_icon_gray: image-url("icon_service_gray.png");
+$workspace_icon_gray: image-url("icon_workspace.png");
 
 @import "../../mixins/layout.scss";
 
@@ -88,7 +90,7 @@ $serive_icon_gray: image-url("icon_service_gray.png");
             align-items: center;
             width: 100%;
             margin-bottom: 20px;
-            border-radius: 10px;
+            border-radius:  5px;
             padding: 0 5px;
 
             &:hover {
@@ -100,8 +102,8 @@ $serive_icon_gray: image-url("icon_service_gray.png");
                 @include navbar_icon($profile-icon-gray);
             }
 
-            #report-icon {
-                @include navbar_icon($report_icon_gray);
+            #workspace-icon {
+                @include navbar_icon($workspace_icon_gray);
             }
 
             #appointment-icon {
@@ -137,9 +139,9 @@ $serive_icon_gray: image-url("icon_service_gray.png");
             }
         }
 
-        #report:hover {
-            #report-icon {
-                @include navbar_icon($report_icon);
+        #workspace:hover {
+            #workspace-icon {
+                @include navbar_icon($workspace_icon);
             }
         }
 

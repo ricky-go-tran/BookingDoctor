@@ -6,3 +6,4 @@ import "@nathanvda/cocoon"
 //= require cocoon
 
 
+import "channels"

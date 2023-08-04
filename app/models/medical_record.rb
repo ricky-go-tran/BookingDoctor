@@ -36,11 +36,7 @@ class MedicalRecord < ApplicationRecord
     where(status: 'finish', created_at: Time.zone.now.prev_month.beginning_of_month..Time.zone.now.prev_month.end_of_month)
   }
 
-  scope :current_week_by_clinic, ->(id) {
-    where(created_at: Time.zone.now.beginning_of_week..Time.zone.now.end_of_week, clinic_profile_id: id)
-  }
-
-  scope :current_week_by_clinic, ->(id) {
+  scope :current_appointment_by_clinic, ->(id) {
     where(status: 'appointment', clinic_profile_id: id)
   }
 
@@ -48,9 +44,9 @@ class MedicalRecord < ApplicationRecord
 
   def check_overlapping
     overlaps = if id.nil?
-                 MedicalRecord.where('status <> "cancle" AND (start_time, end_time) OVERLAPS (?, ?)', start_time, end_time)
+                 MedicalRecord.where('status != \'cancle\' AND (start_time, end_time) OVERLAPS (?, ?)', start_time, end_time)
                else
-                 MedicalRecord.where(' id <> ? AND status <> "cancle" AND (start_time, end_time) OVERLAPS (?, ?)', id, start_time, end_time)
+                 MedicalRecord.where(' id != ? AND status != \'cancle\' AND (start_time, end_time) OVERLAPS (?, ?)', id, start_time, end_time)
                end
     if overlaps.present?
       errors.add(:base, 'Booking overlaps with existing records')

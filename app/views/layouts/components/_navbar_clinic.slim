@@ -9,7 +9,10 @@
         .item#profile[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_profiles_path}"]
             #profile-icon
             span My Profile
-        .item#appointment[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"]
+        .item#workspace[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"]
+            #workspace-icon
+            span Workspace
+        .item#appointment[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_appointments_path}"]
             #appointment-icon
             span Appointment
         .item#statistics[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_statistics_path}"]
@@ -24,7 +27,5 @@
         .item#service[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_services_path}"]
             #service-icon
             span Service Management
-        .item#report[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"]
-            #report-icon
-            span Report Icon
+
 

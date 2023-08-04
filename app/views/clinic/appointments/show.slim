@@ -1,0 +1,48 @@
+.clinic-appointment-detail-wrapper
+    .title Appointment Details
+    .patient-name
+        label Clinic:
+        span = " #{@medical_record.patient_profile.profile.fullname }"
+    .patient-address
+        label Address:
+        span = " #{@medical_record.patient_profile.profile.address }"
+    .patient-height
+        label Height:
+        span = " #{@medical_record.patient_profile.height }"
+    .patient-weight
+        label Weight:
+        span = " #{@medical_record.patient_profile.weight }"
+    .patient-blood-group
+        label Blood Group:
+        span = " #{@medical_record.patient_profile.blood_group }"
+    .patient-drug-allergy
+        label Drug Allergy:
+        span = " #{@medical_record.patient_profile.drug_allergy }"
+
+    .appointment-time
+        label Appointment Time:
+        span = " #{@medical_record.start_time} - #{@medical_record.end_time}"
+    .appointment-status
+        label Apponitment Status:
+        span = " #{@medical_record.status.camelize}"
+    .service-table
+        label Services:
+    - if @medical_record.services.present?
+        table.service-item
+            thead
+                tr
+                    th Name
+                    th Price
+                    th Time
+                    th Details
+            tbody
+                - @medical_record.services.each do |item|
+                    tr
+                        td = item.name
+                        td = "$ #{item.price}"
+                        td = "#{item.execution_time} minutes"
+                        td.detail = link_to "Detail", "/services/#{item.id}", class: "detail"
+    - else
+        .empty Services is empty...
+
+    = button_to "Progress", root_path, class: "progress"

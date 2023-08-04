@@ -16,7 +16,7 @@ class HomepagesController < ApplicationController
     @clinic = ClinicProfile.find(params[:id])
     @profile = @clinic.profile
     @services = @clinic.services
-    current_week = MedicalRecord.current_week_by_clinic(@clinic.id)
+    current_week = MedicalRecord.current_appointment_by_clinic(@clinic.id)
     @calendar_booking = []
     @calendar_booking = current_week.map do |item|
       booking = {}

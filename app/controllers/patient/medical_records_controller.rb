@@ -18,7 +18,19 @@ class Patient::MedicalRecordsController < Patient::BaseController
       item
     end
     @medical_record.end_time = @medical_record.start_time + sum.minutes
+
     if @medical_record.save
+      medical_record_json = {}
+      medical_record_json[:id] = @medical_record.id
+      medical_record_json[:clinic_profile_id] = @medical_record.clinic_profile_id
+      medical_record_json[:patient_profile_id] = @medical_record.patient_profile_id
+      medical_record_json[:patient_name] = helpers.get_name_patient_by_patient_id(@medical_record.patient_profile_id)
+      medical_record_json[:start_time] = @medical_record.start_time
+      medical_record_json[:end_time] = @medical_record.end_time
+      ActionCable
+        .server
+        .broadcast("notifications:#{@medical_record.clinic_profile.profile.user_id}",
+                   { data: @medical_record, action: 'add' })
       flash[:success_notice] = 'Success! Register appointment'
     else
       flash[:error_notice] = "Error! Can't appointment! Please try again"
@@ -29,6 +41,10 @@ class Patient::MedicalRecordsController < Patient::BaseController
   def cancle
     @medical_record = MedicalRecord.find(params[:id])
     if @medical_record.update(status: 'cancle')
+      ActionCable
+        .server
+        .broadcast("notifications:#{@medical_record.clinic_profile.profile.user_id}",
+                   { data: @medical_record.id, action: 'cancle' })
       flash[:success_notice] = 'Success! Cancle appointment'
     else
       flash[:error_notice] = 'Fail! Can\'t cancle appointment! Try again!'

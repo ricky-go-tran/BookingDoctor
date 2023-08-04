@@ -1,0 +1,16 @@
+.clinic-appointment-wrapper
+    .title Appointment
+    .appointments.
+        - if @medical_records.present?
+            table.appointment-item#appointment-clinic-view[data-controller="appointment" data-appointment-target="source" data-action="appointment#connect" data-appointment-view = "#{@medical_records_json}"]
+                thead
+                    tr
+                        th Patient name
+                        th Start time
+                        th End time
+                        th Detail
+                        th Cancle
+                tbody
+                // render data in stimulus
+        - if @medical_records.empty?
+            .empty No appointment...
