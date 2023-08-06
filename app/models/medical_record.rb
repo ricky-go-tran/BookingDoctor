@@ -17,27 +17,31 @@ class MedicalRecord < ApplicationRecord
   enum status: { appointment: 'appointment', progress: 'progress', finish: 'finish', cancle: 'cancle' }
   validates :status, inclusion: { in: %w[appointment progress finish cancle] }
 
-  scope :current_month, -> {
-    where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)
+  scope :current_month, ->(id) {
+    where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month, clinic_profile_id: id)
   }
-  scope :current_month_cancel, -> {
-    where(status: 'cancel', created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)
+  scope :current_month_cancel, ->(id) {
+    where(status: 'cancle', created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month, clinic_profile_id: id)
   }
-  scope :current_month_finish, -> {
-    where(status: 'finish', created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)
+  scope :current_month_finish, ->(id) {
+    where(status: 'finish', created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month, clinic_profile_id: id)
   }
-  scope :prev_month, -> {
-    where(created_at: Time.zone.now.prev_month.beginning_of_month..Time.zone.now.prev_month.end_of_month)
+  scope :prev_month, ->(id) {
+    where(created_at: Time.zone.now.prev_month.beginning_of_month..Time.zone.now.prev_month.end_of_month, clinic_profile_id: id)
   }
-  scope :prev_month_cancel, -> {
-    where(status: 'cancel', created_at: Time.zone.now.prev_month.beginning_of_month..Time.zone.now.prev_month.end_of_month)
+  scope :prev_month_cancel, ->(id) {
+    where(status: 'cancle', created_at: Time.zone.now.prev_month.beginning_of_month..Time.zone.now.prev_month.end_of_month, clinic_profile_id: id)
   }
-  scope :prev_month_finish, -> {
-    where(status: 'finish', created_at: Time.zone.now.prev_month.beginning_of_month..Time.zone.now.prev_month.end_of_month)
+  scope :prev_month_finish, ->(id) {
+    where(status: 'finish', created_at: Time.zone.now.prev_month.beginning_of_month..Time.zone.now.prev_month.end_of_month, clinic_profile_id: id)
   }
 
   scope :current_appointment_by_clinic, ->(id) {
     where(status: 'appointment', clinic_profile_id: id)
+  }
+
+  scope :get_current_progess_in_clinic, ->(clinic_id) {
+    find_by(status: 'progress', clinic_profile_id: clinic_id)
   }
 
   private

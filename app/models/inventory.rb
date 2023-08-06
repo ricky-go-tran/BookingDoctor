@@ -3,6 +3,7 @@
 class Inventory < ApplicationRecord
   belongs_to :medical_resource
   belongs_to :clinic_profile
+  validates :medical_resource_id, :amount, :price, presence: true
   resourcify
   scope :top_5_in_month, -> {
     joins('INNER JOIN medical_resources ON inventories.medical_resource_id = medical_resources.id')

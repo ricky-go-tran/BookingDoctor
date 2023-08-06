@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   root "homepages#index"
 
   namespace :clinic do
+    resources :workspaces, only: %i[index]
     resources :appointments, only: %i[index show] do
       collection do
         get 'detail'

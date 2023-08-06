@@ -1,11 +1,11 @@
 class Patient::MedicalRecordsController < Patient::BaseController
+  before_action :get_medical_record, only: %i[show cancle]
+  before_action :check_own, only: %i[show cancle]
   def index
     @medical_records = MedicalRecord.where(patient_profile_id: current_user.profile.patient_profile.id)
   end
 
-  def show
-    @medical_record = MedicalRecord.find(params[:id])
-  end
+  def show; end
 
   def create
     @medical_record = MedicalRecord.new(medical_record_params)
@@ -39,7 +39,6 @@ class Patient::MedicalRecordsController < Patient::BaseController
   end
 
   def cancle
-    @medical_record = MedicalRecord.find(params[:id])
     if @medical_record.update(status: 'cancle')
       ActionCable
         .server
@@ -56,5 +55,13 @@ class Patient::MedicalRecordsController < Patient::BaseController
 
   def medical_record_params
     params.require(:medical_record).permit(:clinic_profile_id, :start_time, :status, service_items_attributes: [:id, :service_id, :_destroy])
+  end
+
+  def get_medical_record
+    @medical_record = MedicalRecord.find(params[:id])
+  end
+
+  def check_own
+    authorize [:patient, @medical_record]
   end
 end
