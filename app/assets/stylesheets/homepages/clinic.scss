@@ -5,6 +5,7 @@ $phone_icon: image-url("icon_phone_black.png");
 
 @import "../mixins/input_style.scss";
 @import "../mixins/layout.scss";
+@import "../mixins/responesive.scss";
 
 .homepage-clinic-wrapper {
     overflow-x: hidden;
@@ -95,6 +96,10 @@ $phone_icon: image-url("icon_phone_black.png");
                 cursor: pointer;
                 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
                 box-sizing: border-box;
+
+                @include mobile {
+                    width: calc(100% - 30px);
+                }
 
                 .clinic_view {
                     width: 100%;

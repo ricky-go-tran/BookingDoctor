@@ -1,7 +1,7 @@
 class Clinic::AppointmentsController < Clinic::BaseController
+  before_action :get_medical_record, only: %i[show cancle]
   def index
     @medical_records = MedicalRecord.current_appointment_by_clinic(current_user.profile.clinic_profile.id)
-
     @medical_records_json = @medical_records.map do |item|
       {
         id: item.id,
@@ -17,17 +17,20 @@ class Clinic::AppointmentsController < Clinic::BaseController
 
   def detail; end
 
-  def show
-    @medical_record = MedicalRecord.find(params[:id])
-  end
+  def show; end
 
   def cancle
-    @medical_record = MedicalRecord.find(params[:id])
     if @medical_record.update(status: 'cancle')
       ActionCable
         .server
         .broadcast("notifications:#{@medical_record.clinic_profile.profile.user_id}",
                    { data: @medical_record.id, action: 'cancle' })
     end
+  end
+
+  private
+
+  def get_medical_record
+    @medical_record = MedicalRecord.find(params[:id])
   end
 end

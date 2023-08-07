@@ -14,8 +14,10 @@ $patient_icon_gray: image-url("icon_patient_gray.png");
 $inventory_icon_gray: image-url("icon_inventory_gray.png");
 $serive_icon_gray: image-url("icon_service_gray.png");
 $workspace_icon_gray: image-url("icon_workspace.png");
+$toggle_icon: image-url("icon_menu.png");
 
 @import "../../mixins/layout.scss";
+@import "../../mixins/responesive.scss";
 
 .clinic-navbar-wrapper {
     width: 20%;
@@ -27,6 +29,14 @@ $workspace_icon_gray: image-url("icon_workspace.png");
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    overflow-y: scroll;
+    @include mobile {
+        display: none;
+        z-index: 1;
+        width: 100%;
+
+    }
+
 
     .info-part {
         margin-top: 25px;
@@ -123,6 +133,9 @@ $workspace_icon_gray: image-url("icon_workspace.png");
             }
             #patient-icon {
                 @include navbar_icon($patient_icon_gray);
+            }
+            #toggle-icon {
+                @include navbar_icon($toggle_icon);
             }
 
 

@@ -7,6 +7,7 @@ $start_icon: image-url("icon_star.png");
 
 @import "../mixins/input_style.scss";
 @import "../mixins/layout.scss";
+@import "../mixins/responesive.scss";
 
 
 .homepage-clinic-detail-wrapper {
@@ -34,6 +35,10 @@ $start_icon: image-url("icon_star.png");
                 color: #fff;
                 font-size: 48px;
                 font-weight: bold;
+                @include mobile {
+                    font-size: 30px;
+                    width: 20%;
+                }
             }
 
             .blur-panel {
@@ -64,6 +69,9 @@ $start_icon: image-url("icon_star.png");
                 flex-direction: column;
                 padding: 20px;
                 box-sizing: border-box;
+                @include mobile {
+                    width: 90%;
+                }
 
                 >* {
                     >label {
@@ -78,6 +86,9 @@ $start_icon: image-url("icon_star.png");
                         text-overflow: ellipsis;
                         font-size: 20px;
                         text-align: center;
+                        @include mobile {
+                            font-size: 15px;
+                        }
                     }
 
                     width: 95%;
@@ -89,8 +100,12 @@ $start_icon: image-url("icon_star.png");
                 .name {
                     font-size: 38px;
                     font-weight: bold;
+                    @include mobile {
+                        font-size: 12px;
+                    }
 
                     label {
+
                         @include navbar_icon($hospital_icon);
                         width: 20px;
                         height: 20px;
@@ -98,6 +113,9 @@ $start_icon: image-url("icon_star.png");
                 }
 
                 .address {
+                    @include mobile {
+                        font-size: 18px;
+                    }
                     label {
                         @include navbar_icon($address_icon);
                         width: 20px;
@@ -106,6 +124,9 @@ $start_icon: image-url("icon_star.png");
                 }
 
                 .phone {
+                    @include mobile {
+                        font-size: 18px;
+                    }
                     label {
                         @include navbar_icon($phone_icon);
                         width: 20px;
@@ -142,7 +163,6 @@ $start_icon: image-url("icon_star.png");
             border-bottom: 1px solid rgba(231, 229, 229, 1.00);
             flex-basis: 100%;
             color: rgb(51, 122, 183);
-            ;
         }
 
         .notice {

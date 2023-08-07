@@ -3,14 +3,13 @@
 class Patient::ProfilesController < Patient::BaseController
   skip_before_action :check_first_login, only: %i[new create]
   before_action :check_normal_login, only: %i[new create]
+  before_action :get_profile, only: %i[change update]
 
   def index; end
 
   def detail; end
 
-  def change
-    @profile = Profile.find(current_user.profile.id)
-  end
+  def change; end
 
   def update
     @profile = Profile.find(current_user.profile.id)
@@ -54,5 +53,9 @@ class Patient::ProfilesController < Patient::BaseController
     return if is_first_login?
 
     redirect_to patient_profiles_path
+  end
+
+  def get_profile
+    @profile = Profile.find(current_user.profile.id)
   end
 end

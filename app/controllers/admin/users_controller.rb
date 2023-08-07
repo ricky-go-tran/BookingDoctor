@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Admin::UsersController < Admin::BaseController
+  before_action :get_user, only: %i[show detail_request]
+  before_action :get_profile, only: %i[accepted canceled]
   def index
     @users = User.all
     if params[:query]
@@ -21,9 +23,7 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
+  def show; end
 
   def request_verify
     @users = User.where(id: Profile.select(:user_id).where(status: 'invalid'))
@@ -31,7 +31,6 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def detail_request
-    @user = User.find(params[:id])
     @profile = @user.profile
     @category = Category.get_name_by_user(@user)
     @start_day = ClinicProfile.get_start_day_by_user(@user)
@@ -39,16 +38,24 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def accepted
-    @profile = Profile.find(params[:id])
     @profile.status = 'valid'
     @profile.save
     redirect_to request_verify_admin_users_path
   end
 
   def canceled
-    @profile = Profile.find(params[:id])
     @profile.status = 'cancle'
     @profile.save
     redirect_to request_verify_admin_users_path
+  end
+
+  private
+
+  def get_user
+    @user = User.find(params[:id])
+  end
+
+  def get_profile
+    @profile = Profile.find(params[:id])
   end
 end

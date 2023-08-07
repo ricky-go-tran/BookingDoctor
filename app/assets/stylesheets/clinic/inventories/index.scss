@@ -1,5 +1,6 @@
 @import "../../mixins/input_style.scss";
 @import "../../mixins/clinic_layout.scss";
+@import "../../mixins/responesive.scss";
 
 .clinic-inventory-wrapper {
     width: 100%;
@@ -26,6 +27,9 @@
 
             .back {
                 @include buntton_style_del_lock;
+                @include mobile {
+                    display: none;
+                }
             }
         }
 
@@ -34,12 +38,19 @@
             font-weight: bold;
             width: 40%;
             text-align: center;
+            @include mobile {
+                display: none;
+            }
         }
 
         >.right-bar {
             display: flex;
             justify-content: flex-end;
             width: 40%;
+            @include mobile {
+                width: 100%;
+                font-size: 14px;
+            }
 
             >* {
                 margin-right: 2%;
@@ -47,14 +58,23 @@
 
             .sheet {
                 @include button_style_sheet;
+                @include mobile {
+                    font-size: 12px;
+                }
             }
 
             .medical_resources {
                 @include button_style_add;
+                @include mobile {
+                    font-size: 12px;
+                }
             }
 
             .add {
                 @include button_style_add;
+                @include mobile {
+                    font-size: 12px;
+                }
             }
         }
 
@@ -76,11 +96,17 @@
             width: 100%;
             justify-content: space-between;
             align-items: center;
+            @include mobile {
+                align-items: flex-start;
+            }
 
             .left {
                 .name {
                     font-size: 20px;
                     font-weight: bold;
+                    @include mobile {
+                        font-size: 14px;
+                    }
 
                     span {
                         font-size: 16px;
@@ -96,12 +122,25 @@
                     font-style: italic;
                     margin-top: 15px;
                     color: #0cbecd;
+                    @include mobile {
+                        font-size: 14px;
+                    }
                 }
             }
 
             .right {
                 display: flex;
                 justify-content: flex-end;
+                @include mobile {
+                    flex-direction: column;
+                }
+
+                > * {
+                    @include mobile {
+                        font-size: 12px;
+                        margin-top: 5%;
+                    }
+                }
 
                 .view {
                     @include buntton_style_detail;

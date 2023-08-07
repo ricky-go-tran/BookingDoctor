@@ -1,4 +1,7 @@
 @import "../../mixins/input_style.scss";
+@import "../../mixins/layout.scss";
+@import "../../mixins/responesive.scss";
+$menu: image-url("icon_menu.png");
 
 
 .title-bar-clinic-wrapper {
@@ -9,6 +12,10 @@
     align-items: center;
     justify-content: space-between;
     border-radius:  5px;
+    @include mobile {
+        width: 100%;
+    }
+
 
     .control-panel {
         margin-left: 2%;
@@ -25,10 +32,28 @@
 
         >* {
             margin-right: 15px;
+            @include mobile {
+                margin-right: 5px;
+            }
+        }
+        .dropdown-button {
+            @include navbar_icon($menu);
+            display: none;
+
+            @include mobile {
+                display: block;
+                margin-left: 5%;
+            }
         }
 
         .user-name {
             @include name_background;
+            @include mobile {
+                font-size: 14px;
+                @include mobile {
+                    display: none;
+                }
+            }
         }
 
         .logout {

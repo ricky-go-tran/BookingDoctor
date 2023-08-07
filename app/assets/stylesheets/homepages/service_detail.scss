@@ -7,6 +7,7 @@ $law_icon: image-url("icon_law.png");
 
 @import "../mixins/input_style.scss";
 @import "../mixins/layout.scss";
+@import "../mixins/responesive.scss";
 
 
 .homepage-service-detail-wrapper {
@@ -33,6 +34,9 @@ $law_icon: image-url("icon_law.png");
                 color: #fff;
                 font-size: 48px;
                 font-weight: bold;
+                @include mobile {
+                    font-size: 24px;
+                }
             }
 
             .blur-panel {
@@ -63,6 +67,9 @@ $law_icon: image-url("icon_law.png");
                 flex-direction: column;
                 padding: 20px;
                 box-sizing: border-box;
+                @include mobile {
+                    width: 90%;
+                }
 
                 >* {
                     >label {
@@ -77,6 +84,9 @@ $law_icon: image-url("icon_law.png");
                         text-overflow: ellipsis;
                         font-size: 20px;
                         text-align: center;
+                        @include mobile {
+                            font-size: 14px;
+                        }
                     }
 
                     width: 95%;

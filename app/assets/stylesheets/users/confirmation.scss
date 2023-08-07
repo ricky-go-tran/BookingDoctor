@@ -1,11 +1,19 @@
 @import "../mixins/input_style.scss";
 @import "../mixins/layout.scss";
 $confirmation_backround: image-url("authen_background.jpg");
+@import "../mixins/responesive.scss";
 
 .confirmation-wrapper {
     @include full-wrapper($confirmation_backround);
+    @include mobile {
+        justify-content: center;
+        align-items: flex-end;
+    }
     .form-wrapper {
         @include basic-form(column, center, center, 35%);
+        @include mobile {
+            @include full-form(column, center, center, 90%);
+        }
         h2 {
             font-size: 40px;
             background: linear-gradient(90deg, #00fc85, #0cbecd);
