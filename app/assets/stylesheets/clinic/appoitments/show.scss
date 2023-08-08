@@ -1,0 +1,63 @@
+@import "../../mixins/input_style.scss";
+@import "../../mixins/layout.scss";
+
+.clinic-appointment-detail-wrapper {
+    width: 99%;
+    background: #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 95%;
+    margin-top: 1%;
+    overflow-y: scroll;
+    padding: 15px 40px;
+    box-sizing: border-box;
+    .title {
+        font-size: 28px;
+        font-weight: bold;
+        color: #1465f2;
+        border-bottom: 1px solid #1465f2;
+    }
+    >* {
+        width: 90%;
+        margin: 10px 0;
+        text-align: start;
+
+
+        >label {
+            text-align: start;
+            vertical-align: top;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        >span {
+            font-size: 16px;
+            font-weight: 200;
+        }
+    }
+
+    table {
+        width: 100%;
+
+        td,
+        th {
+            line-height: 2;
+            text-align: left;
+            color: #76838f;
+        }
+
+        .detail>a {
+            @include buntton_style_detail;
+            text-decoration: none;
+        }
+    }
+
+    .progress {
+        @include buntton_style_edit;
+        width: 200px;
+        font-size: 18px;
+    }
+}

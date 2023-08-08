@@ -10,11 +10,12 @@
             = form.input :address
             = form.input :phone
             = form.input :description
-            = form.input :start_hour, label: "Start Hour", collection: ClinicProfile.hours.keys
-            = form.input :end_hour, label: "End Hour", collection: ClinicProfile.hours.keys
-            = form.input :start_day, label: "Start Day", collection: ClinicProfile.days
-            = form.input :end_day, label: "End Day",  collection: ClinicProfile.days
+            = form.input :start_hour, label: "Start Hour"
+            = form.input :end_hour, label: "End Hour"
+            = form.input :start_day, label: "Start Day"
+            = form.input :end_day, label: "End Day"
             = form.input :certificate
+            = form.input :clinic_view
             = form.button :submit
 
 

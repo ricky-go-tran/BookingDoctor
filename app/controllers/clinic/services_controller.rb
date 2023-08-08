@@ -1,8 +1,9 @@
 class Clinic::ServicesController < Clinic::BaseController
   before_action :get_service, only: %i[edit update show destroy]
+  before_action :check_own, only: %i[edit update show destroy]
 
   def index
-    @services = Service.all
+    @services = Service.where(clinic_profile_id: current_user.profile.clinic_profile.id)
     respond_to do |format|
       format.html
       format.xlsx do
@@ -46,10 +47,14 @@ class Clinic::ServicesController < Clinic::BaseController
   private
 
   def service_params
-    params.require(:service).permit(:name, :description, :price, :execution_time)
+    params.require(:service).permit(:name, :description, :price, :service_wallpaper, :execution_time)
   end
 
   def get_service
     @service = Service.find(params[:id])
+  end
+
+  def check_own
+    authorize [:clinic, @service]
   end
 end

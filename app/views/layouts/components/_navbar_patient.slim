@@ -1,10 +1,10 @@
 .navbar-patient-wrapper
-    .item
+    .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_profiles_path}"]
         #my-profile
         span My Profile
-    .item
+    .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_medical_records_path}"]
         #history-medical-record
         span History Medical Record
-    .item
+    .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_profiles_path}"]
         #scheduled
         span Scheduled

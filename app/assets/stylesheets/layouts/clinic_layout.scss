@@ -10,6 +10,16 @@
     position: absolute;
     top: 0;
     background-color: #f3f3f9;
+    overflow: hidden;
+    .content_wrapper {
+        width: 100%;
+        height: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+    }
 }
 .body-clinic {
     width: 100%;
@@ -20,12 +30,4 @@
     align-items: center;
     overflow-y: hidden;
 }
-.content_wrapper {
-    width: 100%;
-    height: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-sizing: border-box;
-}
+

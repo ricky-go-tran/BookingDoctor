@@ -7,9 +7,43 @@ class HomepagesController < ApplicationController
 
   def index; end
 
-  def clinics; end
+  def clinics
+    @categories = Category.all
+    @clinics = ClinicProfile.joins(:profile).where("profiles.status = 'valid'")
+  end
 
-  def services; end
+  def clinic_detail
+    @clinic = ClinicProfile.find(params[:id])
+    @profile = @clinic.profile
+    @services = @clinic.services
+    current_week = MedicalRecord.current_appointment_by_clinic(@clinic.id)
+    @calendar_booking = []
+    @calendar_booking = current_week.map do |item|
+      booking = {}
+      booking[:start] = item.start_time
+      booking[:end] = item.end_time
+      if user_signed_in? && current_user.profile.patient_profile.id == item.patient_profile_id
+        booking[:resourceId] = 1
+        booking[:title] = 'Your booking'
+        booking[:color] = '#FE6B64'
+      else
+        booking[:resourceId] = 2
+        booking[:title] = 'Other booking'
+        booking[:color] = '#B29DD9'
+      end
+      booking
+    end
+    @calendar_booking = @calendar_booking.to_json
+  end
+
+  def services
+    @services = Service.all
+  end
+
+  def service_detail
+    @service = Service.find(params[:id])
+    @clinic = @service.clinic_profile
+  end
 
   def supports; end
 
@@ -24,4 +58,9 @@ class HomepagesController < ApplicationController
   end
 
   def unauthorization; end
+
+  def appointment
+    @clinic = ClinicProfile.find(params[:id])
+    @medical_record = @clinic.medical_records.build
+  end
 end

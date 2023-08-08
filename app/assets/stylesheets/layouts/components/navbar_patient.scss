@@ -5,7 +5,7 @@ $scheduled-icon: image-url("icon_scheduled.png");
 .navbar-patient-wrapper {
     margin-top: 5px;
     height: calc(100% - 5px);
-    width: 15%;
+    width: 20%;
     background: linear-gradient(180deg, #1c408c, #23a8bb);
     display: flex;
     flex-direction: column;
@@ -15,7 +15,11 @@ $scheduled-icon: image-url("icon_scheduled.png");
     line-height: 2;
     color: #fff;
 
+
     >.item {
+        &:first-child {
+            margin-top: 10%;
+        }
         cursor: pointer;
         margin-top: 5%;
         margin-left: 5%;
@@ -23,9 +27,12 @@ $scheduled-icon: image-url("icon_scheduled.png");
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
-        width: 80%;
+        width: 90%;
         margin-bottom: 20px;
-        border-radius: 10px;
+        border-radius: 5px;
+        padding: 5px;
+        box-sizing: border-box;
+
 
         &:hover {
             border: 1px solid #ffffff

@@ -1,0 +1,37 @@
+.patient-my-profile-detail-wrapper
+    .account-info
+        .title Account Infomation
+        .email
+            label Email:
+            span = "  #{current_user.email}"
+        .time-create
+            label Time Signup:
+            span = "  #{current_user.created_at}"
+        .time-update
+            label Change Recently:
+            span = "  #{current_user.updated_at}"
+    .profile-info
+        .title Profile Information
+        .fulname
+            label Fullname:
+            span = "  #{current_user.profile.fullname}"
+        .birthday
+            label Birthday:
+            span = "  #{current_user.profile.birthday}"
+        .address
+            label Address:
+            span = " #{current_user.profile.address}"
+    .patient-info
+        .title Patient Information
+        .height
+            label Height:
+            span = "  #{current_user.profile.patient_profile.height}"
+        .weight
+            label Weight:
+            span = "  #{current_user.profile.patient_profile.weight}"
+        .blood-group
+            label Blood Group:
+            span = "  #{current_user.profile.patient_profile.blood_group}"
+        .drug_allergy
+            label Drug Allergy:
+            span = "  #{current_user.profile.patient_profile.drug_allergy}"

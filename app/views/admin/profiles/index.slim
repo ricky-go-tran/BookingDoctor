@@ -8,4 +8,4 @@
     .birthday  = "Your birthday: #{current_user.profile.birthday}"
     .address = "Address: #{current_user.profile.address}"
     = link_to "Change your profile", admin_profiles_change_path, class: "edit"
-    = button_to "Logout", destroy_user_session_path, method: :delete, class: "logout"
+    = button_to "Logout", destroy_user_session_path, method: :delete, class: "logout", data: { turbo: false }

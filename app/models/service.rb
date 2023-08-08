@@ -7,11 +7,22 @@ class Service < ApplicationRecord
   has_many :medical_records, through: :service_items
   belongs_to :clinic_profile
   resourcify
-  scope :top_5_in_month, -> {
+  validates :name, :description, :price, :execution_time, presence: true
+
+  has_one_attached :service_wallpaper
+
+  scope :top_5_in_month, ->(id) {
     joins(:service_items)
-      .where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)
+      .where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month, clinic_profile_id: id)
       .group('services.id')
       .order('COUNT(service_items.id) DESC')
       .limit(5)
+  }
+
+  scope :get_price_by_id, ->(id) {
+    find_by(id:).price
+  }
+  scope :get_execution_time_by_id, ->(id) {
+    find_by(id:).execution_time
   }
 end

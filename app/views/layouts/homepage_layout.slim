@@ -7,7 +7,10 @@ html
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
+    link[rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@event-calendar/build/event-calendar.min.css"]
+    script[src="https://cdn.jsdelivr.net/npm/@event-calendar/build/event-calendar.min.js"]
   body
     .homepage-wrapper
       = render "layouts/components/navbar"
       = yield
+    = render "layouts/components/error_panel"

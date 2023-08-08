@@ -1,0 +1,38 @@
+.homepage-clinic-detail-wrapper
+    .header-wrapper
+        - if @clinic.clinic_view.attached?
+            - image_url = rails_blob_url(@clinic.clinic_view)
+            .wallpaper[style="background-image: url('#{image_url}')"]
+                .blur-panel
+                .title Clinic Details
+                .clinic-information-wrapper
+                    .name
+                        label
+                        span = @clinic.name
+                    .address
+                        label
+                        span = @clinic.address
+                    .phone
+                        label
+                        span = @clinic.phone
+        - else
+            .wallpaper
+                .blur-panel
+                .title Clinic Details
+                .clinic-information-wrapper
+                    .name = @clinic.name
+                    .address = @clinic.address
+                    .phone = @clinic.phone
+
+    .body-wrapper
+        .form-wrapper
+            .title Appointment
+            = simple_form_for @medical_record, url: patient_medical_records_path, method: :post, data: {turbo: false}  do |form|
+                = form.input :clinic_profile_id, as: :hidden, input_html: { value: @clinic.id }
+                = form.input :start_time
+                = form.simple_fields_for :service_items do |service_item|
+                    = render 'service_item_fields', f: service_item
+                .add-service
+                     = link_to_add_association 'Add service', form, :service_items
+                = form.button :submit, value: "Appointment"
+

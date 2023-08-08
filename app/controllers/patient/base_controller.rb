@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Patien::BaseController < ApplicationController
+class Patient::BaseController < ApplicationController
   before_action :require_patient
   before_action :check_patient_profile, unless: :devise_controller?
   layout 'patient_layout'

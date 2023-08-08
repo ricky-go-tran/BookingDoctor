@@ -4,9 +4,12 @@ $management_icon: image-url("icon_management.png");
 $save_icon: image-url("icon_save.png");
 $connect_icon: image-url("icon_connect.png");
 
+@import "../mixins/responesive.scss";
+
 .homepage-index-wrapper {
     overflow-x: hidden;
     width: 100%;
+
     .wallpaper {
         width: 100%;
         height: calc(100vh - 65px);
@@ -20,6 +23,7 @@ $connect_icon: image-url("icon_connect.png");
         justify-content: center;
         align-items: center;
         box-sizing: border-box;
+
         .blur-panel {
             position: absolute;
             top: 0;
@@ -28,30 +32,44 @@ $connect_icon: image-url("icon_connect.png");
             right: 0;
             background: rgba(200, 200, 200, 0.25);
         }
+
         .logo {
             margin-top: -15%;
             font-size: 68px;
             font-weight: bold;
+
+            @include mobile {
+                font-size: 42px;
+            }
+
             span {
                 color: #0cbecd;
             }
+
             label {
                 color: #00fc85;
             }
         }
+
         .slogan {
             font-size: 18px;
             font-style: italic;
             color: #00fc85;
         }
+
         .title {
             position: absolute;
             bottom: 20%;
             font-size: 28px;
             font-weight: bold;
             color: #fff;
+
+            @include mobile {
+                font-size: 18px;
+            }
         }
     }
+
     .features-wrapper {
         width: 100%;
         padding: 25px 0 45px 0;
@@ -60,21 +78,31 @@ $connect_icon: image-url("icon_connect.png");
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+
         .title {
             font-size: 32px;
             font-weight: bold;
         }
+
         .features {
             margin-top: 25px;
             display: flex;
             width: 100%;
             justify-content: space-around;
             align-items: center;
-            div {
+
+            >div {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+
+                .title-feature {
+                    @include mobile {
+                        display: none;
+                    }
+                }
+
                 #icon-booking {
                     width: 64px;
                     height: 64px;
@@ -82,7 +110,13 @@ $connect_icon: image-url("icon_connect.png");
                     background-position: center;
                     background-repeat: no-repeat;
                     background-size: cover;
+
+                    @include mobile {
+                        width: 32px;
+                        height: 32px;
+                    }
                 }
+
                 #icon-management {
                     width: 64px;
                     height: 64px;
@@ -90,7 +124,13 @@ $connect_icon: image-url("icon_connect.png");
                     background-position: center;
                     background-repeat: no-repeat;
                     background-size: cover;
+
+                    @include mobile {
+                        width: 30px;
+                        height: 30px;
+                    }
                 }
+
                 #icon-connect {
                     width: 64px;
                     height: 64px;
@@ -98,7 +138,13 @@ $connect_icon: image-url("icon_connect.png");
                     background-position: center;
                     background-repeat: no-repeat;
                     background-size: cover;
+
+                    @include mobile {
+                        width: 30px;
+                        height: 30px;
+                    }
                 }
+
                 #icon-save {
                     width: 64px;
                     height: 64px;
@@ -106,11 +152,17 @@ $connect_icon: image-url("icon_connect.png");
                     background-position: center;
                     background-repeat: no-repeat;
                     background-size: cover;
+
+                    @include mobile {
+                        width: 30px;
+                        height: 30px;
+                    }
                 }
             }
         }
 
     }
+
     .introduction-wrapper {
         width: 100%;
         padding: 25px 0 45px 0;
@@ -119,20 +171,36 @@ $connect_icon: image-url("icon_connect.png");
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
+
         .title {
             height: 100%;
             font-size: 32px;
             font-weight: bold;
             flex: 1;
             margin-left: 25px;
+
+            @include mobile {
+                font-size: 18px;
+
+            }
         }
+
         .introduction {
             font-size: 18px;
             line-height: 1.8;
+            font-weight: 200;
             flex: 3;
             margin-right: 5%;
+            text-align: justify;
+
+            @include mobile {
+                font-size: 15px;
+
+            }
+
         }
     }
+
     .population-clinics-wrapper {
         width: 100%;
         padding: 25px 0 45px 0;
@@ -141,6 +209,7 @@ $connect_icon: image-url("icon_connect.png");
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
         .title {
             height: 100%;
             font-size: 32px;
@@ -148,6 +217,7 @@ $connect_icon: image-url("icon_connect.png");
             flex: 1;
             margin-left: 25px;
         }
+
         .population-clinics {
             margin-top: 25px;
             display: flex;
@@ -156,6 +226,7 @@ $connect_icon: image-url("icon_connect.png");
             align-items: center;
         }
     }
+
     .population-services-wrapper {
         width: 100%;
         padding: 25px 0 45px 0;
@@ -164,6 +235,7 @@ $connect_icon: image-url("icon_connect.png");
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
         .title {
             height: 100%;
             font-size: 32px;
@@ -171,6 +243,7 @@ $connect_icon: image-url("icon_connect.png");
             flex: 1;
             margin-left: 25px;
         }
+
         .population-services {
             margin-top: 25px;
             display: flex;

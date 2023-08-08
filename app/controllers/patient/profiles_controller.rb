@@ -3,14 +3,24 @@
 class Patient::ProfilesController < Patient::BaseController
   skip_before_action :check_first_login, only: %i[new create]
   before_action :check_normal_login, only: %i[new create]
+  before_action :get_profile, only: %i[change update]
 
   def index; end
 
-  def show; end
+  def detail; end
 
-  def update; end
+  def change; end
 
-  def edit; end
+  def update
+    @profile = Profile.find(current_user.profile.id)
+    if @profile.update(profile_params)
+      flash[:success_notice] = 'Success! Save profile is finish'
+      redirect_to patient_profiles_path
+    else
+      flash[:error_notice] = 'Error! Profile can\'t save'
+      render :change, status: 422
+    end
+  end
 
   def destroy; end
 
@@ -18,8 +28,10 @@ class Patient::ProfilesController < Patient::BaseController
     @profile = Profile.new(profile_params)
     @profile.user_id = current_user.id
     if @profile.save
+      flash[:success_notice] = 'Success! Create profile is finish'
       redirect_to patient_profiles_path
     else
+      flash[:error_notice] = 'Error! Profile can\'t create'
       render :new, status: 422
     end
   end
@@ -41,5 +53,9 @@ class Patient::ProfilesController < Patient::BaseController
     return if is_first_login?
 
     redirect_to patient_profiles_path
+  end
+
+  def get_profile
+    @profile = Profile.find(current_user.profile.id)
   end
 end

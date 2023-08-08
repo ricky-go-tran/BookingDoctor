@@ -1,0 +1,79 @@
+@import "../../mixins/layout.scss";
+@import "../../mixins/input_style.scss";
+
+.clinic-appointment-wrapper {
+    background-color: #f3f3f3;
+    width: 99%;
+    height: 99%;
+    margin-top: 1%;
+    overflow-y: auto;
+
+    .title {
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    table,
+    td,
+    tr,
+    th,
+    tbody,
+    thead {
+
+        border: none;
+    }
+
+    #appointment-clinic-view {
+        width: 100%;
+        margin-top: 2%;
+        border-collapse: separate;
+        border-spacing: 0 1rem;
+
+
+        td,
+        th {
+            line-height: 3;
+            text-align: center;
+            border: none;
+        }
+
+        tbody {
+            tr {
+                box-sizing: border-box;
+                background-color: #fff;
+                border-radius: 5px;
+            }
+
+            td {
+                box-sizing: border-box;
+                padding-top: 15px;
+                padding-bottom: 15px;
+
+            }
+
+            td:first-child {
+                border-left-style: solid;
+                border-top-left-radius: 10px;
+                border-color: #fff;
+                border-bottom-left-radius: 10px;
+            }
+
+            td:last-child {
+                border-right-style: solid;
+                border-color: #fff;
+                border-bottom-right-radius: 10px;
+                border-top-right-radius: 10px;
+            }
+
+            .detail {
+                @include buntton_style_detail;
+                width: 100px;
+            }
+
+            .cancle {
+                @include buntton_style_del_lock;
+                width: 100px;
+            }
+        }
+    }
+}

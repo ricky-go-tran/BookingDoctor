@@ -1,5 +1,11 @@
 .user-management-wrapper {
     > .content-panel {
+        .certificate, .clinic_view {
+            img {
+                height: 400px;
+                width: 530px;
+            }
+        }
         > * {
             display: flex;
             flex-wrap: wrap;

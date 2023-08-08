@@ -1,0 +1,103 @@
+$icon-close: image-url("icon_close.png");
+
+@import "../../mixins/layout.scss";
+
+.message-panel-wrapper {
+    width: 60%;
+    height: fit-content;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    overflow-y: scroll;
+    color: #fff;
+
+    >* {
+        margin-bottom: 10px;
+    }
+
+    .error-wrapper {
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        background-image: linear-gradient(230deg, #fc5286, #fbaaa2);
+        display: flex;
+        justify-content: space-between;
+        height: fit-content;
+        box-sizing: border-box;
+        animation: slideFromRight 1s linear;
+
+        .left-bar {
+            width: 90%;
+
+            .title {
+                font-weight: bold;
+                font-size: 24px;
+            }
+
+            .content {
+                font-weight: 400;
+                font-size: 18px;
+
+            }
+        }
+
+        .right-close {
+            @include navbar_icon($icon-close);
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+    }
+
+    .success-wrapper {
+        box-sizing: border-box;
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        background-image: linear-gradient(230deg, #c3ff75, #3cf66b);
+        display: flex;
+        justify-content: space-between;
+        height: fit-content;
+        animation: slideFromRight 1s linear;
+
+        .left-bar {
+            width: 90%;
+
+            .title {
+                font-weight: bold;
+                font-size: 24px;
+            }
+
+            .content {
+                font-weight: 200;
+                font-size: 18px;
+
+            }
+        }
+
+        .right-close {
+            @include navbar_icon($icon-close);
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+    }
+}
+
+@keyframes slideFromRight {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(0);
+
+    }
+}

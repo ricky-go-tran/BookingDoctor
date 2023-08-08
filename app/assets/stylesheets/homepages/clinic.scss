@@ -1,0 +1,165 @@
+$clinic_wrapper: image-url("clinic_wallpaper_2.jpg");
+$hospital_icon: image-url("icon_hospital_black.png");
+$address_icon: image-url("icon_address_black.png");
+$phone_icon: image-url("icon_phone_black.png");
+
+@import "../mixins/input_style.scss";
+@import "../mixins/layout.scss";
+@import "../mixins/responesive.scss";
+
+.homepage-clinic-wrapper {
+    overflow-x: hidden;
+    width: 100%;
+
+    >.header-wrapper {
+        .wallpaper {
+            width: 100%;
+            height: 180px;
+            background-image: $clinic_wrapper;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            overflow: visible;
+            z-index: 0;
+
+            .title {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                color: #fff;
+                font-size: 48px;
+                font-weight: bold;
+            }
+
+            .blur-panel {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(200, 200, 200, 0.25);
+                z-index: 1;
+                overflow: visible;
+
+            }
+
+            .search-wrapper {
+                position: absolute;
+                left: 50%;
+                bottom: 0;
+                transform: translate(-50%, 50%);
+                z-index: 2;
+                display: flex;
+                justify-content: space-between;
+                width: 60%;
+
+                .search-bar {
+                    @include input_format;
+                    width: 65%
+                }
+
+                .dropdown-categories {
+                    @include input_format;
+                    width: 30%;
+                }
+            }
+        }
+    }
+
+    >.body-wrapper {
+        background-color: #f3f3f3;
+        padding: 30px 15px;
+        width: 100%;
+
+        .title {
+            width: 90%;
+            font-size: 24px;
+            font-weight: bold;
+            border-bottom: 1px solid #000;
+        }
+
+        .clinics {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-left: -30px;
+
+            .clinic-item {
+                width: calc(25% - 30px);
+                margin-left: 30px;
+                border-radius: 20px;
+                overflow: hidden;
+                background-color: #fff;
+                margin-top: 2%;
+                cursor: pointer;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                box-sizing: border-box;
+
+                @include mobile {
+                    width: calc(100% - 30px);
+                }
+
+                .clinic_view {
+                    width: 100%;
+                    height: 350px;
+                }
+
+                .clinic-content {
+                    height: 150px;
+                    padding: 20px;
+                    line-height: 2;
+                    width: 100%;
+                    box-sizing: border-box;
+
+                    >* {
+                        > label {
+                            margin-right: 10px;
+                            width: 15%;
+                        }
+                        >span {
+                            width: 85%;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            font-size: 18px;
+                        }
+                        width: 95%;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                    }
+
+                    .clinic-name {
+                        font-size: 20px;
+                        font-weight: bold;
+
+                        label  {
+                            @include navbar_icon($hospital_icon);
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+
+                    .clinic-address {
+                        label {
+                            @include navbar_icon($address_icon);
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+
+                    .clinic-phone {
+                        label {
+                            @include navbar_icon($phone_icon);
+                            width: 20px;
+                            height: 20px;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}

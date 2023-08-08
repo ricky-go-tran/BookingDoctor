@@ -13,10 +13,10 @@ class Clinic::ConsumptionsController < ApplicationController
   end
 
   def destroy
-    @consumption = Consumption.find(params[:id])
+    @consumption = Consumption.find(params[:service_id])
     @service_id = @consumption.service_id
     @consumption.destroy
-    redirect_to "/clinic/service/#{@service_id}"
+    redirect_to clinic_service_path(@service_id)
   end
 
   private

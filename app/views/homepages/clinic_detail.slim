@@ -1,0 +1,154 @@
+.homepage-clinic-detail-wrapper
+    .header-wrapper
+        - if @clinic.clinic_view.attached?
+            - image_url = rails_blob_url(@clinic.clinic_view)
+            .wallpaper[style="background-image: url('#{image_url}')"]
+                .blur-panel
+                .title Clinic Details
+                .clinic-information-wrapper
+                    .name
+                        label
+                        span = @clinic.name
+                    .address
+                        label
+                        span = @clinic.address
+                    .phone
+                        label
+                        span = @clinic.phone
+                    - if is_patient?
+                        = link_to "Appointment", "/clinics/#{@clinic.id}/appointment", data: {turbo: false}, class: "add"
+
+        - else
+            .wallpaper
+                .blur-panel
+                .title Clinic Details
+                .clinic-information-wrapper
+                    .name
+                        label
+                        span = @clinic.name
+                    .address
+                        label
+                        span = @clinic.address
+                    .phone
+                        label
+                        span = @clinic.phone
+                    - if is_patient?
+                        = link_to "Appointment", "/clinics/#{@clinic.id}/appointment", data: {turbo: false}, class: "add"
+
+    .body-wrapper
+        .notice
+            label
+                i
+                | DoctorBooking notice
+            span We pledge that every clinic and clinic owner listed on our website has been duly confirmed to possess all the legal and professional certificates required by the Socialist Republic of Vietnam. Ensuring the safety and quality of healthcare for patients is our top priority, and verifying the necessary certifications is a crucial step to guarantee that the clinics meet the highest standards of care and adhere to all healthcare regulations.
+
+        .feature
+            label
+                i
+                | DoctorBooking feature
+            span
+                ul
+                    |Welcome to our website - an advanced and convenient platform that connects patients with reputable healthcare clinics.
+                    li Diverse Clinic Network
+                    li Verified Certifications
+                    li Online Booking
+        .own-information
+            .title
+                label Own Information
+                span
+            .fulname
+                label Fullname:
+                span = "  #{@profile.fullname}"
+            .birthday
+                label Birthday:
+                span = "  #{@profile.birthday}"
+            .address
+                label Address:
+                span = " #{@profile.address}"
+        .clinic-information
+            .title Clinic Information
+            .fulname
+                label Name:
+                br
+                span = " #{@clinic.name}"
+            .birthday
+                label Category:
+                br
+                span = "  #{Category.find(@clinic.category_id).name}"
+            .address
+                label Address:
+                br
+                span = " #{@clinic.address}"
+            .phone
+                label  Phone:
+                br
+                span = " #{@clinic.phone}"
+            .active-time
+                label Operating hours -
+                label  Start:
+                span = " #{@clinic.start_hour.to_s(:time)}"
+                label  End:
+                span = " #{@clinic.end_hour.to_s(:time)}"
+            .active-time
+                label Operating hours -
+                label  Start:
+                span = " #{get_day_in_week(@clinic.start_day)}"
+                label  End:
+                span = " #{get_day_in_week(@clinic.end_day)}"
+            .description
+                label  Description:
+                br
+                span = " #{@clinic.description}"
+
+        .service-wrapper
+            .title Services
+            .services
+                - if @services.present?
+                    table.service-item
+                        thead
+                            tr
+                                th Name
+                                th Price
+                                th Time
+                                th Details
+                        tbody
+                            - @services.each do |item|
+                                tr
+                                    td = item.name
+                                    td = "$ #{item.price}"
+                                    td = "$ #{item.execution_time}"
+                                    td.detail = link_to "Detail", "/services/#{item.id}", class: "detail"
+                - else
+                        .empty Services is empty..
+        .calendar
+            .title Calendar
+            #time-grid[data-controller="calendar" data-chart-target="target" data-action="calendar#connect" data-booking-views="#{@calendar_booking}"]
+
+        .vote-wrapper
+            .title Rate
+            .votes
+                - if @clinic.votes.present?
+                    - @clinic.votes.each do |vote|
+                        .vote-item
+                            .header
+                                .name-user
+                                    label = get_fullname_by_id_patient_profile(vote.patient_profile_id)
+                                    span = " - #{vote.rate}"
+                                    i
+
+                                .time = vote.created_at
+                            .body
+                                span = vote.comment
+                - else
+                    .empty Rates is empty..
+
+            - if is_patient?
+                .title Add Rate
+                = simple_form_for @clinic.votes.build,  url: patient_votes_path, method: :post, data: {turbo: false}  do |form|
+                    = form.input :clinic_profile_id, as: :hidden, input_html: { value: @clinic.id }
+                    = form.input :rate, collection: Vote.rates.keys
+                    = form.input :comment
+                    = form.button :submit
+
+
+

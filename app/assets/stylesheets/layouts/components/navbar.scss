@@ -1,5 +1,8 @@
 @import "../../mixins/input_style.scss";
+@import "../../mixins/responesive.scss";
+@import "../../mixins/layout.scss";
 $logo: image-url("logo.png");
+$menu: image-url("icon_menu.png");
 
 .navbar-wrapper {
     width: 100%;
@@ -11,63 +14,145 @@ $logo: image-url("logo.png");
     padding: 10px 0;
     box-sizing: border-box;
     box-shadow: 0 5px 20px -15px gray;
+    position: relative;
+
     .logo {
         font-size: 32px;
         font-weight: bold;
         margin-left: 30px;
+
         span {
             color: #0cbecd;
         }
+
         label {
             color: #00fc85;
         }
+
+        @include mobile {
+            font-size: 24px;
+        }
+
     }
-    .menu {
+
+    .dropdown-button {
+        @include navbar_icon($menu);
+        display: none;
+
+        @include mobile {
+            display: block;
+            margin-right: 5%;
+        }
+    }
+
+    .menu-wrapper {
+        flex: 1;
         display: flex;
-        flex-direction: row;
-        justify-content: space-around;
         align-items: center;
-        .item {
-            padding: 5px 15px;
-            border-radius: 10px;
-            color: black;
-            text-decoration: none;
-            &:hover {
-                background: linear-gradient(90deg, #0cbecd, #00fc85);
-                color: #ffffff;
+        justify-content: space-between;
+
+        @include mobile {
+            display: none;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            margin-left: 10%;
+
+            .item {
+                padding: 5px 15px;
+                border-radius: 5px;
+                color: black;
+                text-decoration: none;
+
+                &:hover {
+                    background: linear-gradient(90deg, #0cbecd, #00fc85);
+                    color: #ffffff;
+                }
+            }
+        }
+
+        .authentication-control {
+            margin-right: 5%;
+            display: flex;
+
+
+            >* {
+                padding: 5px 15px;
+                border-radius: 5px;
+                color: black;
+                text-decoration: none;
+            }
+
+            >.login {
+                &:hover {
+                    background: linear-gradient(90deg, #0cbecd, #00fc85);
+                    color: #ffffff;
+                }
+            }
+
+            >.signup {
+                &:hover {
+                    background: linear-gradient(90deg, #0cbecd, #00fc85);
+                    color: #ffffff;
+                }
+            }
+
+            >.username {
+                @include name_background;
+
+            }
+
+            .logout {
+                @include buntton_style_del_lock;
+                cursor: pointer;
             }
         }
     }
-    .authentication-control {
-        margin-right: 5%;
+
+    .menu-wrapper-mobile {
+        z-index: 1;
+        position: fixed;
+        top: 53px;
+        right: 0;
+        left: 0;
+        bottom: 0;
         display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        overflow-y: scroll;
+        padding: 50px 0px 20px 40px;
+        justify-content: space-between;
+
+        >.menu {
+            display: flex;
+            flex-direction: column;
+        }
+
+        >.authentication-control {
+            display: flex;
+            flex-direction: column;
+        }
 
 
-        > * {
-            padding: 5px 15px;
-            border-radius: 10px;
-            color: black;
+        a {
             text-decoration: none;
-        }
-        > .login {
+            color: black;
+            margin: 10px 0;
+            padding: 10px 0;
+            border-bottom: 1px solid #000;
             &:hover {
-                background: linear-gradient(90deg, #0cbecd, #00fc85);
-                color: #ffffff;
+                background-color: #00fc85;
             }
-        }
-        > .signup {
-            &:hover {
-                background: linear-gradient(90deg, #0cbecd, #00fc85);
-                color: #ffffff;
-            }
-        }
-        > .username {
-            @include name_background;
-
         }
         .logout {
             @include buntton_style_del_lock;
             cursor: pointer;
         }
     }
+
+
 }

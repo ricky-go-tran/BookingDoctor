@@ -19,6 +19,12 @@
         .execution-time
             label Execution Time:
             span = " #{@service.execution_time}"
+        .service_view
+            label Service view:
+            - if @service.service_wallpaper.attached?
+                = image_tag @service.service_wallpaper
+            - else
+                label No Image
         .title Consumptions
         - if @service.medical_resources.present?
             table
@@ -29,12 +35,12 @@
                         th Amount
                         th Delete
                 tbody
-                    - @service.medical_resources.each do |item|
+                    - @service.consumptions.each do |item|
                         tr
-                            td = item.name
-                            td = item.brand
-                            td = @service.consumptions.find_by(medical_resource_id: item.id).amount
-                            td = link_to "Delete", clinic_service_consumption_path(@service.consumptions.find_by(medical_resource_id: item.id)),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "delete"
+                            td = MedicalResource.find(item.medical_resource_id).name
+                            td = MedicalResource.find(item.medical_resource_id).brand
+                            td = item.amount
+                            td = link_to "Delete", clinic_service_consumption_path(item),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "delete"
 
         - else
             .empty Comsumptions is empty...

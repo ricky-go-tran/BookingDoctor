@@ -1,0 +1,62 @@
+$patient-wallpaper: image-url("patient_wallpaper.png");
+
+@import "../../mixins/input_style.scss";
+@import "../../mixins/layout.scss";
+
+.patient-my-profile-wrapper {
+    width: 95%;
+    background: #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 94%;
+    margin-top: 1%;
+    overflow-y: scroll;
+    padding: 15px 0;
+    box-sizing: border-box;
+
+    > * {
+        margin-bottom: 10px;
+    }
+    .logo {
+        @include logo;
+        font-size: 32px;
+        margin-top: 2%;
+    }
+    .title {
+        font-size: 24px;
+        font-weight: bold;
+    }
+    .image {
+        width: 250px;
+        height: 250px;
+        background: $patient-wallpaper;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    .name, .birthday, .address{
+        font-size: 18px;
+        font-weight: 300;
+    }
+    .edit {
+        @include buntton_style_edit;
+
+    }
+    .edit-clinic {
+        @include buntton_style_detail;
+        background-image: linear-gradient(230deg, #ffa98d,  #ffd191 );
+    }
+    .details {
+        @include buntton_style_detail;
+        background-color: #0f9855;
+    }
+    > a{
+        width: 25%;
+        text-decoration: none;
+        text-align: center;
+    }
+
+}

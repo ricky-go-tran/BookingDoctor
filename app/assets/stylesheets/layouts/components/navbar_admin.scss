@@ -70,7 +70,7 @@ $switch_icon: image-url("icon_switch.png");
             align-items: center;
             width: 100%;
             margin-bottom: 20px;
-            border-radius: 10px;
+            border-radius:  5px;
             &:hover {
                 border: 1px solid #ffffff
             }
@@ -132,7 +132,7 @@ $switch_icon: image-url("icon_switch.png");
         justify-content: flex-start;
         align-items: center;
         width: 100%;
-        border-radius: 10px;
+        border-radius:  5px;
         cursor: pointer;
         #switch-icon {
             width: 32px;

@@ -12,15 +12,23 @@ class ClinicProfile < ApplicationRecord
   resourcify
 
   has_one_attached :certificate
+  has_one_attached :clinic_view
+  validates :name, :address, :phone, :description, :start_day, :end_day, :start_hour, :end_hour, presence: true
+  validates :start_day, :end_day, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 6 }
+  validate :start_hour_must_be_before_end_hour
 
   scope :current_month, -> {
     where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)
   }
+  def start_hour_must_be_before_end_hour
+    if start_hour.present? && end_hour.present? && start_hour >= end_hour
+      errors.add(:end_hour, 'Must be after start hour')
+    end
+  end
 
   scope :get_start_day_by_user, ->(user) { days.key(user.profile.clinic_profile.start_day).camelize }
   scope :get_end_day_by_user, ->(user) { days.key(user.profile.clinic_profile.end_day).camelize }
 
-  enum hour: %i[0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23]
   enum day: {
     sunday: 0,
     monday: 1,

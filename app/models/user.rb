@@ -17,4 +17,16 @@ class User < ApplicationRecord
   def delete_roles
     roles.delete(roles.where(id: roles.ids))
   end
+
+  def get_profile
+    profile
+  end
+
+  def get_profile_clinic
+    profile.clinic_profile
+  end
+
+  def get_profile_patient
+    profile.patient_profile
+  end
 end
