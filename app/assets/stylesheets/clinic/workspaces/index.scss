@@ -15,13 +15,16 @@ $no-workspace: image-url("no_appointment.png");
     overflow-y: scroll;
     padding: 15px 40px;
     box-sizing: border-box;
+
     .logo {
         @include logo;
     }
+
     .title {
         font-size: 32px;
         font-weight: bold;
     }
+
     .image {
         margin-top: 10%;
         width: 300px;
@@ -30,6 +33,111 @@ $no-workspace: image-url("no_appointment.png");
         background-position: top;
         background-repeat: no-repeat;
         background-size: cover;
+    }
+
+    >div {
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1465f2;
+            border-bottom: 1px solid #1465f2;
+            width: 100%;
+        }
+        &:not(:first-child) {
+            margin-top: 5%;
+        }
+    }
+
+    .patient-info-wrapper {
+
+        width: 99%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -20px;
+
+        >*:not(:first-child) {
+            margin-top: 2%;
+            width: calc(25% - 20px);
+            margin-left: 20px;
+        }
+
+        .drug-allergy {
+            width: 100%;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        span {
+            font-weight: 200;
+            margin-left: 3%;
+        }
+    }
+
+    .service-table {
+        width: 99%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 2%;
+
+        >table {
+            margin-top: 2%;
+            width: 100%;
+
+            td,
+            th {
+                line-height: 2;
+                text-align: left;
+            }
+            td {
+                font-weight: 200;
+            }
+
+            .detail>a {
+                @include buntton_style_detail;
+                text-decoration: none;
+            }
+        }
+    }
+    .patient-info-form{
+        width: 100%;
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            @include input_format;
+        }
+        textarea {
+            @include area_format;
+        }
+        .nested-fields {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            .remove_fields {
+                @include buntton_style_del_lock;
+                width: 200px;
+                box-sizing: border-box;
+                text-align: center;
+                margin-top: 5%;
+            }
+        }
+        .add_fields {
+            display: block;
+            margin-top: 5%;
+            @include button_style_add;
+            text-align: center !important;
+            width: 200px;
+        }
+        .btn {
+            margin-top: 5%;
+            @include button_style_submit;
+            width: 100%;
+        }
     }
 
 }

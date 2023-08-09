@@ -1,5 +1,5 @@
 class Clinic::AppointmentsController < Clinic::BaseController
-  before_action :get_medical_record, only: %i[show cancle]
+  before_action :get_medical_record, only: %i[show cancle progress]
   def index
     @medical_records = MedicalRecord.current_appointment_by_clinic(current_user.profile.clinic_profile.id)
     @medical_records_json = @medical_records.map do |item|
@@ -26,6 +26,22 @@ class Clinic::AppointmentsController < Clinic::BaseController
         .broadcast("notifications:#{@medical_record.clinic_profile.profile.user_id}",
                    { data: @medical_record.id, action: 'cancle' })
     end
+  end
+
+  def progress
+    @progress_appointment = MedicalRecord.where(clinic_profile_id: current_user.get_profile_clinic.id, status: 'progress')
+    if @medical_record.status != 'appointment'
+      raise StandardError, "Status is invalid!  Can't progress this appointment"
+    elsif @progress_appointment.present?
+      raise StandardError, "There is an appointment in progress!  Can't progress this appointment"
+    else
+      @medical_record.status = 'progress'
+      @medical_record.save!
+      redirect_to clinic_workspaces_path
+    end
+  rescue StandardError => e
+    flash[:error_notice] = e.message
+    redirect_to clinic_appointment_path(@medical_record)
   end
 
   private

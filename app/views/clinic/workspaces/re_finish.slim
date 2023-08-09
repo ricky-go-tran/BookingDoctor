@@ -1,0 +1,15 @@
+.clinic-workspace-re-finish-wrapper
+    .logo
+        span Doctor
+        label Booking
+    .title Finish Appointment...?
+    .fullname
+        label Patient name:
+        span = "    #{get_name_patient_by_id(@medical_record.patient_profile_id)}"
+    .total-price = "$ #{total_price(@service_items, @prescription_items)}"
+
+    .control-wrapper
+        = link_to "Export Prescription", clinic_path(@medical_record, format: :pdf), {class: "export-prescription"}
+        = link_to "Cashed Payment", cash_payment_clinic_workspace_path(@medical_record), {class: "momo-pay", data: {turbo_method: :put}}
+        .cash-pay Stripe Payment
+

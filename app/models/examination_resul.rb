@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ExaminationResult < ApplicationRecord
+class ExaminationResul < ApplicationRecord
   belongs_to :medical_record
   resourcify
 end

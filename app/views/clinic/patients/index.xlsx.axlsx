@@ -1,0 +1,7 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: 'Patient') do |sheet|
+  sheet.add_row %w[Fullname Birthday Height Weight BloodGroup DrugAllergy]
+  @patients.each do |patient|
+    sheet.add_row [patient.profile.fullname, patient.profile.birthday, patient.height, patient.weight, patient.blood_group, patient.drug_allergy]
+  end
+end

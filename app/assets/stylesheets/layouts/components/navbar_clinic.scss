@@ -91,6 +91,12 @@ $toggle_icon: image-url("icon_menu.png");
         border-bottom: 1px solid #1465f2;
         width: 90%;
 
+        #toggle-clinic-navbar {
+            display: none;
+            @include mobile {
+                display: flex;
+            }
+        }
         >.item {
             cursor: pointer;
             margin-left: 5%;
