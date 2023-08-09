@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_08_105346) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_09_032315) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -133,15 +133,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_105346) do
     t.index ["profile_id"], name: "index_patient_profiles_on_profile_id"
   end
 
-  create_table "payments", force: :cascade do |t|
-    t.bigint "medical_record_id", null: false
-    t.string "stripe_id"
-    t.boolean "status", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["medical_record_id"], name: "index_payments_on_medical_record_id"
-  end
-
   create_table "prescription_items", force: :cascade do |t|
     t.bigint "medical_record_id", null: false
     t.bigint "medical_resource_id", null: false
@@ -203,6 +194,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_105346) do
     t.integer "execution_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "stripe_price_id"
     t.index ["clinic_profile_id"], name: "index_services_on_clinic_profile_id"
   end
 
@@ -258,7 +250,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_08_105346) do
   add_foreign_key "medical_records", "clinic_profiles"
   add_foreign_key "medical_records", "patient_profiles"
   add_foreign_key "patient_profiles", "profiles"
-  add_foreign_key "payments", "medical_records"
   add_foreign_key "prescription_items", "medical_records"
   add_foreign_key "prescription_items", "medical_resources"
   add_foreign_key "profiles", "users"

@@ -6,7 +6,10 @@ class Clinic::WorkspacesController < Clinic::BaseController
     if @medical_record.present?
       @patient_profile = @medical_record&.patient_profile
       @profile = @patient_profile&.profile
-      @examination_result = @medical_record&.build_examination_resul
+      @examination_result = @medical_record.examination_resul
+      unless @examination_result.present?
+        @examination_result = @medical_record&.build_examination_resul
+      end
       @medical_record&.prescription_items&.build
     end
   end

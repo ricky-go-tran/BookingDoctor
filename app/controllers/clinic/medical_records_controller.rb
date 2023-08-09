@@ -15,7 +15,17 @@ class Clinic::MedicalRecordsController < ApplicationController
     end
     medical_record_attributes['prescription_items_attributes'] = prescription_items
     @medical_record.status = 'payment'
+
     @medical_record.update!(medical_record_attributes)
+    medical_record_json = {}
+    medical_record_json[:id] = @medical_record.id
+    medical_record_json[:clinic_name] = current_user.get_profile_clinic.name
+    medical_record_json[:start_time] = @medical_record.start_time
+    medical_record_json[:end_time] = @medical_record.end_time
+    ActionCable
+      .server
+      .broadcast("payments:#{@medical_record.patient_profile.profile.user_id}",
+                 { data: medical_record_json, action: 'add' })
     redirect_to clinic_workspaces_path
   rescue StandardError => e
     flash[:error_notice] = e.message

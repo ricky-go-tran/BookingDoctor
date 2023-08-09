@@ -27,10 +27,11 @@ class Patient::MedicalRecordsController < Patient::BaseController
       medical_record_json[:patient_name] = helpers.get_name_patient_by_patient_id(@medical_record.patient_profile_id)
       medical_record_json[:start_time] = @medical_record.start_time
       medical_record_json[:end_time] = @medical_record.end_time
+
       ActionCable
         .server
         .broadcast("notifications:#{@medical_record.clinic_profile.profile.user_id}",
-                   { data: @medical_record, action: 'add' })
+                   { data: medical_record_json, action: 'add' })
       flash[:success_notice] = 'Success! Register appointment'
     else
       flash[:error_notice] = "Error! Can't appointment! Please try again"
