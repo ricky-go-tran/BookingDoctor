@@ -1,6 +1,7 @@
 # frozen_string_literal: true
-
+require 'sidekiq/web'
 Rails.application.routes.draw do
+
   get 'pdfs/invoice/:id',to: "pdfs#invoice", format: 'pdf'
 
 
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
         get 're_finish'
         put 'cash_payment'
         get 'finish'
+        get 're_examination'
       end
     end
     resources :appointments, only: %i[index show] do
@@ -57,6 +59,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    mount Sidekiq::Web => "/sidekiq"
     resources :medical_resources
     resources :categories
     resources :users, only: %i[index show] do

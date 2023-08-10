@@ -10,7 +10,6 @@ class Clinic::WorkspacesController < Clinic::BaseController
       unless @examination_result.present?
         @examination_result = @medical_record&.build_examination_resul
       end
-      @medical_record&.prescription_items&.build
     end
   end
 
@@ -35,6 +34,11 @@ class Clinic::WorkspacesController < Clinic::BaseController
   end
 
   def finish; end
+
+  def re_examination
+    @old_medical = MedicalRecord.find(params[:id])
+    @medical_record = MedicalRecord.new
+  end
 
   private
 

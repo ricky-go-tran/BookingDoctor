@@ -1,6 +1,25 @@
 class Clinic::MedicalRecordsController < ApplicationController
   before_action :get_medical_record, only: %i[update]
-  def create; end
+  def create
+    @medical_record = MedicalRecord.new(re_examination_params)
+
+    @medical_record.clinic_profile_id = current_user.profile.clinic_profile.id
+    sum = 0
+    @medical_record.service_items = @medical_record.service_items.map do |item|
+      item.price = Service.get_price_by_id(item[:service_id])
+      sum += Service.get_execution_time_by_id(item[:service_id])
+      item
+    end
+    @medical_record.end_time = @medical_record.start_time + sum.minutes
+
+    if @medical_record.save
+      flash[:success_notice] = 'Success! Register appointment'
+      ReMedicalMailer.with(medical: @medical_record).re_examination.deliver_now
+    else
+      flash[:error_notice] = "Error! Can't appointment! Please try again"
+    end
+    redirect_to clinic_workspaces_path
+  end
 
   def update
     if @medical_record.status != 'progress'
@@ -8,12 +27,16 @@ class Clinic::MedicalRecordsController < ApplicationController
     end
 
     medical_record_attributes = medical_record_params.to_h
-    prescription_items = {}
-    medical_record_attributes['prescription_items_attributes'].each do |key, value|
-      value['price'] = Inventory.get_price_by_id(value['medical_resource_id'], current_user.get_profile_clinic.id)
-      prescription_items[key] = value
+
+    if medical_record_attributes['prescription_items_attributes'].present?
+      prescription_items = {}
+      medical_record_attributes['prescription_items_attributes'].each do |key, value|
+        value['price'] = Inventory.get_price_by_id(value['medical_resource_id'], current_user.get_profile_clinic.id)
+        prescription_items[key] = value
+      end
+      medical_record_attributes['prescription_items_attributes'] = prescription_items
     end
-    medical_record_attributes['prescription_items_attributes'] = prescription_items
+
     @medical_record.status = 'payment'
 
     @medical_record.update!(medical_record_attributes)
@@ -42,5 +65,9 @@ class Clinic::MedicalRecordsController < ApplicationController
 
   def medical_record_params
     params.require(:medical_record).permit(prescription_items_attributes: [:id, :medical_resource_id, :amount, :price, :_destroy], examination_resul_attributes: [:id, :body_temp, :heart_rate, :blood_pressure, :desciption, :conslusion, :_destroy])
+  end
+
+  def re_examination_params
+    params.require(:medical_record).permit(:patient_profile_id, :start_time, :status, service_items_attributes: [:id, :service_id, :_destroy])
   end
 end

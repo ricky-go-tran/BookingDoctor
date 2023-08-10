@@ -1,0 +1,73 @@
+@import "../../mixins/input_style.scss";
+@import "../../mixins/layout.scss";
+
+.clinic-workspace-re-examination-wrapper {
+    width: 99%;
+    background: #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 95%;
+    margin-top: 1%;
+    position: relative;
+    overflow-y: scroll;
+    padding: 15px 40px;
+    box-sizing: border-box;
+    .title {
+        font-size: 32px;
+        font-weight: bold;
+    }
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        >* {
+            margin-bottom: 10px;
+        }
+
+        .medical_record_start_time,
+        .medical_record_end_time {
+            @include timepicker_format;
+        }
+
+        .add-service {
+            display: flex;
+            a {
+                @include button_style_add;
+                width: 200px;
+                color: #fff;
+                text-decoration: none;
+            }
+        }
+
+        >.btn {
+            @include button_style_submit;
+            width: 200px;
+            text-align: center;
+
+        }
+        .nested-fields  {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            > select {
+                @include select_format;
+                width: 70%;
+                height: 30px;
+            }
+            > a {
+                @include buntton_style_del_lock;
+                width: 20%;
+                height: 30px;
+                box-sizing: border-box;
+                vertical-align: middle !important;
+                text-align: center !important;
+            }
+        }
+    }
+
+}
