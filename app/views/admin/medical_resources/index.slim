@@ -2,7 +2,7 @@
     .title Medical Resources Management
     .controll-panel
         .left
-            input.search-bar[placeholder="User Filter By Name" type="search"]
+            input.search-bar[placeholder="Filter By Name Or Brand" type="search" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{admin_medical_resources_path}"]
         .right
             = link_to "Export Sheet", admin_medical_resources_path(format: :xlsx), {class: "sheet"}
             = link_to "Export Pdf",root_path, {class: "pdf_export"}

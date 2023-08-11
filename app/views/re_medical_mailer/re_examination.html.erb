@@ -5,27 +5,27 @@
       <label style="color:#00fc85">Booking</label>
     </div>
     <b>
-      Notice of <%= @medical_record.clinic_profile.name %>
+      Notice of <%= @clinic_profile[:name] %>
     </b>
     <div class="clinic-info">
       <div class="address">
         <span>Address: </span>
-        <label><%= @medical_record.clinic_profile.address %></label>
+        <label><%= @clinic_profile[:address] %></label>
       </div>
       <div class="phone">
         <span>Phone: </span>
-        <label><%= @medical_record.clinic_profile.phone %></label>
+        <label><%= @clinic_profile[:phone] %></label>
       </div>
     </div>
   </div>
   <hr>
   <div>
-    <div>Dear <b><%= @medical_record.patient_profile.profile.fullname %> </b>,
+    <div>Dear <b><%= @fullname %> </b>,
       <div>
         <div>We hope this message finds you well. We sincerely appreciate your trust in our healthcare services. To ensure that your health continues to receive the best attention and care, we are pleased to inform you about the upcoming schedule for your follow-up appointment and health monitoring.</div>
         <b>Follow-Up Appointment Details:</b>
-        <div>Time: <%= @medical_record.start_time%></div>
-        <div>Localtion: <%= @medical_record.clinic_profile.address %></div>
+        <div>Time: <%= @medical_record[:start_time]%></div>
+        <div>Localtion: <%= @clinic_profile[:address] %></div>
         <div>Note: Please arrive punctually and bring along any relevant medical documents.</div>
         <div>Follow-up appointments and health monitoring are integral to ensuring your continued progress and addressing any concerns. The provided test results and health information will enable our medical team to provide advice and make necessary adjustments to maintain your optimal health.
           Kindly prepare for and adhere to the scheduled follow-up appointment. If there are any changes in your availability or if you need to cancel, please reach out to us promptly so that we can accommodate your needs accordingly.

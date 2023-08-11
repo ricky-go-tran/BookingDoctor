@@ -1,0 +1,77 @@
+.clinic-patients-wrapper
+    .control-bar
+        .left-bar
+            = link_to "Back", clinic_patients_path, {class: "back"}
+        .title Patient Infomantion
+        .right-bar
+    .show-panel
+        .title Patient Infomation
+        .name
+            label Name:
+            span = " #{@profile.fullname}"
+        .birthday
+            label Birthday:
+            span = " #{@profile.birthday}"
+        .height
+            label Height:
+            span = " #{@patient_profile.height}"
+        .weight
+            label Weight:
+            span = " #{@patient_profile.weight}"
+        .blood-group
+            label Blood Group:
+            span = " #{@patient_profile.blood_group}"
+        .drug-allergy
+            label Drug Allergy:
+            span = " #{@patient_profile.drug_allergy}"
+        .title Examination Result
+        .body-temp
+            label Body Temp:
+            span = " #{@examination&.body_temp}"
+        .heart-rate
+            label Heart Rate:
+            span = " #{@examination&.heart_rate}"
+        .blood-pressure
+            label Blood Pressure:
+            span = " #{@examination&.blood_pressure}"
+        .description
+            label Description:
+            span = " #{@examination&.desciption}"
+        .conslusion
+            label Conslusion:
+            span = " #{@examination&.conslusion}"
+        .title  Services
+        - if @medical_record.services.present?
+            table.service-item
+                thead
+                    tr
+                        th Name
+                        th Price
+                        th Time
+                        th Details
+                tbody
+                    - @medical_record.services.each do |item|
+                        tr
+                            td = item.name
+                            td = "$ #{item.price}"
+                            td = "#{item.execution_time} minutes"
+                            td.detail = link_to "Detail", "/services/#{item.id}", class: "detail"
+        - else
+            .empty Services is empty...
+        .title  Prescriptions
+        - if @medical_record.medical_resources.present?
+            table.service-item
+                thead
+                    tr
+                        th Name
+                        th Price
+                        th Amount
+                        th Details
+                tbody
+                    - @medical_record.prescription_items.each do |item|
+                        tr
+                            td = item.medical_resource.name
+                            td = "$ #{item.price}"
+                            td = item.amount
+                            td.detail = link_to "Detail", clinic_inventory_path(item.medical_resource_id), class: "detail"
+

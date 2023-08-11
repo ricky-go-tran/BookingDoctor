@@ -14,7 +14,12 @@ class Clinic::MedicalRecordsController < ApplicationController
 
     if @medical_record.save
       flash[:success_notice] = 'Success! Register appointment'
-      ReMedicalMailer.with(medical: @medical_record).re_examination.deliver_now
+      @user_receive = User.find(@medical_record.patient_profile.profile.user_id)
+
+      # SendmailerJob.set(wait: 10.second).perform_later(@medical_record, @user_receive.email)
+      SendMailWorker.perform_async(@medical_record.to_json, @user_receive.profile.clinic_profile.to_json, @user_receive.profile.fullname, @user_receive.email)
+      # MailerJob.set(wait: 10.second).perform_later(@medical_record, @user_receive.email)
+      # SendMailJob.set(wait: 10.second).perform_later(@medical_record, @user_receive.email)
     else
       flash[:error_notice] = "Error! Can't appointment! Please try again"
     end

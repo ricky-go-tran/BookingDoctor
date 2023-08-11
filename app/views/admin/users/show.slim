@@ -11,10 +11,10 @@
                 span = "  #{@user.email}"
             .time-create
                 label Time Signup:
-                span = "  #{@user.created_at}"
+                span = "  #{date_format(@user.created_at)}"
             .time-update
                 label Change Recently:
-                span = "  #{@user.updated_at}"
+                span = "  #{date_format(@user.updated_at)}"
         .profile-info
             .title Profile information
             - if @user.profile != nil
@@ -23,16 +23,79 @@
                     span = "  #{@user.profile.fullname}"
                 .birthday
                     label Birthday:
-                    span = "  #{@user.profile.birthday}"
+                    span = "  #{date_format(@user.profile.birthday)}"
                 .address
                     label Address:
                     span = " #{@user.profile.address}"
                 .status
                     label Status:
                     span = " #{@user.profile.status}"
+
             - else
                 .unprofile
                     span This account isn't setup profile
+        .clinic-info
+            .title Clinic information
+            - if @user.has_role?(:clinic) && @profile.clinic_profile != nil
+
+                .name
+                    label  Name:
+                    span = @profile.clinic_profile.name
+                .category
+                    label  Category:
+                    span = @category
+                .address
+                    label  Address:
+                    span = @profile.clinic_profile.address
+                .phone
+                    label  Phone:
+                    span = @profile.clinic_profile.phone
+                .description
+                    label  Description:
+                    span = @profile.clinic_profile.description
+                .active-time
+                    label Operating hours -
+                    label  Start:
+                    span = @profile.clinic_profile.start_hour.to_s(:time)
+                    label  End:
+                    span = @profile.clinic_profile.end_hour.to_s(:time)
+                .active-time
+                    label Operating hours -
+                    label  Start:
+                    span = @start_day
+                    label  End:
+                    span = @end_day
+                .certificate
+                    - if @profile.clinic_profile.certificate.attached?
+                        = image_tag @profile.clinic_profile.certificate
+                    - else
+                        label NO Image
+                .clinic_view
+                    - if @profile.clinic_profile.clinic_view.attached?
+                        = image_tag @profile.clinic_profile.clinic_view
+                    - else
+                        label NO Image
+            - else
+                .empty This account isn't clinic or don't setup clinic profile
+        .clinic-info
+            .title Patient information
+            - if @user.has_role?(:patient) && @profile.patient_profile != nil
+                .height
+                    label Height:
+                    span = "  #{@profile.patient_profile.height}"
+                .weight
+                    label Weight:
+                    span = "  #{@profile.patient_profile.weight}"
+                .blood-group
+                    label Blood Group:
+                    span = "  #{@profile.patient_profile.blood_group}"
+                .drug_allergy
+                    label Drug Allergy:
+                    span = "  #{@profile.patient_profile.drug_allergy}"
+
+            - else
+                .empty This account isn't patient or don't setup patient profile
+
 
 
 

@@ -22,7 +22,11 @@ Rails.application.routes.draw do
   namespace :clinic do
     get 'pdfs/prescription/:id', to: "pdfs#prescription"
     get 'pdfs/invoice/:id', to: "pdfs#invoice", format: 'pdf'
-    resources :patients, only: %i[index show]
+    resources :patients, only: %i[index show] do
+      member do
+        get 'medical_record/detail', to: 'patients#detail_medical_record'
+      end
+    end
     resources :workspaces, only: %i[index] do
       member do
         get 're_finish'
