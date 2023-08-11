@@ -5,11 +5,11 @@ class Admin::UsersController < Admin::BaseController
   before_action :get_profile, only: %i[accepted canceled]
   def index
     @users = User.all
-    if params[:query]
-      @users = User.search(params[:query])
+    if params[:search]
+      @users = User.search(params[:search])
     elsif params[:type]
       @users = @users.select do |user|
-        user.has_role? params[:type]
+        user.has_role?(params[:type].downcase)
       end
     else
       @users
@@ -23,7 +23,14 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
-  def show; end
+  def show
+    @profile = @user.profile
+    if @user.has_role?(:clinic) && @profile.status != 'cancle'
+      @category = Category.get_name_by_user(@user)
+      @start_day = ClinicProfile.get_start_day_by_user(@user)
+      @end_day = ClinicProfile.get_end_day_by_user(@user)
+    end
+  end
 
   def request_verify
     @users = User.where(id: Profile.select(:user_id).where(status: 'invalid'))

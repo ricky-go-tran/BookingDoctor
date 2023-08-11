@@ -2,7 +2,7 @@
     .title Categories Clinic Management
     .controll-panel
         .left
-            input.search-bar[placeholder="User Filter By Name" type="search"]
+            input.search-bar[placeholder="Filter By Name" type="search" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{admin_categories_path}"]
         .right
             = link_to "Export Sheet", admin_categories_path(format: :xlsx), {class: "sheet"}
             = link_to "Export Pdf",root_path, {class: "pdf_export"}
@@ -13,7 +13,7 @@
                 .category-item
                     .left
                         .name = category.name
-                        .change-time = "Recent changes: #{category.updated_at}"
+                        .change-time = "Recent changes: #{date_format(category.updated_at)}"
                     .right
                         .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_category_path(category)}"] View details
                         .change[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{edit_admin_category_path(category)}"] Change

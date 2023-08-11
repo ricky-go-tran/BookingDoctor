@@ -1,0 +1,19 @@
+.clinic-patients-wrapper
+    .control-bar
+        .left-bar
+            = link_to "Back", clinic_profiles_path, {class: "back"}
+        .title Patient Management
+        .right-bar
+            = link_to "Export Sheet", clinic_patients_path(format: :xlsx), {class: "sheet"}
+    .content-panel
+        - if @patients.present?
+            - @patients.each do |patient|
+                .patient-item
+                    .left
+                        .name = patient.profile.fullname
+                        .birtday = "Birtday: #{patient.profile.birthday}"
+                    .right
+                        .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_patient_path(patient)}"] View details
+        - else
+            .emty Patients is empty...
+

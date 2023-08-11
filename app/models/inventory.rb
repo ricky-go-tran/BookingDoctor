@@ -3,7 +3,10 @@
 class Inventory < ApplicationRecord
   belongs_to :medical_resource
   belongs_to :clinic_profile
-  validates :medical_resource_id, :amount, :price, presence: true
+  validates :medical_resource_id, presence: true
+  validates :amount, presence: true
+  validates :price, presence: true
+  validates :amount, :price, numericality: { greater_than_or_equal_to: 0 }
   resourcify
   scope :top_5_in_month, -> {
     joins('INNER JOIN medical_resources ON inventories.medical_resource_id = medical_resources.id')
@@ -15,5 +18,8 @@ class Inventory < ApplicationRecord
       .group('medical_resources.id')
       .order('total_quantity DESC')
       .limit(5)
+  }
+  scope :get_price_by_id, ->(medical_id, clinic_id) {
+    find_by(medical_resource_id: medical_id, clinic_profile_id: clinic_id).price
   }
 end

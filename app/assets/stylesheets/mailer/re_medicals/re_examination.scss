@@ -1,0 +1,18 @@
+@import "../../mixins/layout.scss";
+.mailer-wrapper {
+    width: 100%;
+    .head {
+        .logo {
+            @include logo;
+            font-size: 24px;
+        }
+        .clinic-info {
+            > * {
+                span {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+}

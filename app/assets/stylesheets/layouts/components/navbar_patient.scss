@@ -1,7 +1,8 @@
-
 $profile-icon: image-url("icon_profile.png");
 $medical-icon: image-url("icon_medical_history.png");
 $scheduled-icon: image-url("icon_scheduled.png");
+$invoice-icon: image-url("icon_invoice.png");
+
 .navbar-patient-wrapper {
     margin-top: 5px;
     height: calc(100% - 5px);
@@ -20,6 +21,7 @@ $scheduled-icon: image-url("icon_scheduled.png");
         &:first-child {
             margin-top: 10%;
         }
+
         cursor: pointer;
         margin-top: 5%;
         margin-left: 5%;
@@ -51,6 +53,15 @@ $scheduled-icon: image-url("icon_scheduled.png");
             width: 32px;
             height: 32px;
             background: $medical-icon;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        #invoice {
+            width: 32px;
+            height: 32px;
+            background: $invoice-icon;
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;

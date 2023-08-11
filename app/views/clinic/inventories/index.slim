@@ -5,7 +5,7 @@
         .title Inventory Management
         .right-bar
             = link_to "Export Sheet", clinic_inventories_path(format: :xlsx), {class: "sheet"}
-            = link_to "Medical Resources",clinic_medical_resources_path, {class: "medical_resources"}
+            = link_to "Add By MR",clinic_medical_resources_path, {class: "medical_resources"}
             = link_to "Add", new_clinic_inventory_path, {class: "add"}
     .content-panel
         - if @inventories.present?

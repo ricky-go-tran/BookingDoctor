@@ -1,0 +1,48 @@
+.clinic-patients-wrapper
+    .control-bar
+        .left-bar
+            = link_to "Back", clinic_patients_path, {class: "back"}
+        .title Patient Infomantion
+        .right-bar
+            = link_to "Export Sheet", clinic_patient_path(@patient), {class: "sheet"}
+    .show-panel
+        .title Patient Infomation
+        .patient-name
+            label Patient:
+            span = " #{@patient.profile.fullname }"
+        .patient-address
+            label Address:
+            span = " #{@patient.profile.address }"
+        .patient-height
+            label Height:
+            span = " #{@patient.height }"
+        .patient-weight
+            label Weight:
+            span = " #{@patient.weight }"
+        .patient-blood-group
+            label Blood Group:
+            span = " #{@patient.blood_group }"
+        .patient-drug-allergy
+            label Drug Allergy:
+            span = " #{@patient.drug_allergy }"
+
+        .title Medical Record
+        .medical-records-table
+
+        - if @medical_records.present?
+            table.medical-record-item
+                thead
+                    tr
+                        th Clinic
+                        th Start Time
+                        th Status
+                        th Details
+                tbody
+                    - @medical_records.each do |item|
+                        tr
+                            td = item.clinic_profile.name
+                            td = date_format(item.start_time)
+                            td = item.status
+                            td.detail = link_to "Detail", medical_record_detail_clinic_patient_path(item), class: "detail"
+        - else
+            .empty Medical Record is empty...

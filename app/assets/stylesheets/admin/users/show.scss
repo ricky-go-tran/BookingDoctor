@@ -24,6 +24,9 @@
                     font-size: 16px;
                     font-weight: bold;
                 }
+                span {
+                    font-weight: 200;
+                }
             }
         }
         > .clinic-info {
@@ -36,8 +39,14 @@
                     font-size: 16px;
                     font-weight: bold;
                 }
+                span {
+                    font-weight: 200;
+                    margin-left: 5px;
+                }
             }
         }
+
+
 
     }
 }

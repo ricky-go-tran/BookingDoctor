@@ -14,12 +14,11 @@ consumer.subscriptions.create("NotificationsChannel", {
     var table = document.getElementById("appointment-clinic-view");
     var body = table.getElementsByTagName("tbody")[0];
     var datajson = JSON.parse(table.dataset.appointmentView);
+    if (data.action == "add") {
 
-    if (data.status == "add") {
       datajson.push(data.data);
       this.render(table, body, datajson)
     } else {
-
       datajson = datajson.filter((item) => {return  item.id !== data.data})
       this.render(table, body, datajson)
     }

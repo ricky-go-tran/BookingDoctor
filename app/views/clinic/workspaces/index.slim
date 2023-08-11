@@ -1,10 +1,66 @@
 .clinic-workspace-wrapper
-    - if @medical_record.present?
+    - if @medical_record.nil?
         .logo
             span Doctor
             label Booking
         .title Empty Workspace
         .image
+    - else
+        .patient-info-wrapper
+            .title Patient Infomation
+            .name
+                label Name:
+                span = " #{@profile.fullname}"
+            .birthday
+                label Birthday:
+                span = " #{@profile.birthday}"
+            .height
+                label Height:
+                span = " #{@patient_profile.height}"
+            .weight
+                label Weight:
+                span = " #{@patient_profile.weight}"
+            .blood-group
+                label Blood Group:
+                span = " #{@patient_profile.blood_group}"
+            .drug-allergy
+                label Drug Allergy:
+                span = " #{@patient_profile.drug_allergy}"
+        .service-table
+            .title  Services
+            - if @medical_record.services.present?
+                        table.service-item
+                            thead
+                                tr
+                                    th Name
+                                    th Price
+                                    th Time
+                                    th Details
+                            tbody
+                                - @medical_record.services.each do |item|
+                                    tr
+                                        td = item.name
+                                        td = "$ #{item.price}"
+                                        td = "#{item.execution_time} minutes"
+                                        td.detail = link_to "Detail", "/services/#{item.id}", class: "detail"
+
+        .patient-info-form
+            = simple_form_for [:clinic, @medical_record], data: {turbo: false}  do |form|
+                .title Examination Result
+                = form.simple_fields_for :examination_resul do |rs|
+                    = rs.input :body_temp
+                    = rs.input :heart_rate
+                    = rs.input :blood_pressure
+                    = rs.input :desciption
+                    = rs.input :conslusion
+                .title Prescription
+                = form.simple_fields_for :prescription_items do |prescription_item|
+                    = render "prescription_item_fields", f: prescription_item
+                .add-item
+                    = link_to_add_association 'Add', form, :prescription_items, data: {turbo: false}
+                = form.button :submit, value: "Finish"
+
+
 
 
 

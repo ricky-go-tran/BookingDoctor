@@ -10,7 +10,7 @@ class MedicalResource < ApplicationRecord
   resourcify
   enum medical_resource_type: { medicine: 'medicine', nutraceutical: 'nutraceutical', vaccine: 'vaccine',
                                 instrucment: 'instrucment' }
-  scope :search, ->(query) { where('UPPER(name) LIKE UPPER(?)', "%#{query}%") }
+  scope :search, ->(query) { where('UPPER(name) LIKE UPPER(?) OR UPPER(brand) LIKE UPPER(?)', "%#{query}%", "%#{query}%") }
   validates :name, :brand, :unit, :description, :medical_resource_type, presence: true
   validates :medical_resource_type, inclusion: { in: %w[medicine nutraceutical vaccine instrucment] }
 end

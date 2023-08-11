@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_01_021109) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_09_032315) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -129,6 +129,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_021109) do
     t.text "drug_allergy"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "stripe_id"
     t.index ["profile_id"], name: "index_patient_profiles_on_profile_id"
   end
 
@@ -193,6 +194,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_021109) do
     t.integer "execution_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "stripe_price_id"
     t.index ["clinic_profile_id"], name: "index_services_on_clinic_profile_id"
   end
 

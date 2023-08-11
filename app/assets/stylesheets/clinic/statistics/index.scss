@@ -162,13 +162,19 @@ $gross_revenue: image-url("icon_profit.png");
                 }
             }
         }
-            table {
-                width: 100%;
-                td, th {
-                    line-height: 2;
-                    text-align: center;
-                    color: #76838f;
-                }
+
+        table {
+            width: 100%;
+
+            td,
+            th {
+                line-height: 2;
+                text-align: center;
+            }
+            td {
+                font-weight: 200;
+            }
+
             thead {
                 border-bottom: #0e4cfd;
             }

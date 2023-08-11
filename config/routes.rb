@@ -1,6 +1,8 @@
 # frozen_string_literal: true
-
+require 'sidekiq/web'
 Rails.application.routes.draw do
+
+  get 'pdfs/invoice/:id',to: "pdfs#invoice", format: 'pdf'
 
 
   resources :homepages, only: %i[index], path: '' do
@@ -18,19 +20,32 @@ Rails.application.routes.draw do
   root "homepages#index"
 
   namespace :clinic do
-    resources :workspaces, only: %i[index]
-    resources :appointments, only: %i[index show] do
-      collection do
-        get 'detail'
+    get 'pdfs/prescription/:id', to: "pdfs#prescription"
+    get 'pdfs/invoice/:id', to: "pdfs#invoice", format: 'pdf'
+    resources :patients, only: %i[index show] do
+      member do
+        get 'medical_record/detail', to: 'patients#detail_medical_record'
       end
+    end
+    resources :workspaces, only: %i[index] do
+      member do
+        get 're_finish'
+        put 'cash_payment'
+        get 'finish'
+        get 're_examination'
+      end
+    end
+    resources :appointments, only: %i[index show] do
       member do
         delete 'cancle'
+        put 'progress'
       end
     end
     resources :statistics, only: %i[index]
     resources :services do
       resources :consumptions, only: %i[create destroy]
     end
+    resources :medical_records, only: %i[index show create update]
     resources :medical_resources, only: %i[index show]
     resources :inventories
     resources :clinic_profiles, only: %i[index new create edit update] do
@@ -48,6 +63,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    mount Sidekiq::Web => "/sidekiq"
     resources :medical_resources
     resources :categories
     resources :users, only: %i[index show] do
@@ -68,6 +84,13 @@ Rails.application.routes.draw do
   end
 
   namespace :patient do
+    resources :payments, only: %i[index new] do
+      member do
+        post 'checkout'
+        get 'success'
+        get 'cancle'
+      end
+    end
     resources :votes
     resources :medical_resources
     resources :profiles do

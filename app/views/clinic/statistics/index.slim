@@ -42,9 +42,6 @@
         .control-bar-wrapper
             .title Patient Appointment
             .control-bar
-                .week Week
-                .month Month
-                .year Year
         canvas#myChart[width="960" height="200" data-controller="chart" data-chart-target="dataset" data-action="chart#connect" data-attendance-views="#{@attendance_json} " data-appointment-views="#{@appointment_json}" data-cancle-view="#{@cancle_json}"]
     / .top-panel
     /     .control-bar-wrapper
@@ -69,25 +66,21 @@
         .control-bar-wrapper
             .title Top Service
             .control-bar
-                .week Week
-                .month Month
-                .year Year
         table.top-service-table
             thead
                 tr
                     th Name
                     th Price
                     th Execution time
-                    th Patient count
-                    th Vote
+                    th Count
             tbody
                 - @top5service.each do |service|
                     tr
-                        td = service.name
-                        td = service.price
-                        td = service.execution_time
-                        td 100
-                        th 5
+                        td = service[:name]
+                        td = service[:price]
+                        td = service[:execution_time]
+                        td = service[:count]
+
 
 
 

@@ -8,6 +8,14 @@ class Clinic::StatisticsController < Clinic::BaseController
     @cancle_prev = MedicalRecord.prev_month_cancel(current_user.get_profile_clinic.id)
     @top5prescription = Inventory.top_5_in_month
     @top5service = Service.top_5_in_month(current_user.get_profile_clinic.id)
+
+    @top5service = @top5service.map do |key, value|
+      item = Service.find(key)
+      item_hash = item.attributes.symbolize_keys
+      item_hash[:count] = value
+      item_hash
+    end
+
     @attendance_json = get_attendance_month.to_json
     @appointment_json = get_appointment_month.to_json
     @cancle_json = get_cancle_month.to_json

@@ -1,0 +1,10 @@
+.clinic-workspace-re-examination-wrapper
+    .title Re Examination
+    = simple_form_for @medical_record, url: clinic_medical_records_path, method: :post, data: {turbo: false}  do |form|
+                = form.input :patient_profile_id, as: :hidden, input_html: { value: @old_medical.patient_profile_id }
+                = form.input :start_time
+                = form.simple_fields_for :service_items do |service_item|
+                    = render 'service_item_fields', f: service_item
+                .add-service
+                     = link_to_add_association 'Add service', form, :service_items
+                = form.button :submit, value: "ReExamination"

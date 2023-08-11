@@ -1,0 +1,17 @@
+.payments-wrapper
+    .header
+        .title Invoices
+    .content-panel
+        - if @medical_records.present?
+            - @medical_records.each do |medical_record|
+                .medical-record-item
+                    .left
+                        .title
+                            label =  medical_record.clinic_profile.name
+                        .time = "#{medical_record.start_time} - #{medical_record.end_time}"
+                    .right
+                        =  link_to "Get Details", "/pdfs/invoice/#{medical_record.id}", {class: "view-details"}
+                        = button_to "Payment", checkout_patient_payment_path(medical_record) , class: "cancle", data: {turbo: false}
+        - else
+            .empty History is empty...
+

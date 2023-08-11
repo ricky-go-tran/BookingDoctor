@@ -8,10 +8,10 @@
             span = "  #{current_user.email}"
         .time-create
             label Time Signup:
-            span = "  #{current_user.created_at}"
+            span = "  #{date_format(current_user.created_at)}"
         .time-update
             label Change Recently:
-            span = "  #{current_user.updated_at}"
+            span = "  #{date_format(current_user.updated_at)}"
     .profile-info
         .title Profile Information
         .fulname

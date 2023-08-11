@@ -24,13 +24,13 @@
 
 @mixin control-panel-left {
     display: flex;
-    width: 60%;
+    width: 40%;
     justify-content: flex-start;
 }
 
 @mixin control-panel-right {
     display: flex;
-    width: 40%;
+    width: 60%;
     justify-content: flex-end;
     align-items: center;
 }
