@@ -6,9 +6,5 @@
         .right-bar
     .new-panel
         .title Edit Invetory
-        = simple_form_for  [:clinic, @inventory], data: {turbo: false} do |form|
-            = form.input :medical_resource_id, collection: MedicalResource.all, label_method: ->(resource) { "#{resource.name} - Brand: #{resource.brand}"}, value_method: :id, include_blank: true
-            = form.input :amount
-            = form.input :price
-            = form.button :submit
+        = render "clinic/inventories/form"
 

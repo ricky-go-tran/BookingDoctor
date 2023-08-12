@@ -5,10 +5,4 @@
             = link_to "#{t('back')}", admin_medical_resources_path, class: "back"
     .new-panel
         .title = "#{t('medical_resource.basic.new_medical_resource')}"
-        = simple_form_for  [:admin, @medical_resource] do |form|
-            = form.input :name, label: "Name: "
-            = form.input :brand, label: "Brand: "
-            = form.input :unit, label: "Unit: "
-            = form.input :description, label: "Description: "
-            = form.input :medical_resource_type, collection: MedicalResource.medical_resource_types.keys
-            = form.button :submit
+        = render "admin/medical_resources/form"

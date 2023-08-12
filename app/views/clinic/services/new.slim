@@ -6,11 +6,5 @@
         .right-bar
     .new-panel
         .title = t('service.basic.service_new')
-        = simple_form_for  [:clinic, @service], data: {turbo: false} do |form|
-            = form.input :name
-            = form.input :description
-            = form.input :price
-            = form.input :execution_time
-            = form.input :service_wallpaper
-            = form.button :submit
+        = render "clinic/services/form"
 

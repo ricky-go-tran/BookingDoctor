@@ -4,7 +4,7 @@
         label Doctor
     .title Change Your Profile
     = simple_form_for  @profile,  :url => admin_profile_update_path, :method => :put do |form|
-     = form.input :fullname, label: "Fullname: "
-     = form.input :birthday, label: "Birthday: "
-     = form.input :address, label: "Address: "
-     = form.button :submit
+        = form.input :fullname, label: "Fullname: "
+        = form.input :birthday, label: "Birthday: "
+        = form.input :address, label: "Address: "
+        = form.button :submit
