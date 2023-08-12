@@ -1,5 +1,5 @@
 .patient-my-profile-change-wrapper
-    .title Change Patient Profile
+    .title = t('profile.change_patient_profile')
     = simple_form_for [:patient, @patient_profile], data: {turbo: false} do |form|
         = form.input :height, label: "Height"
         = form.input :weight

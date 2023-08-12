@@ -4,7 +4,7 @@
         label Booking
     .title Finish Appointment...?
     .fullname
-        label Patient name:
+        label = t('profile.name')
         span = "    #{get_name_patient_by_id(@medical_record.patient_profile_id)}"
     .total-price = "$ #{total_price(@service_items, @prescription_items)}"
 

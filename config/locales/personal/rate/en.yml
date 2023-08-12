@@ -1,0 +1,10 @@
+en:
+  rate:
+    basic:
+      rate: "Rate"
+      rates: "Rates"
+      rate_detail: "Rate Details"
+      rate_empty: "Rates is empty..."
+      rate_search: "Rates search"
+      rate_infomation: "Rate Information"
+      rate_add: "Add Rate"

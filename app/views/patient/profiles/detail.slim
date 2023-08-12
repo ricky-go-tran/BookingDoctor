@@ -1,37 +1,37 @@
 .patient-my-profile-detail-wrapper
     .account-info
-        .title Account Infomation
+        .title = t('profile.account_info')
         .email
-            label Email:
+            label = "#{t('user.basic.email')}:"
             span = "  #{current_user.email}"
         .time-create
-            label Time Signup:
+            label = "#{t('user.basic.time_signup')}:"
             span = "  #{current_user.created_at}"
         .time-update
-            label Change Recently:
+            label = "#{t('user.basic.change_recently')}:"
             span = "  #{current_user.updated_at}"
     .profile-info
-        .title Profile Information
+        .title = "#{t('profile.profile_info')}"
         .fulname
-            label Fullname:
+            label = "#{t('profile.fullname')}:"
             span = "  #{current_user.profile.fullname}"
         .birthday
-            label Birthday:
+            label = "#{t('profile.birthday')}:"
             span = "  #{current_user.profile.birthday}"
         .address
-            label Address:
+            label = "#{t('profile.address')}:"
             span = " #{current_user.profile.address}"
     .patient-info
-        .title Patient Information
+        .title = "#{t('profile.patient_info')}"
         .height
-            label Height:
+            label = "#{t('profile.height')}:"
             span = "  #{current_user.profile.patient_profile.height}"
         .weight
-            label Weight:
+            label = "#{t('profile.weight')}:"
             span = "  #{current_user.profile.patient_profile.weight}"
         .blood-group
-            label Blood Group:
+            label = "#{t('profile.blood_group')}:"
             span = "  #{current_user.profile.patient_profile.blood_group}"
         .drug_allergy
-            label Drug Allergy:
+            label = "#{t('profile.drug_allergy')}:"
             span = "  #{current_user.profile.patient_profile.drug_allergy}"

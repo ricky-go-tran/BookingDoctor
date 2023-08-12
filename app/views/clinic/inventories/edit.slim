@@ -1,8 +1,8 @@
 .clinic-inventory-wrapper
     .control-bar
         .left-bar
-            = link_to "Back", :back, {class: "back"}
-        .title Inventory Management
+            = link_to "#{t('back')}", :back, {class: "back"}
+        .title  = "#{t('inventory.basic.inventory_management')}"
         .right-bar
     .new-panel
         .title Edit Invetory

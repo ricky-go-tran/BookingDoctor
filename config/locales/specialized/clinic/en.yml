@@ -1,0 +1,21 @@
+en:
+  clinic:
+    basic:
+      clinic: "Clinic"
+      clinics: "Clinics"
+      clinic_detail: "Clinic Details"
+      clinic_empty: "Clinics is empty..."
+      clinic_search: "Clinics search"
+      clinic_infomation: "Clinic Information"
+      appointment: "Appointment"
+    profile:
+      name: 'Name'
+      address:  "Address"
+      phone: "Phone"
+      operating_hour: "Operating Hour"
+      operating_day: "Operating Day"
+      from: "From"
+      to: "To"
+      description: "Description"
+      change_clinic_profile: "Change Clinic Profile"
+      setup_clinic_profile: "Setup Clinic Profile"

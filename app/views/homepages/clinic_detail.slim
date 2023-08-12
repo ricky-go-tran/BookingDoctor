@@ -4,7 +4,7 @@
             - image_url = rails_blob_url(@clinic.clinic_view)
             .wallpaper[style="background-image: url('#{image_url}')"]
                 .blur-panel
-                .title Clinic Details
+                .title = t('clinic.basic.clinic_detail')
                 .clinic-information-wrapper
                     .name
                         label
@@ -21,7 +21,7 @@
         - else
             .wallpaper
                 .blur-panel
-                .title Clinic Details
+                .title = t('clinic.basic.clinic_detail')
                 .clinic-information-wrapper
                     .name
                         label
@@ -39,78 +39,78 @@
         .notice
             label
                 i
-                | DoctorBooking notice
-            span We pledge that every clinic and clinic owner listed on our website has been duly confirmed to possess all the legal and professional certificates required by the Socialist Republic of Vietnam. Ensuring the safety and quality of healthcare for patients is our top priority, and verifying the necessary certifications is a crucial step to guarantee that the clinics meet the highest standards of care and adhere to all healthcare regulations.
+                span = "#{t('homepage.booking_notice')}"
+            span    = "#{t('homepage.booking_notice_content')}"
 
         .feature
             label
                 i
-                | DoctorBooking feature
+                span = "#{t('homepage.booking_feature')}"
             span
                 ul
-                    |Welcome to our website - an advanced and convenient platform that connects patients with reputable healthcare clinics.
-                    li Diverse Clinic Network
-                    li Verified Certifications
-                    li Online Booking
+                    span = "#{t('homepage.booking_feature_content')}"
+                    li = "#{t('homepage.booking_feature_item_1')}"
+                    li = "#{t('homepage.booking_feature_item_2')}"
+                    li = "#{t('homepage.booking_feature_item_3')}"
         .own-information
             .title
-                label Own Information
+                label = "#{t('homepage.own_info')}"
                 span
             .fulname
-                label Fullname:
+                label = "#{t('profile.fullname')}:"
                 span = "  #{@profile.fullname}"
             .birthday
-                label Birthday:
+                label = "#{t('profile.birthday')}:"
                 span = "  #{@profile.birthday}"
             .address
-                label Address:
+                label = "#{t('profile.address')}:"
                 span = " #{@profile.address}"
         .clinic-information
-            .title Clinic Information
-            .fulname
-                label Name:
+            .title = t('clinic.basic.clinic_infomation')
+            .name
+                label = "#{t('clinic.profile.name')}:"
                 br
                 span = " #{@clinic.name}"
-            .birthday
-                label Category:
+            .category
+                label = "#{t('category.basic.category')}:"
                 br
                 span = "  #{Category.find(@clinic.category_id).name}"
             .address
-                label Address:
+                label = "#{t('clinic.profile.address')}:"
                 br
                 span = " #{@clinic.address}"
             .phone
-                label  Phone:
+                label  = "#{t('clinic.profile.phone')}:"
                 br
                 span = " #{@clinic.phone}"
             .active-time
-                label Operating hours -
-                label  Start:
+                label = "#{t('clinic.profile.operating_hour')} -"
+                label = "#{t('clinic.profile.from')}:"
                 span = " #{@clinic.start_hour.to_s(:time)}"
-                label  End:
+                label = "#{t('clinic.profile.to')}:"
                 span = " #{@clinic.end_hour.to_s(:time)}"
             .active-time
-                label Operating hours -
-                label  Start:
+                label = "#{t('clinic.profile.operating_day')} -"
+                label = "#{t('clinic.profile.from')}:"
                 span = " #{get_day_in_week(@clinic.start_day)}"
-                label  End:
+                label = "#{t('clinic.profile.to')}:"
                 span = " #{get_day_in_week(@clinic.end_day)}"
             .description
-                label  Description:
+                label  = "#{t('clinic.profile.description')}:"
                 br
                 span = " #{@clinic.description}"
 
         .service-wrapper
-            .title Services
+            .title = t('service.basic.services')
             .services
                 - if @services.present?
                     table.service-item
                         thead
                             tr
-                                th Name
-                                th Price
-                                th Time
-                                th Details
+                                th = t('service.detail.name')
+                                th = t('service.detail.price')
+                                th = t('service.detail.time')
+                                th = t('service.detail.detail')
                         tbody
                             - @services.each do |item|
                                 tr
@@ -119,13 +119,13 @@
                                     td = "$ #{item.execution_time}"
                                     td.detail = link_to "Detail", "/services/#{item.id}", class: "detail"
                 - else
-                        .empty Services is empty..
+                        .empty = t('service.basic.service_empty')
         .calendar
-            .title Calendar
+            .title = t('service.detail.calendar')
             #time-grid[data-controller="calendar" data-chart-target="target" data-action="calendar#connect" data-booking-views="#{@calendar_booking}"]
 
         .vote-wrapper
-            .title Rate
+            .title = t('rate.basic.rate')
             .votes
                 - if @clinic.votes.present?
                     - @clinic.votes.each do |vote|
@@ -140,10 +140,10 @@
                             .body
                                 span = vote.comment
                 - else
-                    .empty Rates is empty..
+                    .empty = t('rate.basic.rate_empty')
 
             - if is_patient?
-                .title Add Rate
+                .title = t('rate.basic.rate_add')
                 = simple_form_for @clinic.votes.build,  url: patient_votes_path, method: :post, data: {turbo: false}  do |form|
                     = form.input :clinic_profile_id, as: :hidden, input_html: { value: @clinic.id }
                     = form.input :rate, collection: Vote.rates.keys

@@ -3,7 +3,7 @@
         .logo
             span Booking
             label Doctor
-        h2 Setup Clinic Profile
+        h2 = t('clinic.detail.setup_clinic_profile')
         = simple_form_for [:clinic, @clinic_profile], data: {turbo: false} do |form|
             = form.input :category_id, collection: Category.all, label_method: :name, value_method: :id, include_blank: true
             = form.input :name

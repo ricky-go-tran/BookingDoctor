@@ -2,7 +2,7 @@
     .logo
         label Doctor
         span Booking
-    .title Finish Medical Record!
+    .title = t('medical_record.basic.medical_record_finish')
     .image
     .control-wrapper
         = link_to "Invoice", "/clinic/pdfs/invoice/#{@medical_record.id}", {class: "momo-pay"}

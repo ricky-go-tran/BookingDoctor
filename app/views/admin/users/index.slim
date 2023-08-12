@@ -1,8 +1,8 @@
 .user-management-wrapper
-    .title User Management
+    .title = "#{t('profile.user_management')}"
     .controll-panel
         .left
-            input.search-bar[placeholder="User Filter By Name" type="search" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{admin_users_path}"]
+            input.search-bar[placeholder="#{t('filter_by_name')}" type="search" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{admin_users_path}"]
             select.dropdown-role[data-controller="search" data-search-target="source" data-action="change->search#select" data-content="#{admin_users_path}"]
                 option#role[selected disabled] Roles
                 option#all-role[value="all"] All
@@ -11,8 +11,8 @@
                 option#patient-role[value="patient"] Patient
         .right
             = link_to "View Verify", request_verify_admin_users_path, {class: "add"}
-            = link_to "Export Sheet", admin_users_path(format: :xlsx), {class: "sheet"}
-            = link_to "Export Pdf",root_path, {class: "pdf_export"}
+            = link_to "#{t('export_sheet')}", admin_users_path(format: :xlsx), {class: "sheet"}
+            = link_to "#{t('export_pdf')}",root_path, {class: "pdf_export"}
     .content-panel
         - @users.each do |user|
             .user-item
@@ -23,10 +23,10 @@
                     - else
                         .fullname
                             = "#{user.email}"
-                            span Not Profile
+                            span = t('profile.not_profile')
                         .role = get_role(user)
                 .right
-                    .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="users/#{user.id}"] View details
+                    .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="users/#{user.id}"] = "#{t('view_details')}"
 
 
 

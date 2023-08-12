@@ -1,10 +1,10 @@
 .clinic-inventory-wrapper
     .control-bar
         .left-bar
-            = link_to "Back", clinic_inventories_path, {class: "back"}
-        .title Medical Resources List
+            = link_to "#{t('back')}", clinic_inventories_path, {class: "back"}
+        .title = t('medical_resource.basic.medical_resources')
         .right-bar
-            = link_to "Export Sheet", clinic_medical_resources_path(format: :xlsx), {class: "sheet"}
+            = link_to "#{t('export_sheet')}", clinic_medical_resources_path(format: :xlsx), {class: "sheet"}
     .content-panel
         - if @medical_resources.present?
             - @medical_resources.each do |medical_resource|
@@ -15,6 +15,6 @@
                     .right
                         .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_medical_resource_path(medical_resource)}"] View detail
         - else
-            .emty Medical Resources is empty...
+            .emty = "#{t('medical_resource.basic.medical_resource_empty')}"
 
 

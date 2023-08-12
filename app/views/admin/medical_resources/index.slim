@@ -1,12 +1,12 @@
 .medical-resources-management-wrapper
-    .title Medical Resources Management
+    .title = "#{t('medical_resource.basic.medical_resource_management')}"
     .controll-panel
         .left
-            input.search-bar[placeholder="Filter By Name Or Brand" type="search" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{admin_medical_resources_path}"]
+            input.search-bar[placeholder="#{t('filter_by_name_or_brand')}" type="search" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{admin_medical_resources_path}"]
         .right
-            = link_to "Export Sheet", admin_medical_resources_path(format: :xlsx), {class: "sheet"}
-            = link_to "Export Pdf",root_path, {class: "pdf_export"}
-            = link_to "Add", new_admin_medical_resource_path, {class: "add"}
+            = link_to "#{t('export_sheet')}", admin_medical_resources_path(format: :xlsx), {class: "sheet"}
+            = link_to "#{t('export_pdf')}",root_path, {class: "pdf_export"}
+            = link_to "#{t('add')}", new_admin_medical_resource_path, {class: "add"}
     .content-panel
         - if @medical_resources.present?
             - @medical_resources.each do |medical_resource|
@@ -17,8 +17,8 @@
                     .right
                         .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_medical_resource_path(medical_resource)}"] View detail
                         .change[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{edit_admin_medical_resource_path(medical_resource)}"] Change
-                        = link_to "Delete", admin_medical_resource_path(medical_resource),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "del"
+                        = link_to "#{t('delete')}", admin_medical_resource_path(medical_resource),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "del"
         - else
-            .emty Medical Resources is empty...
+            .emty = "#{t('medical_resource.basic.medical_resource_empty')}"
 
 

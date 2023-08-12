@@ -4,7 +4,7 @@
         .content
             .booking-count
                 .info
-                    .title Appointment
+                    .title = "#{t('appointment.basic.appointment')}"
                     .current-index = @appointment.count
                     - if growth_calc(@appointment_prev.count, @appointment.count) != 0
                         .monm #{growth_calc(@appointment_prev.count, @appointment.count)}% compared to last month.
@@ -53,7 +53,7 @@
         / table.top-service-table
         /     thead
         /         tr
-        /             th Name
+        /             = "#{t('medical_resource.detail.name')}:"
         /             th Brand
         /             th Use count
         /     tbody
@@ -69,8 +69,8 @@
         table.top-service-table
             thead
                 tr
-                    th Name
-                    th Price
+                    th = "#{t('service.detail.name')}"
+                    th = "#{t('service.detail.price')}"
                     th Execution time
                     th Count
             tbody

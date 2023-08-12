@@ -1,0 +1,28 @@
+en:
+  profile:
+    fullname: "Fullname"
+    name: "Name"
+    address: "Address"
+    birthday: "Birthday"
+    status: "Status"
+    my_profile: "My Profile"
+    change_patient_profile: "Change Patient Profile"
+    setup_profile: "Setup Profile"
+    change_profile: "Change Profile"
+    account_info: "Account Information"
+    profile_info: "Profile Information"
+    patient_info: "Patient Information"
+    height: "Height"
+    weight: "Weight"
+    blood_group: "Blood Group"
+    drug_allergy: "Drug Allergy"
+    user_management: "User Management"
+    not_profile: "Not Profile"
+    request_verify_empty: "Request verify is empty"
+    not_setup_account: "This account isn't setup profile"
+    not_setup_patient_profile: "This account isn't patient or don't setup patient profile"
+    not_setup_clinic_profile: "This account isn't clinic or don't setup clinic profile"
+    patient_management: "Patient Management"
+    patient_empty: "Patients is empty...."
+
+

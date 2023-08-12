@@ -1,0 +1,19 @@
+en:
+  medical_record:
+    basic:
+      history_medical_record: "History Medical Record"
+      medical_record: "Medical Record"
+      medical_records: "Medical Records"
+      medical_record_detail: "Medical Record Details"
+      medical_record_empty: "Medical Records is empty..."
+      medical_record_search: "Medical Records search"
+      medical_record_infomation: "Medical Record Information"
+      medical_record_finish: "Medical Record Finish"
+    detail:
+      invoice: "Invoice"
+      invoices: "Invoices"
+      start_time: "Start Time"
+      end_time: "End Time"
+      status: "Status"
+      detail: "Details"
+      cancle: "Cancle"

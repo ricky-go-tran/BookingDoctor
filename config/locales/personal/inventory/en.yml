@@ -1,0 +1,14 @@
+en:
+  inventory:
+    basic:
+      history_inventory: "History Inventory"
+      inventory: "Inventory"
+      inventories: "Inventories"
+      inventory_details: "Inventory Details"
+      inventory_empty: "Inventories is empty..."
+      inventory_search: "Inventories search"
+      inventory_infomation: "Inventory Information"
+      inventory_management: "Inventory Management"
+      inventory_new: New "Inventory"
+    detail:
+      name: "Name"

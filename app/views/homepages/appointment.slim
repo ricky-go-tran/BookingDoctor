@@ -4,7 +4,7 @@
             - image_url = rails_blob_url(@clinic.clinic_view)
             .wallpaper[style="background-image: url('#{image_url}')"]
                 .blur-panel
-                .title Clinic Details
+                .title = t('clinic.basic.clinic_detail')
                 .clinic-information-wrapper
                     .name
                         label
@@ -18,7 +18,7 @@
         - else
             .wallpaper
                 .blur-panel
-                .title Clinic Details
+                .title = t('clinic.basic.clinic_detail')
                 .clinic-information-wrapper
                     .name = @clinic.name
                     .address = @clinic.address
@@ -26,13 +26,13 @@
 
     .body-wrapper
         .form-wrapper
-            .title Appointment
+            .title =
             = simple_form_for @medical_record, url: patient_medical_records_path, method: :post, data: {turbo: false}  do |form|
                 = form.input :clinic_profile_id, as: :hidden, input_html: { value: @clinic.id }
                 = form.input :start_time
                 = form.simple_fields_for :service_items do |service_item|
                     = render 'service_item_fields', f: service_item
                 .add-service
-                     = link_to_add_association 'Add service', form, :service_items
-                = form.button :submit, value: "Appointment"
+                     = link_to_add_association "#{t('service.basic.service_add')}", form, :service_items
+                = form.button :submit, value: "#{t('clinic.basic.appointment')}"
 

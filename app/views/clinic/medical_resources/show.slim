@@ -1,25 +1,25 @@
 .clinic-inventory-wrapper
     .control-bar
         .left-bar
-            = link_to "Back", clinic_medical_resources_path, {class: "back"}
-        .title Medical Resource Details
+            = link_to "#{t('back')}", clinic_medical_resources_path, {class: "back"}
+        .title = "#{t('medical_resource.basic.medical_resource_detail')}"
         .right-bar
     .content-panel
-        .title Medical Resource Details
+        .title = "#{t('medical_resource.basic.medical_resource_detail')}"
         .name
-            label Name:
+            label  = "#{t('medical_resource.detail.name')}:"
             span = " #{@medical_resource.name}"
         .brand
-            label Brand:
+            label  = "#{t('medical_resource.detail.brand')}:"
             span = " #{@medical_resource.brand}"
         .unit
-            label Unit:
+            label  = "#{t('medical_resource.detail.unit')}:"
             span = " #{@medical_resource.unit}"
         .description
-            label Description:
+            label  = "#{t('medical_resource.detail.description')}:"
             span = " #{@medical_resource.description}"
         .type
-            label Type:
+            label  = "#{t('medical_resource.detail.type')}:"
             span = " #{@medical_resource.medical_resource_type}"
         = simple_form_for  @inventory,  url: clinic_inventories_path, method: :post, data: {turbo: false} do |form|
             = form.input :medical_resource_id, as: :hidden, input_html: { value: @medical_resource.id }

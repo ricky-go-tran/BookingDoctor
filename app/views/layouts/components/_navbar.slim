@@ -5,14 +5,13 @@
       .dropdown-button[data-controller="toggle" data-toggle-target="navbar" data-action="click->toggle#navbar"]
       .menu-wrapper#navbar-menu-wrapper
          .menu
-            = link_to "Homepage", root_path, class: "item"
-            = link_to "Clinics", clinics_homepages_path, class: "item"
-            = link_to "Services", services_homepages_path, class: "item"
-            = link_to "Support", supports_homepages_path, class: "item"
+            = link_to "#{t("navbar.homepage")}", root_path, class: "item"
+            = link_to "#{t("navbar.clinic")}", clinics_homepages_path, class: "item"
+            = link_to "#{t("navbar.service")}", services_homepages_path, class: "item"
          .authentication-control
             - if user_signed_in?
                   .username[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{direct_homepages_path}"]
-                     = "Welcome, #{current_user.profile == nil ? current_user.email : current_user.profile.fullname}"
+                     = "#{t("navbar.welcome")}, #{current_user.profile == nil ? current_user.email : current_user.profile.fullname}"
                   = button_to "Logout" , destroy_user_session_path,  method:  :delete,class: "logout", form_class: "logout-form", data: {turbo_frame: "_top"}
             - else
                   = link_to "Login", new_user_session_path, class: "login"

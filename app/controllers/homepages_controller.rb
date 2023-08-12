@@ -22,7 +22,7 @@ class HomepagesController < ApplicationController
       booking = {}
       booking[:start] = item.start_time
       booking[:end] = item.end_time
-      if user_signed_in? && current_user.profile.patient_profile.id == item.patient_profile_id
+      if user_signed_in? && current_user.has_role?(:patient) && current_user.profile.patient_profile.id == item.patient_profile_id
         booking[:resourceId] = 1
         booking[:title] = 'Your booking'
         booking[:color] = '#FE6B64'

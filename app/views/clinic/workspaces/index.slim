@@ -7,35 +7,35 @@
         .image
     - else
         .patient-info-wrapper
-            .title Patient Infomation
+            .title = t('profile.patient_info')
             .name
-                label Name:
+                = "#{t('profile.name')}:"
                 span = " #{@profile.fullname}"
             .birthday
-                label Birthday:
+                label = "#{t('profile.birthday')}:"
                 span = " #{@profile.birthday}"
             .height
-                label Height:
+                label = "#{t('profile.height')}:"
                 span = " #{@patient_profile.height}"
             .weight
-                label Weight:
+                label = "#{t('profile.weight')}:"
                 span = " #{@patient_profile.weight}"
             .blood-group
-                label Blood Group:
+                label = "#{t('profile.blood_group')}:"
                 span = " #{@patient_profile.blood_group}"
             .drug-allergy
-                label Drug Allergy:
+                label = "#{t('profile.drug_allergy')}:"
                 span = " #{@patient_profile.drug_allergy}"
         .service-table
-            .title  Services
+            .title  = "#{t('service.basic.services')}:"
             - if @medical_record.services.present?
                         table.service-item
                             thead
                                 tr
-                                    th Name
-                                    th Price
-                                    th Time
-                                    th Details
+                                    th = "#{t('service.detail.name')}"
+                                    th = "#{t('service.detail.price')}"
+                                    th = "#{t('service.detail.time')}"
+                                    th = "#{t('service.detail.detail')}"
                             tbody
                                 - @medical_record.services.each do |item|
                                     tr

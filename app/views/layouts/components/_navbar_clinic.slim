@@ -8,7 +8,7 @@
     .menu-part
         .item#profile[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_profiles_path}"]
             #profile-icon
-            span My Profile
+            span = t('profile.my_profile')
         .item#workspace[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_workspaces_path}"]
             #workspace-icon
             span Workspace
@@ -20,13 +20,13 @@
             span Statistics
         .item#patient[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_patients_path}"]
             #patient-icon
-            span Patient Management
+            span = t('profile.patient_management')
         .item#inventory[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_inventories_path}"]
             #inventory-icon
             span Inventory Resources
         .item#service[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_services_path}"]
             #service-icon
-            span Service Management
+            span = t('service.basic.service_management')
         .item#toggle-clinic-navbar[data-controller="toggle"  data-action="click->toggle#navbar_clinic"]
             #toggle-icon
             span Close Navbar

@@ -4,42 +4,32 @@
         .logo
             span Booking
             label Doctor
-        .slogan Connecting Patients And Clinics
-        .title Top leading Vietnam e-medical platform
+        .slogan = t('homepage.slogan')
+        .title = t('homepage.title')
     .features-wrapper
         .title Our Feature
         .features
             .booking
                 #icon-booking
-                span.title-feature Booking Schedule
+                span.title-feature = t('homepage.booking_schedule')
             .e-management
                 #icon-management
-                span.title-feature E-Management
+                span.title-feature = t('homepage.e_management')
             .connect
                 #icon-connect
-                span.title-feature Connecting
+                span.title-feature = t('homepage.connecting')
             .Save
                 #icon-save
-                span.title-feature Save Time And Money
+                span.title-feature = t('homepage.save')
     .introduction-wrapper
-        .title About US
-        .introduction Welcome to BookingDoctor - Your Convenient Online Appointment Booking Platform for Better Health!
-            We take pride in introducing BookingDoctor - a seamless web platform that bridges the gap between patients and healthcare facilities,
-            making it effortless for you to schedule appointments with top-notch doctors and medical specialists.
-            Our mission is to provide reliable and user-friendly healthcare services, allowing you to access essential information about doctors and clinics with utmost ease.
-            We firmly believe that taking care of your health is not just essential but also your right. With BookingDoctor, we commit to providing you with the best online appointment booking experience, ensuring you maintain good health and ultimate satisfaction.
-            Join us now and experience a breakthrough in managing your personal healthcare. Easily schedule appointments and keep your health within reach with BookingDoctor!
-
-
-
-
-
+        .title = t('homepage.about_us')
+        .introduction = t('homepage.about_us_content')
 
     .population-clinics-wrapper
-        .title Population Clinics
+        .title = t('homepage.population_clinic')
         .population-clinics
     .population-services-wrapper
-        .title Population Services
+        .title =t('homepage.population_service')
         .population-services
     .support
 

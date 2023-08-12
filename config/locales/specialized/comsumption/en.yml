@@ -1,0 +1,14 @@
+en:
+  consumption:
+    basic:
+      consumption: "Consumption"
+      consumptions: "Consumptions"
+      consumption_detail: "Consumption Details"
+      consumption_empty: "Consumptions is empty..."
+      consumption_search: "Consumptions search"
+      consumption_infomation: "Consumption Information"
+      consumption_add: "Add Consumption"
+      consumption_remove: "Remove Consumption"
+      consumption_management: "Consumption Management"
+      consumption_edit: "Edit Consumption"
+      consumption_new: "New Consumption"
