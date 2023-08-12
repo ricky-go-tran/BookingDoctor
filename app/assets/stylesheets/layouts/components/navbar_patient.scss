@@ -15,6 +15,9 @@ $invoice-icon: image-url("icon_invoice.png");
     box-sizing: border-box;
     line-height: 2;
     color: #fff;
+    .active {
+        border: 1px solid #ffffff
+    }
 
 
     >.item {

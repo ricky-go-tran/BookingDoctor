@@ -61,6 +61,9 @@ $switch_icon: image-url("icon_switch.png");
         color: #fff;
         border-bottom: 1px solid #fff;
         width: 90%;
+        .active {
+            border: 1px solid #ffffff
+        }
         > .item {
             cursor: pointer;
             margin-left: 5%;

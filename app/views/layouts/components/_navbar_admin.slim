@@ -6,19 +6,19 @@
         .role Admin Dashbroad
         .name = current_user.profile.fullname
     .menu-part
-        .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_profiles_index_path}"]
+        .item[class="#{active_navbar("admin/profiles", %w(index change))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_profiles_index_path}"]
             #profile-icon
             span = t('profile.my_profile')
         .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_reports_path}"]
             #report-icon
             span Report management
-        .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_users_path}"]
+        .item[class="#{active_navbar("admin/users", %w(index show request_verify detail_request))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_users_path}"]
             #user-icon
             span User management
-        .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_categories_path}"]
+        .item[class="#{active_navbar("admin/categories", %w(index show new edit))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_categories_path}"]
             #category-icon
             span Categories management
-        .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_medical_resources_path}"]
+        .item[class="#{active_navbar("admin/medical_resources", %w(index show new edit))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_medical_resources_path}"]
             #medical-icon
             span Medical Resources
     .switch-role[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{homepages_path}"]

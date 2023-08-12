@@ -55,12 +55,19 @@ $menu: image-url("icon_menu.png");
             display: none;
         }
 
+        .active {
+            color: #ffffff !important;
+            background: linear-gradient(90deg, #0cbecd, #00fc85);
+
+        }
+
         .menu {
             display: flex;
             flex-direction: row;
             justify-content: space-around;
             align-items: center;
             margin-left: 10%;
+
 
             .item {
                 padding: 5px 15px;
@@ -144,10 +151,12 @@ $menu: image-url("icon_menu.png");
             margin: 10px 0;
             padding: 10px 0;
             border-bottom: 1px solid #000;
+
             &:hover {
                 background-color: #00fc85;
             }
         }
+
         .logout {
             @include buntton_style_del_lock;
             cursor: pointer;

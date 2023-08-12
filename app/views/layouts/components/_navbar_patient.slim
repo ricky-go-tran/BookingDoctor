@@ -1,11 +1,11 @@
 .navbar-patient-wrapper
-    .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_profiles_path}"]
+    .item[class="#{active_navbar("patient/profiles", %w(index detail change)) || active_navbar("patient/patient_profiles", %w(change))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_profiles_path}"]
         #my-profile
         span = t('profile.my_profile')
-    .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_medical_records_path}"]
+    .item[class="#{active_navbar("patient/medical_records", %w(index show edit))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_medical_records_path}"]
         #history-medical-record
         span = t('medical_record.basic.history_medical_record')
-    .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_payments_path}"]
+    .item[class="#{active_navbar("patient/payments", %w(index show))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_payments_path}"]
         #invoice
         span = t('medical_record.detail.invoices')
     / .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_profiles_path}"]
