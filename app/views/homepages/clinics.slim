@@ -5,8 +5,10 @@
             .blur-panel
             .title = t('clinic.basic.clinics')
             .search-wrapper
-                input.search-bar[type="search" placeholder="#{t('clinic.basic.clinic_search')}"]
-                select.dropdown-categories
+                input.search-bar[type="search" placeholder="#{t('clinic.basic.clinic_search')}" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{clinics_homepages_path}"]
+                select.dropdown-categories[data-controller="search" data-search-target="source" data-action="change->search#select" data-content="#{clinics_homepages_path}"]
+                    option#categories[selected disabled] Categories
+                    option#all[value="all"] All
                     - @categories.each do |category|
                         option[value="#{category.name.underscore}"] = category.name
     .body-wrapper

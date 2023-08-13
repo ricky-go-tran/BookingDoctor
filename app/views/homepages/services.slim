@@ -4,7 +4,7 @@
             .blur-panel
             .title = t('service.basic.services')
             .search-wrapper
-                input.search-bar[type="search" placeholder="#{t('service.basic.service_search')}"]
+                input.search-bar[type="search" placeholder="#{t('service.basic.service_search')}" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{services_homepages_path}"]
     .body-wrapper
         .title = t('service.basic.services')
         .services

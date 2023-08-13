@@ -11,6 +11,10 @@ class Service < ApplicationRecord
 
   has_one_attached :service_wallpaper
 
+  scope :search, ->(query) {
+    where('UPPER("name") LIKE UPPER(?)', "%#{query}%")
+  }
+
   scope :top_5_in_month, ->(id) {
     joins(:service_items)
       .where('services.clinic_profile_id = ? AND service_items.created_at  BETWEEN ? AND ?', id, Time.zone.now.beginning_of_month, Time.zone.now.end_of_month)

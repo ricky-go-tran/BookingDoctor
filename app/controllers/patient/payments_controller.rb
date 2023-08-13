@@ -16,19 +16,8 @@ class Patient::PaymentsController < Patient::BaseController
 
   def checkout
     @medical_record = MedicalRecord.find(params[:id])
-    list = []
-    @medical_record.prescription_items.each do |item|
-      line_item = {}
-      line_item[:quantity] = item.amount
-      line_item[:price_data] = {}
-      line_item[:price_data][:currency] = 'usd'
-      line_item[:price_data][:unit_amount] = item.price.to_i * 100
-      line_item[:price_data][:product_data] = {}
-      line_item[:price_data][:product_data][:name] = item.medical_resource.name
-      line_item[:price_data][:product_data][:description] = item.medical_resource.description
-      list.push(line_item)
-    end
-    list = list.concat(get_service_list(@medical_record.service_items))
+    list = PrescriptionItemJsonCreator.call(@medical_record.prescription_items)
+    list.concat(ServiceItemJsonCreator.call(@medical_record.service_items))
 
     session = Stripe::Checkout::Session.create(
       {
@@ -66,22 +55,6 @@ class Patient::PaymentsController < Patient::BaseController
   def cancle
     flash[:error_notice] = 'Fail! Payment invoice!'
     redirect_to patient_payments_path
-  end
-
-  def get_service_list(service_items)
-    list = []
-    service_items.each do |item|
-      line_item = {}
-      line_item[:quantity] = 1
-      line_item[:price_data] = {}
-      line_item[:price_data][:currency] = 'usd'
-      line_item[:price_data][:unit_amount] = item.price.to_i * 100
-      line_item[:price_data][:product_data] = {}
-      line_item[:price_data][:product_data][:name] = item.service.name
-      line_item[:price_data][:product_data][:description] = item.service.description
-      list.push(line_item)
-    end
-    list
   end
 
   private

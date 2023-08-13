@@ -10,6 +10,12 @@ class HomepagesController < ApplicationController
   def clinics
     @categories = Category.all
     @clinics = ClinicProfile.joins(:profile).where("profiles.status = 'valid'")
+    if params[:search]
+      @clinics = ClinicProfile.search(params[:search])
+    elsif params[:type]
+      @clinics = ClinicProfile.type(params[:type])
+    end
+    @clinic
   end
 
   def clinic_detail
@@ -19,18 +25,11 @@ class HomepagesController < ApplicationController
     current_week = MedicalRecord.current_appointment_by_clinic(@clinic.id)
     @calendar_booking = []
     @calendar_booking = current_week.map do |item|
-      booking = {}
-      booking[:start] = item.start_time
-      booking[:end] = item.end_time
-      if user_signed_in? && current_user.has_role?(:patient) && current_user.profile.patient_profile.id == item.patient_profile_id
-        booking[:resourceId] = 1
-        booking[:title] = 'Your booking'
-        booking[:color] = '#FE6B64'
-      else
-        booking[:resourceId] = 2
-        booking[:title] = 'Other booking'
-        booking[:color] = '#B29DD9'
-      end
+      booking = if user_signed_in? && current_user.has_role?(:patient) && current_user.profile.patient_profile.id == item.patient_profile_id
+                  ChartItemCreator.call(1, 'Your booking', '#FE6B64', item.start_time, item.end_time)
+                else
+                  ChartItemCreator.call(2, 'Orther booking', '#B29DD9', item.start_time, item.end_time)
+                end
       booking
     end
     @calendar_booking = @calendar_booking.to_json
@@ -38,6 +37,10 @@ class HomepagesController < ApplicationController
 
   def services
     @services = Service.all
+    if params[:search]
+      @services = Service.search(params[:search])
+    end
+    @services
   end
 
   def service_detail

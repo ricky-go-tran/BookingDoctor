@@ -4,13 +4,8 @@ class Clinic::MedicalRecordsController < ApplicationController
     @medical_record = MedicalRecord.new(re_examination_params)
 
     @medical_record.clinic_profile_id = current_user.profile.clinic_profile.id
-    sum = 0
-    @medical_record.service_items = @medical_record.service_items.map do |item|
-      item.price = Service.get_price_by_id(item[:service_id])
-      sum += Service.get_execution_time_by_id(item[:service_id])
-      item
-    end
-    @medical_record.end_time = @medical_record.start_time + sum.minutes
+
+    @medical_record.end_time = MedicalRecordsManager::CalculatorEndTimeCreator.call(@medical_record)
 
     if @medical_record.save
       flash[:success_notice] = 'Success! Register appointment'
