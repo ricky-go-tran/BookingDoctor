@@ -12,6 +12,7 @@ class MedicalRecord < ApplicationRecord
   resourcify
 
   validate :check_overlapping, on: :create
+  validate :check_time_in_clinic_work, on: :create
 
   accepts_nested_attributes_for :examination_resul, :prescription_items, :service_items
 
@@ -55,6 +56,13 @@ class MedicalRecord < ApplicationRecord
                end
     if overlaps.present?
       errors.add(:base, 'Booking overlaps with existing records')
+    end
+  end
+
+  def check_time_in_clinic_work
+    clinic_profile = ClinicProfile.find(clinic_profile_id)
+    if (start_time.hour > clinic_profile.start_hour.hour || (start_time.hour == clinic_profile.start_hour.hour && start_time.min >= clinic_profile.start_hour.min)) && (end_time.hour < clinic_profile.end_hour.hour || (end_time.hour == clinic_profile.end_hour.hour && end_time.min <= clinic_profile.start_hour.min))
+      errors.add(:base, 'Booking is not in clinic time work')
     end
   end
 end
