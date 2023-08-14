@@ -52,7 +52,7 @@ class HomepagesController < ApplicationController
 
   def direct
     if current_user.has_role? :admin
-      redirect_to admin_profiles_index_path
+      redirect_to admin_profiles_path
     elsif current_user.has_role? :patient
       redirect_to patient_profiles_path
     elsif current_user.has_role? :clinic

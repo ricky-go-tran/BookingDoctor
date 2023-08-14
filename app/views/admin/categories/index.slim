@@ -5,7 +5,7 @@
             input.search-bar[placeholder="#{t('filter_by_name')}" type="search" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{admin_categories_path}"]
         .right
             = link_to "#{t('export_sheet')}", admin_categories_path(format: :xlsx), {class: "sheet"}
-            = link_to "#{t('export_pdf')}",root_path, {class: "pdf_export"}
+            / = link_to "#{t('export_pdf')}",root_path, {class: "pdf_export"}
             = link_to "#{t('add')}", new_admin_category_path, {class: "add"}
     .content-panel
         - if @categories.present?
