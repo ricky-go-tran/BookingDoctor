@@ -92,8 +92,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: bookingdoctor_production
-  host: localhost
+  database: <%= ENV["database_name"] %>
+  host: <%= ENV["host"] %>
   pool: 5
-  username: railer
-  password: 662001
+  username: <%= ENV["user"] %>
+  password: <%= ENV["password"] %>
