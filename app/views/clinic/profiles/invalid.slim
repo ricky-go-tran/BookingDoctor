@@ -4,5 +4,5 @@
             label Booking
             span Doctor
         .title Your account is invalid
-        .content Due to consumer protection policies, we will need to verify clinic partners. The account will be verified no later than 3 days from the date you registered with us. The results will be sent by us to the email you have registered with us. Please pay attention to your email. Thank you very much for using our service.
+        .content = t('homepage.invalid_clinic')
         .back-to-home[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"] Back to Home

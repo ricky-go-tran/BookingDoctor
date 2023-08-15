@@ -1,0 +1,20 @@
+en:
+  medical_resource:
+    basic:
+      medical_resource: "Medical Resource"
+      medical_resources: "Medical Resources"
+      medical_resource_detail: "Medical Resource Details"
+      medical_resource_empty: "Medical Resources is empty..."
+      medical_resource_search: "Medical Resources search"
+      medical_resource_infomation: "Medical Resource Information"
+      medical_resource_management: "Medical Resources Management"
+      new_medical_resource: "New Medical Resource"
+    detail:
+      name: "Name"
+      brand: "Brand"
+      amount: "Amount"
+      unit: "Unit"
+      price: "Price"
+      description: "Description"
+      type: "Type"
+

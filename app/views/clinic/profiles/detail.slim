@@ -2,67 +2,67 @@
     Test
 .clinic-my-profile-detail-wrapper
     .account-info
-        .title Account Infomation
+        .title = t('profile.account_info')
         .email
-            label Email:
+            label = "#{t('user.basic.email')}:"
             span = "  #{current_user.email}"
         .time-create
-            label Time Signup:
+            label = "#{t('user.basic.time_signup')}:"
             span = "  #{date_format(current_user.created_at)}"
         .time-update
-            label Change Recently:
+            label = "#{t('user.basic.change_recently')}:"
             span = "  #{date_format(current_user.updated_at)}"
     .profile-info
-        .title Profile Information
+        .title = "#{t('profile.profile_info')}"
         .fulname
-            label Fullname:
+            label = "#{t('profile.fullname')}:"
             span = "  #{current_user.profile.fullname}"
         .birthday
-            label Birthday:
+            label = "#{t('profile.birthday')}:"
             span = "  #{current_user.profile.birthday}"
         .address
-            label Address:
+            label = "#{t('profile.address')}:"
             span = " #{current_user.profile.address}"
     .clinic-info
-        .title Clinic Information
+        .title = t('clinic.basic.clinic_info')
         .fulname
-            label Name
+            label = "#{t('clinic.profile.name')}:"
             span = " #{current_user.profile.clinic_profile.name}"
         .birthday
-            label Category:
+            label = "#{t('category.basic.category')}:"
             span = "  #{Category.find(current_user.profile.clinic_profile.category_id).name}"
         .address
-            label Address:
+            label = "#{t('clinic.profile.address')}:"
             span = " #{current_user.profile.clinic_profile.address}"
         .phone
-            label  Phone:
+            label = "#{t('clinic.profile.phone')}:"
             span = current_user.profile.clinic_profile.phone
         .description
-            label  Description:
+            label = "#{t('clinic.profile.description')}:"
             span = current_user.profile.clinic_profile.description
         .active-time
-            label Operating hours -
-            label  Start:
+            label = "#{t('clinic.profile.operating_hour')} -"
+            label = "#{t('clinic.profile.from')}:"
             span = current_user.profile.clinic_profile.start_hour.to_s(:time)
-            label  End:
+            label = "#{t('clinic.profile.to')}:"
             span = current_user.profile.clinic_profile.end_hour.to_s(:time)
         .active-time
-            label Operating hours -
-            label  Start:
+            label = "#{t('clinic.profile.operating_hour')} -"
+            label = "#{t('clinic.profile.from')}:"
             span = current_user.profile.clinic_profile.start_day
-            label  End:
+            label = "#{t('clinic.profile.to')}:"
             span = current_user.profile.clinic_profile.end_day
         .certificate
             label Certificate:
             - if current_user.profile.clinic_profile.certificate.attached?
                 = image_tag current_user.profile.clinic_profile.certificate
             - else
-                label No Image
+                label = "#{t('no_image')}"
         .clinic_view
             label Clinic view:
             - if current_user.profile.clinic_profile.clinic_view.attached?
                 = image_tag current_user.profile.clinic_profile.clinic_view
             - else
-                label NO Image
+                label = "#{t('no_image')}"
 
 

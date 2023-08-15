@@ -6,27 +6,27 @@
         .role Clinic Dashbroad
         .name = current_user.profile.fullname
     .menu-part
-        .item#profile[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_profiles_path}"]
-            #profile-icon
-            span My Profile
-        .item#workspace[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_workspaces_path}"]
-            #workspace-icon
+        .item#profile[class="#{active_navbar("clinic/profiles", %w(index detail change)) || active_navbar("clinic/clinic_profiles", %w(change)) }" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_profiles_path}"]
+            #profile-icon[class="#{active_icon_navbar("clinic/profiles", %w(index detail change)) || active_icon_navbar("clinic/clinic_profiles", %w(change))}"]
+            span = t('profile.my_profile')
+        .item#workspace[class="#{active_navbar("clinic/workspaces", %w(index re_finish finish re_examination))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_workspaces_path}"]
+            #workspace-icon[class="#{active_icon_navbar("clinic/workspaces", %w(index re_finish finish re_examination))}"]
             span Workspace
-        .item#appointment[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_appointments_path}"]
-            #appointment-icon
+        .item#appointment[class="#{active_navbar("clinic/appointments", %w(index show))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_appointments_path}"]
+            #appointment-icon[class="#{active_icon_navbar("clinic/appointments", %w(index show))}"]
             span Appointment
-        .item#statistics[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_statistics_path}"]
-            #statistics-icon
+        .item#statistics[class="#{active_navbar("clinic/statistics", %w(index))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_statistics_path}"]
+            #statistics-icon[class="#{active_icon_navbar("clinic/statistics", %w(index))}"]
             span Statistics
-        .item#patient[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_patients_path}"]
-            #patient-icon
-            span Patient Management
-        .item#inventory[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_inventories_path}"]
-            #inventory-icon
+        .item#patient[class="#{active_navbar("clinic/patients", %w(index show detail_medical_record))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_patients_path}"]
+            #patient-icon[class="#{active_icon_navbar("clinic/patients", %w(index show detail_medical_record))}"]
+            span = t('profile.patient_management')
+        .item#inventory[class="#{active_navbar("clinic/inventories", %w(index show new edit)) || active_navbar("clinic/medical_resources", %w(index show))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_inventories_path}"]
+            #inventory-icon[class="#{active_icon_navbar("clinic/inventories", %w(index show new edit)) || active_icon_navbar("clinic/medical_resources", %w(index show))}"]
             span Inventory Resources
-        .item#service[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_services_path}"]
-            #service-icon
-            span Service Management
+        .item#service[ class="#{active_navbar("clinic/services", %w(index show new edit))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_services_path}"]
+            #service-icon[class="#{active_icon_navbar("clinic/services", %w(index show new edit))}"]
+            span = t('service.basic.service_management')
         .item#toggle-clinic-navbar[data-controller="toggle"  data-action="click->toggle#navbar_clinic"]
             #toggle-icon
             span Close Navbar

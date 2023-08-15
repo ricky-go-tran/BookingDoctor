@@ -1,10 +1,10 @@
 .clinic-patients-wrapper
     .control-bar
         .left-bar
-            = link_to "Back", clinic_profiles_path, {class: "back"}
-        .title Patient Management
+            = link_to "#{t('back')}", clinic_profiles_path, {class: "back"}
+        .title = t('profile.patient_management')
         .right-bar
-            = link_to "Export Sheet", clinic_patients_path(format: :xlsx), {class: "sheet"}
+            = link_to "#{t('export_sheet')}", clinic_patients_path(format: :xlsx), {class: "sheet"}
     .content-panel
         - if @patients.present?
             - @patients.each do |patient|
@@ -13,7 +13,7 @@
                         .name = patient.profile.fullname
                         .birtday = "Birtday: #{patient.profile.birthday}"
                     .right
-                        .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_patient_path(patient)}"] View details
+                        .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_patient_path(patient)}"] = "#{t('view_details')}"
         - else
-            .emty Patients is empty...
+            .emty = t('profile.patient_empty')
 

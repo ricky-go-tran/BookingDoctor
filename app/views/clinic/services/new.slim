@@ -1,16 +1,10 @@
 .clinic-service-wrapper
     .control-bar
         .left-bar
-            = link_to "Back", clinic_services_path, {class: "back"}
-        .title Service Management
+            = link_to "#{t('back')}", clinic_services_path, {class: "back"}
+        .title = t('service.basic.service_management')
         .right-bar
     .new-panel
-        .title New Service
-        = simple_form_for  [:clinic, @service], data: {turbo: false} do |form|
-            = form.input :name
-            = form.input :description
-            = form.input :price
-            = form.input :execution_time
-            = form.input :service_wallpaper
-            = form.button :submit
+        .title = t('service.basic.service_new')
+        = render "clinic/services/form"
 

@@ -30,6 +30,7 @@ $toggle_icon: image-url("icon_menu.png");
     justify-content: flex-start;
     align-items: flex-start;
     overflow-y: scroll;
+
     @include mobile {
         display: none;
         z-index: 1;
@@ -91,12 +92,42 @@ $toggle_icon: image-url("icon_menu.png");
         border-bottom: 1px solid #1465f2;
         width: 90%;
 
+        .active {
+            background-color: #1465f2;
+            color: #fff;
+            #profile-icon.active_icon {
+                @include navbar_icon($profile-icon);
+            }
+            #workspace-icon.active_icon {
+                @include navbar_icon($workspace_icon);
+            }
+            #appointment-icon.active_icon {
+                @include navbar_icon($appointment_icon);
+            }
+            #statistics-icon.active_icon {
+                @include navbar_icon($statistic_icon);
+            }
+            #inventory-icon.active_icon {
+                @include navbar_icon($inventory_icon);
+            }
+            #service-icon.active_icon {
+                @include navbar_icon($serive_icon);
+            }
+            #patient-icon.active_icon {
+                @include navbar_icon($patient_icon);
+            }
+        }
+
+
         #toggle-clinic-navbar {
             display: none;
+
             @include mobile {
                 display: flex;
             }
         }
+
+
         >.item {
             cursor: pointer;
             margin-left: 5%;
@@ -106,7 +137,7 @@ $toggle_icon: image-url("icon_menu.png");
             align-items: center;
             width: 100%;
             margin-bottom: 20px;
-            border-radius:  5px;
+            border-radius: 5px;
             padding: 0 5px;
 
             &:hover {
@@ -137,9 +168,11 @@ $toggle_icon: image-url("icon_menu.png");
             #service-icon {
                 @include navbar_icon($serive_icon_gray);
             }
+
             #patient-icon {
                 @include navbar_icon($patient_icon_gray);
             }
+
             #toggle-icon {
                 @include navbar_icon($toggle_icon);
             }
@@ -187,6 +220,7 @@ $toggle_icon: image-url("icon_menu.png");
                 @include navbar_icon($serive_icon);
             }
         }
+
         #patient:hover {
             #patient-icon {
                 @include navbar_icon($patient_icon);

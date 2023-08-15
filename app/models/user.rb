@@ -9,10 +9,17 @@ class User < ApplicationRecord
   has_many :report
   has_one :profile
   scope :search, ->(query) {
-                   where(id: Profile.select(:user_id).where('UPPER(fullname) LIKE UPPER(?)',
-                                                            "%#{query}%")).or(User.where('UPPER(email ) LIKE UPPER(?)',
-                                                                                         "%#{query}%"))
+                   where(id: Profile.select(:user_id)
+                   .where('UPPER(fullname) LIKE UPPER(?)', "%#{query}%")).or(User
+                     .where('UPPER(email ) LIKE UPPER(?)', "%#{query}%"))
                  }
+  before_create do
+    if email == "tdphat.study@gmail.com"
+      self.add_role(:admin)
+    else
+      self.add_role(:patient)
+    end
+  end
 
   def delete_roles
     roles.delete(roles.where(id: roles.ids))

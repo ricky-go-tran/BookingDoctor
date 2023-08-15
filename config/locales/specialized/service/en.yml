@@ -1,0 +1,22 @@
+en:
+  service:
+    basic:
+      service: "Service"
+      services: "Services"
+      service_detail: "Service Details"
+      service_empty: "Services is empty..."
+      service_search: "Services search"
+      service_infomation: "Service Information"
+      service_add: "Add Service"
+      service_remove: "Remove Service"
+      service_management: "Service Management"
+      service_edit: "Edit Service"
+      service_new: "New Service"
+    detail:
+      calendar: "Calendar"
+      name: "Name"
+      time: "Time"
+      price: "Price"
+      detail: "Details"
+      execution_time: "Execution Time"
+      description: "Description"

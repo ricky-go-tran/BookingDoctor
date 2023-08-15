@@ -1,0 +1,30 @@
+en:
+  homepage:
+    redirect: "Please! We redirecting you to..."
+    slogan: "Connecting Patients And Clinics"
+    title: "Top leading Vietnam e-medical platform"
+    our_feature: "Our Feature"
+    population_clinic: "Population Clinics"
+    population_patient: "Population Patients"
+    booking_schedule: "Booking Schedule"
+    e_management: "E Management"
+    connecting: "Connecting"
+    save: "Save Time And Money"
+    about_us: "About Our"
+    booking_notice: "DoctorBooking notice"
+    booking_feature: "DoctorBooking feature"
+    about_us_content: "Welcome to BookingDoctor - Your Convenient Online Appointment Booking Platform for Better Health! We take pride in introducing BookingDoctor - a seamless web platform that bridges the gap between patients and healthcare facilities, making it effortless for you to schedule appointments with top-notch doctors and medical specialists. Our mission is to provide reliable and user-friendly healthcare services, allowing you to access essential information about doctors and clinics with utmost ease. We firmly believe that taking care of your health is not just essential but also your right. With BookingDoctor, we commit to providing you with the best online appointment booking experience, ensuring you maintain good health and ultimate satisfaction. Join us now and experience a breakthrough in managing your personal healthcare. Easily schedule appointments and keep your health within reach with BookingDoctor!"
+    booking_notice_content: "We pledge that every clinic and clinic owner listed on our website has been duly confirmed to possess all the legal and professional certificates required by the Socialist Republic of Vietnam. Ensuring the safety and quality of healthcare for patients is our top priority, and verifying the necessary certifications is a crucial step to guarantee that the clinics meet the highest standards of care and adhere to all healthcare regulations."
+    booking_feature_content: "Welcome to our website - an advanced and convenient platform that connects patients with reputable healthcare clinics."
+    booking_feature_item_1: "Diverse Clinic Network"
+    booking_feature_item_2: "Verified Certifications"
+    booking_feature_item_3: "Online Booking"
+    own_info: "Own Information"
+    welcome: "Welcome"
+    invalid_clinic: "Due to consumer protection policies, we will need to verify clinic partners. The account will be verified no later than 3 days from the date you registered with us. The results will be sent by us to the email you have registered with us. Please pay attention to your email. Thank you very much for using our service."
+  navbar:
+    homepage: "Homepages"
+    clinic: "Clinics"
+    service: "Services"
+
+

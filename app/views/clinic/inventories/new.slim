@@ -1,14 +1,10 @@
 .clinic-inventory-wrapper
     .control-bar
         .left-bar
-            = link_to "Back", :back, {class: "back"}
-        .title Inventory Management
+            = link_to "#{t('back')}", :back, {class: "back"}
+        .title  = "#{t('inventory.basic.inventory_management')}"
         .right-bar
     .new-panel
-        .title New Invetory
-        = simple_form_for  [:clinic, @inventory], data: {turbo: false} do |form|
-            = form.input :medical_resource_id, collection: MedicalResource.all, label_method: ->(resource) { "#{resource.name} - Brand: #{resource.brand}"}, value_method: :id, include_blank: true
-            = form.input :amount
-            = form.input :price
-            = form.button :submit
+        .title  = "#{t('inventory.basic.inventory_new')}"
+        = render "clinic/inventories/form"
 

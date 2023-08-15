@@ -2,16 +2,7 @@ class Clinic::AppointmentsController < Clinic::BaseController
   before_action :get_medical_record, only: %i[show cancle progress]
   def index
     @medical_records = MedicalRecord.current_appointment_by_clinic(current_user.profile.clinic_profile.id)
-    @medical_records_json = @medical_records.map do |item|
-      {
-        id: item.id,
-        clinic_profile_id: item.clinic_profile_id,
-        patient_profile_id: item.patient_profile_id,
-        patient_name: helpers.get_name_patient_by_patient_id(item.patient_profile_id),
-        start_time: item.start_time,
-        end_time: item.end_time
-      }
-    end
+    @medical_records_json = MedicalRecordsManager::MedicalRecordsJsonCreator.call(@medical_records)
     @medical_records_json = @medical_records_json.to_json
   end
 

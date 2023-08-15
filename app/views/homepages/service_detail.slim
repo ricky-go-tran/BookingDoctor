@@ -4,7 +4,7 @@
             - image_url = rails_blob_url(@service.service_wallpaper)
             .wallpaper[style="background-image: url('#{image_url}')"]
                 .blur-panel
-                .title Service Details
+                .title = t('service.basic.service_detail')
                 .service-information-wrapper
                     .name
                         label
@@ -18,7 +18,7 @@
         - else
             .wallpaper
                 .blur-panel
-                .title Service Details
+                .title  = t('service.basic.service_detail')
                 .service-information-wrapper
                     .name = @service.name
                     .price = @service.price
@@ -28,46 +28,46 @@
         .notice
             label
                 i
-                | DoctorBooking notice
-            span We pledge that every service and service owner listed on our website has been duly confirmed to possess all the legal and professional certificates required by the Socialist Republic of Vietnam. Ensuring the safety and quality of healthcare for patients is our top priority, and verifying the necessary certifications is a crucial step to guarantee that the services meet the highest standards of care and adhere to all healthcare regulations.
+                span = "#{t('homepage.booking_notice')}"
+            span    = "#{t('homepage.booking_notice_content')}"
 
         .feature
             label
                 i
-                | DoctorBooking feature
+                span = "#{t('homepage.booking_feature')}"
             span
                 ul
-                    |Welcome to our website - an advanced and convenient platform that connects patients with reputable healthcare services.
-                    li Diverse Service Network
-                    li Verified Certifications
-                    li Online Booking
+                    span = "#{t('homepage.booking_feature_content')}"
+                    li = "#{t('homepage.booking_feature_item_1')}"
+                    li = "#{t('homepage.booking_feature_item_2')}"
+                    li = "#{t('homepage.booking_feature_item_3')}"
         .clinic-information
             .title
-                label Clinic Information
+                label = t('service.basic.service_infomation')
                 span
             .name
-                label Name:
+                label = "#{t('clinic.profile.name')}:"
                 span = "  #{@clinic.name}"
             .address
-                label Address:
+                label = "#{t('clinic.profile.address')}:"
                 span = "  #{@clinic.address}"
             .phone
-                label Phone:
+                label = "#{t('clinic.profile.phone')}:"
                 span = " #{@clinic.phone}"
         .service-information
-            .title Service Information
+            .title = t('service.basic.service_infomation')
             .name
-                label Name:
+                label = "#{t('service.detail.name')}:"
                 span = " #{@service.name}"
             .price
-                label Price:
+                label = "#{t('service.detail.price')}:"
                 span = " #{@service.price}"
             .execution-time
-                label Execution Time:
+                label = "#{t('service.detail.execution_time')}:"
                 span = " #{@service.execution_time}"
 
             .description
-                label Description:
+                label = "#{t('service.detail.description')}:"
                 br
                 span = " #{@service.description}"
 

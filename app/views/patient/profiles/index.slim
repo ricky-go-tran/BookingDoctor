@@ -2,11 +2,11 @@
     .logo
         span Doctor
         label Booking
-    .title Patient Dashboard Tools
+    .title = "#{t('patient_dashboard')}"
     .image
-    .name = "Welcome, #{current_user.profile.fullname}"
+    .name = "#{t('homepage.welcome')}, #{current_user.profile.fullname}"
     .birthday  = "Your birthday: #{current_user.profile.birthday}"
     .address = "Address: #{current_user.profile.address}"
     = link_to "View profile", detail_patient_profiles_path, class: "details"
     = link_to "Change your profile", change_patient_profiles_path, class: "edit"
-    = link_to "Change your clinic profile", change_patient_patient_profiles_path, class: "edit-clinic"
+    = link_to "Change your patient profile", change_patient_patient_profiles_path, class: "edit-clinic"

@@ -20,6 +20,17 @@ class ClinicProfile < ApplicationRecord
   scope :current_month, -> {
     where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)
   }
+
+  scope :search, ->(query) {
+    select('clinic_profiles.*').joins(:profile).where(profile: { status: 'valid' })
+      .where('UPPER(clinic_profiles.name) LIKE UPPER(?)', "%#{query}%")
+  }
+
+  scope :type, ->(type) {
+    select('clinic_profiles.*').joins(:profile, :category).where(profile: { status: 'valid' })
+      .where('UPPER(categories.name) LIKE UPPER(?)', "%#{type}%")
+  }
+
   def start_hour_must_be_before_end_hour
     if start_hour.present? && end_hour.present? && start_hour >= end_hour
       errors.add(:end_hour, 'Must be after start hour')

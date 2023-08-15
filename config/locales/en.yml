@@ -31,3 +31,16 @@
 
 en:
   hello: "Hello world"
+  no_image: "No image"
+  back: "Back"
+  patient_dashboard: "Patient Dashboard Tools"
+  filter_by_name: "Filter By Name"
+  filter_by_name_or_brand: "Filter By Name Or Brand"
+  view_details: "View details"
+  change: "Change"
+  delete: "Delete"
+  recent_changes: "Recent changes"
+  export_sheet: "Export Sheet"
+  export_pdf: "Export Pdf"
+  add: "Add"
+  delete_confirm: "Are you sure?"

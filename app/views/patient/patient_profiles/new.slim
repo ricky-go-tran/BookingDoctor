@@ -3,7 +3,7 @@
         .logo
             span Booking
             label Doctor
-        h2 Setup Profile
+        h2 = t('profile.setup_profile')
         = simple_form_for [:patient, @patient_profile], data: {turbo: false} do |form|
             = form.input :height, label: "Height"
             = form.input :weight

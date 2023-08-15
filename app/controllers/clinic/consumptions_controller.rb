@@ -9,7 +9,7 @@ class Clinic::ConsumptionsController < ApplicationController
       @consumption.save
     end
 
-    redirect_to "/clinic/service/#{@consumption.service_id}"
+    redirect_to "/clinic/services/#{@consumption.service_id}"
   end
 
   def destroy

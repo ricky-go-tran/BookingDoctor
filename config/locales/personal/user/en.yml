@@ -1,0 +1,6 @@
+en:
+  user:
+    basic:
+      email: "Email"
+      time_signup: "Time Signup"
+      change_recently: "Change Recently"

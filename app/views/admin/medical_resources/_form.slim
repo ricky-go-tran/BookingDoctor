@@ -1,0 +1,7 @@
+= simple_form_for  [:admin, @medical_resource] do |form|
+    = form.input :name, label: "Name: "
+    = form.input :brand, label: "Brand: "
+    = form.input :unit, label: "Unit: "
+    = form.input :description, label: "Description: "
+    = form.input :medical_resource_type, label: "Type: ", collection: MedicalResource.medical_resource_types.keys
+    = form.button :submit

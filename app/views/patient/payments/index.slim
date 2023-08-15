@@ -1,6 +1,6 @@
 .payments-wrapper
     .header
-        .title Invoices
+        .title = t('medical_record.detail.invoices')
     .content-panel
         - if @medical_records.present?
             - @medical_records.each do |medical_record|

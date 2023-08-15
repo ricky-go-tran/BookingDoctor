@@ -27,7 +27,7 @@ development:
   database: bookingdoctor_development
   host: localhost
   pool: 5
-  username: railer
+  username: data
   password: 662001
 
   # The specified database role being used to connect to postgres.
@@ -66,7 +66,7 @@ test:
   database: bookingdoctor_test
   host: localhost
   pool: 5
-  username: railer
+  username: data
   password: 662001
 
 # As with config/credentials.yml, you never want to store sensitive information,
@@ -92,8 +92,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: bookingdoctor_production
-  host: localhost
+  database: <%= Rails.application.credentials.database_name %>
+  host: <%= Rails.application.credentials.postgres_host %>
   pool: 5
-  username: railer
-  password: 662001
+  username: <%= Rails.application.credentials.postgres_user %>
+  password: <%= Rails.application.credentials.postgres_password %>

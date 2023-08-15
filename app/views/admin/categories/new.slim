@@ -1,12 +1,9 @@
 .categories-management-wrapper
-    .title Categories Clinic Management
+    .title = "#{t('category.basic.category_clinic_management')}"
     .controll-panel
         .left
-            = link_to "Back", admin_categories_path, class: "back"
+            = link_to "#{t('back')}", admin_categories_path, class: "back"
     .new-panel
-        .title New Category Clinic
-        = simple_form_for  [:admin, @category] do |form|
-            = form.input :name, label: "Name: "
-            = form.input :description, label: "Description: "
-            = form.button :submit
+        .title #{t('category.basic.new_category_clinic')}
+        = render "admin/categories/form"
 

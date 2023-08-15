@@ -4,7 +4,7 @@
         label Booking
     .title Clinic Dashboard Tools
     .image
-    .name = "Welcome, #{current_user.profile.fullname}"
+    .name = "#{t('homepage.welcome')}, #{current_user.profile.fullname}"
     .birthday  = "Your clinic: #{current_user.profile.clinic_profile.name}"
     .address = "Location: #{current_user.profile.clinic_profile.address}"
     = link_to "View profile", detail_clinic_profiles_path, class: "details"

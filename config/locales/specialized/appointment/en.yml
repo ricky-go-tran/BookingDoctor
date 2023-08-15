@@ -1,0 +1,9 @@
+en:
+  appointment:
+    basic:
+      appointment: "Appointment"
+      appointments: "Appointments"
+      appointment_detail: "Appointment Details"
+      appointment_empty: "Appointments is empty..."
+      appointment_search: "Appointments search"
+      appointment_infomation: "Appointment Information"

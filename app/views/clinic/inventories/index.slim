@@ -1,12 +1,12 @@
 .clinic-inventory-wrapper
     .control-bar
         .left-bar
-            = link_to "Back", clinic_profiles_path, {class: "back"}
-        .title Inventory Management
+            = link_to "#{t('back')}", clinic_profiles_path, {class: "back"}
+        .title  = "#{t('inventory.basic.inventory_management')}"
         .right-bar
-            = link_to "Export Sheet", clinic_inventories_path(format: :xlsx), {class: "sheet"}
+            = link_to "#{t('export_sheet')}", clinic_inventories_path(format: :xlsx), {class: "sheet"}
             = link_to "Add By MR",clinic_medical_resources_path, {class: "medical_resources"}
-            = link_to "Add", new_clinic_inventory_path, {class: "add"}
+            = link_to "#{t('add')}", new_clinic_inventory_path, {class: "add"}
     .content-panel
         - if @inventories.present?
             - @inventories.each do |inventory|
@@ -15,9 +15,9 @@
                         .name = get_medical_resource_by_id(inventory.medical_resource_id)
                         .amount-price = "Remaining amount: #{inventory.amount} - Price: #{inventory.price}"
                     .right
-                        .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_inventory_path(inventory)}"] View details
+                        .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_inventory_path(inventory)}"] = "#{t('view_details')}"
                         .change[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{edit_clinic_inventory_path(inventory)}"] Change
-                        = link_to "Delete", clinic_inventory_path(inventory),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "del"
+                        = link_to "#{t('delete')}", clinic_inventory_path(inventory),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "del"
         - else
-            .emty Inventories is empty...
+            .emty  = "#{t('inventory.basic.inventory_empty')}"
 

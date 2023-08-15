@@ -1,0 +1,15 @@
+en:
+  category:
+    basic:
+      category: "Category"
+      categories: "Categories"
+      category_detail: "Category Details"
+      category_empty: "Categories is empty..."
+      category_search: "Categories search"
+      category_infomation: "Category Information"
+      category_clinic_management: "Categories Clinic Management"
+      edit_category_clinic: "Edit Category Clinic"
+      new_category_clinic: "New Category Clinic"
+    detail:
+      name: "Name"
+      description: "Description"

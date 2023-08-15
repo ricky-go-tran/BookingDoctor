@@ -1,22 +1,22 @@
 .categories-management-wrapper
-    .title Categories Clinic Management
+    .title = "#{t('category.basic.category_clinic_management')}"
     .controll-panel
         .left
-            input.search-bar[placeholder="Filter By Name" type="search" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{admin_categories_path}"]
+            input.search-bar[placeholder="#{t('filter_by_name')}" type="search" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{admin_categories_path}"]
         .right
-            = link_to "Export Sheet", admin_categories_path(format: :xlsx), {class: "sheet"}
-            = link_to "Export Pdf",root_path, {class: "pdf_export"}
-            = link_to "Add", new_admin_category_path, {class: "add"}
+            = link_to "#{t('export_sheet')}", admin_categories_path(format: :xlsx), {class: "sheet"}
+            / = link_to "#{t('export_pdf')}",root_path, {class: "pdf_export"}
+            = link_to "#{t('add')}", new_admin_category_path, {class: "add"}
     .content-panel
         - if @categories.present?
             - @categories.each do |category|
                 .category-item
                     .left
                         .name = category.name
-                        .change-time = "Recent changes: #{date_format(category.updated_at)}"
+                        .change-time = "#{t('recent_changes')}: #{date_format(category.updated_at)}"
                     .right
-                        .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_category_path(category)}"] View details
-                        .change[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{edit_admin_category_path(category)}"] Change
+                        .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_category_path(category)}"] = "#{t('view_details')}"
+                        .change[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{edit_admin_category_path(category)}"] = "#{t('change')}"
                         = link_to "Delete", admin_category_path(category),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "del"
         - else
-            .emty Categories is empty...
+            .emty = t('category.basic.category_empty')

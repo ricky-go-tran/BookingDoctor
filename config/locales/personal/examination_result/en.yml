@@ -1,0 +1,17 @@
+en:
+  examimation_result:
+    basic:
+      examimation_result: "Examimation Result"
+      examimation_results: "Examimation Results"
+      examimation_result_detail: "Examimation Result Details"
+      examimation_result_empty: "Examimation Results is empty..."
+      examimation_result_search: "Examimation Results search"
+      examimation_result_infomation: "Examimation Result Information"
+      examimation_result_management: "Examimation Results Management"
+      new_examimation_result: "New Examimation Result"
+    detail:
+      body_temp: "Body Temp"
+      heart_rate: "Heart Rate"
+      blood_pressure: "Blood Pressure"
+      description: "Description"
+      conslusion: "Conslusion"

@@ -2,11 +2,11 @@
     .header-wrapper
         .wallpaper
             .blur-panel
-            .title Services
+            .title = t('service.basic.services')
             .search-wrapper
-                input.search-bar[type="search" placeholder="Service search"]
+                input.search-bar[type="search" placeholder="#{t('service.basic.service_search')}" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{services_homepages_path}"]
     .body-wrapper
-        .title Services
+        .title = t('service.basic.services')
         .services
             - if @services.present?
                 - @services.each do |service|
@@ -14,7 +14,7 @@
                         - if service.service_wallpaper.attached?
                             = image_tag service.service_wallpaper, class: "service_view"
                         - else
-                            .service_view No image
+                            .service_view = t('no_image')
                         .service-content
                             .service-name
                                 label
@@ -26,4 +26,4 @@
                                 label
                                 span = "#{service.execution_time} minutes"
             - else
-                .empty Services is empty...
+                .empty = t('service.basic.service_empty')
