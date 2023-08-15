@@ -27,7 +27,7 @@ development:
   database: bookingdoctor_development
   host: localhost
   pool: 5
-  username: railer
+  username: data
   password: 662001
 
   # The specified database role being used to connect to postgres.
@@ -66,7 +66,7 @@ test:
   database: bookingdoctor_test
   host: localhost
   pool: 5
-  username: railer
+  username: data
   password: 662001
 
 # As with config/credentials.yml, you never want to store sensitive information,
