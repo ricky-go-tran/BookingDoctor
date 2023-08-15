@@ -92,8 +92,8 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV["database_name"] %>
-  host: <%= ENV["host"] %>
+  database: <%= Rails.application.credentials.database_name %>
+  host: <%= Rails.application.credentials.postgres_host %>
   pool: 5
-  username: <%= ENV["user"] %>
-  password: <%= ENV["password"] %>
+  username: <%= Rails.application.credentials.postgres_user %>
+  password: <%= Rails.application.credentials.postgres_password %>

@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+  # frozen_string_literal: true
 
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
@@ -64,6 +64,12 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'stripe'
 gem 'sidekiq'
+
+gem "capistrano"
+gem "capistrano3-puma"
+gem "capistrano-rails", require: false
+gem "capistrano-bundler", require: false
+gem "capistrano-rvm"
 
 gem 'byebug'
 
