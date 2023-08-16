@@ -77,7 +77,7 @@ class Patient::PaymentsController < Patient::BaseController
   end
 
   def subtract_prescription_item(medical_id, consumtion_amount)
-    inventory_item = Inventory.find(medical_id)
+    inventory_item = Inventory.find_by(medical_resource_id: medical_id)
     if inventory_item.amount >= consumtion_amount
       inventory_item.amount -= consumtion_amount
       inventory_item.save
