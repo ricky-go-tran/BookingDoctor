@@ -25,8 +25,8 @@ class Patient::PaymentsController < Patient::BaseController
         mode: 'payment',
         customer: current_user.profile.patient_profile.stripe_id,
         client_reference_id: @medical_record.id,
-        success_url: "http://localhost:3000/patient/payments/#{@medical_record.id}/success",
-        cancel_url: "http://localhost:3000/patient/payments/#{@medical_record.id}/cancel"
+        success_url: "http://14.225.206.62:3000/patient/payments/#{@medical_record.id}/success",
+        cancel_url: "http://14.225.206.62:3000/patient/payments/#{@medical_record.id}/cancel"
       }
     )
     redirect_to session.url, allow_other_host: true
