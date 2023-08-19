@@ -1,4 +1,5 @@
 class Patient::PaymentsController < Patient::BaseController
+  before_action :get_medical_record, only: %i[checkout payment payment_intent]
   def index
     @medical_records = MedicalRecord.where(patient_profile_id: current_user.get_profile_patient.id, status: 'payment')
     @medical_records_json = @medical_records.map do |item|
@@ -15,7 +16,6 @@ class Patient::PaymentsController < Patient::BaseController
   def new; end
 
   def checkout
-    @medical_record = MedicalRecord.find(params[:id])
     list = PrescriptionItemJsonCreator.call(@medical_record.prescription_items)
     list.concat(ServiceItemJsonCreator.call(@medical_record.service_items))
 
@@ -45,15 +45,43 @@ class Patient::PaymentsController < Patient::BaseController
         .server
         .broadcast("finpays:#{@medical_record.clinic_profile.profile.user_id}",
                    { data: @medical_record.id, action: 'redirect' })
-      redirect_to patient_payments_path
     else
       flash[:error_notice] = 'Fail! Payment invoice!'
-      redirect_to patient_payments_path
     end
+    redirect_to patient_payments_path
   end
 
   def cancle
     flash[:error_notice] = 'Fail! Payment invoice!'
+    redirect_to patient_payments_path
+  end
+
+  def payment
+    @total = helpers.total_price(@medical_record.service_items, @medical_record.prescription_items)
+    @customer_id = current_user.get_profile_patient.stripe_id
+    @invoice = []
+    @medical_record.service_items.each do |item|
+      temp = {}
+      temp[:name] = item.service.name
+      temp[:type] = 'Service'
+      temp[:price] = item.price
+      @invoice.push(temp)
+    end
+    @medical_record.prescription_items.each do |item|
+      temp = {}
+      temp[:name] = item.medical_resource.name
+      temp[:type] = 'Medicine'
+      temp[:price] = (item.price * item.amount)
+      @invoice.push(temp)
+    end
+  end
+
+  def payment_intent
+    if @medical_record.save
+      flash[:success_notice] = 'Success! Payment is success!'
+    else
+      flash[:error_notice] = 'Fail! Payment is fail!'
+    end
     redirect_to patient_payments_path
   end
 
@@ -77,7 +105,7 @@ class Patient::PaymentsController < Patient::BaseController
   end
 
   def subtract_prescription_item(medical_id, consumtion_amount)
-    inventory_item = Inventory.find(medical_id)
+    inventory_item = Inventory.find_by(medical_resource_id: medical_id)
     if inventory_item.amount >= consumtion_amount
       inventory_item.amount -= consumtion_amount
       inventory_item.save
@@ -91,5 +119,13 @@ class Patient::PaymentsController < Patient::BaseController
     services.each do |item|
       subtract_prescription_item(item.medical_resource_id, item.amount)
     end
+  end
+
+  def medical_record_update_params
+    params.require(:medical_records).permit(:stripe_payment_id)
+  end
+
+  def get_medical_record
+    @medical_record = MedicalRecord.find(params[:id])
   end
 end

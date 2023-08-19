@@ -7,5 +7,5 @@ test:
 
 production:
   adapter: redis
-  url: rediss://red-cjd0eh45kgrc73fv3nng:5QtiAKc7oGuGOL5vAHBsOeEVHGuWNH4M@singapore-redis.render.com:6379
+  url: redis://localhost:6379/1
   channel_prefix: BookingDoctor_production

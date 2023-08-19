@@ -1,0 +1,137 @@
+@import "../../mixins/input_style.scss";
+@import "../../mixins/layout.scss";
+
+.payment-intent-wrapper {
+    * {
+        box-sizing: border-box;
+    }
+
+    width: 99%;
+    background: #fff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 99%;
+    margin-top: 1%;
+    overflow-y: scroll;
+    padding: 15px;
+    box-sizing: border-box;
+    position: relative;
+
+
+    .logo {
+        @include logo;
+        margin-top: 2%;
+        font-size: 28px;
+    }
+
+    >.title {
+        margin-top: 2%;
+        margin-bottom: 2%;
+        font-weight: bold;
+        font-size: 24px;
+    }
+
+    .invoices {
+        width: 90%;
+        align-self: center;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: 45%;
+        box-sizing: border-box;
+
+        .invoice-item {
+            width: 100%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            box-shadow: 0 2px 5px #32325d1a, 0 1px 1.5px #00000012;
+            border-radius: 5px;
+            margin-bottom: 1%;
+            padding: 10px;
+            border: 1px solid rgb(235, 238, 241);
+            box-sizing: border-box;
+
+            .left {
+                >.name {
+                    font-size: 18px;
+                    font-weight: bold;
+                }
+
+                >.type {
+                    font-weight: 200;
+                }
+            }
+
+            .right {
+                color: #f84e77;
+            }
+
+        }
+
+    }
+
+    form {
+        width: 90%;
+        align-self: center;
+        box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
+            0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
+        border-radius: 7px;
+        padding: 20px;
+        position: absolute;
+        bottom: 10px;
+        box-sizing: border-box;
+        overflow-y: scroll;
+
+        .total-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+
+
+            .total {
+                color: #f84e77;
+                font-weight: bold;
+            }
+        }
+
+
+        input[type="submit"] {
+            background: #5469d4;
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            border-radius: 4px;
+            border: 0;
+            padding: 12px 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: block;
+            transition: all 0.2s ease;
+            box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        input[type="submit"]:hover {
+            filter: contrast(115%);
+
+        }
+
+        input[type="submit"]:disabled {
+            opacity: 0.5;
+            cursor: default;
+        }
+    }
+
+
+
+}
