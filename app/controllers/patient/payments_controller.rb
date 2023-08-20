@@ -15,47 +15,6 @@ class Patient::PaymentsController < Patient::BaseController
 
   def new; end
 
-  def checkout
-    list = PrescriptionItemJsonCreator.call(@medical_record.prescription_items)
-    list.concat(ServiceItemJsonCreator.call(@medical_record.service_items))
-
-    session = Stripe::Checkout::Session.create(
-      {
-        line_items: list,
-        mode: 'payment',
-        customer: current_user.profile.patient_profile.stripe_id,
-        client_reference_id: @medical_record.id,
-        success_url: "http://localhost:3000/patient/payments/#{@medical_record.id}/success",
-        cancel_url: "http://localhost:3000/patient/payments/#{@medical_record.id}/cancel"
-      }
-    )
-    redirect_to session.url, allow_other_host: true
-  rescue Stripe::CardError => e
-    flash[:error_notice] = e.message
-    redirect_to patient_payments_path
-  end
-
-  def success
-    @medical_record = MedicalRecord.find(params[:id])
-    @medical_record.status = 'finish'
-    if @medical_record.save
-      substract_inventory(@medical_record)
-      flash[:success_notice] = 'Success! Payment invoice!'
-      ActionCable
-        .server
-        .broadcast("finpays:#{@medical_record.clinic_profile.profile.user_id}",
-                   { data: @medical_record.id, action: 'redirect' })
-    else
-      flash[:error_notice] = 'Fail! Payment invoice!'
-    end
-    redirect_to patient_payments_path
-  end
-
-  def cancle
-    flash[:error_notice] = 'Fail! Payment invoice!'
-    redirect_to patient_payments_path
-  end
-
   def payment
     @total = helpers.total_price(@medical_record.service_items, @medical_record.prescription_items)
     @customer_id = current_user.get_profile_patient.stripe_id
@@ -78,11 +37,11 @@ class Patient::PaymentsController < Patient::BaseController
 
   def payment_intent
     if @medical_record.save
-      flash[:success_notice] = 'Success! Payment is success!'
+      flash[:success_notice] = 'Wait! Please wait process...'
     else
       flash[:error_notice] = 'Fail! Payment is fail!'
     end
-    redirect_to patient_payments_path
+    redirect_to payment_patient_payment_path(@medical_record)
   end
 
   private

@@ -1,34 +1,49 @@
 $manager_tools_image: image-url("admin_manager_tool.png");
+@import "../../mixins/responesive.scss";
 
 .admin-my-profile-wrapper {
     width: 90%;
     height: 90%;
     background-color: #fff;
-    border-radius:  5px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    > * {
+
+    >* {
         margin-bottom: 15px;
     }
+
     .logo {
         margin-top: 5%;
         padding: unset;
         font-size: 48px;
         font-weight: bold;
         margin-left: 30px;
+
+        @include mobile {
+            font-size: 36px;
+        }
+
         span {
             color: #0cbecd;
         }
+
         label {
             color: #00fc85;
         }
     }
+
     .title {
         font-size: 32px;
         font-weight: bold;
+
+        @include mobile {
+            font-size: 26px;
+        }
     }
+
     .image {
         width: 250px;
         height: 250px;
@@ -37,35 +52,40 @@ $manager_tools_image: image-url("admin_manager_tool.png");
         background-repeat: no-repeat;
         background-size: contain;
     }
+
     .name {
         font-size: 18px;
     }
+
     .birthday {
         font-size: 18px;
     }
+
     .address {
         font-size: 18px;
     }
+
     .edit {
 
         width: 200px;
         background-color: #00fc85;
         color: #fff;
         text-decoration: none;
-        border-radius:  5px;
+        border-radius: 5px;
         font-size: 18px;
         padding: 10px 0;
         text-align: center;
         font-weight: bold;
     }
+
     .logout {
         height: 40px;
         width: 200px;
         background-color: #FE0548;
         color: #fff;
         text-decoration: none;
-        border-radius:  5px;
-        border:none;
+        border-radius: 5px;
+        border: none;
         font-size: 18px;
         font-weight: bold;
     }

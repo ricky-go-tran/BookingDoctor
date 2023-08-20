@@ -121,10 +121,11 @@
             margin-top: 15px;
         }
 
-        input[type="submit"]:hover {
-            filter: contrast(115%);
-
+        .disable {
+            background: #99a0c0;
         }
+
+
 
         input[type="submit"]:disabled {
             opacity: 0.5;

@@ -25,7 +25,7 @@
     <div class="field">
       <div id="card"></div>
     </div>
-    <input type="submit" value="Payment">
+    <input type="submit" value="Payment" id="checkout-btn">
   </form>
 </div>
 <script charset="utf-8">
@@ -56,9 +56,13 @@
 
   const form = document.querySelector('#checkout');
   const exist_payment = document.querySelector('#payment');
-  if (exist_payment.value == "nil")  {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
+  const button = document.querySelector('#checkout-btn');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    button.disabled = true
+    console.log(exist_payment.value == "nil")
+    if (exist_payment.value == "nil")  {
+
       fetch('/stripe_intents', {
         method: 'POST',
         headers: {
@@ -95,7 +99,9 @@
           }
         ).then((resp) => {
           if(resp.error) {
+            button.disabled = false
             alert(resp.error.message);
+
           } else {
 
             exist_payment.value = paymentIntent.id;
@@ -105,14 +111,10 @@
       })
       .catch((error) => {
         console.error('Error:', error);
+        button.disabled = false
       });
-    });
-
-
-  } else {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      fetch('/stripe_intents/retrieve', {
+   } else {
+    fetch('/stripe_intents/retrieve', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -120,8 +122,7 @@
         body: JSON.stringify({
           stripe_payment_id: exist_payment.value,
         }),
-      })
-      .then((response) => response.json())
+      }).then((response) => response.json())
       .then((paymentIntent) => {
         stripe.confirmCardPayment(
           paymentIntent.client_secret, {
@@ -130,18 +131,21 @@
             }
             }
           )
-      }).then((resp) => {
+      })
+      .then((resp) => {
           if(resp.error) {
+            button.disabled = false
             alert(resp.error.message);
           } else {
             const paymentIdInput = document.querySelector('#payment');
             paymentIdInput.value = paymentIntent.id;
             form.submit();
           }
-        })
-      }).catch((error) => {
-        console.error('Error:', error);
+        }).catch((error) => {
+          button.disabled = false
+          console.error('Error:', error);
       });
 
-  }
+   }
+  });
 </script>

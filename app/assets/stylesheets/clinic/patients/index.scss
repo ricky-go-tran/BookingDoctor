@@ -70,26 +70,40 @@
         width: 99%;
         height: calc(100vh - 140px);
         margin-top: 1%;
-        border-radius:  5px;
+        border-radius: 5px;
         padding: 15px;
         box-sizing: border-box;
         overflow-y: scroll;
 
         >.patient-item {
-            display: flex;
-            border-bottom: 1px solid #d3d3d3;
+            padding: 10px;
+            box-shadow: 0 2px 5px #32325d1a, 0 1px 1.5px #00000012;
+            border-radius: 5px;
+            margin-bottom: 1%;
+            padding: 10px;
+            border: 1px solid rgb(235, 238, 241);
+            box-sizing: border-box;
             width: 100%;
             justify-content: space-between;
             align-items: center;
+            margin-top: 10px;
+            display: flex;
+            height: 100px;
+
             @include mobile {
                 align-items: flex-start;
             }
 
             .left {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
 
                 .name {
                     font-size: 20px;
                     font-weight: bold;
+
                     @include mobile {
                         font-size: 16px;
                     }
@@ -108,6 +122,8 @@
                     font-style: italic;
                     margin-top: 15px;
                     color: #0cbecd;
+                    font-weight: 200;
+
                     @include mobile {
                         font-size: 12px;
                     }
@@ -117,12 +133,14 @@
             .right {
                 display: flex;
                 justify-content: flex-end;
+
                 @include mobile {
                     flex-direction: column;
                 }
 
                 .view {
                     @include buntton_style_detail;
+
                     @include mobile {
                         font-size: 10px;
                         height: 20px;
@@ -131,6 +149,7 @@
 
                 .change {
                     @include buntton_style_edit;
+
                     @include mobile {
                         font-size: 10px;
                         height: 20px;
@@ -139,6 +158,7 @@
 
                 .del {
                     @include buntton_style_del_lock;
+
                     @include mobile {
                         font-size: 10px;
                         height: 20px;

@@ -92,9 +92,6 @@ Rails.application.routes.draw do
   namespace :patient do
     resources :payments, only: %i[index new] do
       member do
-        post 'checkout'
-        get 'success'
-        get 'cancle'
         get 'payment'
         post 'payment_intent'
       end

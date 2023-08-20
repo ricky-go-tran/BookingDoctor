@@ -1,12 +1,13 @@
-.navbar-patient-wrapper
-    .item[class="#{active_navbar("patient/profiles", %w(index detail change)) || active_navbar("patient/patient_profiles", %w(change))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_profiles_path}"]
-        #my-profile
+.navbar-patient-wrapper#patient-navbar-wrapper
+    .item#user-name[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"] = "#{t('homepage.welcome')}, #{current_user.profile == nil ? current_user.email : current_user.profile.fullname}"
+    .item#profile[class="#{active_navbar("patient/profiles", %w(index detail change)) || active_navbar("patient/patient_profiles", %w(change))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_profiles_path}"]
+        #my-profile[class="#{active_icon_navbar("patient/profiles", %w(index detail change)) || active_icon_navbar("patient/patient_profiles", %w(change))}"]
         span = t('profile.my_profile')
-    .item[class="#{active_navbar("patient/medical_records", %w(index show edit))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_medical_records_path}"]
-        #history-medical-record
+    .item#medical[class="#{active_navbar("patient/medical_records", %w(index show edit))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_medical_records_path}"]
+        #history-medical-record[class="#{active_icon_navbar("patient/medical_records", %w(index show edit))}"]
         span = t('medical_record.basic.history_medical_record')
-    .item[class="#{active_navbar("patient/payments", %w(index show))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_payments_path}"]
-        #invoice
+    .item#invoice-item[class="#{active_navbar("patient/payments", %w(index show))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_payments_path}"]
+        #invoice[class="#{active_icon_navbar("patient/payments", %w(index show))}"]
         span = t('medical_record.detail.invoices')
     / .item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_profiles_path}"]
     /     #scheduled

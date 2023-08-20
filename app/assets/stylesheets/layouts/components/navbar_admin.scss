@@ -4,9 +4,11 @@ $report_icon: image-url("icon_report.png");
 $user_icon: image-url("icon_user.png");
 $category_icon: image-url("icon_hospital.png");
 $switch_icon: image-url("icon_switch.png");
+$toggle_icon: image-url("icon_menu.png");
+@import "../../mixins/responesive.scss";
 
 .admin-navbar-wrapper {
-    width: 20%;
+    width: 25%;
     height: 100vh;
     background: #121e2e;
     border-top-right-radius: 10px;
@@ -15,6 +17,22 @@ $switch_icon: image-url("icon_switch.png");
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    @include mobile {
+        z-index: 2;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100vw;
+        display: none;
+    }
+
+
+
 
     .info-part {
         margin-top: 25px;
@@ -27,30 +45,37 @@ $switch_icon: image-url("icon_switch.png");
         padding-bottom: 20px;
         border-bottom: 1px solid #fff;
         width: 90%;
+
         div {
             margin-bottom: 15px;
         }
+
         .role {
             font-size: 24px;
             font-weight: bold;
         }
+
         .name {
             font-size: 16px;
             font-weight: bold;
         }
+
         .logo {
             padding: unset;
             font-size: 32px;
             font-weight: bold;
             margin-left: 30px;
+
             span {
                 color: #0cbecd;
             }
+
             label {
                 color: #00fc85;
             }
         }
     }
+
     .menu-part {
         margin-top: 25px;
         display: flex;
@@ -61,10 +86,12 @@ $switch_icon: image-url("icon_switch.png");
         color: #fff;
         border-bottom: 1px solid #fff;
         width: 90%;
+
         .active {
             border: 1px solid #ffffff
         }
-        > .item {
+
+        >.item {
             cursor: pointer;
             margin-left: 5%;
             display: flex;
@@ -73,10 +100,12 @@ $switch_icon: image-url("icon_switch.png");
             align-items: center;
             width: 100%;
             margin-bottom: 20px;
-            border-radius:  5px;
+            border-radius: 5px;
+
             &:hover {
                 border: 1px solid #ffffff
             }
+
             #profile-icon {
                 width: 32px;
                 height: 32px;
@@ -85,6 +114,7 @@ $switch_icon: image-url("icon_switch.png");
                 background-repeat: no-repeat;
                 background-size: contain;
             }
+
             #report-icon {
                 width: 32px;
                 height: 32px;
@@ -93,6 +123,7 @@ $switch_icon: image-url("icon_switch.png");
                 background-repeat: no-repeat;
                 background-size: contain;
             }
+
             #user-icon {
                 width: 32px;
                 height: 32px;
@@ -101,6 +132,7 @@ $switch_icon: image-url("icon_switch.png");
                 background-repeat: no-repeat;
                 background-size: contain;
             }
+
             #category-icon {
                 width: 32px;
                 height: 32px;
@@ -109,6 +141,7 @@ $switch_icon: image-url("icon_switch.png");
                 background-repeat: no-repeat;
                 background-size: contain;
             }
+
             #medical-icon {
                 width: 32px;
                 height: 32px;
@@ -117,16 +150,29 @@ $switch_icon: image-url("icon_switch.png");
                 background-repeat: no-repeat;
                 background-size: contain;
             }
+
+
+
             span {
                 margin-left: 5%;
                 font-size: 18px;
                 width: 1;
             }
         }
-        > *:last-child {
+
+        >.item#toggle-admin-navbar {
+            display: none;
+
+            @include mobile {
+                display: flex;
+            }
+        }
+
+        >*:last-child {
             margin-bottom: 15px;
         }
     }
+
     .switch-role {
         margin-top: 25px;
         margin-left: 5%;
@@ -135,8 +181,9 @@ $switch_icon: image-url("icon_switch.png");
         justify-content: flex-start;
         align-items: center;
         width: 100%;
-        border-radius:  5px;
+        border-radius: 5px;
         cursor: pointer;
+
         #switch-icon {
             width: 32px;
             height: 32px;
@@ -145,6 +192,7 @@ $switch_icon: image-url("icon_switch.png");
             background-repeat: no-repeat;
             background-size: contain;
         }
+
         span {
             margin-left: 5%;
             font-size: 18px;

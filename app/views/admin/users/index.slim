@@ -10,7 +10,7 @@
                 option#clinic-role[value="clinic"] Clinic
                 option#patient-role[value="patient"] Patient
         .right
-            = link_to "View Verify", request_verify_admin_users_path, {class: "add"}
+            = link_to "Verify", request_verify_admin_users_path, {class: "add"}
             = link_to "#{t('export_sheet')}", admin_users_path(format: :xlsx), {class: "sheet"}
             / = link_to "#{t('export_pdf')}",root_path, {class: "pdf_export"}
     .content-panel

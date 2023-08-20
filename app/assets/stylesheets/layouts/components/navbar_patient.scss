@@ -2,21 +2,63 @@ $profile-icon: image-url("icon_profile.png");
 $medical-icon: image-url("icon_medical_history.png");
 $scheduled-icon: image-url("icon_scheduled.png");
 $invoice-icon: image-url("icon_invoice.png");
+$profile-inactive-icon: image-url("icon_profile_patient.png");
+$medical-inactive-icon: image-url("icons_medical_patient.png");
+$invoice-inavtice-icon: image-url("icon_invoice_patient.png");
+@import "../../mixins/responesive.scss";
 
 .navbar-patient-wrapper {
     margin-top: 5px;
     height: calc(100% - 5px);
     width: 20%;
-    background: linear-gradient(180deg, #1c408c, #23a8bb);
+    background: #f3f3f9;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     box-sizing: border-box;
     line-height: 2;
-    color: #fff;
+    color: rgba(58, 53, 65, 0.87);
+
+    @include mobile {
+        display: none;
+        z-index: 1;
+        width: 100%;
+    }
+
     .active {
-        border: 1px solid #ffffff
+        background-image: linear-gradient(98deg, #C6A7FE, #9155FD 94%);
+        color: #fff;
+
+        #invoice.active_icon {
+            width: 28px;
+            height: 28px;
+            background: $invoice-icon;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-right: 5%;
+        }
+
+        #history-medical-record.active_icon {
+            width: 28px;
+            height: 28px;
+            background: $medical-icon;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-right: 5%;
+        }
+
+        #my-profile.active_icon {
+            width: 28px;
+            height: 28px;
+            background: $profile-icon;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-right: 5%;
+        }
     }
 
 
@@ -40,43 +82,84 @@ $invoice-icon: image-url("icon_invoice.png");
 
 
         &:hover {
-            border: 1px solid #ffffff
+            background-image: linear-gradient(98deg, #C6A7FE, #9155FD 94%);
+            color: #fff;
         }
 
         #my-profile {
-            width: 32px;
-            height: 32px;
-            background: $profile-icon;
+            width: 28px;
+            height: 28px;
+            background: $profile-inactive-icon;
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
+            margin-right: 5%;
         }
 
         #history-medical-record {
-            width: 32px;
-            height: 32px;
-            background: $medical-icon;
+            width: 28px;
+            height: 28px;
+            background: $medical-inactive-icon;
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
+            margin-right: 5%;
         }
 
         #invoice {
-            width: 32px;
-            height: 32px;
-            background: $invoice-icon;
+            width: 28px;
+            height: 28px;
+            background: $invoice-inavtice-icon;
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
+            margin-right: 5%;
         }
 
         #scheduled {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             background: $scheduled-icon;
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
+            margin-right: 5%;
+        }
+    }
+
+    #profile:hover {
+        #my-profile {
+            width: 28px;
+            height: 28px;
+            background: $profile-icon;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-right: 5%;
+        }
+    }
+
+    #medical:hover {
+        #history-medical-record {
+            width: 28px;
+            height: 28px;
+            background: $medical-icon;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-right: 5%;
+        }
+    }
+
+    #invoice-item:hover {
+        #invoice {
+            width: 28px;
+            height: 28px;
+            background: $invoice-icon;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            margin-right: 5%;
         }
     }
 
