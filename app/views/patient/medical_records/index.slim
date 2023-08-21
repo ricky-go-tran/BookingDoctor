@@ -15,7 +15,7 @@
                         .title
                             label =  medical_record.clinic_profile.name
                             span =  medical_record.status
-                        .time = "#{medical_record.start_time} - #{medical_record.end_time}"
+                        .time = "#{date_format(medical_record.start_time)} - #{date_format(medical_record.end_time)}"
                     .right
                         .view-details[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_medical_record_path(medical_record)}"] View Details
                         - if medical_record.status == 'appointment'

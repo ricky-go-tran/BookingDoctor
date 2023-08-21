@@ -1,0 +1,62 @@
+@import "../../mixins/input_style.scss";
+@import "../../mixins/layout.scss";
+@import "../../mixins/responesive.scss";
+$menu: image-url("icon_menu.png");
+
+
+.title-bar-admin-wrapper {
+    display: none;
+
+    @include mobile {
+        width: 100%;
+        height: 40px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        border-radius: 5px;
+        position: fixed;
+        top: 0px;
+    }
+
+
+    .user-info {
+        margin-right: 2%;
+        display: flex;
+
+        >* {
+            margin-right: 15px;
+
+            @include mobile {
+                margin-right: 5px;
+            }
+        }
+
+        .dropdown-button {
+            @include navbar_icon($menu);
+            display: none;
+
+            @include mobile {
+                display: block;
+                margin-left: 5%;
+            }
+        }
+
+        .user-name {
+            @include name_background;
+
+            @include mobile {
+                font-size: 14px;
+
+                @include mobile {
+                    display: none;
+                }
+            }
+        }
+
+        .logout {
+            @include buntton_style_del_lock;
+        }
+    }
+
+}

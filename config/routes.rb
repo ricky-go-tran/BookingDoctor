@@ -2,9 +2,15 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
 
+  resource :webhooks, only: %i[create]
   get 'pdfs/invoice/:id',to: "pdfs#invoice", format: 'pdf'
 
-
+  resource  :stripe_intents, only: %i[create] do
+    collection do
+      get 'retrieve'
+      put 'update_medical_record'
+    end
+  end
   resources :homepages, only: %i[index], path: '' do
     collection do
       get 'clinics'
@@ -86,9 +92,8 @@ Rails.application.routes.draw do
   namespace :patient do
     resources :payments, only: %i[index new] do
       member do
-        post 'checkout'
-        get 'success'
-        get 'cancle'
+        get 'payment'
+        post 'payment_intent'
       end
     end
     resources :votes

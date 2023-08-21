@@ -1,4 +1,4 @@
-.admin-navbar-wrapper
+.admin-navbar-wrapper#admin-navbar-wrapper
     .info-part
         .logo
             span Booking
@@ -18,6 +18,11 @@
         .item[class="#{active_navbar("admin/medical_resources", %w(index show new edit))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_medical_resources_path}"]
             #medical-icon
             span Medical Resources
+        .item#toggle-admin-navbar[data-controller="toggle"  data-action="click->toggle#admin"]
+            #toggle-icon
+            span Close Navbar
+
     .switch-role[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{homepages_path}"]
         #switch-icon
         span Switch Homepage UI
+

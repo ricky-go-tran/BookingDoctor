@@ -1,0 +1,2 @@
+module StripeIntentsHelper
+end

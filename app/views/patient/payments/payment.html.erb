@@ -1,0 +1,149 @@
+<div class="payment-intent-wrapper">
+  <div class='logo'>
+    <span>Doctor</span>
+    <label>Booking</label>
+  </div>
+  <div class='title'>Payment</div>
+  <div class="invoices">
+    <% @invoice.each do |item|%>
+      <div class="invoice-item">
+        <div class="left">
+          <div class="name"><%= item[:name] %></div>
+          <div class="type"><%= item[:type] %></div>
+        </div>
+        <div class="right"><%= item[:price]%></div>
+      </div>
+    <%end%>
+  </div>
+  <form action="<%= payment_intent_patient_payment_path(@medical_record)%>" method="post" id="checkout">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="medical_records[stripe_payment_id]" id="payment" value="<%= @medical_record.stripe_payment_id%>">
+    <div class="total-wrapper">
+      <div class="title">Total:</div>
+      <div class="total"><%= @total %></div>
+    </div>
+    <div class="field">
+      <div id="card"></div>
+    </div>
+    <input type="submit" value="Payment" id="checkout-btn">
+  </form>
+</div>
+<script charset="utf-8">
+  var stripe = Stripe('<%=  Rails.configuration.stripe[:publishable_key] %>');
+  var styles = {
+    base: {
+      iconColor: "#cccccc",
+      color: "#000000",
+      fontFamily: "MonumentGroteskTrial-Regular",
+      fontSize: "18px",
+
+      "::placeholder": {
+        color: "#ccc"
+      },
+      ":-webkit-autofill": {
+        color: "#ccc"
+      }
+    },
+    invalid: {
+      iconColor: "#FFC7EE",
+      color: "#A31621"
+    }
+  }
+
+  var elements = stripe.elements();
+  var cardElement = elements.create('card', {style: styles});
+  cardElement.mount('#card');
+
+  const form = document.querySelector('#checkout');
+  const exist_payment = document.querySelector('#payment');
+  const button = document.querySelector('#checkout-btn');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    button.disabled = true
+    console.log(exist_payment.value == "nil")
+    if (exist_payment.value == "nil")  {
+
+      fetch('/stripe_intents', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: <%= @total * 100%>,
+          currency: 'usd',
+          description: "description",
+          customer: "<%= @customer_id %>"
+        }),
+      })
+      .then((response) => response.json())
+      .then((paymentIntent) => {
+        const paymentIdInput = document.querySelector('#payment');
+        paymentIdInput.value = paymentIntent.id;
+        fetch('/stripe_intents/update_medical_record', {
+          method: 'PUT',
+          headers: {
+          'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            medical_record_id: <%= @medical_record.id %>,
+            stripe_payment_id: paymentIntent.id
+          })
+        }).then((res)=>{console.log(res)}).catch((error) => {
+        console.error('Error:', error);
+      });
+        stripe.confirmCardPayment(
+          paymentIntent.client_secret, {
+            payment_method: {
+              card: cardElement
+            }
+          }
+        ).then((resp) => {
+          if(resp.error) {
+            button.disabled = false
+            alert(resp.error.message);
+
+          } else {
+
+            exist_payment.value = paymentIntent.id;
+            form.submit();
+          }
+        })
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        button.disabled = false
+      });
+   } else {
+    fetch(`/stripe_intents/retrieve?stripe_payment_id=${exist_payment.value}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          stripe_payment_id: exist_payment.value,
+        },
+      }).then((response) => response.json())
+      .then((paymentIntent) => {
+        stripe.confirmCardPayment(
+          paymentIntent.client_secret, {
+            payment_method: {
+              card: cardElement
+            }
+            }
+          )
+      })
+      .then((resp) => {
+          if(resp.error) {
+            button.disabled = false
+            alert(resp.error.message);
+          } else {
+            const paymentIdInput = document.querySelector('#payment');
+            paymentIdInput.value = paymentIntent.id;
+            form.submit();
+          }
+        }).catch((error) => {
+          button.disabled = false
+          console.error('Error:', error);
+      });
+
+   }
+  });
+</script>

@@ -35,7 +35,6 @@ $toggle_icon: image-url("icon_menu.png");
         display: none;
         z-index: 1;
         width: 100%;
-
     }
 
 
@@ -95,24 +94,31 @@ $toggle_icon: image-url("icon_menu.png");
         .active {
             background-color: #1465f2;
             color: #fff;
+
             #profile-icon.active_icon {
                 @include navbar_icon($profile-icon);
             }
+
             #workspace-icon.active_icon {
                 @include navbar_icon($workspace_icon);
             }
+
             #appointment-icon.active_icon {
                 @include navbar_icon($appointment_icon);
             }
+
             #statistics-icon.active_icon {
                 @include navbar_icon($statistic_icon);
             }
+
             #inventory-icon.active_icon {
                 @include navbar_icon($inventory_icon);
             }
+
             #service-icon.active_icon {
                 @include navbar_icon($serive_icon);
             }
+
             #patient-icon.active_icon {
                 @include navbar_icon($patient_icon);
             }

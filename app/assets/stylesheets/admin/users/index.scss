@@ -45,6 +45,7 @@
                 width: 25%;
                 margin-left: 5%;
             }
+
             >.back {
                 @include button_style_pdf_export;
             }
@@ -56,13 +57,26 @@
         overflow-y: scroll;
 
         >.user-item {
-            display: flex;
-            border-bottom: 1px solid #d3d3d3;
+            padding: 10px;
+            box-shadow: 0 2px 5px #32325d1a, 0 1px 1.5px #00000012;
+            border-radius: 5px;
+            margin-bottom: 1%;
+            padding: 10px;
+            border: 1px solid rgb(235, 238, 241);
+            box-sizing: border-box;
             width: 100%;
             justify-content: space-between;
             align-items: center;
+            margin-top: 10px;
+            display: flex;
+            height: 100px;
 
             .left {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
                 .fullname {
                     font-size: 20px;
                     font-weight: bold;
@@ -75,17 +89,20 @@
                         margin-left: 10px;
                     }
                 }
+
                 .role {
                     font-size: 16px;
                     font-style: italic;
                     margin-top: 15px;
                     color: #0cbecd;
                 }
+
                 .time-request {
                     font-size: 16px;
                     font-style: italic;
                     margin-top: 15px;
                     color: #0cbecd;
+                    font-weight: 200;
                 }
             }
 

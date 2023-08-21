@@ -12,6 +12,7 @@ class MedicalRecord < ApplicationRecord
   resourcify
 
   validate :check_overlapping, on: :create
+  validate :check_past, on: :create
   validate :check_time_in_clinic_work, on: :create
   validate :check_wday_in_clinic_work, on: :create
   validates :status, presence: true
@@ -52,9 +53,9 @@ class MedicalRecord < ApplicationRecord
 
   def check_overlapping
     overlaps = if id.nil?
-                 MedicalRecord.where('status != \'cancle\' AND (start_time, end_time) OVERLAPS (?, ?)', start_time, end_time)
+                 MedicalRecord.where('status = \'appointment\' AND (start_time, end_time) OVERLAPS (?, ?)', start_time, end_time)
                else
-                 MedicalRecord.where(' id != ? AND status != \'cancle\' AND (start_time, end_time) OVERLAPS (?, ?)', id, start_time, end_time)
+                 MedicalRecord.where(' id != ? AND status = \'appointment\' AND (start_time, end_time) OVERLAPS (?, ?)', id, start_time, end_time)
                end
     if overlaps.present?
       errors.add(:base, 'Booking overlaps with existing records')
@@ -63,15 +64,21 @@ class MedicalRecord < ApplicationRecord
 
   def check_time_in_clinic_work
     clinic_profile = ClinicProfile.find(clinic_profile_id)
-    if (start_time.hour > clinic_profile.start_hour.hour || (start_time.hour == clinic_profile.start_hour.hour && start_time.min >= clinic_profile.start_hour.min)) && (end_time.hour < clinic_profile.end_hour.hour || (end_time.hour == clinic_profile.end_hour.hour && end_time.min <= clinic_profile.start_hour.min))
+    if (start_time.hour < clinic_profile.start_hour.hour || (start_time.hour == clinic_profile.start_hour.hour && start_time.min <= clinic_profile.start_hour.min)) || (end_time.hour > clinic_profile.end_hour.hour || (end_time.hour == clinic_profile.end_hour.hour && end_time.min >= clinic_profile.start_hour.min))
       errors.add(:base, 'Booking is not in clinic time work')
+    end
+  end
+
+  def check_past
+    if start_time.past?
+      errors.add(:base, 'Booking is not in past')
     end
   end
 
   def check_wday_in_clinic_work
     clinic_profile = ClinicProfile.find(clinic_profile_id)
-    if start_time.wday >= clinic_profile.start_day && start_time.wday <= clinic_profile.end_day
-      errors.add(:base, 'Booking is not in clinic time work')
+    if start_time.wday < clinic_profile.start_day || start_time.wday > clinic_profile.end_day
+      errors.add(:base, 'Booking is not in clinic wtime work')
     end
   end
 end

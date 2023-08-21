@@ -1,4 +1,5 @@
 @import "../../mixins/input_style.scss";
+@import "../../mixins/responesive.scss";
 
 .payments-wrapper {
     width: 99%;
@@ -37,10 +38,12 @@
             >* {
                 margin-right: 10px;
             }
+
             .dropdown {
                 @include select-format;
                 width: 30%;
             }
+
             .del {
                 @include buntton_style_del_lock;
             }
@@ -51,16 +54,30 @@
         width: 100%;
 
         >.medical-record-item {
-            background-color: #fff;
-            display: flex;
-            border-bottom: 1px solid #d3d3d3;
+            padding: 10px;
+            box-shadow: 0 2px 5px #32325d1a, 0 1px 1.5px #00000012;
+            border-radius: 5px;
+            margin-bottom: 1%;
+            padding: 10px;
+            border: 1px solid rgb(235, 238, 241);
+            box-sizing: border-box;
             width: 100%;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
-            box-sizing: border-box;
+            margin-top: 10px;
+            display: flex;
+            height: 100px;
+
+            @include mobile {
+                align-items: flex-start;
+            }
 
             .left {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
                 .title {
                     font-size: 20px;
                     font-weight: bold;
@@ -80,6 +97,11 @@
                     font-style: italic;
                     margin-top: 15px;
                     color: #0cbecd;
+                    font-weight: 200;
+
+                    @include mobile {
+                        font-size: 12px;
+                    }
                 }
             }
 
@@ -87,12 +109,26 @@
                 display: flex;
                 justify-content: flex-end;
 
+                @include mobile {
+                    flex-direction: column;
+                }
+
                 .view-details {
                     @include buntton_style_detail;
+
+                    @include mobile {
+                        font-size: 10px;
+                        height: 20px;
+                    }
                 }
 
                 .cancle {
                     @include buntton_style_del_lock;
+
+                    @include mobile {
+                        font-size: 10px;
+                        height: 20px;
+                    }
                 }
             }
         }
