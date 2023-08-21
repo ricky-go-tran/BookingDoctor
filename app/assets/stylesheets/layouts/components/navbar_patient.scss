@@ -61,6 +61,13 @@ $invoice-inavtice-icon: image-url("icon_invoice_patient.png");
         }
     }
 
+    >.item#name {
+        display: none;
+
+        @include mobile {
+            display: block;
+        }
+    }
 
     >.item {
         &:first-child {
@@ -95,6 +102,8 @@ $invoice-inavtice-icon: image-url("icon_invoice_patient.png");
             background-size: contain;
             margin-right: 5%;
         }
+
+
 
         #history-medical-record {
             width: 28px;

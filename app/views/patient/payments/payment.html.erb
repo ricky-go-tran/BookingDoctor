@@ -114,14 +114,12 @@
         button.disabled = false
       });
    } else {
-    fetch('/stripe_intents/retrieve', {
+    fetch(`/stripe_intents/retrieve?stripe_payment_id=${exist_payment.value}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
           stripe_payment_id: exist_payment.value,
-        }),
+        },
       }).then((response) => response.json())
       .then((paymentIntent) => {
         stripe.confirmCardPayment(

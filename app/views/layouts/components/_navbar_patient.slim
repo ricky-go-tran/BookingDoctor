@@ -1,5 +1,5 @@
 .navbar-patient-wrapper#patient-navbar-wrapper
-    .item#user-name[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"] = "#{t('homepage.welcome')}, #{current_user.profile == nil ? current_user.email : current_user.profile.fullname}"
+    .item#name[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"] = "#{t('homepage.welcome')}, #{current_user.profile == nil ? current_user.email : current_user.profile.fullname}"
     .item#profile[class="#{active_navbar("patient/profiles", %w(index detail change)) || active_navbar("patient/patient_profiles", %w(change))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_profiles_path}"]
         #my-profile[class="#{active_icon_navbar("patient/profiles", %w(index detail change)) || active_icon_navbar("patient/patient_profiles", %w(change))}"]
         span = t('profile.my_profile')

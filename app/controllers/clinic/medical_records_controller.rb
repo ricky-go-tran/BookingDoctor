@@ -11,7 +11,8 @@ class Clinic::MedicalRecordsController < ApplicationController
       if @medical_record.save
         flash[:success_notice] = 'Success! Register appointment'
         @user_receive = User.find(@medical_record.patient_profile.profile.user_id)
-        SendMailWorker.perform_async(@medical_record.to_json, @user_receive.profile.clinic_profile.to_json, @user_receive.profile.fullname, @user_receive.email)
+        CanclePastAppointmentWorker.perform_at(@medical_record.start_time, @medical_record.to_json)
+        SendMailWorker.perform_async(@medical_record.to_json, current_user.profile.clinic_profile.to_json, @user_receive.profile.fullname, @user_receive.email)
       else
         flash[:error_notice] = "Error! Can't appointment! Please try again"
       end

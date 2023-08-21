@@ -21,6 +21,7 @@ class Patient::MedicalRecordsController < Patient::BaseController
           .server
           .broadcast("notifications:#{@medical_record.clinic_profile.profile.user_id}",
                      { data: medical_record_json, action: 'add' })
+        CanclePastAppointmentWorker.perform_at(@medical_record.start_time, @medical_record.to_json)
         flash[:success_notice] = 'Success! Register appointment'
         redirect_to "/clinics/#{@medical_record.clinic_profile_id}"
       else

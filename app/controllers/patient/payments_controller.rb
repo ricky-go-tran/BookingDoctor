@@ -41,7 +41,7 @@ class Patient::PaymentsController < Patient::BaseController
     else
       flash[:error_notice] = 'Fail! Payment is fail!'
     end
-    redirect_to payment_patient_payment_path(@medical_record)
+    redirect_to patient_payments_path
   end
 
   private
