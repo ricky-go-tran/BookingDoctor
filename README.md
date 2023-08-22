@@ -30,6 +30,7 @@ To develop the BookingDoctor website, we utilize the following technologies:
   - [x] Clinic: Patient management 
   - [x] Patient: Clinic management
   - [x] Patient: Patient management
+  - [x] Patient: payment
+  - [x] Patient: rate  
   - [x] Admin: Category management 
   - [x] Admin: User management
-  - [x] Admin: Feedback management
