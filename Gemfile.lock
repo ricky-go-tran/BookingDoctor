@@ -395,6 +395,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 5.0)
   pundit
+  rack-test
   rails (~> 7.0.6)
   redis (~> 4.0)
   rolify
@@ -413,6 +414,7 @@ DEPENDENCIES
   stripe
   turbo-rails
   tzinfo-data
+  warden
   web-console
   webdrivers
   webmock

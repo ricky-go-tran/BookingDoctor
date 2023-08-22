@@ -70,7 +70,7 @@ class MedicalRecord < ApplicationRecord
   end
 
   def check_past
-    if start_time.past?
+    if start_time&.past? || start_time.nil?
       errors.add(:base, 'Booking is not in past')
     end
   end

@@ -4,7 +4,6 @@ class Clinic::MedicalRecordsController < ApplicationController
     @medical_record = MedicalRecord.new(re_examination_params)
     if @medical_record.service_items.empty?
       flash[:error_notice] = "Error! Service can't empty! Please try again"
-      redirect_to clinic_workspaces_path
     else
       @medical_record.clinic_profile_id = current_user.profile.clinic_profile.id
       @medical_record.end_time = MedicalRecordsManager::CalculatorEndTimeCreator.call(@medical_record)
@@ -16,8 +15,8 @@ class Clinic::MedicalRecordsController < ApplicationController
       else
         flash[:error_notice] = "Error! Can't appointment! Please try again"
       end
-      redirect_to clinic_workspaces_path
     end
+    redirect_to clinic_workspaces_path
   end
 
   def update

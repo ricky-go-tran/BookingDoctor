@@ -23,11 +23,10 @@ class Patient::MedicalRecordsController < Patient::BaseController
                      { data: medical_record_json, action: 'add' })
         CanclePastAppointmentWorker.perform_at(@medical_record.start_time, @medical_record.to_json)
         flash[:success_notice] = 'Success! Register appointment'
-        redirect_to "/clinics/#{@medical_record.clinic_profile_id}"
       else
         flash[:error_notice] = "Error! Can't appointment! Please try again"
-        redirect_to "/clinics/#{@medical_record.clinic_profile_id}"
       end
+      redirect_to "/clinics/#{@medical_record.clinic_profile_id}"
     end
   end
 

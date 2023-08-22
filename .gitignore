@@ -28,6 +28,8 @@
 /public/assets
 /coverage
 /config/local_env.yml
+/config/puma.rb
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+config/puma.rb

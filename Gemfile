@@ -1,4 +1,4 @@
-  # frozen_string_literal: true
+# frozen_string_literal: true
 
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
@@ -30,7 +30,7 @@ gem 'stimulus-rails'
 gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 4.0"
+gem 'redis', '~> 4.0'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -65,13 +65,11 @@ gem 'wkhtmltopdf-binary'
 gem 'stripe'
 gem 'sidekiq'
 
-gem "capistrano"
-gem "capistrano3-puma"
-gem "capistrano-rails", require: false
-gem "capistrano-bundler", require: false
-gem "capistrano-rvm"
-
-gem 'byebug'
+gem 'capistrano'
+gem 'capistrano3-puma'
+gem 'capistrano-rails', require: false
+gem 'capistrano-bundler', require: false
+gem 'capistrano-rvm'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -79,11 +77,15 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'faker'
   gem 'factory_bot_rails'
+  gem 'byebug'
+  gem 'pry-rails'
+  gem 'warden'
+  gem 'rack-test'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem 'pry-rails'
+
   gem 'web-console'
   gem 'rubocop'
 
@@ -101,5 +103,5 @@ group :test do
   gem 'webdrivers'
   gem 'simplecov', require: false
   gem 'shoulda-matchers'
-  gem "webmock"
+  gem 'webmock'
 end

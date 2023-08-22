@@ -22,6 +22,8 @@ module BookingDoctor
     # config.eager_load_paths << Rails.root.join("extras")
     config.encoding = 'utf-8'
     config.active_job.queue_adapter = :sidekiq
+    config.middleware.use Warden::Manager
+
 
     config.before_configuration do
       env_file = File.join(Rails.root, 'config', 'local_env.yml')

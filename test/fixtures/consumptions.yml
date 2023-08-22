@@ -1,9 +1,0 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  service: one
-  medical_resource: one
-
-two:
-  service: two
-  medical_resource: two
