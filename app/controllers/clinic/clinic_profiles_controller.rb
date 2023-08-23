@@ -27,7 +27,7 @@ class Clinic::ClinicProfilesController < Clinic::BaseController
         redirect_to root_path
       end
     else
-      render :new, status: 422
+      render :new, status: 422, layout: 'application'
     end
   end
 

@@ -24,12 +24,13 @@ To develop the BookingDoctor website, we utilize the following technologies:
   - Rspec (Testing)
 ## Feature
   - [x] All actor: Authentication and Authorization
-  - [ ] All: homepage (30% progess)
-  - [ ] Clinic, Admin: Medical Resource and Inventory management (45%)
-  - [ ] Clinic: Clinic profile (10%)
-  - [ ] Clinic: Patient management 
-  - [ ] Patient: Clinic management
-  - [ ] Patient: Patient management
+  - [x] All: homepage
+  - [x] Clinic, Admin: Medical Resource and Inventory management 
+  - [x] Clinic: Clinic profile
+  - [x] Clinic: Patient management 
+  - [x] Patient: Clinic management
+  - [x] Patient: Patient management
+  - [x] Patient: payment
+  - [x] Patient: rate  
   - [x] Admin: Category management 
-  - [ ] Admin: User management (90% progess)
-  - [ ] Admin: Feedback management (70% progess)
+  - [x] Admin: User management

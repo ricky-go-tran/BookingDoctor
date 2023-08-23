@@ -20,13 +20,17 @@ $menu: image-url("icon_menu.png");
         font-size: 32px;
         font-weight: bold;
         margin-left: 30px;
+        cursor: pointer;
 
         span {
             color: #0cbecd;
+            cursor: pointer;
         }
 
         label {
             color: #00fc85;
+            cursor: pointer;
+
         }
 
         @include mobile {
@@ -57,7 +61,7 @@ $menu: image-url("icon_menu.png");
 
         .active {
             color: #ffffff !important;
-            background: linear-gradient(90deg, #0cbecd, #00fc85);
+            background-image: linear-gradient(98deg, #C6A7FE, #9155FD 94%);
 
         }
 
@@ -76,7 +80,7 @@ $menu: image-url("icon_menu.png");
                 text-decoration: none;
 
                 &:hover {
-                    background: linear-gradient(90deg, #0cbecd, #00fc85);
+                    background-image: linear-gradient(98deg, #C6A7FE, #9155FD 94%);
                     color: #ffffff;
                 }
             }

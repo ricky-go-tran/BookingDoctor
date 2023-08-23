@@ -1,4 +1,5 @@
 @import "../../mixins/clinic_layout.scss";
+
 .clinic-inventory-wrapper {
     >.content-panel {
         .title {
@@ -13,10 +14,10 @@
                 font-size: 16px;
                 font-weight: bold;
             }
+
             span {
                 font-weight: 200;
             }
         }
     }
 }
-

@@ -12,7 +12,9 @@
                     - @categories.each do |category|
                         option[value="#{category.name.underscore}"] = category.name
     .body-wrapper
-        .title = t('clinic.basic.clinics')
+        .title
+            .name Clinics
+            == pagy_nav(@pagy)
         .clinics
             - if @clinics.present?
                 - @clinics.each do |clinic|
@@ -31,5 +33,7 @@
                             .clinic-phone
                                 label
                                 span = clinic.phone
+
             - else
                 .empty = t('clinic.basic.clinic_empty')
+    = render "layouts/components/footer"

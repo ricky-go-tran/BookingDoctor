@@ -3,8 +3,8 @@
 class Category < ApplicationRecord
   has_many :clinic_profiles
   resourcify
-  validates :name, presence: true
-  validates :description, presence: true
+  validates :name, presence: true, length: { in: 5..200, message: 'Lengths from 5 to 200 ' }
+  validates :description, presence: true, length: { in: 5..15000, message: 'Lengths from 5 to 15000 ' }
 
   scope :current_month, -> {
     where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)
