@@ -114,10 +114,11 @@ $phone_icon: image-url("icon_phone_black.png");
                     box-sizing: border-box;
 
                     >* {
-                        > label {
+                        >label {
                             margin-right: 10px;
                             width: 15%;
                         }
+
                         >span {
                             width: 85%;
                             white-space: nowrap;
@@ -125,6 +126,7 @@ $phone_icon: image-url("icon_phone_black.png");
                             text-overflow: ellipsis;
                             font-size: 18px;
                         }
+
                         width: 95%;
                         display: flex;
                         justify-content: flex-start;
@@ -135,7 +137,7 @@ $phone_icon: image-url("icon_phone_black.png");
                         font-size: 20px;
                         font-weight: bold;
 
-                        label  {
+                        label {
                             @include navbar_icon($hospital_icon);
                             width: 20px;
                             height: 20px;

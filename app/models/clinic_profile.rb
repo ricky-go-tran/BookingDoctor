@@ -13,10 +13,17 @@ class ClinicProfile < ApplicationRecord
 
   has_one_attached :certificate
   has_one_attached :clinic_view
-  validates :name, :address, :phone, :description, :start_day, :end_day, :start_hour, :end_hour, presence: true
-  validates :start_day, :end_day, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 6 }
-  validate :start_hour_must_be_before_end_hour
 
+  validates :name, :address, :phone, :description, :start_day, :end_day, :start_hour, :end_hour, presence: true
+  validates :name, length: { in: 5..200, message: 'Lengths from 5 to 200 ' }
+  validates :address, length: { in: 5..200, message: 'Lengths from 5 to 200 ' }
+  validates :phone, length: { is: 10, message: "Phone's length must 10" }
+  validates :description, length: { in: 5..15000, message: 'Lengths from 5 to 15000 ' }
+  validates :start_day, :end_day, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 6 }
+  validates :certificate, attached: true, size: { less_than: 10.megabytes, message: 'Please choose a photo smaller than 10mb' }, content_type: { in: %w[application/pdf application/jpeg], message: "It isn't a image" }
+  validates :clinic_view, attached: true, size: { less_than: 10.megabytes, message: 'Please choose a photo smaller than 10mb' }, content_type: { in: %w[application/pdf application/jpeg], message: "It isn't a image" }
+  validate :start_hour_must_be_before_end_hour
+  validate :start_day_must_be_before_end_day
   scope :current_month, -> {
     where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)
   }
@@ -34,6 +41,12 @@ class ClinicProfile < ApplicationRecord
   def start_hour_must_be_before_end_hour
     if start_hour.present? && end_hour.present? && start_hour >= end_hour
       errors.add(:end_hour, 'Must be after start hour')
+    end
+  end
+
+  def start_day_must_be_before_end_day
+    if start_day.present? && end_day.present? && start_day >= end_day
+      errors.add(:end_day, 'Must be after start day')
     end
   end
 

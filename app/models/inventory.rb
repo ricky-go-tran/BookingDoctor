@@ -6,7 +6,7 @@ class Inventory < ApplicationRecord
   validates :medical_resource_id, presence: true
   validates :amount, presence: true
   validates :price, presence: true
-  validates :amount, :price, numericality: { greater_than_or_equal_to: 0 }
+  validates :amount, :price, numericality: { greater_than: 0, message: 'Greater than 0' }
   resourcify
   scope :top_5_in_month, -> {
     joins('INNER JOIN medical_resources ON inventories.medical_resource_id = medical_resources.id')

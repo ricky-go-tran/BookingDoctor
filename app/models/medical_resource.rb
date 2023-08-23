@@ -12,5 +12,8 @@ class MedicalResource < ApplicationRecord
                                 instrucment: 'instrucment' }
   scope :search, ->(query) { where('UPPER(name) LIKE UPPER(?) OR UPPER(brand) LIKE UPPER(?)', "%#{query}%", "%#{query}%") }
   validates :name, :brand, :unit, :description, :medical_resource_type, presence: true
+  validates :name, presence: true, length: { in: 5..200, message: 'Lengths from 5 to 200 ' }
+  validates :brand, presence: true, length: { in: 5..200, message: 'Lengths from 5 to 200 ' }
+  validates :description, presence: true, length: { in: 5..15000, message: 'Lengths from 5 to 15000 ' }
   validates :medical_resource_type, inclusion: { in: %w[medicine nutraceutical vaccine instrucment] }
 end

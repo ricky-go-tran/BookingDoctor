@@ -1,4 +1,4 @@
-  # frozen_string_literal: true
+# frozen_string_literal: true
 
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
@@ -30,7 +30,7 @@ gem 'stimulus-rails'
 gem 'jbuilder'
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 4.0"
+gem 'redis', '~> 4.0'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -46,6 +46,7 @@ gem 'bootsnap', require: false
 
 # Use Sass to process CSS
 gem 'sassc-rails'
+gem 'active_storage_validations'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'image_processing', '~> 1.2'
@@ -65,11 +66,11 @@ gem 'wkhtmltopdf-binary'
 gem 'stripe'
 gem 'sidekiq'
 
-gem "capistrano"
-gem "capistrano3-puma"
-gem "capistrano-rails", require: false
-gem "capistrano-bundler", require: false
-gem "capistrano-rvm"
+gem 'capistrano'
+gem 'capistrano3-puma'
+gem 'capistrano-rails', require: false
+gem 'capistrano-bundler', require: false
+gem 'capistrano-rvm'
 
 gem 'byebug'
 
@@ -101,5 +102,5 @@ group :test do
   gem 'webdrivers'
   gem 'simplecov', require: false
   gem 'shoulda-matchers'
-  gem "webmock"
+  gem 'webmock'
 end
