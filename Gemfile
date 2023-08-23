@@ -65,13 +65,15 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'stripe'
 gem 'sidekiq'
-gem 'pagy'
 
+gem 'pagy'
+gem 'rollbar'
 gem 'capistrano'
 gem 'capistrano3-puma'
 gem 'capistrano-rails', require: false
 gem 'capistrano-bundler', require: false
 gem 'capistrano-rvm'
+
 
 gem 'byebug'
 

@@ -5,7 +5,7 @@ class WebhooksController < ApplicationController
     payload = request.body.read
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
     event = nil
-    endpoint_secret = 'whsec_212bba1985bbf1eca0a713e22a3d91843a0ffbc62b9fe538c836658586b42db9'
+    endpoint_secret = 'whsec_XrJ3S8GM8IzAs3AqqrbNITv8vWN6WYt2'
     begin
       event = Stripe::Webhook.construct_event(
         payload, sig_header, endpoint_secret
