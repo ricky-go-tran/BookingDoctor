@@ -4,6 +4,7 @@
 .clinic-service-wrapper {
     >.content-panel {
         box-sizing: border-box;
+
         .service_view {
             img {
                 height: 400px;
@@ -19,9 +20,11 @@
                 line-height: 2;
                 text-align: left;
             }
+
             td {
                 font-weight: 200;
             }
+
             .detail {
                 @include buntton_style_detail;
             }
@@ -50,13 +53,14 @@
             text-align: start;
 
 
-            >   label {
+            >label {
                 text-align: start;
                 vertical-align: top;
                 font-size: 16px;
                 font-weight: bold;
             }
-            > span {
+
+            >span {
                 font-weight: 200;
             }
 

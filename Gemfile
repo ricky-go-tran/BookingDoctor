@@ -65,6 +65,7 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'stripe'
 gem 'sidekiq'
+gem 'pagy'
 
 gem 'capistrano'
 gem 'capistrano3-puma'

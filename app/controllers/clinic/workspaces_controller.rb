@@ -20,6 +20,14 @@ class Clinic::WorkspacesController < Clinic::BaseController
     @prescription_items = @medical_record.prescription_items
   end
 
+  def change
+    @medical_record = MedicalRecord.find(params[:id])
+    @patient_profile = @medical_record&.patient_profile
+    @profile = @patient_profile&.profile
+    @examination_result = @medical_record.examination_resul
+    @prescriptions = @medical_record.prescription_items
+  end
+
   def cash_payment
     @medical_record = MedicalRecord.find(params[:id])
     check_payment_medical_record(@medical_record.id)

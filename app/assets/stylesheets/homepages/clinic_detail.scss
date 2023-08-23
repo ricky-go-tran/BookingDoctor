@@ -35,6 +35,7 @@ $start_icon: image-url("icon_star.png");
                 color: #fff;
                 font-size: 48px;
                 font-weight: bold;
+
                 @include mobile {
                     font-size: 30px;
                     width: 20%;
@@ -69,6 +70,7 @@ $start_icon: image-url("icon_star.png");
                 flex-direction: column;
                 padding: 20px;
                 box-sizing: border-box;
+
                 @include mobile {
                     width: 90%;
                 }
@@ -86,6 +88,7 @@ $start_icon: image-url("icon_star.png");
                         text-overflow: ellipsis;
                         font-size: 20px;
                         text-align: center;
+
                         @include mobile {
                             font-size: 15px;
                         }
@@ -100,6 +103,7 @@ $start_icon: image-url("icon_star.png");
                 .name {
                     font-size: 38px;
                     font-weight: bold;
+
                     @include mobile {
                         font-size: 12px;
                     }
@@ -116,6 +120,7 @@ $start_icon: image-url("icon_star.png");
                     @include mobile {
                         font-size: 18px;
                     }
+
                     label {
                         @include navbar_icon($address_icon);
                         width: 20px;
@@ -127,6 +132,7 @@ $start_icon: image-url("icon_star.png");
                     @include mobile {
                         font-size: 18px;
                     }
+
                     label {
                         @include navbar_icon($phone_icon);
                         width: 20px;
@@ -172,7 +178,7 @@ $start_icon: image-url("icon_star.png");
             font-size: 18px;
             width: 90%;
             padding: 20px;
-            border-radius:  5px;
+            border-radius: 5px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -198,7 +204,7 @@ $start_icon: image-url("icon_star.png");
             font-size: 18px;
             width: 90%;
             padding: 20px;
-            border-radius:  5px;
+            border-radius: 5px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -231,7 +237,7 @@ $start_icon: image-url("icon_star.png");
             font-size: 18px;
             width: 90%;
             padding: 20px;
-            border-radius:  5px;
+            border-radius: 5px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -256,7 +262,7 @@ $start_icon: image-url("icon_star.png");
             font-size: 18px;
             width: 90%;
             padding: 20px;
-            border-radius:  5px;
+            border-radius: 5px;
             box-sizing: border-box;
             display: flex;
             flex-wrap: wrap;
@@ -291,7 +297,7 @@ $start_icon: image-url("icon_star.png");
             font-size: 18px;
             width: 90%;
             padding: 20px;
-            border-radius:  5px;
+            border-radius: 5px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -305,6 +311,7 @@ $start_icon: image-url("icon_star.png");
                     line-height: 2;
                     text-align: left;
                 }
+
                 td {
                     font-weight: 200;
                 }
@@ -323,7 +330,7 @@ $start_icon: image-url("icon_star.png");
             font-size: 18px;
             width: 90%;
             padding: 20px;
-            border-radius:  5px;
+            border-radius: 5px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -336,7 +343,7 @@ $start_icon: image-url("icon_star.png");
             font-size: 18px;
             width: 90%;
             padding: 20px;
-            border-radius:  5px;
+            border-radius: 5px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
@@ -361,6 +368,7 @@ $start_icon: image-url("icon_star.png");
 
                 .add-service {
                     display: flex;
+
                     a {
                         @include button_style_add;
                         width: 200px;
@@ -375,16 +383,19 @@ $start_icon: image-url("icon_star.png");
                     text-align: center;
 
                 }
-                .nested-fields  {
+
+                .nested-fields {
                     width: 100%;
                     display: flex;
                     justify-content: space-between;
-                    > select {
+
+                    >select {
                         @include select_format;
                         width: 70%;
                         height: 30px;
                     }
-                    > a {
+
+                    >a {
                         @include buntton_style_del_lock;
                         width: 20%;
                         height: 30px;
@@ -403,7 +414,7 @@ $start_icon: image-url("icon_star.png");
             font-size: 18px;
             width: 90%;
             padding: 20px;
-            border-radius:  5px;
+            border-radius: 5px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;

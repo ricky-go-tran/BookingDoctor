@@ -43,6 +43,7 @@ $no-workspace: image-url("no_appointment.png");
             border-bottom: 1px solid #1465f2;
             width: 100%;
         }
+
         &:not(:first-child) {
             margin-top: 5%;
         }
@@ -90,6 +91,7 @@ $no-workspace: image-url("no_appointment.png");
                 line-height: 2;
                 text-align: left;
             }
+
             td {
                 font-weight: 200;
             }
@@ -100,24 +102,31 @@ $no-workspace: image-url("no_appointment.png");
             }
         }
     }
-    .patient-info-form{
+
+    .patient-info-form {
         width: 100%;
+
         label {
             display: block;
             margin-top: 15px;
             margin-bottom: 5px;
             font-weight: bold;
         }
-        input, select {
+
+        input,
+        select {
             @include input_format;
         }
+
         textarea {
             @include area_format;
         }
+
         .nested-fields {
             width: 60%;
             display: flex;
             flex-direction: column;
+
             .remove_fields {
                 @include buntton_style_del_lock;
                 width: 200px;
@@ -126,6 +135,7 @@ $no-workspace: image-url("no_appointment.png");
                 margin-top: 5%;
             }
         }
+
         .add_fields {
             display: block;
             margin-top: 5%;
@@ -133,6 +143,7 @@ $no-workspace: image-url("no_appointment.png");
             text-align: center !important;
             width: 200px;
         }
+
         .btn {
             margin-top: 5%;
             @include button_style_submit;

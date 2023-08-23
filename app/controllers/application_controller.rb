@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
   include Pundit::Authorization
+  include Pagy::Backend
   before_action :check_first_login, unless: :devise_controller?
 
   private

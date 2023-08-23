@@ -6,7 +6,9 @@
             .search-wrapper
                 input.search-bar[type="search" placeholder="#{t('service.basic.service_search')}" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{services_homepages_path}"]
     .body-wrapper
-        .title = t('service.basic.services')
+        .title
+            .name Services
+            == pagy_nav(@pagy)
         .services
             - if @services.present?
                 - @services.each do |service|
@@ -27,3 +29,4 @@
                                 span = "#{service.execution_time} minutes"
             - else
                 .empty = t('service.basic.service_empty')
+    = render "layouts/components/footer"

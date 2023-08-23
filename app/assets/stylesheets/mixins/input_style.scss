@@ -37,7 +37,7 @@ $add_icon: image-url("icon_add.png");
     width: 200px;
     box-sizing: border-box;
     padding: 5px 25px;
-    background: #ef0706;
+    background: #FF9B9B;
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -45,6 +45,7 @@ $add_icon: image-url("icon_add.png");
     text-decoration: none;
     text-align: center;
     position: relative;
+
     &:before {
         content: "";
         background-image: $pdf_icon;
@@ -57,14 +58,14 @@ $add_icon: image-url("icon_add.png");
         top: 50%;
         transform: translateY(-50%);
         margin-right: 5%;
-      }
+    }
 }
 
 @mixin button_style_sheet {
     width: 200px;
     box-sizing: border-box;
     padding: 5px 25px;
-    background: #0f9855;
+    background: #A4BC92;
     border: none;
     border-radius: 5px;
     font-size: 16px;
@@ -72,6 +73,7 @@ $add_icon: image-url("icon_add.png");
     text-decoration: none;
     text-align: center;
     position: relative;
+
     &:before {
         content: "";
         background-image: $sheet_icon;
@@ -84,7 +86,7 @@ $add_icon: image-url("icon_add.png");
         top: 50%;
         margin-right: 5%;
         transform: translateY(-50%);
-      }
+    }
 }
 
 @mixin button_style_add {
@@ -112,7 +114,7 @@ $add_icon: image-url("icon_add.png");
         top: 50%;
         margin-right: 5%;
         transform: translateY(-50%);
-      }
+    }
 }
 
 
@@ -133,24 +135,24 @@ $add_icon: image-url("icon_add.png");
     border-radius: 5px;
     color: #ffffff;
     cursor: pointer;
-    background-image: linear-gradient(230deg, #759bff, #843cf6);
+    background-color: #95BDFF;
     cursor: pointer;
 }
 
 @mixin buntton_style_edit {
+
     margin-right: 10px;
     padding: 5px 25px;
     border: none;
     border-radius: 5px;
     color: #ffffff;
     cursor: pointer;
-    background-image: linear-gradient(230deg, #57f89a, #3af701);
+    background-color: #B3C99C;
 
 }
 
 @mixin buntton_style_del_lock {
-    background-image: linear-gradient(230deg, #f73b73, #f88d84);
-
+    background-color: #FF9B9B;
     margin-right: 10px;
     padding: 5px 25px;
     border: none;
@@ -162,7 +164,7 @@ $add_icon: image-url("icon_add.png");
 }
 
 @mixin name_background {
-    background-image: linear-gradient(230deg, #f6d365 0%, #f6d365 100%);
+    background-color: #F1C27B;
     margin-right: 10px;
     padding: 5px 25px;
     border: none;
@@ -188,6 +190,7 @@ $add_icon: image-url("icon_add.png");
         margin-right: 10px;
     }
 }
+
 @mixin datepicker_format_simple_form {
     width: 100%;
     display: flex;

@@ -3,24 +3,26 @@
 .history-medical-record-wrapper {
     >.show-panel {
         width: 100%;
+
         >* {
             width: 90%;
             margin: 10px 0;
             text-align: start;
 
 
-            >   label {
+            >label {
                 text-align: start;
                 vertical-align: top;
                 font-size: 16px;
                 font-weight: bold;
             }
 
-            > span {
+            >span {
                 font-size: 16px;
                 font-weight: 200;
             }
         }
+
         table {
             width: 100%;
 
@@ -29,6 +31,7 @@
                 line-height: 2;
                 text-align: left;
             }
+
             td {
                 font-weight: 200;
             }

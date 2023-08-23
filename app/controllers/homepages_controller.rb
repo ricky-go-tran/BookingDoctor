@@ -9,7 +9,7 @@ class HomepagesController < ApplicationController
 
   def clinics
     @categories = Category.all
-    @clinics = ClinicProfile.joins(:profile).where("profiles.status = 'valid'")
+    @pagy, @clinics = pagy(ClinicProfile.joins(:profile).where("profiles.status = 'valid'"), items: 10)
     if params[:search]
       @clinics = ClinicProfile.search(params[:search])
     elsif params[:type]
@@ -36,7 +36,7 @@ class HomepagesController < ApplicationController
   end
 
   def services
-    @services = Service.all
+    @pagy, @services = pagy(Service.all, items: 10)
     if params[:search]
       @services = Service.search(params[:search])
     end

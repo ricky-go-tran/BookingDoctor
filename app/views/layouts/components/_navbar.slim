@@ -1,5 +1,5 @@
 .navbar-wrapper
-      .logo
+      .logo[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{homepages_path}"]
         span Booking
         label Doctor
       .dropdown-button[data-controller="toggle" data-toggle-target="navbar" data-action="click->toggle#navbar"]

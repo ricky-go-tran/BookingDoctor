@@ -1,0 +1,73 @@
+@import "../../mixins/input_style.scss";
+@import "../../mixins/layout.scss";
+$goverment: image-url('govement.png');
+
+.homepages-footer-wrapper {
+    width: 100%;
+    background-color: #A1CCD1;
+    display: flex;
+    padding: 30px;
+    color: #fff;
+    line-height: 2;
+
+    >.left {
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        .logo {
+            @include logo;
+            font-size: 32px;
+            margin: unset;
+        }
+
+        .sologan {
+            font-style: italic;
+        }
+    }
+
+    >.center {
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        .title {
+            font-size: 24px;
+        }
+
+        >ul li {
+            list-style-type: hidden;
+        }
+    }
+
+    >.right {
+        width: 50%;
+
+        label {
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        span {
+            font-weight: 200;
+        }
+
+        .icon-govement {
+            background: $goverment;
+            width: 300px;
+            height: 150px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        iframe {
+            border-radius: 10px;
+        }
+    }
+
+}
