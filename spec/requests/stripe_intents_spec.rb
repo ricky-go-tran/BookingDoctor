@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'rack/test'
+require 'pry-rails'
 
 RSpec.describe 'StripeIntents', type: :request do
   describe 'POST #create' do
@@ -24,6 +25,14 @@ RSpec.describe 'StripeIntents', type: :request do
       expect(response).to have_http_status(:success)
       json_response = JSON.parse(response.body)
       expect(json_response).to include('id', 'client_secret')
+    end
+    it 'get payment intent by id fails' do
+      params = {
+        stripe_payment_id: 'pi_3NhoZBJD1fB324567f'
+      }
+      get(retrieve_stripe_intents_path, params:)
+      json_response = JSON.parse(response.body)
+      expect(json_response).to include('error')
     end
   end
 end

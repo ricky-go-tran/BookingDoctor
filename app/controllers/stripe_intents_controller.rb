@@ -23,6 +23,10 @@ class StripeIntentsController < ApplicationController
       id: payment_intent.id,
       client_secret: payment_intent.client_secret
     }
+  rescue StandardError
+    render staus: 404, json: {
+      error: 'Fails'
+    }
   end
 
   def update_medical_record
