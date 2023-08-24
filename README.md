@@ -34,3 +34,37 @@ To develop the BookingDoctor website, we utilize the following technologies:
   - [x] Patient: rate  
   - [x] Admin: Category management 
   - [x] Admin: User management
+## How To Use? 
+- **Step 1:** Download source
+
+
+  ![image](https://github.com/ricky-go-tran/BookingDoctor/assets/136413699/a782fe31-928c-44c6-a2c4-66a8b409a8df)
+  
+
+- **Step 2:** Install ruby ​​and rails environment. (Tutorial: https://www.tutorialspoint.com/ruby-on-rails/rails-installation.htm)
+- **Step 3:** Prepare a stripe account, webhook,key. (Stripe: https://stripe.com/)
+- **Step 4:** Prepare postgresql
+  
+  - With local: [https://www.postgresql.org/](https://www.postgresql.org/download/)https://www.postgresql.org/download/
+  - Or use host
+- **Step 5:** Run `bundle install` to install all denpendencies
+- **Step 6:**  With local database config can config in  config/database.yml
+
+  
+![image](https://github.com/ricky-go-tran/BookingDoctor/assets/136413699/34076b62-4334-4319-a147-23497d126bb2)
+
+- **Step 7:** Delete old cretials and add new file with following content:
+   `secret_key_base: ((value))
+    postgres_host: ((value))
+    database_name: ((value))
+    postgres_user: ((value))
+    postgres_password: ((value))
+    stripe_publishable_key:((value))
+    stripe_secret_key: ((value))
+    email_password: ((value))`  
+-  **Step 8:** Create database `rails db:create`
+-  **Step 9:** Migrate database `rails db:migrate` but not following default. Use migrate up each file in order to avoid foreign key errors
+![BookingDoctor (1)](https://github.com/ricky-go-tran/BookingDoctor/assets/136413699/a7ac1aa1-a487-4137-ab31-5e94bf055e9f)
+ 
+- **Step 10:** Run seed file
+- **Step 11:** Run `rails server`
