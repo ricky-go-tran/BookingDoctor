@@ -7,11 +7,11 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-admin = User.create!(email: 'admin.study@gmail.com', password: '662001')
+admin = User.create!(email: 'admin.study@gmail.com', password: '662001', confirmed_at: Time.current)
 admin.add_role :admin
-clinic = User.create!(email: 'clinic.study@gmail.com', password: '662001')
+clinic = User.create!(email: 'clinic.study@gmail.com', password: '662001', confirmed_at: Time.current)
 clinic.add_role :clinic
-patient = User.create!(email: 'patient.study@gmail.com', password: '662001')
+patient = User.create!(email: 'patient.study@gmail.com', password: '662001', confirmed_at: Time.current)
 patient.add_role :patient
 
 
