@@ -94,7 +94,7 @@ $toggle_icon: image-url("icon_menu.png");
 
         .active {
             background-color: #1465f2;
-            color: #fff;
+            color: #fff !important;
 
             #profile-icon.active_icon {
                 @include navbar_icon($profile-icon);
@@ -146,6 +146,8 @@ $toggle_icon: image-url("icon_menu.png");
             margin-bottom: 20px;
             border-radius: 5px;
             padding: 0 5px;
+            text-decoration: none;
+            color: #656565;
 
             &:hover {
                 background-color: #1465f2;

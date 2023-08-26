@@ -9,14 +9,7 @@
             = link_to "#{t('add')}", new_admin_category_path, {class: "add"}
     .content-panel
         - if @categories.present?
-            - @categories.each do |category|
-                .category-item
-                    .left
-                        .name = category.name
-                        .change-time = "#{t('recent_changes')}: #{date_format(category.updated_at)}"
-                    .right
-                        .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_category_path(category)}"] = "#{t('view_details')}"
-                        .change[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{edit_admin_category_path(category)}"] = "#{t('change')}"
-                        = link_to "Delete", admin_category_path(category),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "del"
+            = render partial: "category", collection: @categories
+
         - else
             .emty = t('category.basic.category_empty')

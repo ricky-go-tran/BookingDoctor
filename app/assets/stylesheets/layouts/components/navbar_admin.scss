@@ -89,7 +89,7 @@ $toggle_icon: image-url("icon_menu.png");
         width: 90%;
 
         .active {
-            border: 1px solid #ffffff
+            border: 1px solid #ffffff;
         }
 
         >.item {
@@ -102,6 +102,8 @@ $toggle_icon: image-url("icon_menu.png");
             width: 100%;
             margin-bottom: 20px;
             border-radius: 5px;
+            text-decoration: none;
+            color: #fff;
 
             &:hover {
                 border: 1px solid #ffffff

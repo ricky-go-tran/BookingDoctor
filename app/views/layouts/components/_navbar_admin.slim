@@ -6,23 +6,23 @@
         .role Admin Dashbroad
         .name = current_user.profile.fullname
     .menu-part
-        .item[class="#{active_navbar("admin/profiles", %w(index change))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_profiles_path}"]
+        = link_to admin_profiles_path, {class: "item #{active_navbar("admin/profiles", %w(index change))}"} do
             #profile-icon
             span = t('profile.my_profile')
-        .item[class="#{active_navbar("admin/users", %w(index show request_verify detail_request))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_users_path}"]
+        = link_to admin_users_path, {class: "item #{active_navbar("admin/users", %w(index show request_verify detail_request))}"} do
             #user-icon
             span User management
-        .item[class="#{active_navbar("admin/categories", %w(index show new edit))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_categories_path}"]
+
+        = link_to admin_categories_path, {class: "item #{active_navbar("admin/categories", %w(index show new edit))}"} do
             #category-icon
             span Categories management
-        .item[class="#{active_navbar("admin/medical_resources", %w(index show new edit))}" data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_medical_resources_path}"]
+        = link_to admin_medical_resources_path, {class: "item #{active_navbar("admin/medical_resources", %w(index show new edit))}"} do
             #medical-icon
             span Medical Resources
         .item#toggle-admin-navbar[data-controller="toggle"  data-action="click->toggle#admin"]
             #toggle-icon
             span Close Navbar
-
-    .switch-role[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{homepages_path}"]
+    = link_to homepages_path, {class: "switch-role"} do
         #switch-icon
         span Switch Homepage UI
 

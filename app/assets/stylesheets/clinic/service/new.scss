@@ -6,7 +6,8 @@
     .service_description,
     .service_price,
     .service_name,
-    .service_execution_time, .service_service_wallpaper {
+    .service_execution_time,
+    .service_service_wallpaper {
 
         input,
         select {
@@ -25,6 +26,7 @@
 
     .new-panel {
         @include new-panel;
+
         form {
             width: 90%;
             display: flex;

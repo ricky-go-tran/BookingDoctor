@@ -29,14 +29,20 @@ class Clinic::InventoriesController < Clinic::BaseController
       @exist_inventory.amount += @inventory.amount
       @exist_inventory.price = @inventory.price
       if @exist_inventory.save
-        redirect_to clinic_inventories_path
+        respond_to do |format|
+          format.turbo_stream
+          format.html { redirect_to clinic_inventories_path, notice: 'Inventory was successfully created.' }
+        end
       else
         render :new, status: 422
       end
     else
       current_user.add_role :own, @inventory
       if @inventory.save
-        redirect_to clinic_inventories_path
+        respond_to do |format|
+          format.turbo_stream
+          format.html { redirect_to clinic_inventories_path, notice: 'Inventory was successfully created.' }
+        end
       else
         render :new, status: 422
       end

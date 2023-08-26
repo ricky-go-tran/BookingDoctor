@@ -21,7 +21,12 @@ class Clinic::ServicesController < Clinic::BaseController
     @service = Service.new(service_params)
     @service.clinic_profile = current_user.profile.clinic_profile
     if @service.save
-      redirect_to clinic_services_path
+      respond_to do |format|
+        format.html { redirect_to clinic_services_path, notice: 'Service was successfully created.' }
+        format.turbo_stream do
+          render layout: false
+        end
+      end
     else
       render :new, status: 422
     end

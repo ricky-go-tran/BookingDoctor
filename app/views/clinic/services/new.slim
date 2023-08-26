@@ -4,7 +4,7 @@
             = link_to "#{t('back')}", clinic_services_path, {class: "back"}
         .title = t('service.basic.service_management')
         .right-bar
-    .new-panel
-        .title = t('service.basic.service_new')
-        = render "clinic/services/form"
-
+    = turbo_frame_tag "clinic_new_service_panel" do
+        .new-panel
+            .title = t('service.basic.service_new')
+            = render "clinic/services/form"

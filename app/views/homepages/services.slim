@@ -11,22 +11,8 @@
             == pagy_nav(@pagy)
         .services
             - if @services.present?
-                - @services.each do |service|
-                    .service-item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="/services/#{service.id}"]
-                        - if service.service_wallpaper.attached?
-                            = image_tag service.service_wallpaper, class: "service_view"
-                        - else
-                            .service_view = t('no_image')
-                        .service-content
-                            .service-name
-                                label
-                                span = service.name
-                            .service-price
-                                label
-                                span = "$#{service.price}"
-                            .service-execution-time
-                                label
-                                span = "#{service.execution_time} minutes"
+                = render partial: "service", collection: @services
+
             - else
                 .empty = t('service.basic.service_empty')
     = render "layouts/components/footer"

@@ -1,0 +1,6 @@
+.patient-item
+    .left
+        .name = patient.profile.fullname
+        .birtday = "Birtday: #{patient.profile.birthday}"
+    .right
+        = link_to "#{t('view_details')}", clinic_patient_path(patient), class: "view", data: { turbo_frame: "_top" }
