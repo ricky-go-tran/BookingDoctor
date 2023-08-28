@@ -13,4 +13,7 @@ class Category < ApplicationRecord
   scope :get_name_by_user, ->(user) {
                              find(user.profile.clinic_profile.category_id).name
                            }
+  after_create_commit -> { broadcast_prepend_to 'categories', partial: 'admin/categories/category', locals: { category: self }, target: 'categories' }
+  after_update_commit -> { broadcast_replace_to 'categories', partial: 'admin/categories/category' }
+  after_destroy_commit -> { broadcast_remove_to 'categories' }
 end

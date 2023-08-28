@@ -1,33 +1,145 @@
-.homepage-index-wrapper
-    .wallpaper
-        .blur-panel
-        .logo
-            span Booking
-            label Doctor
-        .slogan = t('homepage.slogan')
-        .title = t('homepage.title')
-    .features-wrapper
-        .title Our Feature
-        .features
-            .booking
-                #icon-booking
-                span.title-feature = t('homepage.booking_schedule')
-            .e-management
-                #icon-management
-                span.title-feature = t('homepage.e_management')
-            .connect
-                #icon-connect
-                span.title-feature = t('homepage.connecting')
-            .Save
-                #icon-save
-                span.title-feature = t('homepage.save')
-    .introduction-wrapper
-        .title = t('homepage.about_us')
-        .introduction = t('homepage.about_us_content')
-
-    = render "layouts/components/footer"
+.slider-wrapper
+    .section
+        .container
+            span.subhead
+                | Connect patients and clinics
+            h1.display-4
+                | DoctorBoooking
+            = link_to "Let's Discovery", new_user_session_path ,class: "btn btn-primary"
 
 
+.bg-light
+    .page-section.py-3.mt-md-n5.custom-index
+        .container
+            .row.justify-content-center
+                .col-md-4.py-3.py-md-0
+                    .card-service.wow.fadeInUp
+                        .circle-shape.bg-secondary.text-white
+                            span.mai-chatbubbles-outline
+                        p
+                            span
+                                | Chat
+                            |  with a doctors
+                .col-md-4.py-3.py-md-0
+                    .card-service.wow.fadeInUp
+                        .circle-shape.bg-primary.text-white
+                            span.mai-shield-checkmark
+                        p
+                            span
+                                | One
+                            | -Health Protection
+                .col-md-4.py-3.py-md-0
+                    .card-service.wow.fadeInUp
+                        .circle-shape.bg-accent.text-white
+                        span.mai-basket
+                        p
+                        span
+                            | One
+                        | -Health Pharmacy
+    .page-section.pb-0
+        .container
+            .row.align-items-center
+                .col-lg-6.py-3.wow.fadeInUp
+                    h1
+                        | Welcome to Your Health
+                        br
+                        |  Center
+                    p.text-grey.mb-4
+                        | Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Accusantium aperiam earum ipsa eius, inventore nemo labore eaque porro consequatur ex aspernatur. Explicabo, excepturi accusantium! Placeat voluptates esse ut optio facilis!
+                    = link_to "Let's Discovery", new_user_session_path ,class: "btn btn-primary"
+                .col-lg-6.wow.fadeInRight[data-wow-delay="400ms"]
+                    .img-place.custom-img-1
+                        = image_tag("bg-doctor")
 
+
+.page-section
+    .container
+        h1.text-center.mb-5.wow.fadeInUp
+            | Population Clinics
+        #clinics-wrapper
+            .item
+                .card-doctor
+                    .header
+                        img[src="../assets/img/doctors/doctor_1.jpg" alt=""]
+                    .body
+                        p.text-xl.mb-0
+                            | Dr. Stein Albert
+                        span.text-sm.text-grey
+                            | Cardiology
+
+            .item
+                .card-doctor
+                    .header
+                        img[src="../assets/img/doctors/doctor_1.jpg" alt=""]
+                    .body
+                        p.text-xl.mb-0
+                            | Dr. Stein Albert
+                        span.text-sm.text-grey
+                            | Cardiology
+
+            .item
+                .card-doctor
+                    .header
+                        img[src="../assets/img/doctors/doctor_1.jpg" alt=""]
+                    .body
+                        p.text-xl.mb-0
+                            | Dr. Stein Albert
+                        span.text-sm.text-grey
+                            | Cardiology
+            .item
+                .card-doctor
+                    .header
+                        img[src="../assets/img/doctors/doctor_1.jpg" alt=""]
+                    .body
+                        p.text-xl.mb-0
+                            | Dr. Stein Albert
+                        span.text-sm.text-grey
+                            | Cardiology
+
+.page-section.bg-light
+    .container
+        h1.text-center.mb-5.wow.fadeInUp
+            | Population Services
+        #clinics-wrapper
+            .item
+                .card-doctor
+                    .header
+                        img[src="../assets/img/doctors/doctor_1.jpg" alt=""]
+                    .body
+                        p.text-xl.mb-0
+                            | Dr. Stein Albert
+                        span.text-sm.text-grey
+                            | Cardiology
+
+            .item
+                .card-doctor
+                    .header
+                        img[src="../assets/img/doctors/doctor_1.jpg" alt=""]
+                    .body
+                        p.text-xl.mb-0
+                            | Dr. Stein Albert
+                        span.text-sm.text-grey
+                            | Cardiology
+
+            .item
+                .card-doctor
+                    .header
+                        img[src="../assets/img/doctors/doctor_1.jpg" alt=""]
+                    .body
+                        p.text-xl.mb-0
+                            | Dr. Stein Albert
+                        span.text-sm.text-grey
+                            | Cardiology
+            .item
+                .card-doctor
+                    .header
+                        img[src="../assets/img/doctors/doctor_1.jpg" alt=""]
+                    .body
+                        p.text-xl.mb-0
+                            | Dr. Stein Albert
+                        span.text-sm.text-grey
+                            | Cardiology
+
+= render "layouts/components/footer"
 
 

@@ -1,73 +1,102 @@
 @import "../../mixins/input_style.scss";
 @import "../../mixins/layout.scss";
+@import "../../mixins/responesive.scss";
 $goverment: image-url('govement.png');
 
-.homepages-footer-wrapper {
-    width: 100%;
-    background-color: #A1CCD1;
-    display: flex;
-    padding: 30px;
+.page-footer {
+
+    position: relative;
+    display: block;
+    padding-top: 80px;
+    padding-bottom: 16px;
+    background-color: #2D3B38;
     color: #fff;
-    line-height: 2;
 
-    >.left {
-        width: 25%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
+    @media (min-width: 768px) {
 
-        .logo {
-            @include logo;
-            font-size: 32px;
-            margin: unset;
-        }
-
-        .sologan {
-            font-style: italic;
+        .pl-md-3,
+        .px-md-3 {
+            padding-left: 1rem !important;
         }
     }
 
-    >.center {
-        width: 25%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-
-        .title {
-            font-size: 24px;
-        }
-
-        >ul li {
-            list-style-type: hidden;
-        }
+    .pt-3,
+    .py-3 {
+        padding-top: 1rem !important;
     }
 
-    >.right {
-        width: 50%;
-
-        label {
-            font-weight: bold;
-            margin-right: 15px;
-        }
-
-        span {
-            font-weight: 200;
-        }
-
-        .icon-govement {
-            background: $goverment;
-            width: 300px;
-            height: 150px;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: contain;
-        }
-
-        iframe {
-            border-radius: 10px;
-        }
+    .footer-item {
+        width: 30%;
     }
 
+    .footer-menu {
+        position: relative;
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .footer-menu a,
+    .footer-link {
+        display: inline-block;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        color: rgba(255, 255, 255, 0.6);
+        transition: all .2s ease;
+    }
+
+    .footer-link {
+        padding: 0;
+        margin-bottom: 16px;
+    }
+
+    .footer-menu a,
+    .footer-link {
+        display: inline-block;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        color: rgba(255, 255, 255, 0.6);
+        transition: all .2s ease;
+    }
+
+    .mt-2,
+    .my-2 {
+        margin-top: 0.5rem !important;
+    }
+
+    .mt-3,
+    .my-3 {
+        margin-top: 1rem !important;
+    }
+
+    .footer-sosmed a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 42px;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 18px;
+        background-color: #26312F;
+        color: #ffff;
+        transition: all .2s ease;
+    }
+
+
+
+    .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
 }

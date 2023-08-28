@@ -40,7 +40,9 @@ class Clinic::InventoriesController < Clinic::BaseController
       current_user.add_role :own, @inventory
       if @inventory.save
         respond_to do |format|
-          format.turbo_stream
+          format.turbo_stream do
+            render layout: false
+          end
           format.html { redirect_to clinic_inventories_path, notice: 'Inventory was successfully created.' }
         end
       else

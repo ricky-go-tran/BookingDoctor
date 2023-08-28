@@ -24,10 +24,7 @@ class Admin::MedicalResourcesController < Admin::BaseController
   def create
     @medical_resource = MedicalResource.new(medical_resource_params)
     if @medical_resource.save
-      respond_to do |format|
-        format.html { redirect_to admin_medical_resources_path, notice: 'MedicalResources was successfully created.' }
-        format.turbo_stream
-      end
+      redirect_to admin_medical_resources_path
     else
       render :new, status: 422
     end
