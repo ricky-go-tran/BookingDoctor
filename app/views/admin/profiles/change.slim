@@ -3,7 +3,7 @@
         span Booking
         label Doctor
     .title Change Your Profile
-    = simple_form_for  @profile,  :url => admin_profile_update_path, :method => :put do |form|
+    = simple_form_for  @profile,  :url => admin_profile_update_path, :method => :put,data: { turbo: false } do |form|
         = form.input :fullname, label: "Fullname: "
         = form.input :birthday, label: "Birthday: "
         = form.input :address, label: "Address: "

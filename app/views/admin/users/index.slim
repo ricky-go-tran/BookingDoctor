@@ -14,19 +14,7 @@
             = link_to "#{t('export_sheet')}", admin_users_path(format: :xlsx), {class: "sheet"}
             / = link_to "#{t('export_pdf')}",root_path, {class: "pdf_export"}
     .content-panel
-        - @users.each do |user|
-            .user-item
-                .left
-                    - if user.profile != nil
-                        .fullname = user.profile.fullname
-                        .role = get_role(user)
-                    - else
-                        .fullname
-                            = "#{user.email}"
-                            span = t('profile.not_profile')
-                        .role = get_role(user)
-                .right
-                    .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="users/#{user.id}"] = "#{t('view_details')}"
+        = render partial: "user", collection: @users
 
 
 

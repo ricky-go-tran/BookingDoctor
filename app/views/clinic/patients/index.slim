@@ -6,14 +6,9 @@
         .right-bar
             = link_to "#{t('export_sheet')}", clinic_patients_path(format: :xlsx), {class: "sheet"}
     .content-panel
-        - if @patients.present?
-            - @patients.each do |patient|
-                .patient-item
-                    .left
-                        .name = patient.profile.fullname
-                        .birtday = "Birtday: #{patient.profile.birthday}"
-                    .right
-                        .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_patient_path(patient)}"] = "#{t('view_details')}"
-        - else
-            .emty = t('profile.patient_empty')
+        = turbo_frame_tag "clinic_patient_panel" do
+            - if @patients.present?
+                = render partial: "patient", collection: @patients
+            - else
+                .emty = t('profile.patient_empty')
 

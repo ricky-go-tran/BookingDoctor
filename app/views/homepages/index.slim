@@ -1,33 +1,63 @@
-.homepage-index-wrapper
-    .wallpaper
-        .blur-panel
-        .logo
-            span Booking
-            label Doctor
-        .slogan = t('homepage.slogan')
-        .title = t('homepage.title')
-    .features-wrapper
-        .title Our Feature
-        .features
-            .booking
-                #icon-booking
-                span.title-feature = t('homepage.booking_schedule')
-            .e-management
-                #icon-management
-                span.title-feature = t('homepage.e_management')
-            .connect
-                #icon-connect
-                span.title-feature = t('homepage.connecting')
-            .Save
-                #icon-save
-                span.title-feature = t('homepage.save')
-    .introduction-wrapper
-        .title = t('homepage.about_us')
-        .introduction = t('homepage.about_us_content')
-
-    = render "layouts/components/footer"
+.slider-wrapper
+    .section
+        .container
+            span.subhead
+                | Connect patients and clinics
+            h1.display-4
+                | DoctorBoooking
+            = link_to "Let's Discovery", new_user_session_path ,class: "btn btn-primary"
 
 
+.bg-light
+    .page-section.pb-0
+        .container
+            .row.align-items-center
+                .col-lg-6.py-3.wow.fadeInUp
+                    h1
+                        | Welcome to Doctor Booking
+                    p.text-grey.mb-4
+                        | BookingDoctor serves as a platform that bridges the gap between patients and individual clinics. Operating on a model akin to hotel or tour booking websites, its primary objective is to enhance the convenience for patients when selecting a suitable clinic. By enabling advance bookings and offering access to reviews and comments, patients can make informed decisions.
+                    = link_to "Let's Discovery", new_user_session_path ,class: "btn btn-primary"
+                .col-lg-6.wow.fadeInRight[data-wow-delay="400ms"]
+                    .img-place.custom-img-1
+                        = image_tag("bg-doctor")
 
+
+.page-section.bg-light
+    .container
+        h1.text-center.mb-5.wow.fadeInUp
+            | Population Clinics
+        #clinics-wrapper
+            - @top4clinics.each do |item|
+                .item
+                    .card-doctor
+                        .header
+                            - if item.clinic_view.attached?
+                                = image_tag item.clinic_view
+                            - else
+                                div = t('no_image')
+                        .body
+                            p.text-xl.mb-0 = item.name
+                            span.text-sm.text-grey = item.category.name
+
+.page-section
+    .container
+        h1.text-center.mb-5.wow.fadeInUp
+            | Population Services
+        #clinics-wrapper
+            - @top4services.each do |item|
+                .item
+                    .card-doctor
+                        .header
+                            - if item.service_wallpaper.attached?
+                                = image_tag item.service_wallpaper
+                            - else
+                                div = t('no_image')
+                        .body
+                            p.text-xl.mb-0 = item.name
+                            span.text-sm.text-grey = item.clinic_profile.name
+
+
+= render "layouts/components/footer"
 
 

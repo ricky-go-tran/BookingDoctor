@@ -1,0 +1,9 @@
+= turbo_frame_tag category do
+    .category-item
+        .left
+            .name = category.name
+            .change-time = "#{t('recent_changes')}: #{date_format(category.updated_at)}"
+        .right
+            = link_to "#{t('view_details')}", admin_category_path(category), class: "view", data: {turbo_frame: "_top"}
+            = link_to "#{t('change')}", edit_admin_category_path(category), class: "change"
+            / = link_to "Delete", admin_category_path(category),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "del"

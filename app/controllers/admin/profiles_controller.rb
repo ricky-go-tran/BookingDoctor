@@ -6,7 +6,7 @@ class Admin::ProfilesController < Admin::BaseController
 
   def update
     if @profile.update(profile_params)
-      redirect_to admin_profiles_path
+      redirect_to admin_profiles_path, status: 303
     else
       render :change, status: 422
     end

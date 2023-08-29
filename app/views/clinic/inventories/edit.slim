@@ -3,8 +3,8 @@
         .left-bar
             = link_to "#{t('back')}", :back, {class: "back"}
         .title  = "#{t('inventory.basic.inventory_management')}"
-        .right-bar
     .new-panel
         .title Edit Invetory
-        = render "clinic/inventories/form"
+        = turbo_frame_tag dom_id(@inventory) do
+            = render "clinic/inventories/form", inventory: @inventory
 

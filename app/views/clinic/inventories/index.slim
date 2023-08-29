@@ -6,18 +6,12 @@
         .right-bar
             = link_to "#{t('export_sheet')}", clinic_inventories_path(format: :xlsx), {class: "sheet"}
             = link_to "Add By MR",clinic_medical_resources_path, {class: "medical_resources"}
-            = link_to "#{t('add')}", new_clinic_inventory_path, {class: "add"}
+            / = link_to "#{t('add')}", new_clinic_inventory_path, class: "add", data: {turbo_frame: dom_id(Inventory.new)}
     .content-panel
-        - if @inventories.present?
-            - @inventories.each do |inventory|
-                .inventory-item
-                    .left
-                        .name = get_medical_resource_by_id(inventory.medical_resource_id)
-                        .amount-price = "Remaining amount: #{inventory.amount} - Price: #{inventory.price}"
-                    .right
-                        .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_inventory_path(inventory)}"] = "#{t('view_details')}"
-                        .change[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{edit_clinic_inventory_path(inventory)}"] Change
-                        = link_to "#{t('delete')}", clinic_inventory_path(inventory),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "del"
-        - else
-            .emty  = "#{t('inventory.basic.inventory_empty')}"
+        = turbo_frame_tag Inventory.new
+        = turbo_frame_tag "clinic_inventory_panel" do
+            - if @inventories.present?
+                = render partial: "inventory", collection: @inventories
+            - else
+                .emty  = "#{t('inventory.basic.inventory_empty')}"
 

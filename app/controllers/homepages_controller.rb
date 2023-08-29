@@ -5,7 +5,10 @@ class HomepagesController < ApplicationController
   skip_before_action :check_first_login
   layout 'homepage_layout'
 
-  def index; end
+  def index
+    @top4clinics = ClinicProfile.limit(4)
+    @top4services = Service.limit(4)
+  end
 
   def clinics
     @categories = Category.all

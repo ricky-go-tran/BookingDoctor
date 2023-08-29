@@ -36,3 +36,9 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background: #a9a9a9;
 }
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}

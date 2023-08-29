@@ -1,0 +1,6 @@
+.medical-resource-item
+    .left
+        .name = medical_resource.name
+        .brand = "Brand: #{medical_resource.brand}"
+    .right
+        .view[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_medical_resource_path(medical_resource)}"] View detail

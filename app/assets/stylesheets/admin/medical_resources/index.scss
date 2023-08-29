@@ -65,7 +65,7 @@
         @include content-panel;
         overflow-y: scroll;
 
-        >.medical-resource-item {
+        .medical-resource-item {
             padding: 10px;
             box-shadow: 0 2px 5px #32325d1a, 0 1px 1.5px #00000012;
             border-radius: 5px;
