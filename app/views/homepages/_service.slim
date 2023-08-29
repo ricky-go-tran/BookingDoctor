@@ -1,4 +1,4 @@
-.service-item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="/services/#{service.id}"]
+= link_to  "/services/#{service.id}", class: "service-item" do
     - if service.service_wallpaper.attached?
         = image_tag service.service_wallpaper, class: "service_view"
     - else

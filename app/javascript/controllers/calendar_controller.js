@@ -1,12 +1,16 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["target"];
+  static targets = ["data"];
   connect() {
     this.render();
+    this.observeBookingViewsChanges();
   }
   render() {
-    let ec = new EventCalendar(document.getElementById("time-grid"), {
+    if (this.calendarInstance) {
+      this.calendarInstance.destroy();
+    }
+    this.calendarInstance = new EventCalendar(this.dataTarget, {
       view: "timeGridWeek",
       height: "500px",
       headerToolbar: {
@@ -38,11 +42,36 @@ export default class extends Controller {
     });
   }
   handleData() {
-    var data = document.getElementById("time-grid");
+    var data = this.dataTarget;
     return JSON.parse(data.dataset.bookingViews);
+  }
+
+  observeBookingViewsChanges() {
+    const observer = new MutationObserver((mutationsList) => {
+      for (const mutation of mutationsList) {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "data-booking-views"
+        ) {
+          this.handleBookingViewsChange();
+        }
+      }
+    });
+
+    observer.observe(this.dataTarget, {
+      attributes: true,
+      attributeFilter: ["data-booking-views"],
+    });
+  }
+  handleBookingViewsChange() {
+    this.render();
   }
   _pad(num) {
     let norm = Math.floor(Math.abs(num));
     return (norm < 10 ? "0" : "") + norm;
+  }
+
+  changed() {
+    console.log("Hello");
   }
 }

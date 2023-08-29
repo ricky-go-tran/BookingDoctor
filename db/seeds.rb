@@ -6,13 +6,13 @@ ActiveRecord::Base.transaction do
   clinic.delete_roles
   clinic.add_role :clinic
   clinic1 = User.create!(email: 'clinic1.study@gmail.com', password: '662001', confirmed_at: Time.current)
-  clinic.delete_roles
+  clinic1.delete_roles
   clinic1.add_role :clinic
   clinic2 = User.create!(email: 'clinic2.study@gmail.com', password: '662001', confirmed_at: Time.current)
-  clinic.delete_roles
+  clinic2.delete_roles
   clinic2.add_role :clinic
   clinic3 = User.create!(email: 'clinic3.study@gmail.com', password: '662001', confirmed_at: Time.current)
-  clinic.delete_roles
+  clinic3.delete_roles
   clinic3.add_role :clinic
   patient = User.create!(email: 'patient.study@gmail.com', password: '662001', confirmed_at: Time.current)
   patient.add_role :patient

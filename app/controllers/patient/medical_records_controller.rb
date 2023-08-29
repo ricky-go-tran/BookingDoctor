@@ -21,6 +21,12 @@ class Patient::MedicalRecordsController < Patient::BaseController
           .server
           .broadcast("notifications:#{@medical_record.clinic_profile.profile.user_id}",
                      { data: medical_record_json, action: 'add' })
+        booking = ChartItemCreator.call(1, 'Your booking', '#FE6B64', @medical_record.start_time, @medical_record.end_time)
+        booking = booking.to_json
+        ActionCable
+          .server
+          .broadcast('calendars_channel',
+                     { data: booking, action: 'add' })
         CanclePastAppointmentWorker.perform_at(@medical_record.start_time, @medical_record.to_json)
         flash[:success_notice] = 'Success! Register appointment'
         redirect_to "/clinics/#{@medical_record.clinic_profile_id}"

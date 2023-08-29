@@ -16,7 +16,7 @@ class Patient::ProfilesController < Patient::BaseController
     if @profile.update(profile_params)
       redirect_to patient_profiles_path
     else
-      render :change, status: 422
+      render :change, status: 422, layout: false
     end
   end
 

@@ -1,6 +1,6 @@
 .patient-my-profile-change-wrapper
     .title = t('profile.change_profile')
-    = simple_form_for  [:patient, @profile], data: {turbo: false} do |form|
+    = simple_form_for  [:patient, @profile] do |form|
         = form.input :fullname, label: "Fullname: "
         = form.input :birthday, label: "Birthday: "
         = form.input :address, label: "Address: "

@@ -1,4 +1,4 @@
-.clinic-item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="/clinics/#{clinic.id}"]
+= link_to "/clinics/#{clinic.id}", class: "clinic-item" do
     - if clinic.clinic_view.attached?
         = image_tag clinic.clinic_view, class: "clinic_view"
     - else
