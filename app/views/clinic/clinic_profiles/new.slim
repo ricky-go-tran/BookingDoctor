@@ -1,21 +1,19 @@
 .setup-clinic-profile-wrapper
-    .form-wrapper
-        .logo
-            span Booking
-            label Doctor
-        h2 = t('clinic.detail.setup_clinic_profile')
-        = simple_form_for [:clinic, @clinic_profile], data: {turbo: false} do |form|
-            = form.input :category_id, collection: Category.all, label_method: :name, value_method: :id, include_blank: true
-            = form.input :name
-            = form.input :address
-            = form.input :phone
-            = form.input :description
-            = form.input :start_hour, label: "Start Hour"
-            = form.input :end_hour, label: "End Hour"
-            = form.input :start_day, label: "Start Day",as: :select, collection: ClinicProfile.days.map { |key, value| [key, value] }, label_method: :first, value_method: :last
-            = form.input :end_day, label: "End Day",as: :select, collection: ClinicProfile.days.map { |key, value| [key, value] }, label_method: :first, value_method: :last
-            = form.input :certificate
-            = form.input :clinic_view
-            = form.button :submit
-
-
+	.form-wrapper
+			.logo
+					span Booking
+					label Doctor
+			h2 = t('clinic.detail.setup_clinic_profile')
+			= simple_form_for [:clinic, @clinic_profile], data: {turbo: false} do |form|
+					= form.input :category_id, collection: Category.all, label_method: :name, value_method: :id, include_blank: true
+					= form.input :name
+					= form.input :address
+					= form.input :phone
+					= form.input :description
+					= form.input :start_hour, label: "Start Hour"
+					= form.input :end_hour, label: "End Hour"
+					= form.input :start_day, label: "Start Day",as: :select, collection: ClinicProfile.days.map { |key, value| [key, value] }, label_method: :first, value_method: :last
+					= form.input :end_day, label: "End Day",as: :select, collection: ClinicProfile.days.map { |key, value| [key, value] }, label_method: :first, value_method: :last
+					= form.input :certificate
+					= form.input :clinic_view
+					= form.button :submit

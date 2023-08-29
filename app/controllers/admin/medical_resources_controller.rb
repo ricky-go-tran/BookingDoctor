@@ -1,5 +1,6 @@
 class Admin::MedicalResourcesController < Admin::BaseController
   before_action :get_medical_resource, only: %i[show edit update destroy]
+
   def index
     @medical_resources = if params[:search]
                            MedicalResource.search(params[:search])

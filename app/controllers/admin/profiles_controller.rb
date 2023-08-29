@@ -2,6 +2,7 @@
 
 class Admin::ProfilesController < Admin::BaseController
   before_action :get_profile, only: %i[update change]
+
   def index; end
 
   def update
