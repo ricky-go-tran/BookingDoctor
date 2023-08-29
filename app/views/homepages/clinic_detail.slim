@@ -16,7 +16,7 @@
                         label
                         span = @clinic.phone
                     - if is_patient?
-                        = link_to "Appointment", "/clinics/#{@clinic.id}/appointment", data: {turbo: false}, class: "add"
+                        = link_to "Appointment", "/clinics/#{@clinic.id}/appointment", class: "add"
 
         - else
             .wallpaper
@@ -33,7 +33,7 @@
                         label
                         span = @clinic.phone
                     - if is_patient?
-                        = link_to "Appointment", "/clinics/#{@clinic.id}/appointment", data: {turbo: false}, class: "add"
+                        = link_to "Appointment", "/clinics/#{@clinic.id}/appointment", class: "add"
 
     .body-wrapper
         .notice
@@ -122,7 +122,7 @@
                         .empty = t('service.basic.service_empty')
         .calendar
             .title = t('service.detail.calendar')
-            #time-grid[data-controller="calendar" data-chart-target="target" data-action="calendar#connect" data-booking-views="#{@calendar_booking}"]
+            #time-grid[data-controller="calendar" data-calendar-target="data" data-action="change->calendar#changed" data-booking-views="#{@calendar_booking}"]
 
         .vote-wrapper
             .title = t('rate.basic.rate')
@@ -149,6 +149,7 @@
                     = form.input :rate, collection: Vote.rates.keys
                     = form.input :comment
                     = form.button :submit
+    = render "layouts/components/footer"
 
 
 

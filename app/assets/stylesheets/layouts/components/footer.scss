@@ -1,0 +1,107 @@
+@import "../../mixins/input_style.scss";
+@import "../../mixins/layout.scss";
+@import "../../mixins/responesive.scss";
+$goverment: image-url('govement.png');
+
+.page-footer {
+
+    position: relative;
+    display: block;
+    padding-top: 80px;
+    padding-bottom: 16px;
+    background-color: #2D3B38;
+    color: #fff;
+
+    @media (min-width: 768px) {
+
+        .pl-md-3,
+        .px-md-3 {
+            padding-left: 1rem !important;
+        }
+    }
+
+    .pt-3,
+    .py-3 {
+        padding-top: 1rem !important;
+    }
+
+    .footer-item {
+        width: 30%;
+    }
+
+    .footer-menu {
+        position: relative;
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .footer-menu a,
+    .footer-link {
+        display: inline-block;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        color: rgba(255, 255, 255, 0.6);
+        transition: all .2s ease;
+    }
+
+    .footer-link {
+        padding: 0;
+        margin-bottom: 16px;
+    }
+
+    .footer-menu a,
+    .footer-link {
+        display: inline-block;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        color: rgba(255, 255, 255, 0.6);
+        transition: all .2s ease;
+    }
+
+    .mt-2,
+    .my-2 {
+        margin-top: 0.5rem !important;
+    }
+
+    .mt-3,
+    .my-3 {
+        margin-top: 1rem !important;
+    }
+
+    .footer-sosmed a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 42px;
+        border-radius: 50%;
+        text-align: center;
+        font-size: 18px;
+        background-color: #26312F;
+        color: #ffff;
+        transition: all .2s ease;
+    }
+
+
+
+    .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+
+    @include mobile {
+        align-items: center;
+        flex-direction: column;
+    }
+}

@@ -14,11 +14,9 @@ class Patient::ProfilesController < Patient::BaseController
   def update
     @profile = Profile.find(current_user.profile.id)
     if @profile.update(profile_params)
-      flash[:success_notice] = 'Success! Save profile is finish'
       redirect_to patient_profiles_path
     else
-      flash[:error_notice] = 'Error! Profile can\'t save'
-      render :change, status: 422
+      render :change, status: 422, layout: false
     end
   end
 

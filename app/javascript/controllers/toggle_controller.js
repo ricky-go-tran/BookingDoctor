@@ -1,16 +1,13 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["navbar"];
+  static targets = ["homepage"];
   navbar() {
-    let menu = document.getElementById("navbar-menu-wrapper");
-    let isDesktop = menu.classList.contains("menu-wrapper");
-    if (isDesktop) {
-      menu.classList.remove("menu-wrapper");
-      menu.classList.add("menu-wrapper-mobile");
+    let menu = this.homepageTarget;
+    if (menu.style.display == "none") {
+      menu.style.display = "block";
     } else {
-      menu.classList.remove("menu-wrapper-mobile");
-      menu.classList.add("menu-wrapper");
+      menu.style.display = "none";
     }
   }
   navbar_clinic() {

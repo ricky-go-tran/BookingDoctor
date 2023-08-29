@@ -1,0 +1,8 @@
+= turbo_frame_tag "admin_medical_record_#{medical_resource.id}" do
+    .medical-resource-item
+        .left
+            .name = medical_resource.name
+            .brand = "Brand: #{medical_resource.brand}"
+        .right
+            = link_to "View detail", admin_medical_resource_path(medical_resource), class: "view", data: {turbo_frame: "_top"}
+            = link_to "Change", edit_admin_medical_resource_path(medical_resource), class: "change", data: {turbo_frame: "_top"}

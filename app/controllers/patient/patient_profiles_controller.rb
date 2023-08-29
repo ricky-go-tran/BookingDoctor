@@ -14,7 +14,7 @@ class Patient::PatientProfilesController < Patient::BaseController
       redirect_to patient_profiles_path
     else
       flash[:error_notice] = 'Error! Profile can\'t save'
-      render :change, status: 422
+      render :change, status: 422, layout: false
     end
   end
 

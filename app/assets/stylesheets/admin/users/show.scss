@@ -1,15 +1,19 @@
 .user-management-wrapper {
-    > .content-panel {
-        .certificate, .clinic_view {
+    >.content-panel {
+
+        .certificate,
+        .clinic_view {
             img {
                 height: 400px;
                 width: 530px;
             }
         }
-        > * {
+
+        >* {
             display: flex;
             flex-wrap: wrap;
-            > .title {
+
+            >.title {
                 font-size: 24px;
                 font-weight: bold;
                 flex-basis: 100%;
@@ -17,28 +21,35 @@
                 color: #0cbecd;
                 border-bottom: 1px solid #0cbecd;
             }
-            > * {
+
+            >* {
                 width: 45%;
                 margin: 10px 0;
+
                 label {
                     font-size: 16px;
                     font-weight: bold;
                 }
+
                 span {
                     font-weight: 200;
                 }
             }
         }
-        > .clinic-info {
+
+        >.clinic-info {
             flex-direction: column;
             width: 100%;
-            > * {
+
+            >* {
                 width: 100%;
                 margin: 10px 0;
+
                 label {
                     font-size: 16px;
                     font-weight: bold;
                 }
+
                 span {
                     font-weight: 200;
                     margin-left: 5px;

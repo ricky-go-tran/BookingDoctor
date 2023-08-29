@@ -1,0 +1,15 @@
+= link_to  "/services/#{service.id}", class: "service-item" do
+    - if service.service_wallpaper.attached?
+        = image_tag service.service_wallpaper, class: "service_view"
+    - else
+        .service_view = t('no_image')
+    .service-content
+        .service-name
+            label
+            span = service.name
+        .service-price
+            label
+            span = "$#{service.price}"
+        .service-execution-time
+            label
+            span = "#{service.execution_time} minutes"

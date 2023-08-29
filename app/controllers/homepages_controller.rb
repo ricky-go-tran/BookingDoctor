@@ -5,11 +5,14 @@ class HomepagesController < ApplicationController
   skip_before_action :check_first_login
   layout 'homepage_layout'
 
-  def index; end
+  def index
+    @top4clinics = ClinicProfile.limit(4)
+    @top4services = Service.limit(4)
+  end
 
   def clinics
     @categories = Category.all
-    @clinics = ClinicProfile.joins(:profile).where("profiles.status = 'valid'")
+    @pagy, @clinics = pagy(ClinicProfile.joins(:profile).where("profiles.status = 'valid'"), items: 10)
     if params[:search]
       @clinics = ClinicProfile.search(params[:search])
     elsif params[:type]
@@ -36,7 +39,7 @@ class HomepagesController < ApplicationController
   end
 
   def services
-    @services = Service.all
+    @pagy, @services = pagy(Service.all, items: 10)
     if params[:search]
       @services = Service.search(params[:search])
     end

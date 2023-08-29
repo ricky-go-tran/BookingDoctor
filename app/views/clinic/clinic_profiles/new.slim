@@ -12,8 +12,8 @@
             = form.input :description
             = form.input :start_hour, label: "Start Hour"
             = form.input :end_hour, label: "End Hour"
-            = form.input :start_day, label: "Start Day"
-            = form.input :end_day, label: "End Day"
+            = form.input :start_day, label: "Start Day",as: :select, collection: ClinicProfile.days.map { |key, value| [key, value] }, label_method: :first, value_method: :last
+            = form.input :end_day, label: "End Day",as: :select, collection: ClinicProfile.days.map { |key, value| [key, value] }, label_method: :first, value_method: :last
             = form.input :certificate
             = form.input :clinic_view
             = form.button :submit

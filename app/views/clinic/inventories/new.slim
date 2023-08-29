@@ -6,5 +6,6 @@
         .right-bar
     .new-panel
         .title  = "#{t('inventory.basic.inventory_new')}"
-        = render "clinic/inventories/form"
+        = turbo_frame_tag @inventory do
+            = render "clinic/inventories/form", inventory: @inventory
 

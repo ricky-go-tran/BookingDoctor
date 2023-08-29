@@ -23,9 +23,15 @@ class Admin::CategoriesController < Admin::BaseController
   def create
     @category = Category.new(category_params)
     if @category.save
-      redirect_to admin_categories_path
+      respond_to do |format|
+        format.html { redirect_to admin_categories_path, notice: 'Categories was successfully created.' }
+        format.turbo_stream do
+          render layout: false
+        end
+      end
+
     else
-      render :new, status: 422
+      render :new, status: 422, layout: false
     end
   end
 
@@ -35,9 +41,12 @@ class Admin::CategoriesController < Admin::BaseController
 
   def update
     if @category.update(category_params)
-      redirect_to admin_categories_path
+      respond_to do |format|
+        format.html { redirect_to redirect_to admin_categories_path, notice: 'Category was successfully updated.' }
+        format.turbo_stream
+      end
     else
-      render :edit, status: 422
+      render :edit, status: 422, layout: false
     end
   end
 
@@ -45,7 +54,10 @@ class Admin::CategoriesController < Admin::BaseController
 
   def destroy
     @category.destroy
-    redirect_to admin_categories_path, status: 303
+    respond_to do |format|
+      format.html { redirect_to admin_categories_path notice: 'Category was successfully destroyed.' }
+      format.turbo_stream
+    end
   end
 
   private

@@ -12,24 +12,13 @@
                     - @categories.each do |category|
                         option[value="#{category.name.underscore}"] = category.name
     .body-wrapper
-        .title = t('clinic.basic.clinics')
+        .title
+            .name Clinics
+            == pagy_nav(@pagy)
         .clinics
             - if @clinics.present?
-                - @clinics.each do |clinic|
-                    .clinic-item[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="/clinics/#{clinic.id}"]
-                        - if clinic.clinic_view.attached?
-                            = image_tag clinic.clinic_view, class: "clinic_view"
-                        - else
-                            .clinic_view = t('no_image')
-                        .clinic-content
-                            .clinic-name
-                                label
-                                span = clinic.name
-                            .clinic-address
-                                label
-                                span = clinic.address
-                            .clinic-phone
-                                label
-                                span = clinic.phone
+                = render partial: "clinic", collection: @clinics
+
             - else
                 .empty = t('clinic.basic.clinic_empty')
+    = render "layouts/components/footer"

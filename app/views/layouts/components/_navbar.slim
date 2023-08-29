@@ -1,18 +1,33 @@
-.navbar-wrapper
-      .logo
-        span Booking
-        label Doctor
-      .dropdown-button[data-controller="toggle" data-toggle-target="navbar" data-action="click->toggle#navbar"]
-      .menu-wrapper#navbar-menu-wrapper
-         .menu
-            = link_to "#{t("navbar.homepage")}", root_path, class: "item #{current_page?(root_path)? "active": nil}"
-            = link_to "#{t("navbar.clinic")}", clinics_homepages_path, class: "item #{active_navbar("homepages", %w(clinics clinic_detail appointment))}"
-            = link_to "#{t("navbar.service")}", services_homepages_path, class: "item #{active_navbar("homepages", %w(services))}"
-         .authentication-control
-            - if user_signed_in?
-                  .username[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{direct_homepages_path}"] = "#{t("homepage.welcome")}, #{current_user.profile == nil ? current_user.email : current_user.profile.fullname}"
-                  = button_to "Logout" , destroy_user_session_path,  method:  :delete,class: "logout", form_class: "logout-form", data: {turbo: false}
-            - else
-                  = link_to "Login", new_user_session_path, class: "login"
-                  = link_to "Signup", new_user_registration_path, class: "signup"
+header.navbar-wrapper
+      .topbar
+            .container
+                  .row
+                        .info-wrapper
+                              .site-info
+
+                                    span.mai-call.text-primary
+                                    |  +09 8763 87774
+                                    span.divider
+                                    | |
+                                    span.mai-mail.text-primary
+                                    |  support@doctorbooking.com
+      nav.menu-wrapper[data-controller="toggle"]
+            .container
+                  = link_to homepages_path, class:"logo"  do
+                        span Doctor
+                        label Booking
+                  button.navbar-toggler[type="button"  data-action="click->toggle#navbar"]
+                  #navbar-wrapper.list-wrapper[data-toggle-target="homepage"]
+                        ul.list
+                              li.nav-item.active
+                                    = link_to "Home", homepages_path, {class: "nav-link"}
+                              li.nav-item
+                                    = link_to "Clinics", clinics_homepages_path, class: "nav-link"
+                              li.nav-item
+                                    = link_to "Services", services_homepages_path, class: "nav-link"
+                              li.nav-item.login-navbar
+                                    - unless user_signed_in?
+                                          = link_to "Login/ Register", new_user_session_path, class: "btn btn-primary ml-lg-3"
+                                    - else
+                                          = link_to "#{t('homepage.welcome')}, #{current_user.profile == nil ? current_user.email : current_user.profile.fullname}", direct_homepages_path, class: "btn btn-primary ml-lg-3 "
 
