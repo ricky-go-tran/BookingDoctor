@@ -43,7 +43,11 @@ class Admin::MedicalResourcesController < Admin::BaseController
   end
 
   def destroy
-    @medical_resource.destroy
+    if @medical_resource.destroy
+      flash[:success_notice] = I18n.t('destroy_success')
+    else
+      flash[:error_notice] = I18n.t('destroy_success')
+    end
     redirect_to admin_categories_path, status: 303
   end
 
@@ -60,6 +64,6 @@ class Admin::MedicalResourcesController < Admin::BaseController
   end
 
   def get_medical_resource
-    @medical_resource = MedicalResource.find(params[:id])
+    @medical_resource = MedicalResource.find_by(id: params[:id])
   end
 end

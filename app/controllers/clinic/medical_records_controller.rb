@@ -10,7 +10,7 @@ class Clinic::MedicalRecordsController < ApplicationController
       @medical_record.end_time = MedicalRecordsManager::CalculatorEndTimeService.call(@medical_record)
       if @medical_record.save
         flash[:success_notice] = I18n.t('medical_record.basic.register_success')
-        @user_receive = User.find(@medical_record.patient_profile.profile.user_id)
+        @user_receive = User.find_by(id: @medical_record.patient_profile.profile.user_id)
         CanclePastAppointmentWorker.perform_at(@medical_record.start_time, @medical_record.to_json)
         SendMailWorker.perform_async(@medical_record.to_json, current_user.profile.clinic_profile.to_json, @user_receive.profile.fullname, @user_receive.email)
       else
@@ -26,7 +26,6 @@ class Clinic::MedicalRecordsController < ApplicationController
     end
 
     medical_record_attributes = medical_record_params.to_h
-
     if medical_record_attributes['prescription_items_attributes'].present?
       prescription_items = {}
       medical_record_attributes['prescription_items_attributes'].each do |key, value|
@@ -35,9 +34,7 @@ class Clinic::MedicalRecordsController < ApplicationController
       end
       medical_record_attributes['prescription_items_attributes'] = prescription_items
     end
-
     @medical_record.status = 'payment'
-
     @medical_record.update!(medical_record_attributes)
     medical_record_json = {}
     medical_record_json[:id] = @medical_record.id
@@ -59,7 +56,7 @@ class Clinic::MedicalRecordsController < ApplicationController
   private
 
   def get_medical_record
-    @medical_record = MedicalRecord.find(params[:id])
+    @medical_record = MedicalRecord.find_by(id: params[:id])
   end
 
   def medical_record_params

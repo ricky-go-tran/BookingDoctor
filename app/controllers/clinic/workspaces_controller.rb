@@ -43,14 +43,27 @@ class Clinic::WorkspacesController < Clinic::BaseController
   def finish; end
 
   def re_examination
-    @old_medical = MedicalRecord.find(params[:id])
+    @old_medical = MedicalRecord.find_by(id: params[:id])
     @medical_record = MedicalRecord.new
   end
 
   private
 
   def medical_record_params
-    params.require(:medical_record).permit(:status, service_items_attributes: [:id, :service_id, :price, :_destroy], prescription_items_attributes: [:id, :medical_resource_id, :amount, :price, :_destroy], examination_resul_attributes: [:id, :body_temp, :heart_rate, :blood_pressure, :desciption, :conslusion, :_destroy])
+    params.require(:medical_record).permit(
+      :status,
+      service_items_attributes: [:id, :service_id, :price, :_destroy],
+      prescription_items_attributes: [:id, :medical_resource_id, :amount, :price, :_destroy],
+      examination_resul_attributes: [
+        :id,
+        :body_temp,
+        :heart_rate,
+        :blood_pressure,
+        :desciption,
+        :conslusion,
+        :_destroy
+      ]
+    )
   end
 
   def check_exist_payment
@@ -78,7 +91,7 @@ class Clinic::WorkspacesController < Clinic::BaseController
   end
 
   def subtract_prescription_item(medical_id, consumtion_amount)
-    inventory_item = Inventory.find(medical_id)
+    inventory_item = Inventory.find_by(id: medical_id)
     if inventory_item.amount >= consumtion_amount
       inventory_item.amount -= consumtion_amount
       inventory_item.save
@@ -95,19 +108,19 @@ class Clinic::WorkspacesController < Clinic::BaseController
   end
 
   def check_payment_medical_record(id)
-    if MedicalRecord.find(id).status != 'payment'
+    if MedicalRecord.find_by(id: id).status != 'payment'
       redirect_to clinic_workspaces_path
     end
   end
 
   def check_finish
-    @medical_record = MedicalRecord.find(params[:id])
+    @medical_record = MedicalRecord.find_by(id: params[:id])
     if @medical_record.status != 'finish'
       redirect_to clinic_workspaces_path
     end
   end
 
   def get_medical_record
-    @medical_record = MedicalRecord.find(params[:id])
+    @medical_record = MedicalRecord.find_by(id: params[:id])
   end
 end

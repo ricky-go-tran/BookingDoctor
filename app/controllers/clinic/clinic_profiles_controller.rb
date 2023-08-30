@@ -34,8 +34,12 @@ class Clinic::ClinicProfilesController < Clinic::BaseController
 
   def update
     if @clinic_profile.update(clinic_profile_params)
-      @profile = Profile.find(current_user.profile.id)
-      @profile.update(status: 'invalid')
+      @profile = Profile.find_by(id: current_user.profile.id)
+      if @profile.update(status: 'invalid')
+        flash[:success_notice] = I18n.t('change_success')
+      else
+        flash[:error_notice] = I18n.t('change_fail')
+      end
       redirect_to clinic_profiles_path
     else
       render :change, status: 422

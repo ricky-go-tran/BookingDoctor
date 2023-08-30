@@ -16,7 +16,7 @@ class PatientProfile < ApplicationRecord
   }
 
   def create_on_stripe
-    user = User.find(Profile.find(profile_id).user_id)
+    user = User.find_by(id: Profile.find_by(id: profile_id).user_id)
     params = { email: user.email, name: user.profile.fullname }
     response = Stripe::Customer.create(params)
     self.stripe_id = response.id

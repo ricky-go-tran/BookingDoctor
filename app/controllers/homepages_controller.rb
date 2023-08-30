@@ -22,7 +22,7 @@ class HomepagesController < ApplicationController
   end
 
   def clinic_detail
-    @clinic = ClinicProfile.find(params[:id])
+    @clinic = ClinicProfile.find_by(id: params[:id])
     @profile = @clinic.profile
     @services = @clinic.services
     current_week = MedicalRecord.current_appointment_by_clinic(@clinic.id)
@@ -47,7 +47,7 @@ class HomepagesController < ApplicationController
   end
 
   def service_detail
-    @service = Service.find(params[:id])
+    @service = Service.find_by(id: params[:id])
     @clinic = @service.clinic_profile
   end
 
@@ -66,7 +66,7 @@ class HomepagesController < ApplicationController
   def unauthorization; end
 
   def appointment
-    @clinic = ClinicProfile.find(params[:id])
+    @clinic = ClinicProfile.find_by(id: params[:id])
     @medical_record = @clinic.medical_records.build
   end
 end

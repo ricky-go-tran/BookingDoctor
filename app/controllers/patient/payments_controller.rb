@@ -86,6 +86,6 @@ class Patient::PaymentsController < Patient::BaseController
   end
 
   def get_medical_record
-    @medical_record = MedicalRecord.find(params[:id])
+    @medical_record = MedicalRecord.find_by(id: params[:id])
   end
 end

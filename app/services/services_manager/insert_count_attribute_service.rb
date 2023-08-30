@@ -7,7 +7,7 @@ class ServicesManager::InsertCountAttributeService < ApplicationService
 
   def call
     @top5service = @top5service.map do |key, value|
-      item = Service.find(key)
+      item = Service.find_by(id: key)
       item_hash = item.attributes.symbolize_keys
       item_hash[:count] = value
       item_hash

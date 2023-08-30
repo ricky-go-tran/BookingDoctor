@@ -13,8 +13,4 @@ class Clinic::StatisticsController < Clinic::BaseController
     @appointment_json = StatisticsManager::AppointmentMonthService.call(current_user.get_profile_clinic.id).to_json
     @cancle_json = StatisticsManager::CancleMonthService.call(current_user.get_profile_clinic.id).to_json
   end
-
-  private
-
-  def get_attendance_month; end
 end

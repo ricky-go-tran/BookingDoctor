@@ -51,12 +51,12 @@ Rails.application.routes.draw do
       end
     end
     resources :statistics, only: %i[index]
-    resources :services do
+    resources :services , except: %i[destroy] do
       resources :consumptions, only: %i[create destroy]
     end
     resources :medical_records, only: %i[index show create update]
     resources :medical_resources, only: %i[index show]
-    resources :inventories
+    resources :inventories, except: %i[destroy]
     resources :clinic_profiles, only: %i[index new create edit update] do
       collection do
         get "change"

@@ -42,19 +42,21 @@ class Clinic::ServicesController < Clinic::BaseController
     end
   end
 
-  def destroy
-    @service.destroy
-    redirect_to clinic_inventories_path, status: 303
-  end
 
   private
 
   def service_params
-    params.require(:service).permit(:name, :description, :price, :service_wallpaper, :execution_time)
+    params.require(:service).permit(
+      :name,
+      :description,
+      :price,
+      :service_wallpaper,
+      :execution_time
+    )
   end
 
   def get_service
-    @service = Service.find(params[:id])
+    @service = Service.find_by(id: params[:id])
   end
 
   def check_own

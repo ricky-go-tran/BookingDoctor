@@ -2,12 +2,15 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static targets = ["data"];
+  initialize() {
+    this.calendarInstance = null;
+  }
   connect() {
     this.render();
     this.observeBookingViewsChanges();
   }
   render() {
-    if (this.calendarInstance) {
+    if (this.calendarInstance != null) {
       this.calendarInstance.destroy();
     }
     this.calendarInstance = new EventCalendar(this.dataTarget, {

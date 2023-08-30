@@ -74,7 +74,7 @@
             .category
                 label = "#{t('category.basic.category')}:"
                 br
-                span = "  #{Category.find(@clinic.category_id).name}"
+                span = "  #{Category.find_by(id: @clinic.category_id).name}"
             .address
                 label = "#{t('clinic.profile.address')}:"
                 br

@@ -1,6 +1,6 @@
 class Clinic::PdfsController < ApplicationController
   def prescription
-    @medical_record = MedicalRecord.find(params[:id])
+    @medical_record = MedicalRecord.find_by(id: params[:id])
     @patient = @medical_record.patient_profile
     @profile = @patient.profile
     @prescription = @medical_record.prescription_items
@@ -13,7 +13,7 @@ class Clinic::PdfsController < ApplicationController
   end
 
   def invoice
-    @medical_record = MedicalRecord.find(params[:id])
+    @medical_record = MedicalRecord.find_by(id: params[:id])
     @patient = @medical_record.patient_profile
     @profile = @patient.profile
     @prescription = @medical_record.prescription_items

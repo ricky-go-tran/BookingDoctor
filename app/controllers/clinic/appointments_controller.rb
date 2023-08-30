@@ -39,6 +39,6 @@ class Clinic::AppointmentsController < Clinic::BaseController
   private
 
   def get_medical_record
-    @medical_record = MedicalRecord.find(params[:id])
+    @medical_record = MedicalRecord.find_by(id: params[:id])
   end
 end

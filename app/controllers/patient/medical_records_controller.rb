@@ -51,11 +51,16 @@ class Patient::MedicalRecordsController < Patient::BaseController
   private
 
   def medical_record_params
-    params.require(:medical_record).permit(:clinic_profile_id, :start_time, :status, service_items_attributes: [:id, :service_id, :_destroy])
+    params.require(:medical_record).permit(
+      :clinic_profile_id,
+      :start_time,
+      :status,
+      service_items_attributes: [:id, :service_id, :_destroy]
+    )
   end
 
   def get_medical_record
-    @medical_record = MedicalRecord.find(params[:id])
+    @medical_record = MedicalRecord.find_by(id: params[:id])
   end
 
   def check_own

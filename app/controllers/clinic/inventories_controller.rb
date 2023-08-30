@@ -14,7 +14,7 @@ class Clinic::InventoriesController < Clinic::BaseController
   end
 
   def show
-    @medical_resource = MedicalResource.find(@inventory.medical_resource_id)
+    @medical_resource = MedicalResource.find_by(id: @inventory.medical_resource_id)
   end
 
   def new
@@ -61,10 +61,6 @@ class Clinic::InventoriesController < Clinic::BaseController
     end
   end
 
-  def destroy
-    @inventory.destroy
-    redirect_to clinic_inventories_path, status: 303
-  end
 
   private
 
@@ -73,7 +69,7 @@ class Clinic::InventoriesController < Clinic::BaseController
   end
 
   def get_inventory
-    @inventory = Inventory.find(params[:id])
+    @inventory = Inventory.find_by(id: params[:id])
   end
 
   def check_own

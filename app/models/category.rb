@@ -11,7 +11,7 @@ class Category < ApplicationRecord
   }
   scope :search, ->(query) { where('UPPER(name) LIKE UPPER(?)', "%#{query}%") }
   scope :get_name_by_user, ->(user) {
-                             find(user.profile.clinic_profile.category_id).name
+                             find_by(id: user.profile.clinic_profile.category_id).name
                            }
   after_create_commit -> { broadcast_prepend_to 'categories', partial: 'admin/categories/category', locals: { category: self }, target: 'categories' }
   after_update_commit -> { broadcast_replace_to 'categories', partial: 'admin/categories/category' }

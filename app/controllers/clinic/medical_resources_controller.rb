@@ -11,7 +11,7 @@ class Clinic::MedicalResourcesController < Clinic::BaseController
   end
 
   def show
-    @medical_resource = MedicalResource.find(params[:id])
+    @medical_resource = MedicalResource.find_by(id: params[:id])
     @inventory = Inventory.new
   end
 end
