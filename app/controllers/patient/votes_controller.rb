@@ -7,11 +7,11 @@ class Patient::VotesController < Patient::BaseController
     @vote = Vote.new(vote_params)
     @vote.patient_profile_id = current_user.profile.patient_profile.id
     if @vote.save
-      flash[:success_notice] = 'Success! Votes is successed'
+      flash[:success_notice] = I18n.t('rate.basic.create_success')
     else
-      flash[:error_notice] = 'Error! Votes is failed'
+      flash[:error_notice] = I18n.t('rate.basic.create_error')
     end
-    redirect_to "/clinics/#{@vote.clinic_profile_id}"
+    redirect_to clinics_homepage_path(@vote.clinic_profile_id)
   end
 
   private

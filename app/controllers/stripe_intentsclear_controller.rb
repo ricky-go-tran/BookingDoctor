@@ -1,2 +1,0 @@
-class StripeIntentsclearController < ApplicationController
-end

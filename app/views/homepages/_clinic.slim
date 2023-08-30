@@ -1,4 +1,4 @@
-= link_to "/clinics/#{clinic.id}", class: "clinic-item" do
+= link_to clinics_homepage_path(clinic.id), class: "clinic-item" do
     - if clinic.clinic_view.attached?
         = image_tag clinic.clinic_view, class: "clinic_view"
     - else

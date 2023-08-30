@@ -22,7 +22,7 @@ class Clinic::ServicesController < Clinic::BaseController
     @service.clinic_profile = current_user.profile.clinic_profile
     if @service.save
       respond_to do |format|
-        format.html { redirect_to clinic_services_path, notice: 'Service was successfully created.' }
+        format.html { redirect_to clinic_services_path, notice: I18n.t('service.basic.create_success') }
         format.turbo_stream do
           render layout: false
         end

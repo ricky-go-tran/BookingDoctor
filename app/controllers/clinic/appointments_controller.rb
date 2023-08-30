@@ -1,5 +1,6 @@
 class Clinic::AppointmentsController < Clinic::BaseController
   before_action :get_medical_record, only: %i[show cancle progress]
+
   def index
     @medical_records = MedicalRecord.current_appointment_by_clinic(current_user.profile.clinic_profile.id)
     @medical_records_json = MedicalRecordsManager::MedicalRecordsJsonCreator.call(@medical_records)
@@ -22,9 +23,9 @@ class Clinic::AppointmentsController < Clinic::BaseController
   def progress
     @progress_appointment = MedicalRecord.where(clinic_profile_id: current_user.get_profile_clinic.id, status: 'progress')
     if @medical_record.status != 'appointment'
-      raise StandardError, "Status is invalid!  Can't progress this appointment"
+      raise StandardError, I18n.t('medical_record.basic.status_invalid')
     elsif @progress_appointment.present?
-      raise StandardError, "There is an appointment in progress!  Can't progress this appointment"
+      raise StandardError, I18n.t('medical_record.basic.progress_exist')
     else
       @medical_record.status = 'progress'
       @medical_record.save!

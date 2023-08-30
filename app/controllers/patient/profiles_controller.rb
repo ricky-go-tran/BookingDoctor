@@ -26,10 +26,10 @@ class Patient::ProfilesController < Patient::BaseController
     @profile = Profile.new(profile_params)
     @profile.user_id = current_user.id
     if @profile.save
-      flash[:success_notice] = 'Success! Create profile is finish'
+      flash[:success_notice] = I18n.t('profile.create_success')
       redirect_to patient_profiles_path
     else
-      flash[:error_notice] = 'Error! Profile can\'t create'
+      flash[:error_notice] = I18n.t('profile.create_error')
       render :new, status: 422
     end
   end

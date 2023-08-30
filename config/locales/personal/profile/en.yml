@@ -1,6 +1,6 @@
 en:
   profile:
-    fullname: "Fullname"
+    fullname: "Full name"
     name: "Name"
     address: "Address"
     birthday: "Birthday"
@@ -24,5 +24,12 @@ en:
     not_setup_clinic_profile: "This account isn't clinic or don't setup clinic profile"
     patient_management: "Patient Management"
     patient_empty: "Patients is empty...."
-
-
+    change_success: "Success! Save profile is finish"
+    change_error: "Error! Profile cannot save"
+    create_success: "Success! Create profile is finish"
+    create_error: "Error! Profile cannot create"
+    admin_dashboard: "Admin Dashboard Tools"
+    clinic_dashboard: "Clinic Dashboard Tools"
+    invalid_account: "Your account is invalid"
+    empty_workspace: "Ready to service"
+    finish_workspace: "Finish Appointment...?"

@@ -1,6 +1,8 @@
 class Clinic::WorkspacesController < Clinic::BaseController
   before_action :check_exist_payment, only: %i[index]
   before_action :check_finish, only: %i[finish]
+  before_action :get_medical_record, only: %i[re_finish change cash_payment]
+
   def index
     @medical_record = MedicalRecord.where(status: 'progress', clinic_profile_id: current_user.get_profile_clinic.id).take
     if @medical_record.present?
@@ -14,14 +16,12 @@ class Clinic::WorkspacesController < Clinic::BaseController
   end
 
   def re_finish
-    @medical_record = MedicalRecord.find(params[:id])
     check_payment_medical_record(@medical_record.id)
     @service_items = @medical_record.service_items
     @prescription_items = @medical_record.prescription_items
   end
 
   def change
-    @medical_record = MedicalRecord.find(params[:id])
     @patient_profile = @medical_record&.patient_profile
     @profile = @patient_profile&.profile
     @examination_result = @medical_record.examination_resul
@@ -29,12 +29,11 @@ class Clinic::WorkspacesController < Clinic::BaseController
   end
 
   def cash_payment
-    @medical_record = MedicalRecord.find(params[:id])
     check_payment_medical_record(@medical_record.id)
     @medical_record.status = 'finish'
     @medical_record.save!
     substract_inventory(@medical_record)
-    flash[:success_notice] = 'Payment success! You can print invoice!'
+    flash[:success_notice] = I18n.t('medical_record.basic.payment_success')
     redirect_to finish_clinic_workspace_path
   rescue StandardError => e
     flash[:error_notice] = e.message
@@ -84,7 +83,7 @@ class Clinic::WorkspacesController < Clinic::BaseController
       inventory_item.amount -= consumtion_amount
       inventory_item.save
     else
-      raise StandardError, 'Error! Amount is invalid'
+      raise StandardError, I18n.t('medical_record.basic.error_amount')
     end
   end
 
@@ -106,5 +105,9 @@ class Clinic::WorkspacesController < Clinic::BaseController
     if @medical_record.status != 'finish'
       redirect_to clinic_workspaces_path
     end
+  end
+
+  def get_medical_record
+    @medical_record = MedicalRecord.find(params[:id])
   end
 end

@@ -1,6 +1,7 @@
 class Patient::MedicalRecordsController < Patient::BaseController
   before_action :get_medical_record, only: %i[show cancle]
   before_action :check_own, only: %i[show cancle]
+
   def index
     @medical_records = MedicalRecord.where(patient_profile_id: current_user.profile.patient_profile.id)
   end
@@ -10,8 +11,8 @@ class Patient::MedicalRecordsController < Patient::BaseController
   def create
     @medical_record = MedicalRecord.new(medical_record_params)
     if @medical_record.service_items.empty?
-      flash[:error_notice] = "Error! Service can't empty! Please try again"
-      redirect_to(clinics_homepages_path(@medical_record.clinic_profile_id))
+      flash[:error_notice] = I18n.t('medical_record.basic.empty_service')
+      redirect_to(clinics_homepage_path(@medical_record.clinic_profile_id))
     else
       @medical_record.patient_profile_id = current_user.profile.patient_profile.id
       @medical_record.end_time = MedicalRecordsManager::CalculatorEndTimeCreator.call(@medical_record)
@@ -27,11 +28,11 @@ class Patient::MedicalRecordsController < Patient::BaseController
           .broadcast('calendars_channel',
                      { data: booking, action: 'add' })
         CanclePastAppointmentWorker.perform_at(@medical_record.start_time, @medical_record.to_json)
-        flash[:success_notice] = 'Success! Register appointment'
+        flash[:success_notice] = I18n.t('medical_record.basic.register_success')
       else
-        flash[:error_notice] = "Error! Can't appointment! Please try again"
+        flash[:error_notice] = I18n.t('medical_record.basic.register_error')
       end
-      redirect_to "/clinics/#{@medical_record.clinic_profile_id}"
+      redirect_to clinics_homepage_path(@medical_record.clinic_profile_id)
     end
   end
 
@@ -41,9 +42,9 @@ class Patient::MedicalRecordsController < Patient::BaseController
         .server
         .broadcast("notifications:#{@medical_record.clinic_profile.profile.user_id}",
                    { data: @medical_record.id, action: 'cancle' })
-      flash[:success_notice] = 'Success! Cancle appointment'
+      flash[:success_notice] = I18n.t('medical_record.basic.cancle_success')
     else
-      flash[:error_notice] = 'Fail! Can\'t cancle appointment! Try again!'
+      flash[:error_notice] = I18n.t('medical_record.basic.cancle_error')
     end
     redirect_to patient_medical_records_path
   end

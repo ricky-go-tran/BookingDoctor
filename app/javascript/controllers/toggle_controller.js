@@ -5,7 +5,7 @@ export default class extends Controller {
   navbar() {
     let menu = this.homepageTarget;
     if (menu.style.display == "none") {
-      menu.style.display = "block";
+      menu.style.display = "flex";
     } else {
       menu.style.display = "none";
     }

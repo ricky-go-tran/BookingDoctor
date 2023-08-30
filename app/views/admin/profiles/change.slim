@@ -2,9 +2,9 @@
     .logo
         span Booking
         label Doctor
-    .title Change Your Profile
+    .title = t('profile.change_profile')
     = simple_form_for  @profile,  :url => admin_profile_update_path, :method => :put,data: { turbo: false } do |form|
-        = form.input :fullname, label: "Fullname: "
-        = form.input :birthday, label: "Birthday: "
-        = form.input :address, label: "Address: "
+        = form.input :fullname, label: "#{t('profile.fullname')}:"
+        = form.input :birthday, label: "#{t('profile.birthday')}:"
+        = form.input :address, label: "#{t('profile.address')}:"
         = form.button :submit

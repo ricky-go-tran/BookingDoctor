@@ -10,6 +10,9 @@ en:
       category_clinic_management: "Categories Clinic Management"
       edit_category_clinic: "Edit Category Clinic"
       new_category_clinic: "New Category Clinic"
+      create_success: "Categories was successfully created."
+      update_success: "Categories was successfully updated."
+      destroy_success: "Categories was successfully destroyed."
     detail:
       name: "Name"
       description: "Description"

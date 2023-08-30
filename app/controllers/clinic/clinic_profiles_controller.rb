@@ -3,9 +3,9 @@
 class Clinic::ClinicProfilesController < Clinic::BaseController
   skip_before_action :require_clinic, only: %i[create new]
   skip_before_action :check_clinic_profiles, only: %i[create new]
-  before_action :check_exist_clinic_profiles, only: %i[create new]
   skip_before_action :check_valid_clinic, only: %i[create new]
   before_action :get_clinic_profile, only: %i[change update]
+  before_action :check_exist_clinic_profiles, only: %i[create new]
 
   def new
     @clinic_profile = ClinicProfile.new
@@ -18,7 +18,6 @@ class Clinic::ClinicProfilesController < Clinic::BaseController
     @clinic_profile = ClinicProfile.new(clinic_profile_params)
     @clinic_profile.profile_id = current_user.profile.id
     @profile = Profile.find(current_user.profile.id)
-
     @profile.status = 'invalid'
     if @clinic_profile.save
       if @profile.save
@@ -37,7 +36,6 @@ class Clinic::ClinicProfilesController < Clinic::BaseController
     if @clinic_profile.update(clinic_profile_params)
       @profile = Profile.find(current_user.profile.id)
       @profile.update(status: 'invalid')
-
       redirect_to clinic_profiles_path
     else
       render :change, status: 422
@@ -47,8 +45,9 @@ class Clinic::ClinicProfilesController < Clinic::BaseController
   private
 
   def clinic_profile_params
-    params.require(:clinic_profile).permit(:category_id, :name, :address, :phone, :description, :start_hour, :end_hour,
-                                           :start_day, :end_day, :certificate, :clinic_view)
+    params.require(:clinic_profile)
+      .permit(:category_id, :name, :address, :phone, :description, :start_hour, :end_hour,
+              :start_day, :end_day, :certificate, :clinic_view)
   end
 
   def get_clinic_profile

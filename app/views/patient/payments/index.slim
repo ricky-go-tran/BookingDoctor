@@ -2,9 +2,9 @@
     .header
         .title = t('medical_record.detail.invoices')
     .content-panel
-        - if @medical_records.present?
-            = render @medical_records
+        - if @medical_record_items.present?
+            = render @medical_record_items, partial: "patient/payments/medical_record_item"
 
         - else
-            .empty History is empty...
+            .empty Invoice is empty...
 

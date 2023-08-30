@@ -16,7 +16,7 @@
                         label
                         span = @clinic.phone
                     - if is_patient?
-                        = link_to "Appointment", "/clinics/#{@clinic.id}/appointment", class: "add"
+                        = link_to "Appointment", clinics_appointment_homepage_path(@clinic.id)	, class: "add"
 
         - else
             .wallpaper
@@ -117,7 +117,7 @@
                                     td = item.name
                                     td = "$ #{item.price}"
                                     td = "$ #{item.execution_time}"
-                                    td.detail = link_to "Detail", "/services/#{item.id}", class: "detail"
+                                    td.detail = link_to "Detail",services_homepage_path(item.id) , class: "detail"
                 - else
                         .empty = t('service.basic.service_empty')
         .calendar

@@ -1,8 +1,8 @@
 class StripeIntentsController < ApplicationController
   skip_before_action :verify_authenticity_token
   skip_before_action :authenticate_user!
+
   def create
-    # payment_info = payment_params.to_h
     payment_intent = Stripe::PaymentIntent.create(
       amount: params[:amount].to_i,
       currency: params[:currency],

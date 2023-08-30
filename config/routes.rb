@@ -12,16 +12,19 @@ Rails.application.routes.draw do
     end
   end
   resources :homepages, only: %i[index], path: '' do
+    member do
+      get 'clinics', to: 'homepages#clinic_detail'
+      get 'services', to: 'homepages#service_detail'
+      get 'clinics/appointment', to: 'homepages#appointment'
+    end
     collection do
       get 'clinics'
-      get 'clinics/:id', to: 'homepages#clinic_detail'
-      get 'clinics/:id/appointment', to: 'homepages#appointment'
       get 'services'
-      get 'services/:id', to: 'homepages#service_detail'
       get 'supports'
       get 'direct'
       get 'unauthorization'
     end
+
   end
   root "homepages#index"
 

@@ -1,8 +1,9 @@
 class Patient::PaymentsController < Patient::BaseController
   before_action :get_medical_record, only: %i[checkout payment payment_intent]
+
   def index
-    @medical_records = MedicalRecord.where(patient_profile_id: current_user.get_profile_patient.id, status: 'payment')
-    @medical_records_json = @medical_records.map do |item|
+    @medical_record_items = MedicalRecord.where(patient_profile_id: current_user.get_profile_patient.id, status: 'payment')
+    @medical_records_json = @medical_record_items.map do |item|
       {
         id: item.id,
         clinic_name: item.clinic_profile.name,
@@ -37,9 +38,9 @@ class Patient::PaymentsController < Patient::BaseController
 
   def payment_intent
     if @medical_record.save
-      flash[:success_notice] = 'Wait! Please wait process...'
+      flash[:success_notice] = I18n.t('medical_record.basic.payment_success')
     else
-      flash[:error_notice] = 'Fail! Payment is fail!'
+      flash[:error_notice] = I18n.t('medical_record.basic.payment_error')
     end
     redirect_to patient_payments_path
   end
@@ -69,7 +70,7 @@ class Patient::PaymentsController < Patient::BaseController
       inventory_item.amount -= consumtion_amount
       inventory_item.save
     else
-      raise StandardError, 'Error! Amount is invalid'
+      raise StandardError, I18n.t('medical_record.basic.payment_error')
     end
   end
 

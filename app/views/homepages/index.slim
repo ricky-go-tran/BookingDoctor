@@ -29,7 +29,7 @@
             | Population Clinics
         #clinics-wrapper
             - @top4clinics.each do |item|
-                .item
+                = link_to clinics_homepage_path(item.id), class: "item" do
                     .card-doctor
                         .header
                             - if item.clinic_view.attached?
@@ -46,7 +46,7 @@
             | Population Services
         #clinics-wrapper
             - @top4services.each do |item|
-                .item
+                = link_to services_homepage_path(item.id), class: "item" do
                     .card-doctor
                         .header
                             - if item.service_wallpaper.attached?

@@ -8,8 +8,7 @@ class Clinic::ConsumptionsController < ApplicationController
     else
       @consumption.save
     end
-
-    redirect_to "/clinic/services/#{@consumption.service_id}"
+    redirect_to clinic_service_path(@consumption.service_id)
   end
 
   def destroy

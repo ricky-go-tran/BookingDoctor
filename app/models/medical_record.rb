@@ -53,9 +53,9 @@ class MedicalRecord < ApplicationRecord
 
   def check_overlapping
     overlaps = if id.nil?
-                 MedicalRecord.where('status = \'appointment\' AND (start_time, end_time) OVERLAPS (?, ?)', start_time, end_time)
+                 MedicalRecord.where('clinic_profile_id = ? AND status = \'appointment\' AND (start_time, end_time) OVERLAPS (?, ?)', clinic_profile_id,start_time, end_time)
                else
-                 MedicalRecord.where(' id != ? AND status = \'appointment\' AND (start_time, end_time) OVERLAPS (?, ?)', id, start_time, end_time)
+                 MedicalRecord.where(' id != ? AND clinic_profile_id = ? AND status = \'appointment\' AND (start_time, end_time) OVERLAPS (?, ?)', id,clinic_profile_id, start_time, end_time)
                end
     if overlaps.present?
       errors.add(:base, 'Booking overlaps with existing records')

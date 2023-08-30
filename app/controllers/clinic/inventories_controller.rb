@@ -31,7 +31,7 @@ class Clinic::InventoriesController < Clinic::BaseController
       if @exist_inventory.save
         respond_to do |format|
           format.turbo_stream
-          format.html { redirect_to clinic_inventories_path, notice: 'Inventory was successfully created.' }
+          format.html { redirect_to clinic_inventories_path, notice: I18n.t('inventory.basic.create_success') }
         end
       else
         render :new, status: 422
@@ -43,7 +43,7 @@ class Clinic::InventoriesController < Clinic::BaseController
           format.turbo_stream do
             render layout: false
           end
-          format.html { redirect_to clinic_inventories_path, notice: 'Inventory was successfully created.' }
+          format.html { redirect_to clinic_inventories_path, notice: I18n.t('inventory.basic.create_success') }
         end
       else
         render :new, status: 422

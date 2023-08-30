@@ -3,6 +3,7 @@
 class Admin::UsersController < Admin::BaseController
   before_action :get_user, only: %i[show detail_request]
   before_action :get_profile, only: %i[accepted canceled]
+
   def index
     @users = User.all
     if params[:search]

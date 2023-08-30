@@ -3,6 +3,7 @@
 class Clinic::ProfilesController < Clinic::BaseController
   skip_before_action :check_valid_clinic, only: %i[invalid]
   before_action :get_profile, only: %i[change update]
+
   def index; end
 
   def detail; end
