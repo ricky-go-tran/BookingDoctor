@@ -1,14 +1,14 @@
 .clinic-patients-wrapper
-    .control-bar
-        .left-bar
-            = link_to "#{t('back')}", clinic_profiles_path, {class: "back"}
-        .title = t('profile.patient_management')
-        .right-bar
-            = link_to "#{t('export_sheet')}", clinic_patients_path(format: :xlsx), {class: "sheet"}
-    .content-panel
-        = turbo_frame_tag "clinic_patient_panel" do
-            - if @patients.present?
-                = render partial: "patient", collection: @patients
-            - else
-                .emty = t('profile.patient_empty')
+  .control-bar
+    .left-bar
+      = link_to "#{t('back')}", clinic_profiles_path, {class: "back"}
+    .title = t('profile.patient_management')
+    .right-bar
+      = link_to "#{t('export_sheet')}", clinic_patients_path(format: :xlsx), {class: "sheet"}
+  .content-panel
+    = turbo_frame_tag "clinic_patient_panel" do
+      - if @patients.present?
+          = render partial: "patient", collection: @patients
+      - else
+          .emty = t('profile.patient_empty')
 

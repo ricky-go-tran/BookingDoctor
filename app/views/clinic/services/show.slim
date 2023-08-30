@@ -40,12 +40,12 @@
 							td = MedicalResource.find_by(id: item.medical_resource_id).name
 							td = MedicalResource.find_by(id: item.medical_resource_id).brand
 							td = item.amount
-							td = link_to "#{t('delete')}", clinic_service_consumption_path(item),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "delete"
+							td = button_to "#{t('delete')}", clinic_service_consumption_path(item),  data: {turbo: false}, class: "delete-btn", method: :delete
 
 		- else
 			.empty = "#{t('consumption.basic.consumption_empty')}"
 		.title = "#{t('consumption.basic.consumption_add')}"
-		= simple_form_for [:clinic, @service, @service.consumptions.build] do |form|
+		= simple_form_for [:clinic, @service, @service.consumptions.build], data: {turbo: false} do |form|
 			= form.input :service_id, as: :hidden, input_html: { value: @service.id }
 			= form.input :medical_resource_id, collection: get_medical_resources_of_current_user, label_method: :name, value_method: :id, include_blank: true
 			= form.input :amount

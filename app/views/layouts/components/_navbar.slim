@@ -5,12 +5,10 @@ header.navbar-wrapper
 				.info-wrapper
 					.site-info
 
-						span.mai-call.text-primary
-						|  +09 8763 87774
+						span.mai-call.text-primary = t('profile.phone')
 						span.divider
 						| |
-						span.mai-mail.text-primary
-						|  support@doctorbooking.com
+						span.mai-mail.text-primary = t('profile.email')
 	nav.menu-wrapper[data-controller="toggle"]
 		.container
 			= link_to homepages_path, class:"logo"  do
@@ -27,7 +25,14 @@ header.navbar-wrapper
 						= link_to "Services", services_homepages_path, class: "nav-link"
 					li.nav-item.login-navbar
 						- unless user_signed_in?
-							= link_to "Login/ Register", new_user_session_path, class: "btn btn-primary ml-lg-3"
+							= link_to "#{t('login')}", new_user_session_path, class: "btn btn-primary ml-lg-3"
 						- else
-							= link_to "#{t('homepage.welcome')}, #{current_user.profile == nil ? current_user.email : current_user.profile.fullname}", direct_homepages_path, class: "btn btn-primary ml-lg-3 "
+							= link_to "#{t('homepage.welcome')}, #{current_user.profile == nil ? current_user.email : current_user.profile.fullname}", direct_homepages_path, {class: "btn btn-primary ml-lg-3"}
+					li.nav-item.login-navbar
+						- if user_signed_in?
+							= button_to "#{t('logout')}", destroy_user_session_path, method: :delete, data: { turbo: false }, class: "btn btn-danger ml-lg-3"
+
+
+
+
 

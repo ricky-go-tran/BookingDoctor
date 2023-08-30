@@ -108,7 +108,7 @@ class Clinic::WorkspacesController < Clinic::BaseController
   end
 
   def check_payment_medical_record(id)
-    if MedicalRecord.find_by(id: id).status != 'payment'
+    if MedicalRecord.find_by(id:).status != 'payment'
       redirect_to clinic_workspaces_path
     end
   end

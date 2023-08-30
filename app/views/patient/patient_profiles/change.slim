@@ -1,10 +1,10 @@
 .patient-my-profile-change-wrapper
-    .title = t('profile.change_patient_profile')
-    = simple_form_for [:patient, @patient_profile], data: {turbo: false} do |form|
-        = form.input :height, label: "Height"
-        = form.input :weight
-        = form.input :blood_group, collection: PatientProfile.blood_groups.keys
-        = form.input :drug_allergy
-        = form.button :submit
+  .title = t('profile.change_patient_profile')
+  = simple_form_for [:patient, @patient_profile], data: {turbo: false} do |form|
+    = form.input :height, label: "Height"
+    = form.input :weight
+    = form.input :blood_group, collection: PatientProfile.blood_groups.keys
+    = form.input :drug_allergy
+    = form.button :submit
 
 

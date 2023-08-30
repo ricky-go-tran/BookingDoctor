@@ -1,64 +1,64 @@
 .clinic-workspace-wrapper
-    - if @medical_record.nil?
-        .logo
-            span Doctor
-            label Booking
-        .title = t('profile.empty_workspace')
-        .image
-    - else
-        .patient-info-wrapper
-            .title = t('profile.patient_info')
-            .name
-                = "#{t('profile.name')}:"
-                span = " #{@profile.fullname}"
-            .birthday
-                label = "#{t('profile.birthday')}:"
-                span = " #{@profile.birthday}"
-            .height
-                label = "#{t('profile.height')}:"
-                span = " #{@patient_profile.height}"
-            .weight
-                label = "#{t('profile.weight')}:"
-                span = " #{@patient_profile.weight}"
-            .blood-group
-                label = "#{t('profile.blood_group')}:"
-                span = " #{@patient_profile.blood_group}"
-            .drug-allergy
-                label = "#{t('profile.drug_allergy')}:"
-                span = " #{@patient_profile.drug_allergy}"
-        .service-table
-            .title  = "#{t('service.basic.services')}:"
-            - if @medical_record.services.present?
-                        table.service-item
-                            thead
-                                tr
-                                    th = "#{t('service.detail.name')}"
-                                    th = "#{t('service.detail.price')}"
-                                    th = "#{t('service.detail.time')}"
-                                    th = "#{t('service.detail.detail')}"
-                            tbody
-                                - @medical_record.services.each do |item|
-                                    tr
-                                        td = item.name
-                                        td = "$ #{item.price}"
-                                        td = "#{item.execution_time} minutes"
-                                        td.detail = link_to "Detail", service_homepage_path(item.id), class: "detail"
+  - if @medical_record.nil?
+    .logo
+      span Doctor
+      label Booking
+    .title = t('profile.empty_workspace')
+    .image
+  - else
+    .patient-info-wrapper
+      .title = t('profile.patient_info')
+      .name
+        = "#{t('profile.name')}:"
+        span = " #{@profile.fullname}"
+      .birthday
+        label = "#{t('profile.birthday')}:"
+        span = " #{@profile.birthday}"
+      .height
+        label = "#{t('profile.height')}:"
+        span = " #{@patient_profile.height}"
+      .weight
+        label = "#{t('profile.weight')}:"
+        span = " #{@patient_profile.weight}"
+      .blood-group
+        label = "#{t('profile.blood_group')}:"
+        span = " #{@patient_profile.blood_group}"
+      .drug-allergy
+        label = "#{t('profile.drug_allergy')}:"
+        span = " #{@patient_profile.drug_allergy}"
+    .service-table
+      .title  = "#{t('service.basic.services')}:"
+      - if @medical_record.services.present?
+        table.service-item
+          thead
+            tr
+              th = "#{t('service.detail.name')}"
+              th = "#{t('service.detail.price')}"
+              th = "#{t('service.detail.time')}"
+              th = "#{t('service.detail.detail')}"
+          tbody
+            - @medical_record.services.each do |item|
+              tr
+                td = item.name
+                td = "$ #{item.price}"
+                td = "#{item.execution_time} minutes"
+                td.detail = link_to "Detail", service_homepage_path(item.id), class: "detail"
 
-        .patient-info-form
-            = simple_form_for [:clinic, @medical_record], data: {turbo: false}  do |form|
-                .title Examination Result
-                = form.simple_fields_for :examination_resul do |rs|
-                    = rs.input :body_temp
-                    = rs.input :heart_rate
-                    = rs.input :blood_pressure
-                    = rs.input :desciption
-                    = rs.input :conslusion
-                .title Prescription
-                = form.simple_fields_for :prescription_items do |prescription_item|
-                    = render "prescription_item_fields", f: prescription_item
-                .add-item
-                    = link_to_add_association 'Add', form, :prescription_items, data: {turbo: false}
-                = form.button :submit, value: "Finish"
+    .patient-info-form
+      = simple_form_for [:clinic, @medical_record], data: {turbo: false}  do |form|
+        .title Examination Result
+        = form.simple_fields_for :examination_resul do |rs|
+          = rs.input :body_temp
+          = rs.input :heart_rate
+          = rs.input :blood_pressure
+          = rs.input :desciption
+          = rs.input :conslusion
+        .title Prescription
+        = form.simple_fields_for :prescription_items do |prescription_item|
+          = render "prescription_item_fields", f: prescription_item
+        .add-item
+          = link_to_add_association 'Add', form, :prescription_items, data: {turbo: false}
+        = form.button :submit, value: "Finish"
 
 
 

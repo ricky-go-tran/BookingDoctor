@@ -1,17 +1,17 @@
 .clinic-inventory-wrapper
-    .control-bar
-        .left-bar
-            = link_to "#{t('back')}", clinic_profiles_path, {class: "back"}
-        .title  = "#{t('inventory.basic.inventory_management')}"
-        .right-bar
-            = link_to "#{t('export_sheet')}", clinic_inventories_path(format: :xlsx), {class: "sheet"}
-            = link_to "Add By MR",clinic_medical_resources_path, {class: "medical_resources"}
-            / = link_to "#{t('add')}", new_clinic_inventory_path, class: "add", data: {turbo_frame: dom_id(Inventory.new)}
-    .content-panel
-        = turbo_frame_tag Inventory.new
-        = turbo_frame_tag "clinic_inventory_panel" do
-            - if @inventories.present?
-                = render partial: "inventory", collection: @inventories
-            - else
-                .emty  = "#{t('inventory.basic.inventory_empty')}"
+  .control-bar
+    .left-bar
+      = link_to "#{t('back')}", clinic_profiles_path, {class: "back"}
+    .title  = "#{t('inventory.basic.inventory_management')}"
+    .right-bar
+      = link_to "#{t('export_sheet')}", clinic_inventories_path(format: :xlsx), {class: "sheet"}
+      = link_to "Add By MR",clinic_medical_resources_path, {class: "medical_resources"}
+      / = link_to "#{t('add')}", new_clinic_inventory_path, class: "add", data: {turbo_frame: dom_id(Inventory.new)}
+  .content-panel
+    = turbo_frame_tag Inventory.new
+    = turbo_frame_tag "clinic_inventory_panel" do
+      - if @inventories.present?
+        = render partial: "inventory", collection: @inventories
+      - else
+        .emty  = "#{t('inventory.basic.inventory_empty')}"
 

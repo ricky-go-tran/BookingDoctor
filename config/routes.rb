@@ -3,8 +3,11 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
 
   resource :webhooks, only: %i[create]
-  get 'pdfs/invoice/:id',to: "pdfs#invoice", format: 'pdf'
-
+  resources :pdfs, except: %i[new create update edit destroy index] do
+    member do
+      get 'invoice',to: "pdfs#invoice", format: 'pdf'
+    end
+  end
   resource  :stripe_intents, only: %i[create] do
     collection do
       get 'retrieve'
@@ -29,8 +32,12 @@ Rails.application.routes.draw do
   root "homepages#index"
 
   namespace :clinic do
-    get 'pdfs/prescription/:id', to: "pdfs#prescription"
-    get 'pdfs/invoice/:id', to: "pdfs#invoice", format: 'pdf'
+    resources :pdfs, except: %i[new create update edit destroy index] do
+      member do
+        get 'invoice', to: "pdfs#invoice", format: 'pdf'
+        get 'prescription',to: "pdfs#prescription", format: 'pdf'
+      end
+    end
     resources :patients, only: %i[index show] do
       member do
         get 'medical_record/detail', to: 'patients#detail_medical_record'

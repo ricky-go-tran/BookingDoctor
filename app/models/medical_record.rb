@@ -48,7 +48,7 @@ class MedicalRecord < ApplicationRecord
   scope :get_current_progess_in_clinic, ->(clinic_id) {
     where(status: 'progress', clinic_profile_id: clinic_id).take
   }
-
+  scope :get_by_patient_and_status, ->(id, status) { where('patient_profile_id = ? AND  UPPER(status) = UPPER(?) ', id, status) }
   private
 
   def check_overlapping

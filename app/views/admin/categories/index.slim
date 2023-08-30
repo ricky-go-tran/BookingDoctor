@@ -1,16 +1,16 @@
 = turbo_stream_from "categories"
 .categories-management-wrapper
-    .title = "#{t('category.basic.category_clinic_management')}"
-    .controll-panel
-        .left
-            input.search-bar[placeholder="#{t('filter_by_name')}" type="search" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{admin_categories_path}"]
-        .right
-            = link_to "#{t('export_sheet')}", admin_categories_path(format: :xlsx), {class: "sheet"}
-            = link_to "#{t('add')}", new_admin_category_path, class: "add", data: { turbo_frame: dom_id(Category.new)}
-    .content-panel
-        = turbo_frame_tag Category.new
-        = turbo_frame_tag "categories" do
-            - if @categories.present?
-                = render partial: "category", collection: @categories
-            - else
-                .emty = t('category.basic.category_empty')
+  .title = "#{t('category.basic.category_clinic_management')}"
+  .controll-panel
+    .left
+      input.search-bar[placeholder="#{t('filter_by_name')}" type="search" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{admin_categories_path}"]
+    .right
+      = link_to "#{t('export_sheet')}", admin_categories_path(format: :xlsx), {class: "sheet"}
+      = link_to "#{t('add')}", new_admin_category_path, class: "add", data: { turbo_frame: dom_id(Category.new)}
+  .content-panel
+    = turbo_frame_tag Category.new
+    = turbo_frame_tag "categories" do
+      - if @categories.present?
+          = render partial: "category", collection: @categories
+      - else
+          .emty = t('category.basic.category_empty')

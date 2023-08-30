@@ -1,16 +1,16 @@
 .clinic-appointment-wrapper
-    .title = "#{t('appointment.basic.appointment')}"
-    .appointments.
-        - if @medical_records.present?
-            table.appointment-item#appointment-clinic-view[data-controller="appointment" data-appointment-target="source" data-action="appointment#connect" data-appointment-view = "#{@medical_records_json}"]
-                thead
-                    tr
-                        th = t('profile.name')
-                        th = t('medical_record.detail.start_time')
-                        th = t('medical_record.detail.end_time')
-                        th = t('medical_record.detail.detail')
-                        th = t('medical_record.detail.cancle ')
-                tbody
-                // render data in stimulus
-        - if @medical_records.empty?
-            .empty  = "#{t('appointment.basic.appointment_empty')}"
+  .title = "#{t('appointment.basic.appointment')}"
+  .appointments.
+    - if @medical_records.present?
+      table.appointment-item#appointment-clinic-view[data-controller="appointment" data-appointment-target="source" data-action="appointment#connect" data-appointment-view = "#{@medical_records_json}"]
+        thead
+          tr
+            th = t('profile.name')
+            th = t('medical_record.detail.start_time')
+            th = t('medical_record.detail.end_time')
+            th = t('medical_record.detail.detail')
+            th = t('medical_record.detail.cancle ')
+        tbody
+          // render data in stimulus
+    - if @medical_records.empty?
+      .empty  = "#{t('appointment.basic.appointment_empty')}"

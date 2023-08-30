@@ -1,11 +1,11 @@
 .categories-management-wrapper
-    .title = "#{t('category.basic.category_clinic_management')}"
-    .controll-panel
-        .left
-            = link_to "#{t('back')}", admin_categories_path, class: "back"
-    .new-panel
-        = turbo_frame_tag dom_id(@category) do
-            .category-form
-                .title = "#{t('category.basic.edit_category_clinic')}"
-                = render "admin/categories/form"
+  .title = "#{t('category.basic.category_clinic_management')}"
+  .controll-panel
+    .left
+      = link_to "#{t('back')}", admin_categories_path, class: "back"
+  .new-panel
+    = turbo_frame_tag dom_id(@category) do
+      .category-form
+        .title = "#{t('category.basic.edit_category_clinic')}"
+        = render "admin/categories/form"
 

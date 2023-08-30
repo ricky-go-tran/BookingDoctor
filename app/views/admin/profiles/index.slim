@@ -1,11 +1,11 @@
 .admin-my-profile-wrapper
-        .logo
-            span Doctor
-            label Booking
-        .title = t('profile.admin_dashboard')
-        .image
-        .name = "#{t('homepage.welcome')}, #{current_user.profile.fullname}"
-        .birthday  = "Your birthday: #{current_user.profile.birthday}"
-        .address = "Address: #{current_user.profile.address}"
-        = link_to "Change your profile", admin_profiles_change_path, class: "edit"
-        = button_to "Logout", destroy_user_session_path, method: :delete, class: "logout", data: { turbo: false }
+  .logo
+    span Doctor
+    label Booking
+  .title = t('profile.admin_dashboard')
+  .image
+  .name = "#{t('homepage.welcome')}, #{current_user.profile.fullname}"
+  .birthday  = "Your birthday: #{current_user.profile.birthday}"
+  .address = "Address: #{current_user.profile.address}"
+  = link_to "Change your profile", admin_profiles_change_path, class: "edit"
+  = button_to "Logout", destroy_user_session_path, method: :delete, class: "logout", data: { turbo: false }

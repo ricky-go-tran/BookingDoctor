@@ -1,7 +1,10 @@
 = simple_form_for  [:clinic, @service] do |form|
-    = form.input :name
-    = form.input :description
-    = form.input :price
-    = form.input :execution_time
-    = form.input :service_wallpaper
-    = form.button :submit
+  - if @service.errors.any?
+    .error-message
+      = @service.errors.full_messages.to_sentence.capitalize
+  = form.input :name
+  = form.input :description
+  = form.input :price
+  = form.input :execution_time
+  = form.input :service_wallpaper
+  = form.button :submit

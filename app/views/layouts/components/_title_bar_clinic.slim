@@ -1,7 +1,7 @@
 .title-bar-clinic-wrapper
-    .control-panel
-        = yield :control
-    .user-info
-        .dropdown-button[data-controller="toggle"  data-action="click->toggle#navbar_clinic"]
-        .user-name[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"] = "#{t('homepage.welcome')}, #{current_user.profile.fullname}"
-        = button_to "Logout" , destroy_user_session_path,  method:  :delete,class: "logout", form_class: "logout-form", data: { turbo: false }
+  .control-panel
+    = yield :control
+  .user-info
+    .dropdown-button[data-controller="toggle"  data-action="click->toggle#navbar_clinic"]
+    .user-name[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"] = "#{t('homepage.welcome')}, #{current_user.profile.fullname}"
+    = button_to "Logout" , destroy_user_session_path,  method:  :delete,class: "logout", form_class: "logout-form", data: { turbo: false }

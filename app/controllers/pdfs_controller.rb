@@ -9,7 +9,7 @@ class PdfsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "Invoicec_#{Time.now}_#{@medical_record.clinic_profile.id}", template: 'pdfs/invoice', formats: :slim, layout: 'layouts/pdf', encoding: 'UTF-8'
+        render pdf: "Invoice_#{Time.now}_#{@medical_record.clinic_profile.id}", template: 'pdfs/invoice', formats: :slim, layout: 'layouts/pdf', encoding: 'UTF-8'
       end
     end
   end

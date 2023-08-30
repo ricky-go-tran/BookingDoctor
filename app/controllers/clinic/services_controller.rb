@@ -42,7 +42,6 @@ class Clinic::ServicesController < Clinic::BaseController
     end
   end
 
-
   private
 
   def service_params

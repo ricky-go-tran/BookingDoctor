@@ -48,3 +48,5 @@ en:
   destroy_fail: "Fail! Destroy is failed"
   change_success: "Success! Change is successed"
   change_fail: "Fail! Destroy is failed"
+  logout: "Logout"
+  login: "Login"

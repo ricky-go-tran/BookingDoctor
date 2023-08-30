@@ -61,7 +61,6 @@ class Clinic::InventoriesController < Clinic::BaseController
     end
   end
 
-
   private
 
   def inventory_params

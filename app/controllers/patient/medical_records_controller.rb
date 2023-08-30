@@ -4,6 +4,10 @@ class Patient::MedicalRecordsController < Patient::BaseController
 
   def index
     @medical_records = MedicalRecord.where(patient_profile_id: current_user.profile.patient_profile.id)
+    if params[:type]
+      @medical_records = MedicalRecord.get_by_patient_and_status(current_user.get_profile_patient.id, params[:type])
+    end
+    @medical_records
   end
 
   def show; end

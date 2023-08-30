@@ -33,3 +33,5 @@ en:
     invalid_account: "Your account is invalid"
     empty_workspace: "Ready to service"
     finish_workspace: "Finish Appointment...?"
+    phone: "+09 8763 87774"
+    email: "support@doctorbooking.com"
