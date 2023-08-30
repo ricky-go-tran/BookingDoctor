@@ -1,4 +1,4 @@
-class StatisticsManager::AttendanceMonthCreator < ApplicationService
+class StatisticsManager::AttendanceMonthService < ApplicationService
   attr_reader :user_id
 
   def initialize(user_id)

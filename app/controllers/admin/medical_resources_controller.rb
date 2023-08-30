@@ -7,6 +7,7 @@ class Admin::MedicalResourcesController < Admin::BaseController
                          else
                            MedicalResource.all
                          end
+
     respond_to do |format|
       format.html
       format.xlsx do
@@ -49,8 +50,13 @@ class Admin::MedicalResourcesController < Admin::BaseController
   private
 
   def medical_resource_params
-    params.require(:medical_resource).permit(:name, :brand, :unit,
-      :description, :medical_resource_type)
+    params.require(:medical_resource).permit(
+      :name,
+      :brand,
+      :unit,
+      :description,
+      :medical_resource_type
+    )
   end
 
   def get_medical_resource

@@ -1,4 +1,4 @@
-class StatisticsManager::CancleMonthCreator < ApplicationService
+class StatisticsManager::CancleMonthService < ApplicationService
   attr_reader :user_id
 
   def initialize(user_id)

@@ -23,9 +23,7 @@ class Clinic::ServicesController < Clinic::BaseController
     if @service.save
       respond_to do |format|
         format.html { redirect_to clinic_services_path, notice: I18n.t('service.basic.create_success') }
-        format.turbo_stream do
-          render layout: false
-        end
+        format.turbo_stream { render layout: false }
       end
     else
       render :new, status: 422

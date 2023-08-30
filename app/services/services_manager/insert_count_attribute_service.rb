@@ -1,4 +1,4 @@
-class ServicesManager::InsertCountAttributeCreator < ApplicationService
+class ServicesManager::InsertCountAttributeService < ApplicationService
   attr_reader :top5service
 
   def initialize(top5service)

@@ -1,4 +1,4 @@
-class MedicalRecordsManager::MedicalRecordsJsonCreator < ApplicationService
+class MedicalRecordsManager::MedicalRecordsJsonService < ApplicationService
   attr_reader :medical_records
 
   def initialize(medical_records)

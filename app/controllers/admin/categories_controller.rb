@@ -9,6 +9,7 @@ class Admin::CategoriesController < Admin::BaseController
                   else
                     Category.all
                   end
+
     respond_to do |format|
       format.html
       format.xlsx do
@@ -22,6 +23,7 @@ class Admin::CategoriesController < Admin::BaseController
 
   def create
     @category = Category.new(category_params)
+
     if @category.save
       respond_to do |format|
         format.html { redirect_to admin_categories_path, notice: I18n.t('category.basic.create_success') }
@@ -29,7 +31,6 @@ class Admin::CategoriesController < Admin::BaseController
           render layout: false
         end
       end
-
     else
       render :new, status: 422, layout: false
     end
@@ -55,7 +56,7 @@ class Admin::CategoriesController < Admin::BaseController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to admin_categories_path, notice: I18n.t('category.basic.destroy_success')}
+      format.html { redirect_to admin_categories_path, notice: I18n.t('category.basic.destroy_success') }
       format.turbo_stream
     end
   end

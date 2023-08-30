@@ -1,4 +1,4 @@
-class Clinic::ConsumptionsController < ApplicationController
+class Clinic::ConsumptionsController < Clinic::BaseController
   def create
     @consumption = Consumption.new(consumption_params)
     @exist_consumption = Consumption.find_by(service_id: @consumption.service_id, medical_resource_id: @consumption.medical_resource_id)
@@ -8,6 +8,7 @@ class Clinic::ConsumptionsController < ApplicationController
     else
       @consumption.save
     end
+
     redirect_to clinic_service_path(@consumption.service_id)
   end
 

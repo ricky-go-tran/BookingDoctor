@@ -46,7 +46,7 @@
             | Population Services
         #clinics-wrapper
             - @top4services.each do |item|
-                = link_to services_homepage_path(item.id), class: "item" do
+                = link_to service_homepage_path(item.id), class: "item" do
                     .card-doctor
                         .header
                             - if item.service_wallpaper.attached?

@@ -3,7 +3,7 @@ class Clinic::AppointmentsController < Clinic::BaseController
 
   def index
     @medical_records = MedicalRecord.current_appointment_by_clinic(current_user.profile.clinic_profile.id)
-    @medical_records_json = MedicalRecordsManager::MedicalRecordsJsonCreator.call(@medical_records)
+    @medical_records_json = MedicalRecordsManager::MedicalRecordsJsonService.call(@medical_records)
     @medical_records_json = @medical_records_json.to_json
   end
 

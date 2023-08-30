@@ -5,6 +5,7 @@ ActiveRecord::Base.transaction do
   admin.delete_roles
   admin.add_role :admin
   admin_profile =  Profile.create!(fullname: Faker::Lorem.sentence, birthday: Faker::Date.birthday(min_age: 18, max_age: 65), address: Faker::Address.full_address, user_id: admin.id)
+
   # Create role patient
   patient = User.create!(email: 'patient.study@gmail.com', password: '662001', confirmed_at: Time.current)
   patient.add_role :patient
@@ -60,7 +61,7 @@ ActiveRecord::Base.transaction do
   end
 # Create medical resources
   medical_resources = []
-  30.times do
+  15.times do
     medical_resource = MedicalResource.create!(name:  Faker::Lorem.sentence, brand: Faker::Lorem.sentence, unit: "PCS", description: Faker::Lorem.paragraph(sentence_count: 10), medical_resource_type: "medicine")
     medical_resources.push(medical_resource)
   end
@@ -101,7 +102,6 @@ ActiveRecord::Base.transaction do
     create_booking(9, clinic_specification_profile.services[0], patient_specification_profile1, clinic_specification_profile, "appointment")
     create_booking(10, clinic_specification_profile.services[0], patient_specification_profile, clinic_specification_profile, 'finish')
     create_booking(10, clinic_specification_profile.services[0], patient_specification_profile1, clinic_specification_profile, "appointment")
-
   end
 
   votes = []

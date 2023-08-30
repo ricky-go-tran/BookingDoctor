@@ -117,7 +117,7 @@
                                     td = item.name
                                     td = "$ #{item.price}"
                                     td = "$ #{item.execution_time}"
-                                    td.detail = link_to "Detail",services_homepage_path(item.id) , class: "detail"
+                                    td.detail = link_to "Detail",service_homepage_path(item.id) , class: "detail"
                 - else
                         .empty = t('service.basic.service_empty')
         .calendar

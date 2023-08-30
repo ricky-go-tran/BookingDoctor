@@ -15,6 +15,7 @@ class Admin::UsersController < Admin::BaseController
     else
       @users
     end
+
     respond_to do |format|
       format.html
       format.xlsx do

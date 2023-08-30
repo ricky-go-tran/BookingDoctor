@@ -29,9 +29,9 @@ class HomepagesController < ApplicationController
     @calendar_booking = []
     @calendar_booking = current_week.map do |item|
       booking = if user_signed_in? && current_user.has_role?(:patient) && current_user.profile.patient_profile.id == item.patient_profile_id
-                  ChartItemCreator.call(1, 'Your booking', '#FE6B64', item.start_time, item.end_time)
+                  ChartItemService.call(1, 'Your booking', '#FE6B64', item.start_time, item.end_time)
                 else
-                  ChartItemCreator.call(2, 'Orther booking', '#B29DD9', item.start_time, item.end_time)
+                  ChartItemService.call(2, 'Orther booking', '#B29DD9', item.start_time, item.end_time)
                 end
       booking
     end

@@ -7,7 +7,7 @@ class Clinic::MedicalRecordsController < ApplicationController
       flash[:error_notice] = I18n.t('medical_record.basic.empty_service')
     else
       @medical_record.clinic_profile_id = current_user.profile.clinic_profile.id
-      @medical_record.end_time = MedicalRecordsManager::CalculatorEndTimeCreator.call(@medical_record)
+      @medical_record.end_time = MedicalRecordsManager::CalculatorEndTimeService.call(@medical_record)
       if @medical_record.save
         flash[:success_notice] = I18n.t('medical_record.basic.register_success')
         @user_receive = User.find(@medical_record.patient_profile.profile.user_id)
@@ -26,6 +26,7 @@ class Clinic::MedicalRecordsController < ApplicationController
     end
 
     medical_record_attributes = medical_record_params.to_h
+
     if medical_record_attributes['prescription_items_attributes'].present?
       prescription_items = {}
       medical_record_attributes['prescription_items_attributes'].each do |key, value|

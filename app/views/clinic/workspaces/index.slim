@@ -42,7 +42,7 @@
                                         td = item.name
                                         td = "$ #{item.price}"
                                         td = "#{item.execution_time} minutes"
-                                        td.detail = link_to "Detail", services_homepage_path(item.id), class: "detail"
+                                        td.detail = link_to "Detail", service_homepage_path(item.id), class: "detail"
 
         .patient-info-form
             = simple_form_for [:clinic, @medical_record], data: {turbo: false}  do |form|

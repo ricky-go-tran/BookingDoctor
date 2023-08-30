@@ -1,4 +1,4 @@
-class PrescriptionItemJsonCreator < ApplicationService
+class PrescriptionItemJsonService < ApplicationService
   attr_reader :prescription_items
 
   def initialize(prescription_items)

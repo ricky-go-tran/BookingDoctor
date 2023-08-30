@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :homepages, only: %i[index], path: '' do
     member do
       get 'clinics', to: 'homepages#clinic_detail'
-      get 'services', to: 'homepages#service_detail'
+      get 'service', to: 'homepages#service_detail'
       get 'clinics/appointment', to: 'homepages#appointment'
     end
     collection do

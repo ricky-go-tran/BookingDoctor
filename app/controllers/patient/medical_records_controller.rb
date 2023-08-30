@@ -12,17 +12,16 @@ class Patient::MedicalRecordsController < Patient::BaseController
     @medical_record = MedicalRecord.new(medical_record_params)
     if @medical_record.service_items.empty?
       flash[:error_notice] = I18n.t('medical_record.basic.empty_service')
-      redirect_to(clinics_homepage_path(@medical_record.clinic_profile_id))
     else
       @medical_record.patient_profile_id = current_user.profile.patient_profile.id
-      @medical_record.end_time = MedicalRecordsManager::CalculatorEndTimeCreator.call(@medical_record)
+      @medical_record.end_time = MedicalRecordsManager::CalculatorEndTimeService.call(@medical_record)
       if @medical_record.save
-        medical_record_json = MedicalRecordJsonCreator.call(@medical_record)
+        medical_record_json = MedicalRecordJsonService.call(@medical_record)
         ActionCable
           .server
           .broadcast("notifications:#{@medical_record.clinic_profile.profile.user_id}",
                      { data: medical_record_json, action: 'add' })
-        booking = ChartItemCreator.call(1, 'Your booking', '#FE6B64', @medical_record.start_time, @medical_record.end_time)
+        booking = ChartItemService.call(1, 'Your booking', '#FE6B64', @medical_record.start_time, @medical_record.end_time)
         ActionCable
           .server
           .broadcast('calendars_channel',
@@ -32,8 +31,8 @@ class Patient::MedicalRecordsController < Patient::BaseController
       else
         flash[:error_notice] = I18n.t('medical_record.basic.register_error')
       end
-      redirect_to clinics_homepage_path(@medical_record.clinic_profile_id)
     end
+    redirect_to(clinics_homepage_path(@medical_record.clinic_profile_id))
   end
 
   def cancle
