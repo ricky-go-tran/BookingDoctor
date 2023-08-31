@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ClinicProfile < ApplicationRecord
+  resourcify
+
   belongs_to :profile
   belongs_to :category
   has_many :services
@@ -9,7 +11,7 @@ class ClinicProfile < ApplicationRecord
   has_many :medical_resources, through: :inventories
   has_many :votes
   has_many :patient_profiles, through: :votes
-  resourcify
+
 
   has_one_attached :certificate
   has_one_attached :clinic_view
@@ -24,6 +26,7 @@ class ClinicProfile < ApplicationRecord
   validates :clinic_view, attached: true, size: { less_than: 10.megabytes, message: 'Please choose a photo smaller than 10mb' }, content_type: { in: %w[image/png image/jpeg], message: "It isn't a image" }
   validate :start_hour_must_be_before_end_hour
   validate :start_day_must_be_before_end_day
+
   scope :current_month, -> {
     where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)
   }

@@ -1,20 +1,20 @@
 .user-management-wrapper
-    .title = "#{t('profile.user_management')}"
-    .controll-panel
-        .left
-            input.search-bar[placeholder="#{t('filter_by_name')}" type="search" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{admin_users_path}"]
-            select.dropdown-role[data-controller="search" data-search-target="source" data-action="change->search#select" data-content="#{admin_users_path}"]
-                option#role[selected disabled] Roles
-                option#all-role[value="all"] All
-                option#admin-role[value="admin"] Admin
-                option#clinic-role[value="clinic"] Clinic
-                option#patient-role[value="patient"] Patient
-        .right
-            = link_to "Verify", request_verify_admin_users_path, {class: "add"}
-            = link_to "#{t('export_sheet')}", admin_users_path(format: :xlsx), {class: "sheet"}
-            / = link_to "#{t('export_pdf')}",root_path, {class: "pdf_export"}
-    .content-panel
-        = render partial: "user", collection: @users
+  .title = "#{t('profile.user_management')}"
+  .controll-panel
+    .left
+      input.search-bar[placeholder="#{t('filter_by_name')}" type="search" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{admin_users_path}"]
+      select.dropdown-role[data-controller="search" data-search-target="source" data-action="change->search#select" data-content="#{admin_users_path}"]
+          option#role[selected disabled] Roles
+          option#all-role[value="all"] All
+          option#admin-role[value="admin"] Admin
+          option#clinic-role[value="clinic"] Clinic
+          option#patient-role[value="patient"] Patient
+    .right
+      = link_to "Verify", request_verify_admin_users_path, {class: "add"}
+      = link_to "#{t('export_sheet')}", admin_users_path(format: :xlsx), {class: "sheet"}
+      / = link_to "#{t('export_pdf')}",root_path, {class: "pdf_export"}
+  .content-panel
+    = render partial: "user", collection: @users
 
 
 

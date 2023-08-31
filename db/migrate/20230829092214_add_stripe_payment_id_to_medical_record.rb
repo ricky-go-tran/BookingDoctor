@@ -1,6 +1,9 @@
 class AddStripePaymentIdToMedicalRecord < ActiveRecord::Migration[7.0]
-  def change
+  def up
     add_column :medical_records, :stripe_payment_id, :string, default: "nil"
-    #Ex:- add_column("admin_users", "username", :string, :limit =>25, :after => "email")
+  end
+
+  def down
+     remove_column :medical_records, :stripe_payment_id
   end
 end

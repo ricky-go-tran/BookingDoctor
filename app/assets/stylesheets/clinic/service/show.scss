@@ -2,68 +2,74 @@
 @import "../../mixins/input_style.scss";
 
 .clinic-service-wrapper {
-    >.content-panel {
-        box-sizing: border-box;
+  .delete-btn {
+    @include buntton_style_del_lock;
+    border: none !important;
+    color: #fff !important;
+  }
 
-        .service_view {
-            img {
-                height: 400px;
-                width: 530px;
-            }
-        }
+  >.content-panel {
+    box-sizing: border-box;
 
-        table {
-            width: 100%;
-
-            td,
-            th {
-                line-height: 2;
-                text-align: left;
-            }
-
-            td {
-                font-weight: 200;
-            }
-
-            .detail {
-                @include buntton_style_detail;
-            }
-        }
-
-        .consumption_medical_resource_id,
-        .consumption_amount {
-
-            input,
-            select {
-                @include input_format;
-            }
-
-            textarea {
-                @include area_format;
-            }
-        }
-
-        .title {
-            @include title-details-h1;
-        }
-
-        >* {
-            width: 90%;
-            margin: 10px 0;
-            text-align: start;
-
-
-            >label {
-                text-align: start;
-                vertical-align: top;
-                font-size: 16px;
-                font-weight: bold;
-            }
-
-            >span {
-                font-weight: 200;
-            }
-
-        }
+    .service_view {
+      img {
+        height: 400px;
+        width: 530px;
+      }
     }
+
+    table {
+      width: 100%;
+
+      td,
+      th {
+        line-height: 2;
+        text-align: left;
+      }
+
+      td {
+        font-weight: 200;
+      }
+
+      .detail {
+        @include buntton_style_detail;
+      }
+    }
+
+    .consumption_medical_resource_id,
+    .consumption_amount {
+
+      input,
+      select {
+        @include input_format;
+      }
+
+      textarea {
+        @include area_format;
+      }
+    }
+
+    .title {
+      @include title-details-h1;
+    }
+
+    >* {
+      width: 90%;
+      margin: 10px 0;
+      text-align: start;
+
+
+      >label {
+        text-align: start;
+        vertical-align: top;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      >span {
+        font-weight: 200;
+      }
+
+    }
+  }
 }

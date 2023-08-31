@@ -1,48 +1,47 @@
 .clinic-patients-wrapper
-    .control-bar
-        .left-bar
-            = link_to "#{t('back')}", clinic_patients_path, {class: "back"}
-        .title = t('profile.patient_info')
-        .right-bar
-            = link_to "#{t('export_sheet')}", clinic_patient_path(@patient), {class: "sheet"}
-    .show-panel
-        .title = t('profile.patient_info')
-        .patient-name
-            label Patient:
-            span = " #{@patient.profile.fullname }"
-        .patient-address
-            label = "#{t('profile.address')}:"
-            span = " #{@patient.profile.address }"
-        .patient-height
-            label = "#{t('profile.height')}:"
-            span = " #{@patient.height }"
-        .patient-weight
-            label = "#{t('profile.weight')}:"
-            span = " #{@patient.weight }"
-        .patient-blood-group
-            label = "#{t('profile.blood_group')}:"
-            span = " #{@patient.blood_group }"
-        .patient-drug-allergy
-            label = "#{t('profile.drug_allergy')}:"
-            span = " #{@patient.drug_allergy }"
+  .control-bar
+    .left-bar
+      = link_to "#{t('back')}", clinic_patients_path, {class: "back"}
+    .title = t('profile.patient_info')
+    .right-bar
+      = link_to "#{t('export_sheet')}", clinic_patient_path(@patient), {class: "sheet"}
+  .show-panel
+    .title = t('profile.patient_info')
+    .patient-name
+      label Patient:
+      span = " #{@patient.profile.fullname }"
+    .patient-address
+      label = "#{t('profile.address')}:"
+      span = " #{@patient.profile.address }"
+    .patient-height
+      label = "#{t('profile.height')}:"
+      span = " #{@patient.height }"
+    .patient-weight
+      label = "#{t('profile.weight')}:"
+      span = " #{@patient.weight }"
+    .patient-blood-group
+      label = "#{t('profile.blood_group')}:"
+      span = " #{@patient.blood_group }"
+    .patient-drug-allergy
+      label = "#{t('profile.drug_allergy')}:"
+      span = " #{@patient.drug_allergy }"
 
-        .title = t('medical_record.basic.medical_record')
-        .medical-records-table
-
-        - if @medical_records.present?
-            table.medical-record-item
-                thead
-                    tr
-                        th = t('clinic.basic.clinic')
-                        th = t('medical_record.detai.start_time')
-                        th = t('medical_record.detai.status')
-                        th = "#{t('service.detail.detail')}"
-                tbody
-                    - @medical_records.each do |item|
-                        tr
-                            td = item.clinic_profile.name
-                            td = date_format(item.start_time)
-                            td = item.status
-                            td.detail = link_to "Detail", medical_record_detail_clinic_patient_path(item), class: "detail"
-        - else
-            .empty = t('medical_record.basic.redical_record_empty')
+    .title = t('medical_record.basic.medical_record')
+    .medical-records-table
+    - if @medical_records.present?
+      table.medical-record-item
+        thead
+          tr
+            th = t('clinic.basic.clinic')
+            th = t('medical_record.detai.start_time')
+            th = t('medical_record.detai.status')
+            th = "#{t('service.detail.detail')}"
+        tbody
+          - @medical_records.each do |item|
+            tr
+              td = item.clinic_profile.name
+              td = date_format(item.start_time)
+              td = item.status
+              td.detail = link_to "Detail", medical_record_detail_clinic_patient_path(item), class: "detail"
+    - else
+      .empty = t('medical_record.basic.redical_record_empty')

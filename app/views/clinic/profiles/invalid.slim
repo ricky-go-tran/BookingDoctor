@@ -1,8 +1,8 @@
 .invalid-clinic-profile-wrapper
-    div
-        .logo
-            label Booking
-            span Doctor
-        .title Your account is invalid
-        .content = t('homepage.invalid_clinic')
-        .back-to-home[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"] Back to Home
+	div
+		.logo
+			label Booking
+			span Doctor
+		.title = t('profile.invalid_account')
+		.content = t('homepage.invalid_clinic')
+		.back-to-home[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{root_path}"] Back to Home

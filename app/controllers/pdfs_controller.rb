@@ -1,6 +1,6 @@
 class PdfsController < ApplicationController
   def invoice
-    @medical_record = MedicalRecord.find(params[:id])
+    @medical_record = MedicalRecord.find_by(id: params[:id])
     @patient = @medical_record.patient_profile
     @profile = @patient.profile
     @prescription = @medical_record.prescription_items
@@ -9,7 +9,7 @@ class PdfsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "Invoicec_#{Time.now}_#{@medical_record.clinic_profile.id}", template: 'pdfs/invoice', formats: :slim, layout: 'layouts/pdf', encoding: 'UTF-8'
+        render pdf: "Invoice_#{Time.now}_#{@medical_record.clinic_profile.id}", template: 'pdfs/invoice', formats: :slim, layout: 'layouts/pdf', encoding: 'UTF-8'
       end
     end
   end

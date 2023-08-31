@@ -1,7 +1,5 @@
-# frozen_string_literal: true
-
 class CreatePatientProfiles < ActiveRecord::Migration[7.0]
-  def change
+  def up
     create_table :patient_profiles do |t|
       t.references :profile, null: false, foreign_key: true
       t.float :height
@@ -11,5 +9,9 @@ class CreatePatientProfiles < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+  end
+
+  def down
+    drop_table :patient_profiles
   end
 end

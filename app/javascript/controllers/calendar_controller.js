@@ -7,10 +7,8 @@ export default class extends Controller {
     this.observeBookingViewsChanges();
   }
   render() {
-    if (this.calendarInstance) {
-      this.calendarInstance.destroy();
-    }
-    this.calendarInstance = new EventCalendar(this.dataTarget, {
+    this.dataTarget.innerHTML = "";
+    let ec = new EventCalendar(this.dataTarget, {
       view: "timeGridWeek",
       height: "500px",
       headerToolbar: {

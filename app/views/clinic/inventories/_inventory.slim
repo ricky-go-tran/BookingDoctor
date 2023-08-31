@@ -1,8 +1,8 @@
 = turbo_frame_tag dom_id(inventory) do
-    .inventory-item
-        .left
-            .name = get_medical_resource_by_id(inventory.medical_resource_id)
-            .amount-price = "Remaining amount: #{inventory.amount} - Price: #{inventory.price}"
-        .right
-            = link_to "#{t('view_details')}", clinic_inventory_path(inventory), class: "view", data: { turbo_frame: "_top" }
-            = link_to "Change", edit_clinic_inventory_path(inventory), class: "change"
+  .inventory-item
+    .left
+      .name = get_medical_resource_by_id(inventory.medical_resource_id)
+      .amount-price = "Remaining amount: #{inventory.amount} - Price: #{inventory.price}"
+    .right
+      = link_to "#{t('view_details')}", clinic_inventory_path(inventory), class: "view", data: { turbo_frame: "_top" }
+      = link_to "Change", edit_clinic_inventory_path(inventory), class: "change"

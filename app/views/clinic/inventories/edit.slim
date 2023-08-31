@@ -1,10 +1,10 @@
 .clinic-inventory-wrapper
-    .control-bar
-        .left-bar
-            = link_to "#{t('back')}", :back, {class: "back"}
-        .title  = "#{t('inventory.basic.inventory_management')}"
-    .new-panel
-        .title Edit Invetory
-        = turbo_frame_tag dom_id(@inventory) do
-            = render "clinic/inventories/form", inventory: @inventory
+  .control-bar
+    .left-bar
+      = link_to "#{t('back')}", :back, {class: "back"}
+    .title  = "#{t('inventory.basic.inventory_management')}"
+  .new-panel
+    .title Edit Invetory
+    = turbo_frame_tag dom_id(@inventory) do
+      = render "clinic/inventories/form", inventory: @inventory
 

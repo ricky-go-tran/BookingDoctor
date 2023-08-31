@@ -22,16 +22,16 @@ class HomepagesController < ApplicationController
   end
 
   def clinic_detail
-    @clinic = ClinicProfile.find(params[:id])
+    @clinic = ClinicProfile.find_by(id: params[:id])
     @profile = @clinic.profile
     @services = @clinic.services
     current_week = MedicalRecord.current_appointment_by_clinic(@clinic.id)
     @calendar_booking = []
     @calendar_booking = current_week.map do |item|
       booking = if user_signed_in? && current_user.has_role?(:patient) && current_user.profile.patient_profile.id == item.patient_profile_id
-                  ChartItemCreator.call(1, 'Your booking', '#FE6B64', item.start_time, item.end_time)
+                  ChartItemService.call(1, 'Your booking', '#FE6B64', item.start_time, item.end_time)
                 else
-                  ChartItemCreator.call(2, 'Orther booking', '#B29DD9', item.start_time, item.end_time)
+                  ChartItemService.call(2, 'Orther booking', '#B29DD9', item.start_time, item.end_time)
                 end
       booking
     end
@@ -47,7 +47,7 @@ class HomepagesController < ApplicationController
   end
 
   def service_detail
-    @service = Service.find(params[:id])
+    @service = Service.find_by(id: params[:id])
     @clinic = @service.clinic_profile
   end
 
@@ -66,7 +66,7 @@ class HomepagesController < ApplicationController
   def unauthorization; end
 
   def appointment
-    @clinic = ClinicProfile.find(params[:id])
+    @clinic = ClinicProfile.find_by(id: params[:id])
     @medical_record = @clinic.medical_records.build
   end
 end

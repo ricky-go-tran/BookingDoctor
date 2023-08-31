@@ -1,77 +1,77 @@
 .clinic-patients-wrapper
-    .control-bar
-        .left-bar
-            = link_to "#{t('back')}", clinic_patients_path, {class: "back"}
-        .title = t('profile.patient_info')
-        .right-bar
-    .show-panel
-        .title = t('profile.patient_info')
-        .name
-            = "#{t('profile.name')}:"
-            span = " #{@profile.fullname}"
-        .birthday
-            label = "#{t('profile.birthday')}:"
-            span = " #{@profile.birthday}"
-        .height
-            label = "#{t('profile.height')}:"
-            span = " #{@patient_profile.height}"
-        .weight
-            label = "#{t('profile.weight')}:"
-            span = " #{@patient_profile.weight}"
-        .blood-group
-            label = "#{t('profile.blood_group')}:"
-            span = " #{@patient_profile.blood_group}"
-        .drug-allergy
-            label = "#{t('profile.drug_allergy')}:"
-            span = " #{@patient_profile.drug_allergy}"
-        .title Examination Result
-        .body-temp
-            label = "#{t('examimation_result.detail.body_temp')}:"
-            span = " #{@examination&.body_temp}"
-        .heart-rate
-            label = "#{t('examimation_result.detail.heart_rate')}:"
-            span = " #{@examination&.heart_rate}"
-        .blood-pressure
-            label = "#{t('examimation_result.detail.blood_pressure')}:"
-            span = " #{@examination&.blood_pressure}"
-        .description
-            label = "#{t('examimation_result.detail.description')}:"
-            span = " #{@examination&.desciption}"
-        .conslusion
-            label = "#{t('examimation_result.detail.conslusion')}:"
-            span = " #{@examination&.conslusion}"
-        .title  = "#{t('service.basic.services')}:"
-        - if @medical_record.services.present?
-            table.service-item
-                thead
-                    tr
-                        th = "#{t('service.detail.name')}"
-                        th = "#{t('service.detail.price')}"
-                        th = "#{t('service.detail.time')}"
-                        th = "#{t('service.detail.detail')}"
-                tbody
-                    - @medical_record.services.each do |item|
-                        tr
-                            td = item.name
-                            td = "$ #{item.price}"
-                            td = "#{item.execution_time} minutes"
-                            td.detail = link_to "Detail", "/services/#{item.id}", class: "detail"
-        - else
-            .empty  = "#{t('service.basic.service_empty')}"
-        .title  Prescriptions
-        - if @medical_record.medical_resources.present?
-            table.service-item
-                thead
-                    tr
-                        = "#{t('medical_resource.detail.name')}:"
-                        th = "#{t('service.detail.price')}"
-                        = "#{t('medical_resource.detail.amount')}:"
-                        th = "#{t('service.detail.detail')}"
-                tbody
-                    - @medical_record.prescription_items.each do |item|
-                        tr
-                            td = item.medical_resource.name
-                            td = "$ #{item.price}"
-                            td = item.amount
-                            td.detail = link_to "Detail", clinic_inventory_path(item.medical_resource_id), class: "detail"
+  .control-bar
+    .left-bar
+      = link_to "#{t('back')}", clinic_patients_path, {class: "back"}
+    .title = t('profile.patient_info')
+    .right-bar
+  .show-panel
+    .title = t('profile.patient_info')
+    .name
+      = "#{t('profile.name')}:"
+      span = " #{@profile.fullname}"
+    .birthday
+      label = "#{t('profile.birthday')}:"
+      span = " #{@profile.birthday}"
+    .height
+      label = "#{t('profile.height')}:"
+      span = " #{@patient_profile.height}"
+    .weight
+      label = "#{t('profile.weight')}:"
+      span = " #{@patient_profile.weight}"
+    .blood-group
+      label = "#{t('profile.blood_group')}:"
+      span = " #{@patient_profile.blood_group}"
+    .drug-allergy
+      label = "#{t('profile.drug_allergy')}:"
+      span = " #{@patient_profile.drug_allergy}"
+    .title Examination Result
+    .body-temp
+      label = "#{t('examimation_result.detail.body_temp')}:"
+      span = " #{@examination&.body_temp}"
+    .heart-rate
+      label = "#{t('examimation_result.detail.heart_rate')}:"
+      span = " #{@examination&.heart_rate}"
+    .blood-pressure
+      label = "#{t('examimation_result.detail.blood_pressure')}:"
+      span = " #{@examination&.blood_pressure}"
+    .description
+      label = "#{t('examimation_result.detail.description')}:"
+      span = " #{@examination&.desciption}"
+    .conslusion
+      label = "#{t('examimation_result.detail.conslusion')}:"
+      span = " #{@examination&.conslusion}"
+    .title  = "#{t('service.basic.services')}:"
+    - if @medical_record.services.present?
+      table.service-item
+        thead
+          tr
+            th = "#{t('service.detail.name')}"
+            th = "#{t('service.detail.price')}"
+            th = "#{t('service.detail.time')}"
+            th = "#{t('service.detail.detail')}"
+        tbody
+          - @medical_record.services.each do |item|
+            tr
+              td = item.name
+              td = "$ #{item.price}"
+              td = "#{item.execution_time} minutes"
+              td.detail = link_to "Detail", service_homepage_path(item.id), class: "detail"
+    - else
+        .empty  = "#{t('service.basic.service_empty')}"
+    .title  Prescriptions
+    - if @medical_record.medical_resources.present?
+      table.service-item
+        thead
+          tr
+            th = "#{t('medical_resource.detail.name')}:"
+            th = "#{t('service.detail.price')}"
+            th = "#{t('medical_resource.detail.amount')}:"
+            th = "#{t('service.detail.detail')}"
+          tbody
+            - @medical_record.prescription_items.each do |item|
+              tr
+                td = item.medical_resource.name
+                td = "$ #{item.price}"
+                td = item.amount
+                td.detail = link_to "Detail", clinic_inventory_path(item.medical_resource_id), class: "detail"
 

@@ -1,28 +1,28 @@
 .admin-navbar-wrapper#admin-navbar-wrapper
-    .info-part
-        .logo[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_profiles_path}"]
-            span Booking
-            label Doctor
-        .role Admin Dashbroad
-        .name = current_user.profile.fullname
-    .menu-part
-        = link_to admin_profiles_path, {class: "item #{active_navbar("admin/profiles", %w(index change))}"} do
-            #profile-icon
-            span = t('profile.my_profile')
-        = link_to admin_users_path, {class: "item #{active_navbar("admin/users", %w(index show request_verify detail_request))}"} do
-            #user-icon
-            span User management
+  .info-part
+    .logo[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{admin_profiles_path}"]
+      span Booking
+      label Doctor
+    .role Admin Dashbroad
+    .name = current_user.profile.fullname
+  .menu-part
+    = link_to admin_profiles_path, {class: "item #{active_navbar("admin/profiles", %w(index change))}"} do
+      #profile-icon
+      span = t('profile.my_profile')
+    = link_to admin_users_path, {class: "item #{active_navbar("admin/users", %w(index show request_verify detail_request))}"} do
+      #user-icon
+      span User management
 
-        = link_to admin_categories_path, {class: "item #{active_navbar("admin/categories", %w(index show new edit))}"} do
-            #category-icon
-            span Categories management
-        = link_to admin_medical_resources_path, {class: "item #{active_navbar("admin/medical_resources", %w(index show new edit))}"} do
-            #medical-icon
-            span Medical Resources
-        .item#toggle-admin-navbar[data-controller="toggle"  data-action="click->toggle#admin"]
-            #toggle-icon
-            span Close Navbar
-    = link_to homepages_path, {class: "switch-role"} do
-        #switch-icon
-        span Switch Homepage UI
+    = link_to admin_categories_path, {class: "item #{active_navbar("admin/categories", %w(index show new edit))}"} do
+      #category-icon
+      span Categories management
+    = link_to admin_medical_resources_path, {class: "item #{active_navbar("admin/medical_resources", %w(index show new edit))}"} do
+      #medical-icon
+      span Medical Resources
+    .item#toggle-admin-navbar[data-controller="toggle"  data-action="click->toggle#admin"]
+      #toggle-icon
+      span Close Navbar
+  = link_to homepages_path, {class: "switch-role"} do
+    #switch-icon
+    span Switch Homepage UI
 

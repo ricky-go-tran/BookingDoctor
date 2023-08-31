@@ -1,73 +1,70 @@
 .invoice-wrapper[style="width: 100%"]
-    .logo[style="font-size: 32px;"]
-        label[style="color:#0cbecd"] Doctor
-        span[style="color:#00fc85"] Booking
-    .clinic-name[style="font-size: 24px; font-weight: bold"] Invoice of #{@medical_record.clinic_profile.name}
-    .patient-info
-        .patient-name
-            label[style="font-weight: bold;"] Patient:
-            span = " #{@profile.fullname}"
-        .birthday
-            label[style="font-weight: bold;"] Birthday:
-            span = " #{@profile.birthday}"
-        .date
-            label[style="font-weight: bold;"] Invoice's date:
-            span = " #{Time.now}"
+  .logo[style="font-size: 32px;"]
+    label[style="color:#0cbecd"] Doctor
+    span[style="color:#00fc85"] Booking
+  .clinic-name[style="font-size: 24px; font-weight: bold"] Invoice of #{@medical_record.clinic_profile.name}
+  .patient-info
+    .patient-name
+        label[style="font-weight: bold;"] Patient:
+        span = " #{@profile.fullname}"
+    .birthday
+        label[style="font-weight: bold;"] Birthday:
+        span = " #{@profile.birthday}"
+    .date
+        label[style="font-weight: bold;"] Invoice's date:
+        span = " #{Time.now}"
 
-        - if (@services.present?) || (@prescription.present?)
-            - if @prescription.present?
-                hr
-                b Medical Resource List
-                table[style="width: 100%; margin-top: 4 %"]
-                    thead[style="text-align: left; margin-top: 2%"]
+    - if (@services.present?) || (@prescription.present?)
+        - if @prescription.present?
+            hr
+            b Medical Resource List
+            table[style="width: 100%; margin-top: 4 %"]
+                thead[style="text-align: left; margin-top: 2%"]
+                    tr
+                        th[style="width: 50%"] Name
+                        th[style="width: 25%"] Amount
+                        th[style="width: 25%"] Price
+                tbody
+                    -  @prescription.each do |item|
                         tr
-                            th[style="width: 50%"] Name
-                            th[style="width: 25%"] Amount
-                            th[style="width: 25%"] Price
-                    tbody
-                        -  @prescription.each do |item|
-                            tr
-                                td[style="width: 50%"] = item.medical_resource.name
-                                td[style="width: 25%"] = item.amount
-                                td[style="width: 25%"] = item.price
-            - if @services.present?
-                hr
-                b[style="margin-top: 4%"] Service List
-                table[style="width: 100%; margin-top: 2%"]
-                    thead[style="text-align: left;"]
-                        tr
-                            th[style="width: 50%"] Name
-                            th[style="width: 25%"] Amount
-                            th[style="width: 25%"] Price
-                    tbody
-                        -  @services.each do |item|
-                            tr
-                                td[style="width: 50%"] = item.service.name
-                                td[style="width: 25%"] = @service_amount[item.service_id]
-                                td[style="width: 25%"] = item.price
-            table[style="width: 100%; margin-top: 4%"]
+                            td[style="width: 50%"] = item.medical_resource.name
+                            td[style="width: 25%"] = item.amount
+                            td[style="width: 25%"] = item.price
+        - if @services.present?
+            hr
+            b[style="margin-top: 4%"] Service List
+            table[style="width: 100%; margin-top: 2%"]
                 thead[style="text-align: left;"]
                     tr
-                        th[style="width: 50%"]
-                        th[style="width: 25%"]
-                        th[style="width: 25%"] Total
+                        th[style="width: 50%"] Name
+                        th[style="width: 25%"] Amount
+                        th[style="width: 25%"] Price
                 tbody
-                    tr
-                        td[style="width: 50%"]
-                        td[style="width: 25%"]
-                        td[style="width: 25%"] = total_price(@services, @prescription)
-
-
-
-
-        - else
-            .empty Invoice is empty...
-
-        table[style="width: 100%; margin-top: 5%"]
-            thead[style="text-align: center; font-weight: bold;"]
+                    -  @services.each do |item|
+                        tr
+                            td[style="width: 50%"] = item.service.name
+                            td[style="width: 25%"] = @service_amount[item.service_id]
+                            td[style="width: 25%"] = item.price
+        table[style="width: 100%; margin-top: 4%"]
+            thead[style="text-align: left;"]
                 tr
-                    td[style="width: 50%"] Patient Signature
-                    td[style="width: 50%"] Doctor Signature
+                    th[style="width: 50%"]
+                    th[style="width: 25%"]
+                    th[style="width: 25%"] Total
+            tbody
+                tr
+                    td[style="width: 50%"]
+                    td[style="width: 25%"]
+                    td[style="width: 25%"] = total_price(@services, @prescription)
+
+    - else
+        .empty Invoice is empty...
+
+    table[style="width: 100%; margin-top: 5%"]
+        thead[style="text-align: center; font-weight: bold;"]
+            tr
+                td[style="width: 50%"] Patient Signature
+                td[style="width: 50%"] Doctor Signature
 
 
 

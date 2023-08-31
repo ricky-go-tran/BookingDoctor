@@ -12,6 +12,7 @@ en:
       service_management: "Service Management"
       service_edit: "Edit Service"
       service_new: "New Service"
+      create_success: "Service was successfully created."
     detail:
       calendar: "Calendar"
       name: "Name"

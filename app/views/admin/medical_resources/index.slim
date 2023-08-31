@@ -1,16 +1,16 @@
 .medical-resources-management-wrapper
-    .title = "#{t('medical_resource.basic.medical_resource_management')}"
-    .controll-panel
-        .left
-            input.search-bar[placeholder="#{t('filter_by_name_or_brand')}" type="search" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{admin_medical_resources_path}"]
-        .right
-            = link_to "#{t('export_sheet')}", admin_medical_resources_path(format: :xlsx), {class: "sheet"}
-            = link_to "#{t('add')}", new_admin_medical_resource_path, {class: "add"}
-    .content-panel
-        = turbo_frame_tag "admin_medical_resource_panel" do
-            - if @medical_resources.present?
-                = render partial: "medical_resource", collection: @medical_resources
-            - else
-                .emty = "#{t('medical_resource.basic.medical_resource_empty')}"
+  .title = "#{t('medical_resource.basic.medical_resource_management')}"
+  .controll-panel
+    .left
+      input.search-bar[placeholder="#{t('filter_by_name_or_brand')}" type="search" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{admin_medical_resources_path}"]
+    .right
+      = link_to "#{t('export_sheet')}", admin_medical_resources_path(format: :xlsx), {class: "sheet"}
+      = link_to "#{t('add')}", new_admin_medical_resource_path, {class: "add"}
+  .content-panel
+    = turbo_frame_tag "admin_medical_resource_panel" do
+      - if @medical_resources.present?
+        = render partial: "medical_resource", collection: @medical_resources
+      - else
+        .emty = "#{t('medical_resource.basic.medical_resource_empty')}"
 
 

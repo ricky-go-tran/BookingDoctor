@@ -1,6 +1,8 @@
 class Clinic::WorkspacesController < Clinic::BaseController
   before_action :check_exist_payment, only: %i[index]
   before_action :check_finish, only: %i[finish]
+  before_action :get_medical_record, only: %i[re_finish change cash_payment]
+
   def index
     @medical_record = MedicalRecord.where(status: 'progress', clinic_profile_id: current_user.get_profile_clinic.id).take
     if @medical_record.present?
@@ -14,14 +16,12 @@ class Clinic::WorkspacesController < Clinic::BaseController
   end
 
   def re_finish
-    @medical_record = MedicalRecord.find(params[:id])
     check_payment_medical_record(@medical_record.id)
     @service_items = @medical_record.service_items
     @prescription_items = @medical_record.prescription_items
   end
 
   def change
-    @medical_record = MedicalRecord.find(params[:id])
     @patient_profile = @medical_record&.patient_profile
     @profile = @patient_profile&.profile
     @examination_result = @medical_record.examination_resul
@@ -29,12 +29,11 @@ class Clinic::WorkspacesController < Clinic::BaseController
   end
 
   def cash_payment
-    @medical_record = MedicalRecord.find(params[:id])
     check_payment_medical_record(@medical_record.id)
     @medical_record.status = 'finish'
     @medical_record.save!
     substract_inventory(@medical_record)
-    flash[:success_notice] = 'Payment success! You can print invoice!'
+    flash[:success_notice] = I18n.t('medical_record.basic.payment_success')
     redirect_to finish_clinic_workspace_path
   rescue StandardError => e
     flash[:error_notice] = e.message
@@ -44,14 +43,27 @@ class Clinic::WorkspacesController < Clinic::BaseController
   def finish; end
 
   def re_examination
-    @old_medical = MedicalRecord.find(params[:id])
+    @old_medical = MedicalRecord.find_by(id: params[:id])
     @medical_record = MedicalRecord.new
   end
 
   private
 
   def medical_record_params
-    params.require(:medical_record).permit(:status, service_items_attributes: [:id, :service_id, :price, :_destroy], prescription_items_attributes: [:id, :medical_resource_id, :amount, :price, :_destroy], examination_resul_attributes: [:id, :body_temp, :heart_rate, :blood_pressure, :desciption, :conslusion, :_destroy])
+    params.require(:medical_record).permit(
+      :status,
+      service_items_attributes: [:id, :service_id, :price, :_destroy],
+      prescription_items_attributes: [:id, :medical_resource_id, :amount, :price, :_destroy],
+      examination_resul_attributes: [
+        :id,
+        :body_temp,
+        :heart_rate,
+        :blood_pressure,
+        :desciption,
+        :conslusion,
+        :_destroy
+      ]
+    )
   end
 
   def check_exist_payment
@@ -79,12 +91,12 @@ class Clinic::WorkspacesController < Clinic::BaseController
   end
 
   def subtract_prescription_item(medical_id, consumtion_amount)
-    inventory_item = Inventory.find(medical_id)
+    inventory_item = Inventory.find_by(id: medical_id)
     if inventory_item.amount >= consumtion_amount
       inventory_item.amount -= consumtion_amount
       inventory_item.save
     else
-      raise StandardError, 'Error! Amount is invalid'
+      raise StandardError, I18n.t('medical_record.basic.error_amount')
     end
   end
 
@@ -96,15 +108,19 @@ class Clinic::WorkspacesController < Clinic::BaseController
   end
 
   def check_payment_medical_record(id)
-    if MedicalRecord.find(id).status != 'payment'
+    if MedicalRecord.find_by(id:).status != 'payment'
       redirect_to clinic_workspaces_path
     end
   end
 
   def check_finish
-    @medical_record = MedicalRecord.find(params[:id])
+    @medical_record = MedicalRecord.find_by(id: params[:id])
     if @medical_record.status != 'finish'
       redirect_to clinic_workspaces_path
     end
+  end
+
+  def get_medical_record
+    @medical_record = MedicalRecord.find_by(id: params[:id])
   end
 end

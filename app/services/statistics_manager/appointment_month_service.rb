@@ -1,4 +1,4 @@
-class StatisticsManager::AppointmentMonthCreator < ApplicationService
+class StatisticsManager::AppointmentMonthService < ApplicationService
   attr_reader :user_id
 
   def initialize(user_id)

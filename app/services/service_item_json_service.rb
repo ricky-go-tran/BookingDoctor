@@ -1,4 +1,4 @@
-class ServiceItemJsonCreator < ApplicationService
+class ServiceItemJsonService < ApplicationService
   attr_reader :service_items
 
   def initialize(service_items)

@@ -1,4 +1,4 @@
-class ChartItemCreator < ApplicationService
+class ChartItemService < ApplicationService
   attr_reader :resource_id, :title, :color, :start_time, :end_time
 
   def initialize(resource_id, title, color, start_time, end_time)

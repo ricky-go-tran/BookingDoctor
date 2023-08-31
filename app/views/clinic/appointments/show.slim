@@ -1,48 +1,47 @@
 .clinic-appointment-detail-wrapper
-    .title = t('appointment.basic.appointment_detail')
-    .patient-name
-        label = "#{t('clinic.basic.clinic')}:"
-        span = " #{@medical_record.patient_profile.profile.fullname }"
-    .patient-address
-        label = "#{t('profile.address')}:"
-        span = " #{@medical_record.patient_profile.profile.address }"
-    .patient-height
-        label = "#{t('profile.height')}:"
-        span = " #{@medical_record.patient_profile.height }"
-    .patient-weight
-        label = "#{t('profile.weight')}:"
-        span = " #{@medical_record.patient_profile.weight }"
-    .patient-blood-group
-        label = "#{t('profile.blood_group')}:"
-        span = " #{@medical_record.patient_profile.blood_group }"
-    .patient-drug-allergy
-        label = "#{t('profile.drug_allergy')}:"
-        span = " #{@medical_record.patient_profile.drug_allergy }"
+  .title = t('appointment.basic.appointment_detail')
+  .patient-name
+    label = "#{t('clinic.basic.clinic')}:"
+    span = " #{@medical_record.patient_profile.profile.fullname }"
+  .patient-address
+    label = "#{t('profile.address')}:"
+    span = " #{@medical_record.patient_profile.profile.address }"
+  .patient-height
+    label = "#{t('profile.height')}:"
+    span = " #{@medical_record.patient_profile.height }"
+  .patient-weight
+    label = "#{t('profile.weight')}:"
+    span = " #{@medical_record.patient_profile.weight }"
+  .patient-blood-group
+    label = "#{t('profile.blood_group')}:"
+    span = " #{@medical_record.patient_profile.blood_group }"
+  .patient-drug-allergy
+    label = "#{t('profile.drug_allergy')}:"
+    span = " #{@medical_record.patient_profile.drug_allergy }"
+  .appointment-time
+    label = "#{t('medical_record.detail.start_time')}:"
+    span = " #{@medical_record.start_time} - #{@medical_record.end_time}"
+  .appointment-status
+    label = "#{t('medical_record.detail.status')}:"
+    span = " #{@medical_record.status.camelize}"
+  .service-table
+    label = "#{t('service.basic.services')}:"
+  - if @medical_record.services.present?
+    table.service-item
+      thead
+        tr
+          th = "#{t('service.detail.name')}"
+          th = "#{t('service.detail.price')}"
+          th = "#{t('service.detail.time')}"
+          th = "#{t('service.detail.detail')}"
+      tbody
+        - @medical_record.services.each do |item|
+          tr
+            td = item.name
+            td = "$ #{item.price}"
+            td = "#{item.execution_time} minutes"
+            td.detail = link_to "Detail", service_homepage_path(item.id) , class: "detail"
+  - else
+    .empty  = "#{t('service.basic.service_empty')}"
 
-    .appointment-time
-        label = "#{t('medical_record.detail.start_time')}:"
-        span = " #{@medical_record.start_time} - #{@medical_record.end_time}"
-    .appointment-status
-        label = "#{t('medical_record.detail.status')}:"
-        span = " #{@medical_record.status.camelize}"
-    .service-table
-        label = "#{t('service.basic.services')}:"
-    - if @medical_record.services.present?
-        table.service-item
-            thead
-                tr
-                    th = "#{t('service.detail.name')}"
-                    th = "#{t('service.detail.price')}"
-                    th = "#{t('service.detail.time')}"
-                    th = "#{t('service.detail.detail')}"
-            tbody
-                - @medical_record.services.each do |item|
-                    tr
-                        td = item.name
-                        td = "$ #{item.price}"
-                        td = "#{item.execution_time} minutes"
-                        td.detail = link_to "Detail", "/services/#{item.id}", class: "detail"
-    - else
-        .empty  = "#{t('service.basic.service_empty')}"
-
-    = button_to "Progress", progress_clinic_appointment_path, method: :put, class: "progress"
+  = button_to "Progress", progress_clinic_appointment_path, method: :put, class: "progress"

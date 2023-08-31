@@ -1,11 +1,13 @@
 class Admin::MedicalResourcesController < Admin::BaseController
   before_action :get_medical_resource, only: %i[show edit update destroy]
+
   def index
     @medical_resources = if params[:search]
                            MedicalResource.search(params[:search])
                          else
                            MedicalResource.all
                          end
+
     respond_to do |format|
       format.html
       format.xlsx do
@@ -41,17 +43,27 @@ class Admin::MedicalResourcesController < Admin::BaseController
   end
 
   def destroy
-    @medical_resource.destroy
+    if @medical_resource.destroy
+      flash[:success_notice] = I18n.t('destroy_success')
+    else
+      flash[:error_notice] = I18n.t('destroy_success')
+    end
     redirect_to admin_categories_path, status: 303
   end
 
   private
 
   def medical_resource_params
-    params.require(:medical_resource).permit(:name, :brand, :unit, :description, :medical_resource_type)
+    params.require(:medical_resource).permit(
+      :name,
+      :brand,
+      :unit,
+      :description,
+      :medical_resource_type
+    )
   end
 
   def get_medical_resource
-    @medical_resource = MedicalResource.find(params[:id])
+    @medical_resource = MedicalResource.find_by(id: params[:id])
   end
 end

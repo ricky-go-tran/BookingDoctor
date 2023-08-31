@@ -1,14 +1,13 @@
 .clinic-workspace-re-finish-wrapper
-    .logo
-        span Doctor
-        label Booking
-    .title Finish Appointment...?
-    .fullname
-        label = t('profile.name')
-        span = "    #{get_name_patient_by_id(@medical_record.patient_profile_id)}"
-    .total-price = "$ #{total_price(@service_items, @prescription_items)}"
-
-    .control-wrapper
-        = link_to "Export Prescription", clinic_path(@medical_record, format: :pdf), {class: "export-prescription"}
-        = link_to "Cashed Payment", cash_payment_clinic_workspace_path(@medical_record), {class: "momo-pay", data: {turbo_method: :put}}
+  .logo
+    span Doctor
+    label Booking
+  .title = t('profile.finish_workspace')
+  .fullname
+    label = t('profile.name')
+    span = "    #{get_name_patient_by_id(@medical_record.patient_profile_id)}"
+  .total-price = "$ #{total_price(@service_items, @prescription_items)}"
+  .control-wrapper
+    = link_to "Export Prescription", prescription_clinic_pdf_path(@medical_record, format: :pdf), {class: "export-prescription"}
+    = button_to "Cashed Payment", cash_payment_clinic_workspace_path(@medical_record), data: {turbo: false}, form:  {class: "momo-pay"}, class: "momo-pay-btn", method: :put
 

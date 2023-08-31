@@ -1,8 +1,8 @@
 class StripeIntentsController < ApplicationController
   skip_before_action :verify_authenticity_token
   skip_before_action :authenticate_user!
+
   def create
-    # payment_info = payment_params.to_h
     payment_intent = Stripe::PaymentIntent.create(
       amount: params[:amount].to_i,
       currency: params[:currency],
@@ -26,7 +26,7 @@ class StripeIntentsController < ApplicationController
   end
 
   def update_medical_record
-    @medical_record = MedicalRecord.find(params[:medical_record_id])
+    @medical_record = MedicalRecord.find_by(id: params[:medical_record_id])
     @medical_record.stripe_payment_id = params[:stripe_payment_id]
     if @medical_record.save
       render json: {
@@ -42,7 +42,13 @@ class StripeIntentsController < ApplicationController
   private
 
   def payment_params
-    params.permit(:amount, :currency, :description, :customer, stripe_intent: [:amount, :currency, :description, :customer])
+    params.permit(
+      :amount,
+      :currency,
+      :description,
+      :customer,
+      stripe_intent: [:amount, :currency, :description, :customer]
+    )
   end
 
   def retrieve_params

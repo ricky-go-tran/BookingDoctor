@@ -1,32 +1,31 @@
 class Clinic::MedicalRecordsController < ApplicationController
   before_action :get_medical_record, only: %i[update]
+
   def create
     @medical_record = MedicalRecord.new(re_examination_params)
     if @medical_record.service_items.empty?
-      flash[:error_notice] = "Error! Service can't empty! Please try again"
-      redirect_to clinic_workspaces_path
+      flash[:error_notice] = I18n.t('medical_record.basic.empty_service')
     else
       @medical_record.clinic_profile_id = current_user.profile.clinic_profile.id
-      @medical_record.end_time = MedicalRecordsManager::CalculatorEndTimeCreator.call(@medical_record)
+      @medical_record.end_time = MedicalRecordsManager::CalculatorEndTimeService.call(@medical_record)
       if @medical_record.save
-        flash[:success_notice] = 'Success! Register appointment'
-        @user_receive = User.find(@medical_record.patient_profile.profile.user_id)
+        flash[:success_notice] = I18n.t('medical_record.basic.register_success')
+        @user_receive = User.find_by(id: @medical_record.patient_profile.profile.user_id)
         CanclePastAppointmentWorker.perform_at(@medical_record.start_time, @medical_record.to_json)
         SendMailWorker.perform_async(@medical_record.to_json, current_user.profile.clinic_profile.to_json, @user_receive.profile.fullname, @user_receive.email)
       else
-        flash[:error_notice] = "Error! Can't appointment! Please try again"
+        flash[:error_notice] = I18n.t('medical_record.basic.register_error')
       end
-      redirect_to clinic_workspaces_path
     end
+    redirect_to clinic_workspaces_path
   end
 
   def update
     if @medical_record.status != 'progress'
-      raise StandardError, "Status is invalid!  Can't payment this appointment"
+      raise StandardError, I18n.t('medical_record.basic.register_error')
     end
 
     medical_record_attributes = medical_record_params.to_h
-
     if medical_record_attributes['prescription_items_attributes'].present?
       prescription_items = {}
       medical_record_attributes['prescription_items_attributes'].each do |key, value|
@@ -35,9 +34,7 @@ class Clinic::MedicalRecordsController < ApplicationController
       end
       medical_record_attributes['prescription_items_attributes'] = prescription_items
     end
-
     @medical_record.status = 'payment'
-
     @medical_record.update!(medical_record_attributes)
     medical_record_json = {}
     medical_record_json[:id] = @medical_record.id
@@ -59,7 +56,7 @@ class Clinic::MedicalRecordsController < ApplicationController
   private
 
   def get_medical_record
-    @medical_record = MedicalRecord.find(params[:id])
+    @medical_record = MedicalRecord.find_by(id: params[:id])
   end
 
   def medical_record_params

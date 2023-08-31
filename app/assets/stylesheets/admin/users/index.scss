@@ -1,129 +1,163 @@
 @import "../../mixins/input_style.scss";
 @import "../../mixins/admin_layout.scss";
+@import "../../mixins/responesive.scss";
 
 
 .user-management-wrapper {
-    @include management-wrapper;
+  @include management-wrapper;
 
-    >.title {
-        @include title-h1;
+  >.title {
+    @include title-h1;
+  }
+
+  >.controll-panel {
+    @include control-panel;
+
+    .right {
+      @include control-panel-right;
+
+      a {
+        margin-right: 2%;
+      }
+
+      .add {
+        @include button_style_add;
+
+        @include mobile {
+          font-size: 12px;
+        }
+      }
+
+      .sheet {
+        @include button_style_sheet;
+
+        @include mobile {
+          font-size: 12px;
+        }
+      }
+
+      .pdf_export {
+        @include button_style_pdf_export;
+
+        @include mobile {
+          font-size: 12px;
+        }
+      }
     }
 
-    >.controll-panel {
-        @include control-panel;
+    .left {
+      @include control-panel-left;
 
-        .right {
-            @include control-panel-right;
+      input {
+        @include input_format;
+        width: 50%;
+      }
 
-            a {
-                margin-right: 2%;
-            }
+      select {
+        @include select_format;
+        width: 25%;
+        margin-left: 5%;
+      }
 
-            .add {
-                @include button_style_add;
-            }
+      >.back {
+        @include button_style_pdf_export;
+      }
+    }
+  }
 
-            .sheet {
-                @include button_style_sheet;
-            }
+  .content-panel {
+    @include content-panel;
+    overflow-y: scroll;
 
-            .pdf_export {
-                @include button_style_pdf_export;
-            }
+    >.user-item {
+      padding: 10px;
+      box-shadow: 0 2px 5px #32325d1a, 0 1px 1.5px #00000012;
+      border-radius: 5px;
+      margin-bottom: 1%;
+      padding: 10px;
+      border: 1px solid rgb(235, 238, 241);
+      box-sizing: border-box;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      display: flex;
+      height: 100px;
+
+      @include mobile {
+        align-items: flex-start;
+        box-sizing: content-box;
+      }
+
+      .left {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @include mobile {
+          font-size: 14px;
         }
 
-        .left {
-            @include control-panel-left;
+        .fullname {
+          font-size: 20px;
+          font-weight: bold;
 
-            input {
-                @include input_format;
-                width: 50%;
-            }
+          @include mobile {
+            font-size: 14px;
+          }
 
-            select {
-                @include select_format;
-                width: 25%;
-                margin-left: 5%;
-            }
-
-            >.back {
-                @include button_style_pdf_export;
-            }
+          span {
+            font-size: 16px;
+            font-weight: 300;
+            font-style: italic;
+            color: #ef0706;
+            margin-left: 10px;
+          }
         }
+
+        .role {
+          font-size: 16px;
+          font-style: italic;
+          margin-top: 15px;
+          color: #0cbecd;
+
+          @include mobile {
+            font-size: 14px;
+          }
+        }
+
+        .time-request {
+          font-size: 16px;
+          font-style: italic;
+          margin-top: 15px;
+          color: #0cbecd;
+          font-weight: 200;
+
+          @include mobile {
+            font-size: 14px;
+          }
+        }
+      }
+
+      .right {
+        display: flex;
+        justify-content: flex-end;
+
+        .view {
+          @include buntton_style_detail;
+        }
+
+        .change {
+          @include buntton_style_edit;
+        }
+
+        .lock {
+          @include buntton_style_del_lock;
+        }
+      }
     }
 
-    .content-panel {
-        @include content-panel;
-        overflow-y: scroll;
-
-        >.user-item {
-            padding: 10px;
-            box-shadow: 0 2px 5px #32325d1a, 0 1px 1.5px #00000012;
-            border-radius: 5px;
-            margin-bottom: 1%;
-            padding: 10px;
-            border: 1px solid rgb(235, 238, 241);
-            box-sizing: border-box;
-            width: 100%;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 10px;
-            display: flex;
-            height: 100px;
-
-            .left {
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-
-                .fullname {
-                    font-size: 20px;
-                    font-weight: bold;
-
-                    span {
-                        font-size: 16px;
-                        font-weight: 300;
-                        font-style: italic;
-                        color: #ef0706;
-                        margin-left: 10px;
-                    }
-                }
-
-                .role {
-                    font-size: 16px;
-                    font-style: italic;
-                    margin-top: 15px;
-                    color: #0cbecd;
-                }
-
-                .time-request {
-                    font-size: 16px;
-                    font-style: italic;
-                    margin-top: 15px;
-                    color: #0cbecd;
-                    font-weight: 200;
-                }
-            }
-
-            .right {
-                display: flex;
-                justify-content: flex-end;
-
-                .view {
-                    @include buntton_style_detail;
-                }
-
-                .change {
-                    @include buntton_style_edit;
-                }
-
-                .lock {
-                    @include buntton_style_del_lock;
-                }
-            }
-        }
-
-    }
+  }
 
 }

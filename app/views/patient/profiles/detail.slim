@@ -1,37 +1,37 @@
 .patient-my-profile-detail-wrapper
-    .account-info
-        .title = t('profile.account_info')
-        .email
-            label = "#{t('user.basic.email')}:"
-            span = "  #{current_user.email}"
-        .time-create
-            label = "#{t('user.basic.time_signup')}:"
-            span = "  #{current_user.created_at}"
-        .time-update
-            label = "#{t('user.basic.change_recently')}:"
-            span = "  #{current_user.updated_at}"
-    .profile-info
-        .title = "#{t('profile.profile_info')}"
-        .fulname
-            label = "#{t('profile.fullname')}:"
-            span = "  #{current_user.profile.fullname}"
-        .birthday
-            label = "#{t('profile.birthday')}:"
-            span = "  #{current_user.profile.birthday}"
-        .address
-            label = "#{t('profile.address')}:"
-            span = " #{current_user.profile.address}"
-    .patient-info
-        .title = "#{t('profile.patient_info')}"
-        .height
-            label = "#{t('profile.height')}:"
-            span = "  #{current_user.profile.patient_profile.height}"
-        .weight
-            label = "#{t('profile.weight')}:"
-            span = "  #{current_user.profile.patient_profile.weight}"
-        .blood-group
-            label = "#{t('profile.blood_group')}:"
-            span = "  #{current_user.profile.patient_profile.blood_group}"
-        .drug_allergy
-            label = "#{t('profile.drug_allergy')}:"
-            span = "  #{current_user.profile.patient_profile.drug_allergy}"
+  .account-info
+    .title = t('profile.account_info')
+    .email
+      label = "#{t('user.basic.email')}:"
+      span = "  #{current_user.email}"
+    .time-create
+      label = "#{t('user.basic.time_signup')}:"
+      span = "  #{current_user.created_at}"
+    .time-update
+      label = "#{t('user.basic.change_recently')}:"
+      span = "  #{current_user.updated_at}"
+  .profile-info
+    .title = "#{t('profile.profile_info')}"
+    .fulname
+      label = "#{t('profile.fullname')}:"
+      span = "  #{current_user.profile.fullname}"
+    .birthday
+      label = "#{t('profile.birthday')}:"
+      span = "  #{current_user.profile.birthday}"
+    .address
+      label = "#{t('profile.address')}:"
+      span = " #{current_user.profile.address}"
+  .patient-info
+    .title = "#{t('profile.patient_info')}"
+    .height
+      label = "#{t('profile.height')}:"
+      span = "  #{current_user.profile.patient_profile.height}"
+    .weight
+      label = "#{t('profile.weight')}:"
+      span = "  #{current_user.profile.patient_profile.weight}"
+    .blood-group
+      label = "#{t('profile.blood_group')}:"
+      span = "  #{current_user.profile.patient_profile.blood_group}"
+    .drug_allergy
+      label = "#{t('profile.drug_allergy')}:"
+      span = "  #{current_user.profile.patient_profile.drug_allergy}"

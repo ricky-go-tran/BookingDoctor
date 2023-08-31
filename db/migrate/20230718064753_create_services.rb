@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CreateServices < ActiveRecord::Migration[7.0]
-  def change
+  def up
     create_table :services do |t|
       t.references :clinic_profile, null: false, foreign_key: true
       t.string :name, null: false
@@ -11,5 +11,9 @@ class CreateServices < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+  end
+
+  def down
+    drop_table :services
   end
 end

@@ -3,8 +3,11 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
 
   resource :webhooks, only: %i[create]
-  get 'pdfs/invoice/:id',to: "pdfs#invoice", format: 'pdf'
-
+  resources :pdfs, except: %i[new create update edit destroy index] do
+    member do
+      get 'invoice',to: "pdfs#invoice", format: 'pdf'
+    end
+  end
   resource  :stripe_intents, only: %i[create] do
     collection do
       get 'retrieve'
@@ -12,22 +15,29 @@ Rails.application.routes.draw do
     end
   end
   resources :homepages, only: %i[index], path: '' do
+    member do
+      get 'clinics', to: 'homepages#clinic_detail'
+      get 'service', to: 'homepages#service_detail'
+      get 'clinics/appointment', to: 'homepages#appointment'
+    end
     collection do
       get 'clinics'
-      get 'clinics/:id', to: 'homepages#clinic_detail'
-      get 'clinics/:id/appointment', to: 'homepages#appointment'
       get 'services'
-      get 'services/:id', to: 'homepages#service_detail'
       get 'supports'
       get 'direct'
       get 'unauthorization'
     end
+
   end
   root "homepages#index"
 
   namespace :clinic do
-    get 'pdfs/prescription/:id', to: "pdfs#prescription"
-    get 'pdfs/invoice/:id', to: "pdfs#invoice", format: 'pdf'
+    resources :pdfs, except: %i[new create update edit destroy index] do
+      member do
+        get 'invoice', to: "pdfs#invoice", format: 'pdf'
+        get 'prescription',to: "pdfs#prescription", format: 'pdf'
+      end
+    end
     resources :patients, only: %i[index show] do
       member do
         get 'medical_record/detail', to: 'patients#detail_medical_record'
@@ -48,12 +58,12 @@ Rails.application.routes.draw do
       end
     end
     resources :statistics, only: %i[index]
-    resources :services do
+    resources :services , except: %i[destroy] do
       resources :consumptions, only: %i[create destroy]
     end
     resources :medical_records, only: %i[index show create update]
     resources :medical_resources, only: %i[index show]
-    resources :inventories
+    resources :inventories, except: %i[destroy]
     resources :clinic_profiles, only: %i[index new create edit update] do
       collection do
         get "change"

@@ -2,6 +2,7 @@
 
 class Admin::ProfilesController < Admin::BaseController
   before_action :get_profile, only: %i[update change]
+
   def index; end
 
   def update
@@ -27,6 +28,6 @@ class Admin::ProfilesController < Admin::BaseController
   end
 
   def get_profile
-    @profile = Profile.find(current_user.profile.id)
+    @profile = Profile.find_by(id: current_user.profile.id)
   end
 end

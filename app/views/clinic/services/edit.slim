@@ -1,10 +1,10 @@
 .clinic-service-wrapper
-    .control-bar
-        .left-bar
-            = link_to "#{t('back')}", clinic_services_path, {class: "back"}
-        .title = t('service.basic.service_management')
-        .right-bar
-    .new-panel
-        .title = t('service.basic.service_edit')
-        = render "clinic/services/form"
+  .control-bar
+    .left-bar
+      = link_to "#{t('back')}", clinic_services_path, {class: "back"}
+    .title = t('service.basic.service_management')
+    .right-bar
+  .new-panel
+    .title = t('service.basic.service_edit')
+    = render "clinic/services/form"
 

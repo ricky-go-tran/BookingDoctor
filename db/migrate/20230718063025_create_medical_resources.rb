@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CreateMedicalResources < ActiveRecord::Migration[7.0]
-  def change
+  def up
     create_table :medical_resources do |t|
       t.string :name, null: false
       t.string :brand, null: false
@@ -11,5 +11,9 @@ class CreateMedicalResources < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+  end
+
+  def down
+    drop_table :medical_resources
   end
 end

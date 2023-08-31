@@ -1,5 +1,8 @@
 = simple_form_for  [:clinic, inventory] do |form|
-    = form.input :medical_resource_id, collection: MedicalResource.all, label_method: ->(resource) { "#{resource.name} - Brand: #{resource.brand}"}, value_method: :id, include_blank: true
-    = form.input :amount
-    = form.input :price
-    = form.button :submit
+  - if inventory.errors.any?
+    .error-message
+      = inventory.errors.full_messages.to_sentence.capitalize
+  = form.input :medical_resource_id, collection: MedicalResource.all, label_method: ->(resource) { "#{resource.name} - Brand: #{resource.brand}"}, value_method: :id, include_blank: true
+  = form.input :amount
+  = form.input :price
+  = form.button :submit

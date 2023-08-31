@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class PatientProfile < ApplicationRecord
+  resourcify
+
   belongs_to :profile
   has_many :medical_records
   has_many :votes
   has_many :clinic_profiles, through: :votes
-  resourcify
+
   before_validation :create_on_stripe, on: :create
 
   enum blood_group: { A_Positive: 'A+', A_Negative: 'A-', B_Positive: 'B+', B_Negative: 'B-',
@@ -16,7 +18,7 @@ class PatientProfile < ApplicationRecord
   }
 
   def create_on_stripe
-    user = User.find(Profile.find(profile_id).user_id)
+    user = User.find_by(id: Profile.find_by(id: profile_id).user_id)
     params = { email: user.email, name: user.profile.fullname }
     response = Stripe::Customer.create(params)
     self.stripe_id = response.id

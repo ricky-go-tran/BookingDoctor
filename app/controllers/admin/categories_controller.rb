@@ -9,6 +9,7 @@ class Admin::CategoriesController < Admin::BaseController
                   else
                     Category.all
                   end
+
     respond_to do |format|
       format.html
       format.xlsx do
@@ -22,14 +23,14 @@ class Admin::CategoriesController < Admin::BaseController
 
   def create
     @category = Category.new(category_params)
+
     if @category.save
       respond_to do |format|
-        format.html { redirect_to admin_categories_path, notice: 'Categories was successfully created.' }
+        format.html { redirect_to admin_categories_path, notice: I18n.t('category.basic.create_success') }
         format.turbo_stream do
           render layout: false
         end
       end
-
     else
       render :new, status: 422, layout: false
     end
@@ -42,7 +43,7 @@ class Admin::CategoriesController < Admin::BaseController
   def update
     if @category.update(category_params)
       respond_to do |format|
-        format.html { redirect_to redirect_to admin_categories_path, notice: 'Category was successfully updated.' }
+        format.html { redirect_to redirect_to admin_categories_path, notice: I18n.t('category.basic.update_success') }
         format.turbo_stream
       end
     else
@@ -55,7 +56,7 @@ class Admin::CategoriesController < Admin::BaseController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to admin_categories_path notice: 'Category was successfully destroyed.' }
+      format.html { redirect_to admin_categories_path, notice: I18n.t('category.basic.destroy_success') }
       format.turbo_stream
     end
   end
@@ -67,6 +68,6 @@ class Admin::CategoriesController < Admin::BaseController
   end
 
   def get_category
-    @category = Category.find(params[:id])
+    @category = Category.find_by(id: params[:id])
   end
 end

@@ -1,15 +1,14 @@
 .clinic-inventory-wrapper
-    .control-bar
-        .left-bar
-            = link_to "#{t('back')}", clinic_inventories_path, {class: "back"}
-        .title = t('medical_resource.basic.medical_resources')
-        .right-bar
-            = link_to "#{t('export_sheet')}", clinic_medical_resources_path(format: :xlsx), {class: "sheet"}
-    .content-panel
-        - if @medical_resources.present?
-            = render partial: "medical_resource", collection: @medical_resources
-
-        - else
-            .emty = "#{t('medical_resource.basic.medical_resource_empty')}"
+  .control-bar
+    .left-bar
+      = link_to "#{t('back')}", clinic_inventories_path, {class: "back"}
+    .title = t('medical_resource.basic.medical_resources')
+    .right-bar
+      = link_to "#{t('export_sheet')}", clinic_medical_resources_path(format: :xlsx), {class: "sheet"}
+  .content-panel
+    - if @medical_resources.present?
+      = render partial: "medical_resource", collection: @medical_resources
+    - else
+      .emty = "#{t('medical_resource.basic.medical_resource_empty')}"
 
 

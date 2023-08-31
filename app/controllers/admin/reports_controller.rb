@@ -7,6 +7,7 @@ class Admin::ReportsController < Admin::BaseController
                else
                  Report.all
                end
+
     respond_to do |format|
       format.html
       format.xlsx do

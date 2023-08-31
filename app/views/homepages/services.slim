@@ -1,18 +1,18 @@
 .homepage-service-wrapper
-    .header-wrapper
-        .wallpaper
-            .blur-panel
-            .title = t('service.basic.services')
-            .search-wrapper
-                input.search-bar[type="search" placeholder="#{t('service.basic.service_search')}" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{services_homepages_path}"]
-    .body-wrapper
-        .title
-            .name Services
-            == pagy_nav(@pagy)
-        .services
-            - if @services.present?
-                = render partial: "service", collection: @services
+  .header-wrapper
+    .wallpaper
+      .blur-panel
+      .title = t('service.basic.services')
+      .search-wrapper
+        input.search-bar[type="search" placeholder="#{t('service.basic.service_search')}" data-controller="search" data-search-target="source" data-action="keydown.enter->search#search" data-content="#{services_homepages_path}"]
+  .body-wrapper
+    .title
+      .name Services
+      == pagy_nav(@pagy)
+    .services
+      - if @services.present?
+        = render partial: "service", collection: @services
 
-            - else
-                .empty = t('service.basic.service_empty')
-    = render "layouts/components/footer"
+      - else
+        .empty = t('service.basic.service_empty')
+  = render "layouts/components/footer"

@@ -1,0 +1,14 @@
+<div class="clinic-service-wrapper">
+  <div class="control-bar">
+    <div class="left-bar">
+      <%= link_to "#{t('back')}", clinic_services_path, {class: "back"}%>
+    </div>
+    <div class="title"><%= t('service.basic.service_management') %></div>
+  </div>
+  <%= turbo_frame_tag "clinic_new_service_panel" do%>
+    <div class="new-panel">
+      <div class="title"><%= t('service.basic.service_new')%>></div>
+      <%= render "clinic/services/form" %>
+    </div>
+  <%end%>
+</div>
