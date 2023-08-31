@@ -15,7 +15,6 @@ class ClinicProfile < ApplicationRecord
   has_one_attached :clinic_view
   validates :name, :address, :phone, :description, :start_day, :end_day, :start_hour, :end_hour, presence: true
   validates :start_day, :end_day, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 6 }
-  validate :start_hour_must_be_before_end_hour
 
   scope :current_month, -> {
     where(created_at: Time.zone.now.beginning_of_month..Time.zone.now.end_of_month)

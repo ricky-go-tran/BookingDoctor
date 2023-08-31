@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :clinic_profile do
     name { Faker::Company.name }
     address { Faker::Address.full_address }
-    phone { '0987654321' }
+    phone { '0123456789' }
     description { Faker::Lorem.sentence(word_count: 20) }
     start_day { 1 }
     end_day { 5 }
