@@ -12,7 +12,6 @@ class ClinicProfile < ApplicationRecord
   has_many :votes
   has_many :patient_profiles, through: :votes
 
-
   has_one_attached :certificate
   has_one_attached :clinic_view
 

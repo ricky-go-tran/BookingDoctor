@@ -4,5 +4,4 @@ class ExaminationResul < ApplicationRecord
   resourcify
 
   belongs_to :medical_record
-
 end

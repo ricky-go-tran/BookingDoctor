@@ -12,7 +12,6 @@ class MedicalRecord < ApplicationRecord
   has_many :service_items
   has_many :services, through: :service_items
 
-
   validate :check_overlapping, on: :create
   validate :check_past, on: :create
   validate :check_time_in_clinic_work, on: :create
