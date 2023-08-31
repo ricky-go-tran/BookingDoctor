@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class PatientProfile < ApplicationRecord
+  resourcify
+
   belongs_to :profile
   has_many :medical_records
   has_many :votes
   has_many :clinic_profiles, through: :votes
-  resourcify
+
   before_validation :create_on_stripe, on: :create
 
   enum blood_group: { A_Positive: 'A+', A_Negative: 'A-', B_Positive: 'B+', B_Negative: 'B-',

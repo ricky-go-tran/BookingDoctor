@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class Category < ApplicationRecord
-  has_many :clinic_profiles
   resourcify
+
+  has_many :clinic_profiles
+
   validates :name, presence: true, length: { in: 5..200, message: 'Lengths from 5 to 200 ' }
   validates :description, presence: true, length: { in: 5..15000, message: 'Lengths from 5 to 15000 ' }
 
@@ -13,6 +15,7 @@ class Category < ApplicationRecord
   scope :get_name_by_user, ->(user) {
                              find_by(id: user.profile.clinic_profile.category_id).name
                            }
+
   after_create_commit -> { broadcast_prepend_to 'categories', partial: 'admin/categories/category', locals: { category: self }, target: 'categories' }
   after_update_commit -> { broadcast_replace_to 'categories', partial: 'admin/categories/category' }
   after_destroy_commit -> { broadcast_remove_to 'categories' }

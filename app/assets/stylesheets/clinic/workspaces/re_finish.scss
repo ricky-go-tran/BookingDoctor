@@ -25,10 +25,11 @@ $success: image-url("success_payment.png");
   .logo {
     @include logo;
     margin-top: 2%;
+    font-size: 32px;
   }
 
   .title {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
   }
 
@@ -48,7 +49,7 @@ $success: image-url("success_payment.png");
 
   .total-price {
     color: #f8777f;
-    font-size: 100px;
+    font-size: 64px;
     font-weight: 200;
   }
 
@@ -89,18 +90,28 @@ $success: image-url("success_payment.png");
       font-weight: 400;
     }
 
+    .momo-pay-finish {
+      background-image: linear-gradient(230deg, #fc5286, #fbaaa2) !important;
+
+    }
+
     .momo-pay {
       background-image: linear-gradient(230deg, #fc5286, #fbaaa2) !important;
       border: none !important;
+      padding: unset;
 
     }
 
     .momo-pay-btn {
+      width: 100%;
+      height: 100%;
       font-size: 16px;
       font-weight: 400;
-      background: transparent;
+      background: #f8777f;
       border: none !important;
       color: #fff;
+      padding: 20px 0;
+      border-radius: 5px;
 
     }
 

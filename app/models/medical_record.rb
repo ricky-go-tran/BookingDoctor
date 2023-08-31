@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class MedicalRecord < ApplicationRecord
+  resourcify
+
   belongs_to :patient_profile
   belongs_to :clinic_profile
   has_one :examination_resul
@@ -9,7 +11,7 @@ class MedicalRecord < ApplicationRecord
   has_many :medical_resources, through: :prescription_items
   has_many :service_items
   has_many :services, through: :service_items
-  resourcify
+
 
   validate :check_overlapping, on: :create
   validate :check_past, on: :create
@@ -49,6 +51,7 @@ class MedicalRecord < ApplicationRecord
     where(status: 'progress', clinic_profile_id: clinic_id).take
   }
   scope :get_by_patient_and_status, ->(id, status) { where('patient_profile_id = ? AND  UPPER(status) = UPPER(?) ', id, status) }
+
   private
 
   def check_overlapping

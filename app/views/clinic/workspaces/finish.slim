@@ -5,5 +5,5 @@
 	.title = t('medical_record.basic.medical_record_finish')
 	.image
 	.control-wrapper
-		= link_to "Invoice", "/clinic/pdfs/invoice/#{@medical_record.id}", {class: "momo-pay"}
+		= link_to "Invoice", invoice_clinic_pdf_path(@medical_record.id), {class: "momo-pay-finish"}
 		= link_to "ReExamination", re_examination_clinic_workspace_path(@medical_record), data: {turbo: false},class: "cash-pay"
