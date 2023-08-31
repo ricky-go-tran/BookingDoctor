@@ -1,68 +1,68 @@
 - content_for :control do
-    Test
+	Test
 .clinic-my-profile-detail-wrapper
-    .account-info
-        .title = t('profile.account_info')
-        .email
-            label = "#{t('user.basic.email')}:"
-            span = "  #{current_user.email}"
-        .time-create
-            label = "#{t('user.basic.time_signup')}:"
-            span = "  #{date_format(current_user.created_at)}"
-        .time-update
-            label = "#{t('user.basic.change_recently')}:"
-            span = "  #{date_format(current_user.updated_at)}"
-    .profile-info
-        .title = "#{t('profile.profile_info')}"
-        .fulname
-            label = "#{t('profile.fullname')}:"
-            span = "  #{current_user.profile.fullname}"
-        .birthday
-            label = "#{t('profile.birthday')}:"
-            span = "  #{current_user.profile.birthday}"
-        .address
-            label = "#{t('profile.address')}:"
-            span = " #{current_user.profile.address}"
-    .clinic-info
-        .title = t('clinic.basic.clinic_info')
-        .fulname
-            label = "#{t('clinic.profile.name')}:"
-            span = " #{current_user.profile.clinic_profile.name}"
-        .birthday
-            label = "#{t('category.basic.category')}:"
-            span = "  #{Category.find(current_user.profile.clinic_profile.category_id).name}"
-        .address
-            label = "#{t('clinic.profile.address')}:"
-            span = " #{current_user.profile.clinic_profile.address}"
-        .phone
-            label = "#{t('clinic.profile.phone')}:"
-            span = current_user.profile.clinic_profile.phone
-        .description
-            label = "#{t('clinic.profile.description')}:"
-            span = current_user.profile.clinic_profile.description
-        .active-time
-            label = "#{t('clinic.profile.operating_hour')} -"
-            label = "#{t('clinic.profile.from')}:"
-            span = current_user.profile.clinic_profile.start_hour.to_s(:time)
-            label = "#{t('clinic.profile.to')}:"
-            span = current_user.profile.clinic_profile.end_hour.to_s(:time)
-        .active-time
-            label = "#{t('clinic.profile.operating_hour')} -"
-            label = "#{t('clinic.profile.from')}:"
-            span = current_user.profile.clinic_profile.start_day
-            label = "#{t('clinic.profile.to')}:"
-            span = current_user.profile.clinic_profile.end_day
-        .certificate
-            label Certificate:
-            - if current_user.profile.clinic_profile.certificate.attached?
-                = image_tag current_user.profile.clinic_profile.certificate
-            - else
-                label = "#{t('no_image')}"
-        .clinic_view
-            label Clinic view:
-            - if current_user.profile.clinic_profile.clinic_view.attached?
-                = image_tag current_user.profile.clinic_profile.clinic_view
-            - else
-                label = "#{t('no_image')}"
+	.account-info
+		.title = t('profile.account_info')
+		.email
+			label = "#{t('user.basic.email')}:"
+			span = "  #{current_user.email}"
+		.time-create
+			label = "#{t('user.basic.time_signup')}:"
+			span = "  #{date_format(current_user.created_at)}"
+		.time-update
+			label = "#{t('user.basic.change_recently')}:"
+			span = "  #{date_format(current_user.updated_at)}"
+	.profile-info
+		.title = "#{t('profile.profile_info')}"
+		.fulname
+			label = "#{t('profile.fullname')}:"
+			span = "  #{current_user.profile.fullname}"
+		.birthday
+			label = "#{t('profile.birthday')}:"
+			span = "  #{current_user.profile.birthday}"
+		.address
+			label = "#{t('profile.address')}:"
+			span = " #{current_user.profile.address}"
+	.clinic-info
+		.title = t('clinic.basic.clinic_info')
+		.fulname
+			label = "#{t('clinic.profile.name')}:"
+			span = " #{current_user.profile.clinic_profile.name}"
+		.birthday
+			label = "#{t('category.basic.category')}:"
+			span = "  #{Category.find_by(id: current_user.profile.clinic_profile.category_id).name}"
+		.address
+			label = "#{t('clinic.profile.address')}:"
+			span = " #{current_user.profile.clinic_profile.address}"
+		.phone
+			label = "#{t('clinic.profile.phone')}:"
+			span = current_user.profile.clinic_profile.phone
+		.description
+			label = "#{t('clinic.profile.description')}:"
+			span = current_user.profile.clinic_profile.description
+		.active-time
+			label = "#{t('clinic.profile.operating_hour')} -"
+			label = "#{t('clinic.profile.from')}:"
+			span = current_user.profile.clinic_profile.start_hour.to_s(:time)
+			label = "#{t('clinic.profile.to')}:"
+			span = current_user.profile.clinic_profile.end_hour.to_s(:time)
+		.active-time
+			label = "#{t('clinic.profile.operating_hour')} -"
+			label = "#{t('clinic.profile.from')}:"
+			span = current_user.profile.clinic_profile.start_day
+			label = "#{t('clinic.profile.to')}:"
+			span = current_user.profile.clinic_profile.end_day
+		.certificate
+			label Certificate:
+			- if current_user.profile.clinic_profile.certificate.attached?
+				= image_tag current_user.profile.clinic_profile.certificate
+			- else
+				label = "#{t('no_image')}"
+		.clinic_view
+			label Clinic view:
+			- if current_user.profile.clinic_profile.clinic_view.attached?
+				= image_tag current_user.profile.clinic_profile.clinic_view
+			- else
+				label = "#{t('no_image')}"
 
 

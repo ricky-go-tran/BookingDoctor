@@ -1,9 +1,9 @@
 = simple_form_for  [:admin, @category] do |form|
-    - if @category.errors.any?
-        .error-message
-            = @category.errors.full_messages.to_sentence.capitalize
-    = form.input :name, label: "Name: "
-    = form.input :description, label: "Description: "
-    = link_to "Cancle", admin_categories_path, class: "cancel"
-    = form.button :submit
+  - if @category.errors.any?
+      .error-message
+        = @category.errors.full_messages.to_sentence.capitalize
+  = form.input :name, label: "Name: ", input_html: { autofocus: true }
+  = form.input :description, label: "Description: "
+  = link_to "Cancle", admin_categories_path, class: "cancel"
+  = form.button :submit
 

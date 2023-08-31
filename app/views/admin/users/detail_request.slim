@@ -1,60 +1,60 @@
 .user-management-wrapper
-    .title = "#{t('profile.user_management')}"
-    .controll-panel
-        .left
-            = link_to "#{t('back')}", request_verify_admin_users_path, class: "back"
-        .right
-            = button_to "Accept", accepted_admin_users_path, method: :put, params: {id: @profile.id},class: "add"
-            = button_to "Cancel", canceled_admin_users_path, method: :put,params: {id: @profile.id}, class: "pdf_export"
-    .content-panel
-        .own-info
-            .title = t('homepage.own_info')
-            .fullname
-                label = "#{t('profile.fullname')}:"
-                span = " #{@profile.fullname}"
-            .birthday
-                label  = "#{t('profile.birthday')}:"
-                span = @profile.birthday
-            .address
-                label  = "#{t('profile.address')}:"
-                span = @profile.address
-        .clinic-info
-            .title = t('clinic.basic.clinic_infomation')
-            .name
-                label = "#{t('clinic.profile.name')}:"
-                span = @profile.clinic_profile.name
-            .category
-                label = "#{t('category.basic.category')}:"
-                span = @category
-            .address
-                label = "#{t('clinic.profile.address')}:"
-                span = @profile.clinic_profile.address
-            .phone
-                label = "#{t('clinic.profile.phone')}:"
-                span = @profile.clinic_profile.phone
-            .description
-                label = "#{t('clinic.profile.description')}:"
-                span = @profile.clinic_profile.description
-            .active-time
-                label = "#{t('clinic.profile.operating_hour')} -"
-                label = "#{t('clinic.profile.from')}:"
-                span = @profile.clinic_profile.start_hour.to_s(:time)
-                label = "#{t('clinic.profile.to')}:"
-                span = @profile.clinic_profile.end_hour.to_s(:time)
-            .active-time
-                label = "#{t('clinic.profile.operating_hour')} -"
-                label = "#{t('clinic.profile.from')}:"
-                span = @start_day
-                label = "#{t('clinic.profile.to')}:"
-                span = @end_day
-            .certificate
-                - if @profile.clinic_profile.certificate.attached?
-                    = image_tag @profile.clinic_profile.certificate
-                - else
-                    label = "#{t('no_image')}"
-            .clinic_view
-                - if @profile.clinic_profile.clinic_view.attached?
-                    = image_tag @profile.clinic_profile.clinic_view
-                - else
-                    label = "#{t('no_image')}"
+  .title = "#{t('profile.user_management')}"
+  .controll-panel
+    .left
+      = link_to "#{t('back')}", request_verify_admin_users_path, class: "back"
+    .right
+      = button_to "Accept", accepted_admin_users_path, method: :put, params: {id: @profile.id},class: "add", data: {turbo: false}
+      = button_to "Cancel", canceled_admin_users_path, method: :put,params: {id: @profile.id}, class: "pdf_export"
+  .content-panel
+    .own-info
+      .title = t('homepage.own_info')
+      .fullname
+        label = "#{t('profile.fullname')}:"
+        span = " #{@profile.fullname}"
+      .birthday
+        label  = "#{t('profile.birthday')}:"
+        span = @profile.birthday
+      .address
+        label  = "#{t('profile.address')}:"
+        span = @profile.address
+    .clinic-info
+      .title = t('clinic.basic.clinic_infomation')
+      .name
+          label = "#{t('clinic.profile.name')}:"
+          span = @profile.clinic_profile.name
+      .category
+          label = "#{t('category.basic.category')}:"
+          span = @category
+      .address
+          label = "#{t('clinic.profile.address')}:"
+          span = @profile.clinic_profile.address
+      .phone
+          label = "#{t('clinic.profile.phone')}:"
+          span = @profile.clinic_profile.phone
+      .description
+          label = "#{t('clinic.profile.description')}:"
+          span = @profile.clinic_profile.description
+      .active-time
+          label = "#{t('clinic.profile.operating_hour')} -"
+          label = "#{t('clinic.profile.from')}:"
+          span = @profile.clinic_profile.start_hour.to_s(:time)
+          label = "#{t('clinic.profile.to')}:"
+          span = @profile.clinic_profile.end_hour.to_s(:time)
+      .active-time
+          label = "#{t('clinic.profile.operating_hour')} -"
+          label = "#{t('clinic.profile.from')}:"
+          span = @start_day
+          label = "#{t('clinic.profile.to')}:"
+          span = @end_day
+      .certificate
+          - if @profile.clinic_profile.certificate.attached?
+              = image_tag @profile.clinic_profile.certificate
+          - else
+              label = "#{t('no_image')}"
+      .clinic_view
+          - if @profile.clinic_profile.clinic_view.attached?
+              = image_tag @profile.clinic_profile.clinic_view
+          - else
+              label = "#{t('no_image')}"
 

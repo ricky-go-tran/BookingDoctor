@@ -1,10 +1,17 @@
 .payments-wrapper
-    .header
-        .title = t('medical_record.detail.invoices')
-    .content-panel
-        - if @medical_records.present?
-            = render @medical_records
-
-        - else
-            .empty History is empty...
+  .header
+      title = t('medical_record.detail.invoices')
+  .content-panel
+    - if @medical_record_items.present?
+        - @medical_record_items.each do |medical_record|
+          .medical-record-item
+            .left
+              .title
+                label =  medical_record.clinic_profile.name
+              .time = "#{date_format(medical_record.start_time)} - #{date_format(medical_record.end_time)}"
+            .right
+                =  link_to "Get Details", invoice_pdf_path(medical_record.id), {class: "view-details"}
+                =  link_to "Payment", payment_patient_payment_path(medical_record) , class: "cancle", data: {turbo: false}
+    - else
+      .empty Invoice is empty...
 

@@ -1,100 +1,99 @@
  .user-management-wrapper
-    .title = "#{t('profile.user_management')}"
-    .controll-panel
-        .left
-            = link_to "#{t('back')}", admin_users_path, class: "back"
-    .content-panel
-        .account-info
-            .title = t('profile.account_info')
-            .email
-                label = "#{t('user.basic.email')}:"
-                span = "  #{@user.email}"
-            .time-create
-                label = "#{t('user.basic.time_signup')}:"
-                span = "  #{date_format(@user.created_at)}"
-            .time-update
-                label = "#{t('user.basic.change_recently')}:"
-                span = "  #{date_format(@user.updated_at)}"
-        .profile-info
-            .title = "#{t('profile.profile_info')}"
-            - if @user.profile != nil
-                .fulname
-                    label = "#{t('profile.fullname')}:"
-                    span = "  #{@user.profile.fullname}"
-                .birthday
-                    label = "#{t('profile.birthday')}:"
-                    span = "  #{date_format(@user.profile.birthday)}"
-                .address
-                    label = "#{t('profile.address')}:"
-                    span = " #{@user.profile.address}"
-                .status
-                    label = "#{t('profile.status')}:"
-                    span = " #{@user.profile.status}"
+  .title = "#{t('profile.user_management')}"
+  .controll-panel
+    .left
+        = link_to "#{t('back')}", admin_users_path, class: "back"
+  .content-panel
+    .account-info
+      .title = t('profile.account_info')
+      .email
+        label = "#{t('user.basic.email')}:"
+        span = "  #{@user.email}"
+      .time-create
+        label = "#{t('user.basic.time_signup')}:"
+        span = "  #{date_format(@user.created_at)}"
+      .time-update
+        label = "#{t('user.basic.change_recently')}:"
+        span = "  #{date_format(@user.updated_at)}"
+    .profile-info
+      .title = "#{t('profile.profile_info')}"
+      - if @user.profile != nil
+          .fulname
+              label = "#{t('profile.fullname')}:"
+              span = "  #{@user.profile.fullname}"
+          .birthday
+              label = "#{t('profile.birthday')}:"
+              span = "  #{date_format(@user.profile.birthday)}"
+          .address
+              label = "#{t('profile.address')}:"
+              span = " #{@user.profile.address}"
+          .status
+              label = "#{t('profile.status')}:"
+              span = " #{@user.profile.status}"
 
-            - else
-                .unprofile
-                    span = t('profile.not_setup_account')
-        .clinic-info
-            .title = "#{t('clinic.basic.clinic_infomation')}"
-            - if @user.has_role?(:clinic) && @profile.clinic_profile != nil
+      - else
+          .unprofile
+              span = t('profile.not_setup_account')
+    .clinic-info
+      .title = "#{t('clinic.basic.clinic_infomation')}"
+      - if @user.has_role?(:clinic) && @profile.clinic_profile != nil
+        .name
+          label = "#{t('clinic.profile.name')}:"
+          span = @profile.clinic_profile.name
+        .category
+          label = "#{t('category.basic.category')}:"
+          span = @category
+        .address
+          label = "#{t('clinic.profile.address')}:"
+          span = @profile.clinic_profile.address
+        .phone
+          label = "#{t('clinic.profile.phone')}:"
+          span = @profile.clinic_profile.phone
+        .description
+          label = "#{t('clinic.profile.description')}:"
+          span = @profile.clinic_profile.description
+        .active-time
+          label = "#{t('clinic.profile.operating_hour')} -"
+          label = "#{t('clinic.profile.from')}:"
+          span = @profile.clinic_profile.start_hour.to_s(:time)
+          label = "#{t('clinic.profile.to')}:"
+          span = @profile.clinic_profile.end_hour.to_s(:time)
+        .active-time
+          label = "#{t('clinic.profile.operating_day')} -"
+          label = "#{t('clinic.profile.from')}:"
+          span = @start_day
+          label = "#{t('clinic.profile.to')}:"
+          span = @end_day
+        .certificate
+          - if @profile.clinic_profile.certificate.attached?
+              = image_tag @profile.clinic_profile.certificate
+          - else
+              label = "#{t('no_image')}"
+        .clinic_view
+          - if @profile.clinic_profile.clinic_view.attached?
+              = image_tag @profile.clinic_profile.clinic_view
+          - else
+              label = "#{t('no_image')}"
+      - else
+        .empty  = t('profile.not_setup_clinic_profile')
+    .clinic-info
+      .title Patient information
+      - if @user.has_role?(:patient) && @profile.patient_profile != nil
+        .height
+            label = "#{t('profile.height')}:"
+            span = "  #{@profile.patient_profile.height}"
+        .weight
+            label = "#{t('profile.weight')}:"
+            span = "  #{@profile.patient_profile.weight}"
+        .blood-group
+            label = "#{t('profile.blood_group')}:"
+            span = "  #{@profile.patient_profile.blood_group}"
+        .drug_allergy
+            label = "#{t('profile.drug_allergy')}:"
+            span = "  #{@profile.patient_profile.drug_allergy}"
 
-                .name
-                    label = "#{t('clinic.profile.name')}:"
-                    span = @profile.clinic_profile.name
-                .category
-                    label = "#{t('category.basic.category')}:"
-                    span = @category
-                .address
-                    label = "#{t('clinic.profile.address')}:"
-                    span = @profile.clinic_profile.address
-                .phone
-                    label = "#{t('clinic.profile.phone')}:"
-                    span = @profile.clinic_profile.phone
-                .description
-                    label = "#{t('clinic.profile.description')}:"
-                    span = @profile.clinic_profile.description
-                .active-time
-                    label = "#{t('clinic.profile.operating_hour')} -"
-                    label = "#{t('clinic.profile.from')}:"
-                    span = @profile.clinic_profile.start_hour.to_s(:time)
-                    label = "#{t('clinic.profile.to')}:"
-                    span = @profile.clinic_profile.end_hour.to_s(:time)
-                .active-time
-                    label = "#{t('clinic.profile.operating_day')} -"
-                    label = "#{t('clinic.profile.from')}:"
-                    span = @start_day
-                    label = "#{t('clinic.profile.to')}:"
-                    span = @end_day
-                .certificate
-                    - if @profile.clinic_profile.certificate.attached?
-                        = image_tag @profile.clinic_profile.certificate
-                    - else
-                        label = "#{t('no_image')}"
-                .clinic_view
-                    - if @profile.clinic_profile.clinic_view.attached?
-                        = image_tag @profile.clinic_profile.clinic_view
-                    - else
-                        label = "#{t('no_image')}"
-            - else
-                .empty  = t('profile.not_setup_clinic_profile')
-        .clinic-info
-            .title Patient information
-            - if @user.has_role?(:patient) && @profile.patient_profile != nil
-                .height
-                    label = "#{t('profile.height')}:"
-                    span = "  #{@profile.patient_profile.height}"
-                .weight
-                    label = "#{t('profile.weight')}:"
-                    span = "  #{@profile.patient_profile.weight}"
-                .blood-group
-                    label = "#{t('profile.blood_group')}:"
-                    span = "  #{@profile.patient_profile.blood_group}"
-                .drug_allergy
-                    label = "#{t('profile.drug_allergy')}:"
-                    span = "  #{@profile.patient_profile.drug_allergy}"
-
-            - else
-                .empty = t('profile.not_setup_patient_profile')
+      - else
+          .empty = t('profile.not_setup_patient_profile')
 
 
 

@@ -24,11 +24,11 @@ class Clinic::PatientsController < Clinic::BaseController
   private
 
   def get_medical_record
-    @medical_record = MedicalRecord.find(params[:id])
+    @medical_record = MedicalRecord.find_by(id: params[:id])
   end
 
   def get_medical_records_by_patient
-    @patient = PatientProfile.find(params[:id])
+    @patient = PatientProfile.find_by(id: params[:id])
     @medical_records = MedicalRecord.where(patient_profile_id: params[:id])
   end
 end

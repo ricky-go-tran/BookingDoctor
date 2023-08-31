@@ -1,10 +1,10 @@
 .medical-record-item
-    .left
-        .title
-            label =  medical_record.clinic_profile.name
-            span =  medical_record.status
-        .time = "#{date_format(medical_record.start_time)} - #{date_format(medical_record.end_time)}"
-    .right
-        .view-details[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_medical_record_path(medical_record)}"] View Details
-        - if medical_record.status == 'appointment'
-            = link_to "Cancle", cancle_patient_medical_record_path(medical_record) , class: "cancle", data: {turbo_method: :delete, turbo_comfirm: "Are you sure?"}
+  .left
+    .title
+      label =  medical_record.clinic_profile.name
+      span =  medical_record.status
+    .time = "#{date_format(medical_record.start_time)} - #{date_format(medical_record.end_time)}"
+  .right
+    .view-details[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{patient_medical_record_path(medical_record)}"] View Details
+    - if medical_record.status == 'appointment'
+        = link_to "Cancle", cancle_patient_medical_record_path(medical_record) , class: "cancle", data: {turbo_method: :delete, turbo_comfirm: "Are you sure?"}

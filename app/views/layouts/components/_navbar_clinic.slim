@@ -1,34 +1,34 @@
 .clinic-navbar-wrapper#clinic-navbar-wrapper
-    .info-part
-        .logo[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_profiles_path}"]
-            span Doctor
-            label Booking
-        .role Clinic Dashbroad
-        .name = current_user.profile.fullname
-    .menu-part
-        = link_to  clinic_profiles_path, {id: "profile",class: "item #{active_navbar("clinic/profiles", %w(index detail change)) || active_navbar("clinic/clinic_profiles", %w(change)) }"}  do
-            #profile-icon[class="#{active_icon_navbar("clinic/profiles", %w(index detail change)) || active_icon_navbar("clinic/clinic_profiles", %w(change))}"]
-            span = t('profile.my_profile')
-        = link_to clinic_workspaces_path,  {id: "workspace", class: "item #{active_navbar("clinic/workspaces", %w(index re_finish finish re_examination))}"} do
-            #workspace-icon[class="#{active_icon_navbar("clinic/workspaces", %w(index re_finish finish re_examination))}"]
-            span Workspace
-        = link_to clinic_appointments_path, {id: "appointment", class: "item #{active_navbar("clinic/appointments", %w(index show))}"} do
-            #appointment-icon[class="#{active_icon_navbar("clinic/appointments", %w(index show))}"]
-            span Appointment
-        = link_to clinic_statistics_path, {id: "statistics", class: "item #{active_navbar("clinic/statistics", %w(index))}"} do
-            #statistics-icon[class="#{active_icon_navbar("clinic/statistics", %w(index))}"]
-            span Statistics
-        = link_to clinic_patients_path, {id: "patient", class: "item #{active_navbar("clinic/patients", %w(index show detail_medical_record))}"} do
-            #patient-icon[class="#{active_icon_navbar("clinic/patients", %w(index show detail_medical_record))}"]
-            span = t('profile.patient_management')
-        = link_to clinic_inventories_path,  {id: "inventory", class: "item #{active_navbar("clinic/inventories", %w(index show new edit)) || active_navbar("clinic/medical_resources", %w(index show))}"} do
-            #inventory-icon[class="#{active_icon_navbar("clinic/inventories", %w(index show new edit)) || active_icon_navbar("clinic/medical_resources", %w(index show))}"]
-            span Inventory Resources
-        = link_to clinic_services_path, {id: "service", class: "item #{active_navbar("clinic/services", %w(index show new edit))}"} do
-            #service-icon[class="#{active_icon_navbar("clinic/services", %w(index show new edit))}"]
-            span = t('service.basic.service_management')
-        .item#toggle-clinic-navbar[data-controller="toggle"  data-action="click->toggle#navbar_clinic"]
-            #toggle-icon
-            span Close Navbar
+	.info-part
+		.logo[data-controller="navigation" data-navigation-target="path" data-action="click->navigation#navigate" data-content="#{clinic_profiles_path}"]
+			span Doctor
+			label Booking
+		.role Clinic Dashbroad
+		.name = current_user.profile.fullname
+	.menu-part
+		= link_to  clinic_profiles_path, {id: "profile",class: "item #{active_navbar("clinic/profiles", %w(index detail change)) || active_navbar("clinic/clinic_profiles", %w(change)) }"}  do
+			#profile-icon[class="#{active_icon_navbar("clinic/profiles", %w(index detail change)) || active_icon_navbar("clinic/clinic_profiles", %w(change))}"]
+			span = t('profile.my_profile')
+		= link_to clinic_workspaces_path,  {id: "workspace", class: "item #{active_navbar("clinic/workspaces", %w(index re_finish finish re_examination))}"} do
+			#workspace-icon[class="#{active_icon_navbar("clinic/workspaces", %w(index re_finish finish re_examination))}"]
+			span Workspace
+		= link_to clinic_appointments_path, {id: "appointment", class: "item #{active_navbar("clinic/appointments", %w(index show))}"} do
+			#appointment-icon[class="#{active_icon_navbar("clinic/appointments", %w(index show))}"]
+			span Appointment
+		= link_to clinic_statistics_path, {id: "statistics", class: "item #{active_navbar("clinic/statistics", %w(index))}"} do
+			#statistics-icon[class="#{active_icon_navbar("clinic/statistics", %w(index))}"]
+			span Statistics
+		= link_to clinic_patients_path, {id: "patient", class: "item #{active_navbar("clinic/patients", %w(index show detail_medical_record))}"} do
+			#patient-icon[class="#{active_icon_navbar("clinic/patients", %w(index show detail_medical_record))}"]
+			span = t('profile.patient_management')
+		= link_to clinic_inventories_path,  {id: "inventory", class: "item #{active_navbar("clinic/inventories", %w(index show new edit)) || active_navbar("clinic/medical_resources", %w(index show))}"} do
+			#inventory-icon[class="#{active_icon_navbar("clinic/inventories", %w(index show new edit)) || active_icon_navbar("clinic/medical_resources", %w(index show))}"]
+			span Inventory Resources
+		= link_to clinic_services_path, {id: "service", class: "item #{active_navbar("clinic/services", %w(index show new edit))}"} do
+			#service-icon[class="#{active_icon_navbar("clinic/services", %w(index show new edit))}"]
+			span = t('service.basic.service_management')
+		.item#toggle-clinic-navbar[data-controller="toggle"  data-action="click->toggle#navbar_clinic"]
+			#toggle-icon
+			span Close Navbar
 
 

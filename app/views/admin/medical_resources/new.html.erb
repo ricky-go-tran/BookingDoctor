@@ -1,0 +1,12 @@
+<div class="medical-resources-management-wrapper">
+  <div class="title"><%= t('medical_resource.basic.medical_resource_management') %></div>
+  <div class="controll-panel">
+    <div class="left">
+      <%= link_to "#{t('back')}", admin_medical_resources_path, class: "back"%>
+    </div>
+  </div>
+  <div class="new-panel">
+    <div class="title"><%= t('medical_resource.basic.new_medical_resource')%></div>
+    <%= render "admin/medical_resources/form"%>
+  </div>
+</div>

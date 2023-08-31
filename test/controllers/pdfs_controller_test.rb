@@ -1,7 +1,7 @@
-require "test_helper"
+require 'test_helper'
 
 class PdfsControllerTest < ActionDispatch::IntegrationTest
-  test "should get invoice" do
+  test 'should get invoice' do
     get pdfs_invoice_url
     assert_response :success
   end

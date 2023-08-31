@@ -1,33 +1,38 @@
 header.navbar-wrapper
-      .topbar
-            .container
-                  .row
-                        .info-wrapper
-                              .site-info
+	.topbar
+		.container
+			.row
+				.info-wrapper
+					.site-info
 
-                                    span.mai-call.text-primary
-                                    |  +09 8763 87774
-                                    span.divider
-                                    | |
-                                    span.mai-mail.text-primary
-                                    |  support@doctorbooking.com
-      nav.menu-wrapper[data-controller="toggle"]
-            .container
-                  = link_to homepages_path, class:"logo"  do
-                        span Doctor
-                        label Booking
-                  button.navbar-toggler[type="button"  data-action="click->toggle#navbar"]
-                  #navbar-wrapper.list-wrapper[data-toggle-target="homepage"]
-                        ul.list
-                              li.nav-item.active
-                                    = link_to "Home", homepages_path, {class: "nav-link"}
-                              li.nav-item
-                                    = link_to "Clinics", clinics_homepages_path, class: "nav-link"
-                              li.nav-item
-                                    = link_to "Services", services_homepages_path, class: "nav-link"
-                              li.nav-item.login-navbar
-                                    - unless user_signed_in?
-                                          = link_to "Login/ Register", new_user_session_path, class: "btn btn-primary ml-lg-3"
-                                    - else
-                                          = link_to "#{t('homepage.welcome')}, #{current_user.profile == nil ? current_user.email : current_user.profile.fullname}", direct_homepages_path, class: "btn btn-primary ml-lg-3 "
+						span.mai-call.text-primary = t('profile.phone')
+						span.divider
+						| |
+						span.mai-mail.text-primary = t('profile.email')
+	nav.menu-wrapper[data-controller="toggle"]
+		.container
+			= link_to homepages_path, class:"logo"  do
+				span Doctor
+				label Booking
+			button.navbar-toggler[type="button"  data-action="click->toggle#navbar"]
+			#navbar-wrapper.list-wrapper[data-toggle-target="homepage"]
+				ul.list
+					li.nav-item.active
+						= link_to "Home", homepages_path, {class: "nav-link"}
+					li.nav-item
+						= link_to "Clinics", clinics_homepages_path, class: "nav-link"
+					li.nav-item
+						= link_to "Services", services_homepages_path, class: "nav-link"
+					li.nav-item.login-navbar
+						- unless user_signed_in?
+							= link_to "#{t('login')}", new_user_session_path, class: "btn btn-primary ml-lg-3"
+						- else
+							= link_to "#{t('homepage.welcome')}, #{current_user.profile == nil ? current_user.email : current_user.profile.fullname}", direct_homepages_path, {class: "btn btn-primary ml-lg-3"}
+					li.nav-item.login-navbar
+						- if user_signed_in?
+							= button_to "#{t('logout')}", destroy_user_session_path, method: :delete, data: { turbo: false }, class: "btn btn-danger ml-lg-3"
+
+
+
+
 

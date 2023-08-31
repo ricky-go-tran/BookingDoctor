@@ -1,12 +1,12 @@
 .user-item
-    .left
-        - if user.profile != nil
-            .fullname = user.profile.fullname
-            .role = get_role(user)
-        - else
-            .fullname
-                = "#{user.email}"
-                span = t('profile.not_profile')
-            .role = get_role(user)
-    .right
-        = link_to "#{t('view_details')}", admin_user_path(user)
+  .left
+    - if user.profile != nil
+      .fullname = user.profile.fullname
+      .role = get_role(user)
+    - else
+      .fullname
+        = "#{user.email}"
+        span = t('profile.not_profile')
+      .role = get_role(user)
+  .right
+    = link_to "#{t('view_details')}", admin_user_path(user), class: "view"

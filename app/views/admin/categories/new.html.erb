@@ -1,0 +1,16 @@
+<div class="categories-management-wrapper">
+  <div class="title"><%= t('category.basic.category_clinic_management') %></div>
+  <div class="controll-panel">
+    <div class="left">
+      <%= link_to "#{t('back')}", admin_categories_path, class: "back"%>
+    </div>
+  </div>
+  <div class="new-panel">
+    <%= turbo_frame_tag @category do%>
+      <div class="category-form">
+        <div class="title"><%= t('category.basic.new_category_clinic')%></div>
+        <%= render "admin/categories/form"%>
+      </div>
+    <%end%>
+  </div>
+</div>

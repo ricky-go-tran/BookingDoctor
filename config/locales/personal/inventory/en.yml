@@ -10,5 +10,6 @@ en:
       inventory_infomation: "Inventory Information"
       inventory_management: "Inventory Management"
       inventory_new: New "Inventory"
+      create_success: "Inventory was successfully created."
     detail:
       name: "Name"

@@ -1,16 +1,17 @@
 .history-medical-record-wrapper
-    .header
-        .title = t('medical_record.basic.history_medical_record')
-        .control-bar
-            select.dropdown
-                option#all[value="all" selected] All
-                option#finish[value="finish"] Finish
-                option#cancle[value="cancle"] Cancle
-                option#appointment[value="appointment"] Appointment
-    .content-panel
-        - if @medical_records.present?
-            = render @medical_records
+  .header
+    .title = t('medical_record.basic.history_medical_record')
+    .control-bar
+      select.dropdown[data-controller="search" data-search-target="source" data-action="change->search#select" data-content="#{patient_medical_records_path}"]
+        option#status[selected disabled] Status
+        option#all[value="all"] All
+        option#finish[value="finish"] Finish
+        option#cancle[value="cancle"] Cancle
+        option#appointment[value="appointment"] Appointment
+  .content-panel
+    - if @medical_records.present?
+        = render @medical_records
 
-        - else
-            .empty History is empty...
+    - else
+        .empty History is empty...
 

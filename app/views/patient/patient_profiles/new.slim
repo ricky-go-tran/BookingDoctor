@@ -1,15 +1,15 @@
 .setup-patient-profile-wrapper
-    .form-wrapper
-        .logo
-            span Booking
-            label Doctor
-        h2 = t('profile.setup_profile')
-        = simple_form_for [:patient, @patient_profile], data: {turbo: false} do |form|
-            = form.input :height, label: "Height"
-            = form.input :weight
-            = form.input :blood_group, collection: PatientProfile.blood_groups.keys
-            = form.input :drug_allergy
-            = form.button :submit
-        = button_to "I want to Clinic", new_clinic_clinic_profile_path, method: :get ,class: "clinic_profile_setup"
+  .form-wrapper
+    .logo
+      span Booking
+      label Doctor
+    h2 = t('profile.setup_profile')
+    = simple_form_for [:patient, @patient_profile], data: {turbo: false} do |form|
+      = form.input :height, label: "Height"
+      = form.input :weight
+      = form.input :blood_group, collection: PatientProfile.blood_groups.keys
+      = form.input :drug_allergy
+      = form.button :submit
+    = button_to "I want to Clinic", new_clinic_clinic_profile_path, method: :get ,class: "clinic_profile_setup"
 
 

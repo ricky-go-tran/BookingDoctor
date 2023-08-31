@@ -4,6 +4,7 @@ class Clinic::BaseController < ApplicationController
   before_action :require_clinic
   before_action :check_clinic_profiles, unless: :devise_controller?
   before_action :check_valid_clinic
+
   layout 'clinic_layout'
 
   private
@@ -15,7 +16,7 @@ class Clinic::BaseController < ApplicationController
   end
 
   def exist_clinic_profile?
-    !(user_signed_in? && !current_user.profile.nil? && current_user.profile.clinic_profile.nil?)
+    current_user.profile&.clinic_profile&.present?
   end
 
   def check_clinic_profiles

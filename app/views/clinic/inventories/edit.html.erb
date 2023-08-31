@@ -1,0 +1,14 @@
+<div class="clinic-inventory-wrapper">
+  <div class="control-bar">
+    <div class="left-bar">
+      <%= link_to "#{t('back')}", :back, {class: "back"}%>
+    </div>
+    <div class="title"><%= t('inventory.basic.inventory_management') %></div>
+  </div>
+  <div class="new-panel">
+    <div class="title">Edit Invetory</div>
+    <%= turbo_frame_tag dom_id(@inventory) do%>
+      <%= render "clinic/inventories/form", inventory: @inventory%>
+    <%end%>
+  </div>
+</div>

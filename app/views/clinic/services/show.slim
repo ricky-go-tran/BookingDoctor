@@ -1,55 +1,55 @@
 .clinic-service-wrapper
-    .control-bar
-        .left-bar
-            = link_to "#{t('back')}", :back, {class: "back"}
-        .title = t('service.basic.service_management')
-        .right-bar
-    .content-panel
-        .title = t('service.basic.service_detail')
-        .name
-            label = "#{t('service.detail.name')}:"
-            span = " #{@service.name}"
-        .price
-            label = "#{t('service.detail.price')}:"
-            span = " #{@service.price}"
+	.control-bar
+		.left-bar
+			= link_to "#{t('back')}", :back, {class: "back"}
+		.title = t('service.basic.service_management')
+		.right-bar
+	.content-panel
+		.title = t('service.basic.service_detail')
+		.name
+			label = "#{t('service.detail.name')}:"
+			span = " #{@service.name}"
+		.price
+			label = "#{t('service.detail.price')}:"
+			span = " #{@service.price}"
 
-        .description
-            label = "#{t('service.detail.description')}:"
-            span = " #{@service.description}"
-        .execution-time
-            label = "#{t('service.detail.execution_time')}:"
-            span = " #{@service.execution_time}"
-        .service_view
-            label Service view:
-            - if @service.service_wallpaper.attached?
-                = image_tag @service.service_wallpaper
-            - else
-                label = t('no_image')
-        .title = t('consumption.basic.consumptions')
-        - if @service.medical_resources.present?
-            table
-                thead
-                    tr
-                        th = "#{t('medical_resource.detail.name')}"
-                        th = "#{t('medical_resource.detail.brand')}"
-                        th = "#{t('medical_resource.detail.amount')}"
-                        th = "#{t('delete')}"
-                tbody
-                    - @service.consumptions.each do |item|
-                        tr
-                            td = MedicalResource.find(item.medical_resource_id).name
-                            td = MedicalResource.find(item.medical_resource_id).brand
-                            td = item.amount
-                            td = link_to "#{t('delete')}", clinic_service_consumption_path(item),  data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "delete"
+		.description
+			label = "#{t('service.detail.description')}:"
+			span = " #{@service.description}"
+		.execution-time
+			label = "#{t('service.detail.execution_time')}:"
+			span = " #{@service.execution_time}"
+		.service_view
+			label Service view:
+			- if @service.service_wallpaper.attached?
+				= image_tag @service.service_wallpaper
+			- else
+				label = t('no_image')
+		.title = t('consumption.basic.consumptions')
+		- if @service.medical_resources.present?
+			table
+				thead
+					tr
+						th = "#{t('medical_resource.detail.name')}"
+						th = "#{t('medical_resource.detail.brand')}"
+						th = "#{t('medical_resource.detail.amount')}"
+						th = "#{t('delete')}"
+				tbody
+					- @service.consumptions.each do |item|
+						tr
+							td = MedicalResource.find_by(id: item.medical_resource_id).name
+							td = MedicalResource.find_by(id: item.medical_resource_id).brand
+							td = item.amount
+							td = button_to "#{t('delete')}", clinic_service_consumption_path(item),  data: {turbo: false}, class: "delete-btn", method: :delete
 
-        - else
-            .empty = "#{t('consumption.basic.consumption_empty')}"
-        .title = "#{t('consumption.basic.consumption_add')}"
-        = simple_form_for [:clinic, @service, @service.consumptions.build] do |form|
-            = form.input :service_id, as: :hidden, input_html: { value: @service.id }
-            = form.input :medical_resource_id, collection: get_medical_resources_of_current_user, label_method: :name, value_method: :id, include_blank: true
-            = form.input :amount
-            = form.button :submit
+		- else
+			.empty = "#{t('consumption.basic.consumption_empty')}"
+		.title = "#{t('consumption.basic.consumption_add')}"
+		= simple_form_for [:clinic, @service, @service.consumptions.build], data: {turbo: false} do |form|
+			= form.input :service_id, as: :hidden, input_html: { value: @service.id }
+			= form.input :medical_resource_id, collection: get_medical_resources_of_current_user, label_method: :name, value_method: :id, include_blank: true
+			= form.input :amount
+			= form.button :submit
 
 
 

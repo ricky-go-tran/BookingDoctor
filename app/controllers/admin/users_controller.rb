@@ -3,6 +3,7 @@
 class Admin::UsersController < Admin::BaseController
   before_action :get_user, only: %i[show detail_request]
   before_action :get_profile, only: %i[accepted canceled]
+
   def index
     @users = User.all
     if params[:search]
@@ -14,6 +15,7 @@ class Admin::UsersController < Admin::BaseController
     else
       @users
     end
+
     respond_to do |format|
       format.html
       format.xlsx do
@@ -46,23 +48,31 @@ class Admin::UsersController < Admin::BaseController
 
   def accepted
     @profile.status = 'valid'
-    @profile.save
+    if @profile.save
+      flash[:success_notice] = I18n.t('change_success')
+    else
+      flash[:error_notice] = I18n.t('change_fail')
+    end
     redirect_to request_verify_admin_users_path
   end
 
   def canceled
     @profile.status = 'cancle'
-    @profile.save
+    if @profile.save
+      flash[:success_notice] = I18n.t('change_success')
+    else
+      flash[:error_notice] = I18n.t('change_fail')
+    end
     redirect_to request_verify_admin_users_path
   end
 
   private
 
   def get_user
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
   end
 
   def get_profile
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find_by(id: params[:id])
   end
 end

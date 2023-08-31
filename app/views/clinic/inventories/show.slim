@@ -1,31 +1,31 @@
 .clinic-inventory-wrapper
-    .control-bar
-        .left-bar
-            = link_to "#{t('back')}", :back, {class: "back"}
-        .title  = "#{t('inventory.basic.inventory_management')}"
-        .right-bar
-    .content-panel
-        .title  = "#{t('inventory.basic.inventory_details')}"
-        .name
-            label  = "#{t('medical_resource.detail.name')}:"
-            span = " #{@medical_resource.name}"
-        .brand
-            label  = "#{t('medical_resource.detail.brand')}:"
-            span = " #{@medical_resource.brand}"
-        .amount
-            label  = "#{t('medical_resource.detail.amount')}:"
-            span = " #{@inventory.amount}"
-        .price
-            label  = "#{t('medical_resource.detail.price')}:"
-            span = " #{@inventory.price}"
-        .unit
-            label  = "#{t('medical_resource.detail.unit')}:"
-            span = " #{@medical_resource.unit}"
-        .description
-            label  = "#{t('medical_resource.detail.description')}:"
-            span = " #{@medical_resource.description}"
-        .type
-            label  = "#{t('medical_resource.detail.type')}:"
-            span = " #{@medical_resource.medical_resource_type}"
+  .control-bar
+    .left-bar
+      = link_to "#{t('back')}", :back, {class: "back"}
+    .title  = "#{t('inventory.basic.inventory_management')}"
+    .right-bar
+  .content-panel
+    .title  = "#{t('inventory.basic.inventory_details')}"
+    .name
+      label  = "#{t('medical_resource.detail.name')}:"
+      span = " #{@medical_resource.name}"
+    .brand
+      label  = "#{t('medical_resource.detail.brand')}:"
+      span = " #{@medical_resource.brand}"
+    .amount
+      label  = "#{t('medical_resource.detail.amount')}:"
+      span = " #{@inventory.amount}"
+    .price
+      label  = "#{t('medical_resource.detail.price')}:"
+      span = " #{@inventory.price}"
+    .unit
+      label  = "#{t('medical_resource.detail.unit')}:"
+      span = " #{@medical_resource.unit}"
+    .description
+      label  = "#{t('medical_resource.detail.description')}:"
+      span = " #{@medical_resource.description}"
+    .type
+      label  = "#{t('medical_resource.detail.type')}:"
+      span = " #{@medical_resource.medical_resource_type}"
 
 

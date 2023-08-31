@@ -1,6 +1,7 @@
 class WebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token
   skip_before_action :authenticate_user!
+
   def create
     payload = request.body.read
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
@@ -27,13 +28,13 @@ class WebhooksController < ApplicationController
       @medical_record.status = 'finish'
       if @medical_record.save
         substract_inventory(@medical_record)
-        flash[:success_notice] = 'Success! Payment invoice!'
+        flash[:success_notice] = I18n.t('medical_record.basic.payment_success')
         ActionCable
           .server
           .broadcast("finpays:#{@medical_record.clinic_profile.profile.user_id}",
                      { data: @medical_record.id, action: 'redirect' })
       else
-        flash[:error_notice] = 'Fail! Payment invoice!'
+        flash[:error_notice] = I18n.t('medical_record.basic.payment_error')
       end
       redirect_to patient_payments_path
     else
@@ -66,7 +67,7 @@ class WebhooksController < ApplicationController
       inventory_item.amount -= consumtion_amount
       inventory_item.save
     else
-      raise StandardError, 'Error! Amount is invalid'
+      raise StandardError, I18n.t('medical_record.basic.error_amount')
     end
   end
 

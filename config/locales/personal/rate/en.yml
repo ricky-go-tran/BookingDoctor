@@ -8,3 +8,5 @@ en:
       rate_search: "Rates search"
       rate_infomation: "Rate Information"
       rate_add: "Add Rate"
+      create_success: "Success! Votes is successed"
+      create_error: "Error! Votes is failed"

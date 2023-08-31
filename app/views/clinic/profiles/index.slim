@@ -1,12 +1,12 @@
 .clinic-my-profile-wrapper
-    .logo
-        span Doctor
-        label Booking
-    .title Clinic Dashboard Tools
-    .image
-    .name = "#{t('homepage.welcome')}, #{current_user.profile.fullname}"
-    .birthday  = "Your clinic: #{current_user.profile.clinic_profile.name}"
-    .address = "Location: #{current_user.profile.clinic_profile.address}"
-    = link_to "View profile", detail_clinic_profiles_path, class: "details"
-    = link_to "Change your profile", change_clinic_profiles_path, class: "edit"
-    = link_to "Change your clinic profile", change_clinic_clinic_profiles_path, class: "edit-clinic"
+  .logo
+    span Doctor
+    label Booking
+  .title = t('profile.clinic_dashboard')
+  .image
+  .name = "#{t('homepage.welcome')}, #{current_user.profile.fullname}"
+  .birthday  = "Your clinic: #{current_user.profile.clinic_profile.name}"
+  .address = "Location: #{current_user.profile.clinic_profile.address}"
+  = link_to "View profile", detail_clinic_profiles_path, class: "details"
+  = link_to "Change your profile", change_clinic_profiles_path, class: "edit"
+  = link_to "Change your clinic profile", change_clinic_clinic_profiles_path, class: "edit-clinic"

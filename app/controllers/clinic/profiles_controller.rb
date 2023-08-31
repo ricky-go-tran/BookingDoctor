@@ -3,6 +3,7 @@
 class Clinic::ProfilesController < Clinic::BaseController
   skip_before_action :check_valid_clinic, only: %i[invalid]
   before_action :get_profile, only: %i[change update]
+
   def index; end
 
   def detail; end
@@ -32,6 +33,6 @@ class Clinic::ProfilesController < Clinic::BaseController
   end
 
   def get_profile
-    @profile = Profile.find(current_user.profile.id)
+    @profile = Profile.find_by(id: current_user.profile.id)
   end
 end

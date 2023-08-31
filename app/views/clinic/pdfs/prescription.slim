@@ -1,34 +1,34 @@
 .prescription-wrapper[style="width: 100%"]
-    .logo[style="font-size: 32px;"]
-        label[style="color:#0cbecd"] Doctor
-        span[style="color:#00fc85"] Booking
-    .clinic-name[style="font-size: 24px; font-weight: bold"] Prescription of #{@medical_record.clinic_profile.name}
-    .patient-info
-        .patient-name
-            label[style="font-weight: bold;"] Patient:
-            span = " #{@profile.fullname}"
-        .birthday
-            label[style="font-weight: bold;"] Birthday:
-            span = " #{@profile.birthday}"
-        .date
-            label[style="font-weight: bold;"] Prescription's date:
-            span = " #{Time.now}"
-        hr
-        - if @prescription.present?
-            table[style="width: 100%; margin-top: 4 %"]
-                thead[style="text-align: left;"]
+  .logo[style="font-size: 32px;"]
+    label[style="color:#0cbecd"] Doctor
+    span[style="color:#00fc85"] Booking
+  .clinic-name[style="font-size: 24px; font-weight: bold"] Prescription of #{@medical_record.clinic_profile.name}
+  .patient-info
+    .patient-name
+        label[style="font-weight: bold;"] Patient:
+        span = " #{@profile.fullname}"
+    .birthday
+        label[style="font-weight: bold;"] Birthday:
+        span = " #{@profile.birthday}"
+    .date
+        label[style="font-weight: bold;"] Prescription's date:
+        span = " #{Time.now}"
+    hr
+    - if @prescription.present?
+        table[style="width: 100%; margin-top: 4 %"]
+            thead[style="text-align: left;"]
+                tr
+                    th = "#{t('medical_resource.detail.name')}"
+                    th = "#{t('medical_resource.detail.brand')}"
+                    = "#{t('medical_resource.detail.amount')}:"
+            tbody
+                -  @prescription.each do |item|
                     tr
-                        th = "#{t('medical_resource.detail.name')}"
-                        th = "#{t('medical_resource.detail.brand')}"
-                        = "#{t('medical_resource.detail.amount')}:"
-                tbody
-                    -  @prescription.each do |item|
-                        tr
-                            td = item.medical_resource.name
-                            td = item.medical_resource.brand
-                            td = item.amount
-        - else
-            .empty Prescription is empty...
+                        td = item.medical_resource.name
+                        td = item.medical_resource.brand
+                        td = item.amount
+    - else
+        .empty Prescription is empty...
 
 
 

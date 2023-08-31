@@ -1,15 +1,15 @@
-= link_to "/clinics/#{clinic.id}", class: "clinic-item" do
-    - if clinic.clinic_view.attached?
-        = image_tag clinic.clinic_view, class: "clinic_view"
-    - else
-        .clinic_view = t('no_image')
-    .clinic-content
-        .clinic-name
-            label
-            span = clinic.name
-        .clinic-address
-            label
-            span = clinic.address
-        .clinic-phone
-            label
-            span = clinic.phone
+= link_to clinics_homepage_path(clinic.id), class: "clinic-item" do
+  - if clinic.clinic_view.attached?
+    = image_tag clinic.clinic_view, class: "clinic_view"
+  - else
+      .clinic_view = t('no_image')
+  .clinic-content
+    .clinic-name
+      label
+      span = clinic.name
+    .clinic-address
+      label
+      span = clinic.address
+    .clinic-phone
+      label
+      span = clinic.phone

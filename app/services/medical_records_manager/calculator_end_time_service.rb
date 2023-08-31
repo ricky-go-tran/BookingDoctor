@@ -1,4 +1,4 @@
-class MedicalRecordsManager::CalculatorEndTimeCreator < ApplicationService
+class MedicalRecordsManager::CalculatorEndTimeService < ApplicationService
   attr_reader :medical_record
 
   def initialize(medical_record)
@@ -12,6 +12,7 @@ class MedicalRecordsManager::CalculatorEndTimeCreator < ApplicationService
       sum += Service.get_execution_time_by_id(item[:service_id])
       item
     end
+
     @medical_record.start_time + sum.minutes
   end
 

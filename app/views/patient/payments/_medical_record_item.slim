@@ -1,8 +1,0 @@
-.medical-record-item
-    .left
-        .title
-            label =  medical_record.clinic_profile.name
-        .time = "#{date_format(medical_record.start_time)} - #{date_format(medical_record.end_time)}"
-    .right
-        =  link_to "Get Details", "/pdfs/invoice/#{medical_record.id}", {class: "view-details"}
-        =  link_to "Payment", payment_patient_payment_path(medical_record) , class: "cancle", data: {turbo: false}

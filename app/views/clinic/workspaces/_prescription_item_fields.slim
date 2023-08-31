@@ -1,5 +1,5 @@
 .nested-fields
-    = label_tag :medical_resource_id, "Medical Resource"
-    = f.collection_select :medical_resource_id, current_user.get_profile_clinic.medical_resources, :id, :name, include_blank: true, class: "medical_resource_select"
-    = f.input :amount
-    = link_to_remove_association "Remove", f
+	= label_tag :medical_resource_id, "Medical Resource"
+	= f.collection_select :medical_resource_id, current_user.get_profile_clinic.medical_resources, :id, :name, include_blank: true, class: "medical_resource_select"
+	= f.input :amount
+	= link_to_remove_association "Remove", f
