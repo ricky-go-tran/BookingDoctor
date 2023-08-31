@@ -6,10 +6,9 @@ class WebhooksController < ApplicationController
     payload = request.body.read
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
     event = nil
-    endpoint_secret = 'whsec_XrJ3S8GM8IzAs3AqqrbNITv8vWN6WYt2'
     begin
       event = Stripe::Webhook.construct_event(
-        payload, sig_header, endpoint_secret
+        payload, sig_header, Rails.application.credentials.webhook_serect
       )
     rescue JSON::ParserError => e
       puts e.message

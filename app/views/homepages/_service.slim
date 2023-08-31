@@ -1,4 +1,4 @@
-= link_to  "/services/#{service.id}", class: "service-item" do
+= link_to  service_homepage_path(service), class: "service-item" do
   - if service.service_wallpaper.attached?
     = image_tag service.service_wallpaper, class: "service_view"
   - else

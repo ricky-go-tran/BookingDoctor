@@ -33,7 +33,7 @@
 						label
 						span = @clinic.phone
 					- if is_patient?
-						= link_to "Appointment", "/clinics/#{@clinic.id}/appointment", class: "add"
+						= link_to "Appointment", clinics_appointment_homepage_path(@clinic), class: "add"
 
 	.body-wrapper
 		.notice

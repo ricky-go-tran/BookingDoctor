@@ -1,6 +1,6 @@
 class Clinic::InventoriesController < Clinic::BaseController
   before_action :get_inventory, only: %i[edit update show destroy]
-  before_action :check_own, only: %i[edit update show destroy]
+  before_action :check_own, only: %i[edit update  destroy]
 
   def index
     @inventories = Inventory.where(clinic_profile_id: current_user.profile.clinic_profile.id)
